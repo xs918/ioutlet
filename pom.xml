@@ -68,7 +68,7 @@
         <module>ioutlet-bas</module>
         <module>ioutlet-bridge</module>
         <module>ioutlet-res</module>
-        <module>ioutlet-ui</module>
+        
       </modules>
 
     <dependencyManagement>
