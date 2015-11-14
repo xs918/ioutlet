@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://java.sun.com/xml/ns/persistence
+        http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="primary">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<jta-data-source>java:/mysql</jta-data-source>
+		<mapping-file>sg/com/ioutlet/bas/CommonPojo.xml</mapping-file>
+		<mapping-file>sg/com/ioutlet/model/role/Role.xml</mapping-file>
+		<mapping-file>sg/com/ioutlet/model/Depart.xml</mapping-file>
+		<mapping-file>sg/com/ioutlet/model/user/User.xml</mapping-file>
+		<mapping-file>sg/com/ioutlet/model/outlet/Outlet.xml</mapping-file>
+	
+		 <class>sg.com.ioutlet.model.Member</class>	
+		<properties>
+			<!-- Properties for Hibernate -->
+			<!-- <property name="hibernate.hbm2ddl.auto" value="create-drop" /> -->
+			<property name="hibernate.show_sql" value="false" />
+		</properties>
+	</persistence-unit>
+</persistence>

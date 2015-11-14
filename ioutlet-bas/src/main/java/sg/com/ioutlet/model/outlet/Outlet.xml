@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd">
+	
+  
+  
+   	<named-query name="Outlet.getAll">
+		<query>
+			SELECT s 
+			FROM Outlet s
+			where s.recordStatus='A'
+		</query>
+	</named-query> 
+	
+	
+	
+	
+ 	<named-query name="Outlet.getByOutletUuid.String">
+		<query>
+			SELECT s 
+			FROM Outlet s
+			WHERE s.key.uuid = :UUID
+			and s.recordStatus='A'
+		</query>
+	</named-query> 
+	
+	
+	
+	<named-query name="Outlet.getByOutletName.String">
+		<query>
+			SELECT s 
+			FROM Outlet s
+			WHERE s.name = :OUTLET_NAME
+			and s.recordStatus='A'
+		</query>
+	</named-query> 
+	
+
+
+    <entity class="sg.com.ioutlet.model.outlet.Outlet"
+          access="FIELD">
+    <table name="OUTLETS"/>
+    
+    
+      
+      <attributes>
+       	<embedded-id name="key" />
+       
+      	<basic name="name" optional="false">
+			<column name="NAME" nullable="false" length="50"/>
+	    </basic>
+	
+	
+	 	<basic name="logo" optional="false">
+			<column name="LOGO" nullable="false" length="100"/>
+	    </basic>
+	
+		 	<basic name="weekDayWorkingTime" optional="false">
+			<column name="WKD_WRKG_TIME" nullable="false" length="40"/>
+	    </basic>
+	
+		 	<basic name="saturdayWorkingTime" optional="false">
+			<column name="SAT_WRKG_TIME" nullable="false" length="40"/>
+	    </basic>
+	
+		 	<basic name="sundayWorkingTime" optional="false">
+			<column name="SUN_WRKG_TIME" nullable="false" length="40"/>
+	    </basic>
+	
+	 	<basic name="publicHolidayWorkingTime" optional="false">
+			<column name="PH_WRKG_TIME" nullable="false" length="40"/>
+	    </basic>
+	
+	
+	
+		<basic name="telPhone" optional="true">
+			<column name="TEL_PHONE" nullable="true" length="50"/>
+	    </basic>
+	
+	
+		<basic name="faxNo" optional="true">
+			<column name="FAX_NO" nullable="true" length="50"/>
+	    </basic>
+	
+	    
+	    <basic name="email" optional="true">
+			<column name="EMAIL" nullable="true" length="100"/>
+	    </basic>
+	
+	    <basic name="addr1" optional="false">
+			<column name="ADDR1" nullable="false" length="200"/>
+	    </basic>
+	        <basic name="addr2" optional="false">
+			<column name="ADDR2" nullable="false" length="200"/>
+	    </basic>
+	        <basic name="addr3" optional="true">
+			<column name="ADDR3" nullable="true" length="200"/>
+	    </basic>
+	        <basic name="addr4" optional="true">
+			<column name="ADDR4" nullable="true" length="200"/>
+	    </basic>
+	        <basic name="addr5" optional="true">
+			<column name="ADDR5" nullable="true" length="200"/>
+	    </basic>
+	    
+	    <basic name="postCode" optional="false">
+			<column name="POSTCODE" nullable="false" length="200"/>
+	    </basic>
+	   <basic name="description" optional="true">
+			<column name="DESCRIPTION" nullable="true" length="200"/>
+	    </basic>
+	 	
+	 
+	 
+	   <!--  <one-to-many name="products" mapped-by="outlet">
+				<cascade>
+					<cascade-merge />
+					<cascade-remove />
+				</cascade>
+		</one-to-many> -->
+	    
+	    </attributes>
+	 </entity>
+	<embeddable class="sg.com.ioutlet.model.outlet.OutletKey"
+		access="FIELD">
+		<attributes>
+			<basic name="uuid" optional="false">
+				<column name="UUID" nullable="false" length="40" />
+			</basic>
+		</attributes>
+	</embeddable>
+	
+	
+ </entity-mappings>
+
+ 

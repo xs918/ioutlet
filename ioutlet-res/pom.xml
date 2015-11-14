@@ -1,0 +1,68 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>sg.com.ioutlet.eap</groupId>
+		<artifactId>ioutlet</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>ioutlet-res</artifactId>
+	<dependencies>
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-jaxrs</artifactId>
+			<version>3.0.13.Final</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>jaxrs-api</artifactId>
+			<version>3.0.12.Final</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-jackson-provider</artifactId>
+			<version>3.0.13.Final</version>
+		</dependency>
+
+
+
+	<dependency>
+		<groupId>net.sf.scannotation</groupId>
+		<artifactId>scannotation</artifactId>
+		<version>1.0.2</version>
+	</dependency>
+  
+
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-jaxb-provider</artifactId>
+			<version>3.0.13.Final</version>
+		</dependency>
+<!--  json dateformating -->
+<dependency>
+	<groupId>org.codehaus.jackson</groupId>
+	<artifactId>jackson-mapper-asl</artifactId>
+	<version>1.9.13</version>
+</dependency>
+
+
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>3.0-alpha-1</version>
+		</dependency>
+
+
+
+		<dependency>
+			<groupId>sg.com.ioutlet.eap</groupId>
+			<artifactId>ioutlet-bridge</artifactId>
+		</dependency>
+	</dependencies>
+	<packaging>war</packaging>
+	<name>Ioutlet Start:ioutlet - res</name>
+</project>
