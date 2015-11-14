@@ -38,7 +38,7 @@ public class LoginAction extends ActionSupport {
 
 	// simple validation
 	public void validate() {
-		if ("".equals(getUsername())) {
+		if ("a".equals(getUsername())) {
 			addFieldError("username", getText("username.required"));
 		}
 		if ("".equals(getPassword())) {
