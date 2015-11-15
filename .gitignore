@@ -1,3 +1,6 @@
-*.class
-*/target/*
-*/classes/*
+**.class
+**target/**
+**/classes/*
+**/*.classpath
+**/.project
+**/*.settings/**
