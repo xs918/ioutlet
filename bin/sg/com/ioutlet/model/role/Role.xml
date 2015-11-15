@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd">
+	<named-query name="Role.getByRoleUuid.String">
+		<query>
+			SELECT u 
+			FROM Role u
+			WHERE u.key.uuid = :UUID
+		</query>
+	</named-query>
+	<named-query name="Role.getByRoleName.String">
+		<query>
+			SELECT u
+			FROM Role u
+			WHERE u.name = :ROLE_NAME
+		</query>
+	</named-query>
+	<named-query name="Role.getAll">
+		<query>
+			SELECT u
+			FROM Role u
+			WHERE U.recordStatus='A'
+		</query>
+	</named-query>
+	<entity class="sg.com.ioutlet.model.role.Role" access="FIELD">
+		<table name="ROLES" />
+		<attributes>
+			<embedded-id name="key" />
+
+			<basic name="name" optional="false">
+				<column name="NAME" nullable="false" length="50" />
+			</basic>
+
+			<basic name="description" optional="true">
+				<column name="DESCRIPTION" nullable="true" length="200" />
+			</basic>
+
+			<basic name="startDate" optional="true">
+				<column name="START_DATE" nullable="true" />
+			</basic>
+
+
+			<basic name="endDate" optional="true">
+				<column name="END_DATE" nullable="true" />
+			</basic>
+
+
+	    <one-to-many name="users" mapped-by="role">
+				<cascade>
+					<cascade-merge />
+					<cascade-remove />
+				</cascade>
+		</one-to-many>
+		
+		</attributes>
+	</entity>
+	<embeddable class="sg.com.ioutlet.model.role.RoleKey"
+		access="FIELD">
+		<attributes>
+			<basic name="uuid" optional="false">
+				<column name="UUID" nullable="false" length="40" />
+			</basic>
+		</attributes>
+	</embeddable>
+
+</entity-mappings>

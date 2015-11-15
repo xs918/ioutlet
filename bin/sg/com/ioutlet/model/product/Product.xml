@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings 
+  xmlns="http://java.sun.com/xml/ns/persistence/orm"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_1_0.xsd"
+  version="1.0">
+  
+ 	<named-query name="Product.getByProductUuid.String">
+		<query>
+			SELECT p
+			FROM Product p
+			WHERE p.key.uuid = :UUID
+		</query>
+	</named-query> 
+	
+	
+	<named-query name="Product.getByProductName.String">
+		<query>
+			SELECT p
+			FROM Product p
+			WHERE p.name = :PRODUCT_NAME
+		</query>
+	</named-query> 
+	
+	
+	
+
+    <entity class="sg.com.ioutlet.model.product.Product"
+          access="FIELD">
+    <table name="PRODUCTS"/>
+    
+    
+      
+      <attributes>
+       	<embedded-id name="key" />
+       	<basic name="id" optional="false">
+			<column name="ID" nullable="false" length="50"/>
+	    </basic>
+	 
+      	<basic name="name" optional="false">
+			<column name="NAME" nullable="false" length="50"/>
+	    </basic>
+	 
+	      <basic name="description" optional="true">
+			<column name="DESCRIPTION" nullable="true" length="200"/>
+	    </basic>
+	
+	
+		<basic name="unitPrice" optional="false">
+				<column name="UNIT_PRICE" nullable="false" precision="16" scale="2" />
+		</basic>
+        <basic name="currencyCode" optional="false">
+			<column name="CURRENCY_CODE" nullable="true" length="3"/>
+	    </basic>
+	
+		<basic name="salesCounting" optional="false">
+				<column name="SALES_COUNTING" nullable="false" precision="11" scale="0" />
+		</basic>
+		
+		<basic name="viewCounting" optional="false">
+				<column name="VIEW_COUNTING" nullable="false" precision="11" scale="0" />
+		</basic>
+		<basic name="ratingCode" optional="false">
+				<column name="RATING_CODE" nullable="false" precision="11" scale="0" />
+		</basic>
+		<basic name="balance" optional="false">
+				<column name="BALANCE" nullable="false" precision="11" scale="0" />
+		</basic>
+	
+	
+		<many-to-one name="outlet" optional="false">
+				<join-column name="OUTLET_UUID" referenced-column-name="UUID"
+					insertable="true" updatable="true" />
+		</many-to-one>
+		
+		
+		<many-to-one name="category" optional="false">
+				<join-column name="CATEGORY_UUID" referenced-column-name="UUID"
+					insertable="true" updatable="true" />
+		</many-to-one>
+	    
+	    
+	    <one-to-many name="productValues" mapped-by="product">
+				<cascade>
+					<cascade-merge />
+					<cascade-remove />
+				</cascade>
+		</one-to-many>
+
+		
+		
+	    </attributes>
+	 </entity>
+	<embeddable class="sg.com.ioutlet.model.product.ProductKey"
+		access="FIELD">
+		<attributes>
+			<basic name="uuid" optional="false">
+				<column name="UUID" nullable="false" length="40" />
+			</basic>
+		</attributes>
+	</embeddable>
+	
+ </entity-mappings>
+
+ 

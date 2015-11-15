@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd">
+	<mapped-superclass class="sg.com.ioutlet.bas.CommonPojo"
+		access="FIELD">
+		<attributes>
+			<basic name="creationUser" optional="false">
+				<column name="CREATION_USER" nullable="false" />
+			</basic>
+			<basic name="creationPgm" optional="false">
+				<column name="CREATION_PGM" nullable="false" />
+			</basic>
+
+			<basic name="creationTime" optional="false">
+				<column name="CREATION_TIME" nullable="false" />
+			</basic>
+    		<basic name="ludUser" optional="false">
+				<column name="LUD_USER" nullable="false" />
+			</basic>
+
+			<basic name="ludTime" optional="false">
+				<column name="LUD_TIME" nullable="false" />
+			</basic>
+
+			<basic name="ludPgm" optional="false">
+				<column name="LUD_PGM" nullable="false" />
+			</basic>
+
+			<basic name="recordStatus" optional="false">
+				<column name="RECORD_STATUS" nullable="false" length="1" />
+				<enumerated>STRING</enumerated>
+			</basic>
+			
+
+		</attributes>
+	</mapped-superclass>
+</entity-mappings>
