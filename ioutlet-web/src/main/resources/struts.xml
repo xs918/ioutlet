@@ -8,7 +8,8 @@
 	<constant name="struts.custom.i18n.resources" value="global,package" />
 
  	<constant name="struts.devMode" value="false" />
- 	<include file="example.xml"/>
+<!--  	<include file="example.xml"/> -->
+ 	<include file="struts-ioutlet-main.xml"/>
 	
 	<package name="user" namespace="/" extends="struts-default">
 		<action name="login" class="com.mkyong.user.action.LoginAction">

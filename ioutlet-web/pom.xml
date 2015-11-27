@@ -102,9 +102,13 @@
     <groupId>org.webjars</groupId>
     <artifactId>bootstrap</artifactId>
     <version>3.0.0</version>
-</dependency> 
+</dependency>
 
 
+		<dependency>
+			<groupId>sg.com.ioutlet.eap</groupId>
+			<artifactId>ioutlet-bas</artifactId>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>ioutlet-web</finalName>

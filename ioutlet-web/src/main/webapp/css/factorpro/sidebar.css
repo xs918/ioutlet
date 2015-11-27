@@ -1,0 +1,63 @@
+#sideBar 
+{
+	background-image: url(../../images/factorpro/sidebar/background.gif);
+	background-position: top left;
+	background-repeat: repeat-y;
+	position:absolute;
+	width: auto;
+	height: auto;
+	top:70px;
+	left:4px;
+}
+
+#sideBarTab 
+{
+	float: left;
+}
+
+#sideBarTab img 
+{
+	border: 0px solid #FFFFFF;
+}
+
+#sideBarContents 
+{
+	float: left;
+	overflow: hidden !important;
+	height: 0px;
+	width: 0px;
+}
+
+#sideBarContentsInner 
+{
+	width: 200px;
+}
+
+.sideBarDiv A:link
+{
+	text-decoration:none;
+	color: white;
+}
+
+.sideBarDiv A:hover 
+{
+	text-decoration:none; color: red;
+}
+
+.qli
+{
+	font-size: 10px;
+	padding: 0 0 0 10;
+	line-height: 1.5em;
+	list-style: circle;
+	list-style-position: inside;	
+	color: white;
+}
+
+.linkHeader
+{
+	font-size: 12px;
+	font-weight: bold;
+	color: yellow;
+	padding: 0 0 0 10;
+}

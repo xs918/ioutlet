@@ -1,0 +1,133 @@
+/* $Id: tabber.css,v 1.3 2007/08/15 04:07:20 betty Exp $ */
+
+/*--------------------------------------------------
+  REQUIRED to hide the non-active tab content.
+  But do not hide them in the print stylesheet!
+  --------------------------------------------------*/
+.tabberlive .tabbertabhide {
+ display:none;
+}
+
+/*--------------------------------------------------
+  .tabber = before the tabber interface is set up
+  .tabberlive = after the tabber interface is set up
+  --------------------------------------------------*/
+.tabber {
+ border-top: 1px solid #778;
+}
+.tabberlive {
+ margin-top:1em;
+
+ 
+}
+
+/*--------------------------------------------------
+  ul.tabbernav = the tab navigation list
+  li.tabberactive = the active tab
+  --------------------------------------------------*/
+ul.tabbernav
+{
+ margin:0;
+ padding: 3px 0;
+ border-bottom: 1px solid #79B7E7;
+ font: bold 12px Verdana, sans-serif;
+}
+
+ul.tabbernav li
+{
+ list-style: none;
+ margin: 0;
+ display: inline;
+}
+
+ul.tabbernav li a
+{
+
+ padding: 3px 0.5em;
+ margin-left: 3px;
+ border: 1px solid #778;
+ border-bottom: none;
+ background: #DDDDDD;
+ text-decoration: none;
+}
+
+ul.tabbernav li a:link { 
+	/*color: #7C7C7C	;*/
+	 background: url("../../js/jquery/css/factorpro/images/ui-bg_glass_85_dfeffc_1x400.png") repeat-x scroll 50% 50% #DFEFFC;
+    border: 1px solid #C5DBEC;
+	border-bottom: 1px solid #79B7E7;
+    color: #777777;
+    font-weight: bold;
+	 }
+ul.tabbernav li a:visited { color: #667; }
+
+ul.tabbernav li a:hover
+{/*
+ background: #CCCCCC;
+ border-color: #227;
+  border-top:1px solid #778;
+  */
+   background: url("../../js/jquery/css/factorpro/images/ui-bg_glass_75_d0e5f5_1x400.png") repeat-x scroll 50% 50% #D0E5F5;
+    border: 1px solid #79B7E7;
+    color: #113399;
+    font-weight: bold;
+}
+
+ul.tabbernav li.tabberactive a
+{
+
+ color: #113399;
+ /*
+ background-color: #eeeeee;*/
+  background: url("../../js/jquery/css/factorpro/images/ui-bg_inset-hard_100_f5f8f9_1x100.png") repeat-x scroll 50% 50% #F5F8F9;
+    border: 1px solid #79B7E7;
+    color: #113399;
+    font-weight: bold;
+ border-bottom: 1px solid #eeeeee;
+}
+
+ul.tabbernav li.tabberactive a:hover
+{
+ color: #00234A;
+ background: eeeeee;
+ border-bottom: 1px solid eeeeee;
+}
+
+/*--------------------------------------------------
+  .tabbertab = the tab content
+  Add style only after the tabber interface is set up (.tabberlive)
+  --------------------------------------------------*/
+.tabberlive .tabbertab {
+ padding:5px;
+ border:1px solid #79B7E7;
+ border-top:0;
+
+ /* If you don't want the tab size changing whenever a tab is changed
+    you can set a fixed height */
+
+ /* height:200px; */
+
+
+ /* If you set a fix height set overflow to auto and you will get a
+    scrollbar when necessary */
+
+ /* overflow:auto; */
+}
+
+/* If desired, hide the heading since a heading is provided by the tab */
+.tabberlive .tabbertab h2 {
+ display:none;
+}
+.tabberlive .tabbertab h3 {
+ display:none;
+}
+
+/* Example of using an ID to set different styles for the tabs on the page */
+.tabberlive#tab1 {
+}
+.tabberlive#tab2 {
+}
+.tabberlive#tab2 .tabbertab {
+ /*height:200px;
+ overflow:auto;*/
+}

@@ -1,0 +1,319 @@
+/* Style for table container */
+.wwFormTable
+{
+	width:100%;
+	 
+	border:1px solid #A6C9E2;
+
+}
+
+.actionMessage
+{
+	font-size: 12px;
+	font-weight: bold;
+	font-style: normal;
+	color: blue;
+	height: 18px;
+}
+
+.label
+{
+	text-decoration: none;
+	font-weight: bold;
+	font-style: normal;
+}
+#loading_img 
+{
+	display:none;
+	position: absolute;
+	right: 50%;
+	top: 50%;
+}
+
+.errorLabel 
+{
+	font-style:italic,bold; 
+	color:red; 
+}
+
+.errorMessage {
+	font-weight:bold; 
+	height: 18px;
+	color:RED; 
+	font-size: 12px;
+	width: 95%;
+	text-align: left;
+}
+
+.checkboxLabel 
+{
+
+}
+
+.checkboxTitleLabel
+{
+	text-decoration: none;
+	font-weight: bold;
+	font-style: normal;
+}
+
+.checkboxErrorLabel 
+{
+	color:red; 
+}
+
+.required 
+{
+	color:red;
+}
+
+/* Style for table container label header column */
+.reqNoCustomLabel
+{
+	border: 1px solid #DDDDDD;
+    padding: 5px;
+    background-color: #CC99FF;
+}
+
+.accTypeCustomLabel
+{
+	border: 1px solid #DDDDDD;
+    padding: 3px;
+    background-color: #CC99FF;
+}
+
+.formTdLabel
+{
+	border: 1px none;
+	padding: 3px 3px;
+	background-color: #FFF;
+	width: 10%;
+	white-space : nowrap;
+}
+table.list td.formTdLabel
+{
+	border: 1px solid #DDDDDD;
+	padding: 3px;
+	background-color: #CCCCCC;
+	width: 10%!important;
+}
+/* Style for table container standard column */
+.formTdControl
+{
+	border: 1px none;
+	padding: 3px;
+	background-color: #FFF;
+	width: 10%;
+	margin-right:1%;
+}
+table.list td.formTdControl
+{
+	border: 1px none;
+	padding: 3px;
+	background-color: #FFF;
+	width: 10%!important;
+	margin-right:1%;
+}
+.formTdControlRightAlign
+{
+	padding: 5px;
+	padding-right: 10px;
+	width: 10%;
+	margin-right:1%;
+	text-align: right;
+}
+
+.formTdControlBold
+{
+	border: 1px none;
+	padding: 3px;
+	background-color: #FFF;
+	width: 20%;
+	margin-right:1%;
+	font-weight:bold;
+}
+
+
+
+
+.formTdControl1
+{
+	border: 1px none;
+	padding: 3px;
+	background-color: #FFF;
+	width:50px;
+}
+
+.formTdErrorMessage
+{
+	border: 0px solid #fff;
+	padding: 3px;
+	background-color: #fff;
+	width: 100%;
+}
+
+.textArea
+{
+	width: 99%;
+	height: 150px;
+	margin-left:2px;
+	border: none;
+ 	color: #000000;
+ 	overflow: hidden;
+ 	background: #ffffff;
+}
+
+.textfieldReadonly
+{
+	width: 90%;
+	border: none;
+	resize: none;
+ 	color: #000000;
+ 	background: #ffffff;
+}
+/* Style for table container custom column style example */
+.customTd
+{
+	width: 100%;
+	height: 25px;
+	border: 0px solid #4297d7; 
+	background: #113399 url(../../js/jquery/css/factorpro/images/ui-bg_gloss-wave_55_113399_500x100.png) 50% 50% repeat-x; 
+	color: #ffffff; 
+	font-weight: bold; 
+}
+
+.customTd label{
+	width: 100%;
+	height: 25px;
+	font-weight:bold;
+	font-size: 14px;
+	font-variant: small-caps;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 3px;
+}
+/* can be used for width auto adjustment */
+.customTdWithoutWidth {
+	height: 25px;
+	font-weight:bold;
+	font-size: 14px;
+	font-variant: small-caps;
+	border: 0px solid #4297d7; 
+	background: #113399 url(../../js/jquery/css/factorpro/images/ui-bg_gloss-wave_55_113399_500x100.png) 50% 50% repeat-x; 
+	color: #ffffff;
+}
+/* can be used for sub table header */
+.customTd2
+{
+	background: url("../../js/jquery/css/factorpro/images/ui-bg_glass_75_d0e5f5_1x400.png") repeat-x scroll 50% 50% #D0E5F5;
+    border: 1px solid #79B7E7;
+    color: #113399;
+    font-weight: bold;
+	height:25px; 
+}
+
+.customTd2AlignRight
+{
+	background: url("../../js/jquery/css/factorpro/images/ui-bg_glass_75_d0e5f5_1x400.png") repeat-x scroll 50% 50% #D0E5F5;
+    border: 1px solid #79B7E7;
+    color: #113399;
+    font-weight: bold;
+	height:25px; 
+	text-align: right;
+}
+
+.customHeader
+{
+	background: url("../../js/jquery/css/factorpro/images/ui-bg_glass_75_d0e5f5_1x400.png") repeat-x scroll 50% 50% #D0E5F5;
+    border: 1px solid #79B7E7;
+    color: #113399;
+    font-weight: bold;
+	height:20px; 
+	text-align: center;
+}
+
+.subLabel
+{
+	border: 1px solid #DDDDDD;
+	font-size: 12px;
+	padding: 2px;
+	font-weight: bold;
+	background-color: #003366;
+	color: #eeeeee;
+}
+
+.squeezecolumn
+{
+	border: 1px solid #DDDDDD;
+	padding: 3px;
+	background-color: #FFF;
+	width: 5%;
+}
+
+
+/* Style for every row in table container */
+.formTr
+{
+	vertical-align: top;
+}
+
+.button {
+
+}
+
+/* Style for hovering over a row in a specific table body */
+tbody.hoverTableRow tr.formTr:hover td
+{
+	 background: #87CEFA;
+}
+
+/*Calendar*/
+.calendarContainer {
+/*	border:1px solid #566f8f;*/
+	width:200px;	
+}
+
+.calendarBodyContainer thead tr td {
+	font-size:8pt!important;
+}
+
+.monthLabelContainer {
+	font-size:8pt!important;
+}
+
+.previousMonth {
+	font-size:8pt!important;
+}
+
+.previousMonthDisabled {
+	font-size:8pt!important;
+}
+.currentMonth {
+	font-size:8pt!important;
+}
+
+.currentMonthDisabled {
+	font-size:8pt!important;
+}
+.nextMonth {
+	font-size:8pt!important;
+}
+.nextMonthDisabled {
+	font-size:8pt!important;
+}
+
+.currentDate {
+	font-size:8pt!important;
+}
+
+.selectedItem {
+	font-size:8pt!important;
+}
+
+.yearLabel .selectedYear {
+	font-size:8pt!important;
+}
+
+.nextYear, .previousYear {
+	font-size:8pt!important;
+}

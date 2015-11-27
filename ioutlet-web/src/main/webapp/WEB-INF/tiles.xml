@@ -6,17 +6,21 @@
 
 <tiles-definitions>
 
-    <definition name="baseLayout" template="/tiles/layout.jsp">
+    <definition name="baseLayout" template="/template/ioutlet/layout.jsp">
         <put-attribute name="title" value="Template"/>
-        <put-attribute name="header" value="/tiles/header.jsp"/>
-        <put-attribute name="menu" value="/tiles/menu.jsp"/>
-        <put-attribute name="body" value="/tiles/body.jsp"/>
-        <put-attribute name="footer" value="/tiles/footer.jsp"/>
+        <put-attribute name="header" value="/template/ioutlet/header.jsp"/>
+        <put-attribute name="leftsidebar" value="/template/ioutlet/leftsidebar.jsp"/>
+        <put-attribute name="ctrlsidebar" value="/template/ioutlet/ctrlsidebar.jsp"/>
+        <put-attribute name="content" value="/template/ioutlet/body.jsp"/>
+        <put-attribute name="footer" value="/template/ioutlet/footer.jsp"/>
     </definition>
 
-    <definition name="hello" extends="baseLayout">
-        <put-attribute name="title" value="Hello"/>
-        <put-attribute name="body" value="/example/HelloWorld.jsp"/>
+    <definition name="index" extends="baseLayout">
+        <put-attribute name="title" value="index"/>
+        <put-attribute name="content" value="/WEB-INF/pages/ioutlet/main/main.jsp"/>                           
     </definition>
-
+    
+    
+    
+    
 </tiles-definitions>

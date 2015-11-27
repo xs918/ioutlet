@@ -1,0 +1,114 @@
+body,table, div
+{
+	font-family: Arial, Verdana;
+	font-size: 11px;
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+}
+body
+{
+	scrollbar-arrow-color: #3399FF;
+	scrollbar-face-color: #EEEEEE;
+	scrollbar-highlight-color: #EEEEEE;
+	scrollbar-shadow-color: #EEEEEE;
+	scrollbar-track-color: #EEEEEE;
+	/*background-image: url(../../images/factorpro/forms/wnb.jpg);*/
+	background-repeat: repeat-x;
+}
+td
+{
+	padding: 5px 5px 5px 5px;
+}
+#slbutton
+{
+	position:absolute;
+	top:373px;
+	left:5px;
+}
+#img
+{
+	position:relative;
+	top: 0px;
+	left: 0px;
+}
+#icon
+{
+	position: absolute;
+	top:120px;
+	left:968px;
+}
+#fp
+{
+	position: absolute;
+	top:20px;
+	left:750px;
+}
+#env
+{
+	position: absolute;
+	top:24px;
+	left:450px;
+	font-size:8pt;
+	font-weight: bold;
+	color: #4176AB;
+	text-align:right;
+}
+
+#formcr
+{
+	position:absolute;
+	top:565px;
+	left:870px;
+	font-size: 8px;	
+}
+#content
+{
+/*
+	position:absolute;
+	top:160px;
+	left:37px;
+	*/
+}
+#outertable
+{
+	width: 930px;
+	/*background-image: url(../../images/factorpro/forms/extend.jpg);*/
+}
+.header
+{
+	padding: 0px 0px 0px 0px;
+	text-align:left;
+	font-size: 34px;
+	font-weight: bold;
+	color: #4176AB;
+}
+.txtbox
+{
+	border:1px solid #808080;
+}
+.dataName
+{
+	padding:0px 10px 0px 0px;
+}
+.datatxt
+{
+	padding:0px 10px 0px 0px;
+}
+.nopadding
+{
+	padding:0px 0px 0px 0px;
+}
+
+.slidingDiv {
+    height:300px;
+    background-color: #F0F0F0;
+    padding:10px;
+    margin-top:5px;
+    border-bottom:5px solid #D0D0D0;
+}
+ 
+.show_hide {
+    display:none;
+}
+
+label.disabled { color: #aaa; }
