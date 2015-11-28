@@ -1,9 +1,9 @@
 package sg.com.ioutlet.web.main;
 
 import sg.com.ioutlet.model.IoutletFunction;
-import sg.com.ioutlet.web.common.action.IoutletAction;
+import sg.com.ioutlet.web.common.action.IoutletDisplayAction;
 
-public class MainPageDisplayAction extends IoutletAction {
+public class MainPageDisplayAction extends IoutletDisplayAction {
 
 	/**
 	 * 
@@ -20,11 +20,6 @@ public class MainPageDisplayAction extends IoutletAction {
 		return INPUT;
 	}
 
-	@Override
-	public String getDomainId() {
-	
-		return null;
-	}
 
 	@Override
 	public String getFunctionId() {

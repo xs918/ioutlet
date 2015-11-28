@@ -3,14 +3,12 @@ package sg.com.ioutlet.web.common.action;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
-import sg.com.ioutlet.framework.web.form.CommonForm;
 import sg.com.ioutlet.model.IoutletFunction;
 import sg.com.ioutlet.web.main.menu.MenuGroup;
 import sg.com.ioutlet.web.main.menu.MenuLink;
 
-public class IoutletMenuDisplayAction extends IoutletAction {
+public class IoutletMenuDisplayAction extends IoutletDisplayAction {
 	/**
 	 * 
 	 */

@@ -31,7 +31,7 @@ import sg.com.ioutlet.web.common.action.AccessController;
 import com.opensymphony.xwork2.ActionSupport;
 
 
-public abstract class CommonActionSupport extends ActionSupport implements FormAware,SubmitValidationAware, ApplicationAware, SessionAware, ServletRequestAware, ParameterAware {
+public abstract class CommonActionSupport extends ActionSupport implements SubmitValidationAware, ApplicationAware, SessionAware, ServletRequestAware, ParameterAware {
 	/**
 	 * 
 	 */
@@ -44,9 +44,7 @@ public abstract class CommonActionSupport extends ActionSupport implements FormA
 	protected LogHelper logger = LogHelper.getInstance((getClass().getName()));
 	private String title = "application.title";
 	
-	protected CommonForm model;	
-	protected String formScope = SCOPE_FORM_SESSION;
-	protected String formScopeKey;
+
 	
 	protected Map<String,Object>  application;
 
@@ -103,20 +101,10 @@ public abstract class CommonActionSupport extends ActionSupport implements FormA
 	public String execute()
 	{
 		logger.trace("execute");
-		if(model != null)
-		{
-			if(model.getFormLoadingDate() != null)
-				TransactionControl.getTransactionInfo().setFormLoadingDate(model.getFormLoadingDate());
-			else
-			{
-				TransactionControl.getTransactionInfo().setFormLoadingDate(new Date());
-				model.setFormLoadingDate(TransactionControl.getTransactionInfo().getFormLoadingDate());
-			}
-		}
 		return onSubmit();
 	}	
 	
-	protected abstract CommonForm constructForm();
+	
 	
 	public String preValidate()
 	{
@@ -608,27 +596,12 @@ public abstract class CommonActionSupport extends ActionSupport implements FormA
 	public Map<String, Object> getSession() {
 		return session;
 	}
-	public CommonForm getModel() {
-		return model;
-	}
-	public void setModel(CommonForm model) {
-		this.model = model;
-	}
+
 	public void setAccessControl(AccessController accessControl) {
 		this.accessControl = accessControl;
 	}
-	public String getFormScope() {
-		return formScope;
-	}
-	public void setFormScope(String formScope) {
-		this.formScope = formScope;
-	}
-	public String getFormScopeKey() {
-		return formScopeKey;
-	}
-	public void setFormScopeKey(String formScopeKey) {
-		this.formScopeKey = formScopeKey;
-	}
+
+
 	public Map<String, String[]> getParameters() {
 		return parameters;
 	}

@@ -1,25 +1,12 @@
 package sg.com.ioutlet.web.common.action;
 
-import java.util.Collection;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import javax.servlet.http.HttpServletRequest;
 
 import sg.com.ioutlet.framework.trxhelper.TransactionControl;
-import sg.com.ioutlet.framework.web.action.CommonActionSupport;
+import sg.com.ioutlet.framework.web.action.awareness.FormAware;
 import sg.com.ioutlet.framework.web.form.CommonForm;
-import sg.com.ioutlet.model.IoutletFunction;
-import sg.com.ioutlet.web.main.menu.MenuFactory;
-import sg.com.ioutlet.web.main.menu.MenuGroup;
-import sg.com.ioutlet.web.main.menu.MenuLink;
 
-public abstract class IoutletAction extends CommonActionSupport {
+public abstract class IoutletAction extends IoutletDisplayAction implements FormAware {
 
 	/**
 	 * 
@@ -27,57 +14,10 @@ public abstract class IoutletAction extends CommonActionSupport {
 	private static final long serialVersionUID = 1L;
 	private static final String DOMAIN_ID = "IOLT";
 
-	
+	protected String formScope = SCOPE_FORM_SESSION;
 
-	public List<MenuGroup> getMenuItems() {
-		MenuFactory mf = new MenuFactory();
-		if (accessControl == null) {
-			Set<IoutletFunction> availableFunctionIds = new HashSet<IoutletFunction>();
-			availableFunctionIds.add(IoutletFunction.ALL_FUNC);
-
-			accessControl = new AccessController(availableFunctionIds);
-		}
-		List<MenuGroup> m1 = mf.generateMenus(
-				IoutletFunction.IOLT_SIDE_MENU.inModule(), getAccessControl());
-		return m1;
-
-	}
-
-	public Map<String, MenuLink> getMenuLinks() {
-		List<MenuGroup> mg;
-		Map<String, MenuLink> menumMap = new HashMap<String, MenuLink>();
-		MenuFactory mf = new MenuFactory();
-
-		mg = mf.generateMenus(IoutletFunction.IOLT_SIDE_MENU.inModule(),
-				getAccessControl());
-
-		if (mg != null && mg.size() > 0) {
-			Collection<MenuLink> mNL = mg.get(0).getMenus().values();
-			Iterator<MenuLink> i = mNL.iterator();
-			menumMap.put(IoutletFunction.IOLT_SIDE_MENU.inModule(), i.next());
-		}
-
-		return menumMap;
-
-	}
-
-	public String getPageContentHeader() {
-
-		return EMPTY;
-	}
-
-	public String getPageOptionaldescription() {
-
-		return EMPTY;
-	}
-
-	public String getImagePath() {
-		return IMG_PATH;
-	}
-
-	public String getUserProfileImageLink() {
-		return IMG_PATH + "/" + "user3-128x128.jpg";
-	}
+	protected CommonForm model;	
+	protected String formScopeKey;
 
 	@Override
 	public void saveForm() {
@@ -195,6 +135,12 @@ public abstract class IoutletAction extends CommonActionSupport {
 		return model;
 	}
 
+	public String getFormScope() {
+		return formScope;
+	}
+	public void setFormScope(String formScope) {
+		this.formScope = formScope;
+	}
 
 
 	protected String validateOnSubmit = TRUE;
@@ -221,19 +167,13 @@ public abstract class IoutletAction extends CommonActionSupport {
 	protected String onLoad() {
 
 		logger.trace("onLoad");
-		return null;
+		return INPUT;
 		
 	}
 
-	@Override
+
 	protected CommonForm constructForm() {
 		logger.trace("constructForm");
-		return null;
-	}
-
-	@Override
-	protected String onSubmit() {
-		logger.trace("onSubmit");
 		return null;
 	}
 
