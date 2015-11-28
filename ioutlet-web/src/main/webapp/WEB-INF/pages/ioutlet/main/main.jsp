@@ -12,8 +12,8 @@
     </li>
     <li>
         <s:url id="url" action="index">
-            <s:param name="request_locale">es</s:param>
+            <s:param name="request_locale">cn</s:param>
         </s:url>
-        <s:a href="%{url}">Espanol</s:a>
+        <s:a href="%{url}">中文</s:a>
     </li>
 </ul>

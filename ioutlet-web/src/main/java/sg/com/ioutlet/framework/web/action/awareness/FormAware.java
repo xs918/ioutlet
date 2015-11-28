@@ -5,7 +5,7 @@ import sg.com.ioutlet.framework.web.form.CommonForm;
 
 import com.opensymphony.xwork2.ModelDriven;
 
-public interface FormAware extends ModelDriven
+public interface FormAware extends ModelDriven<Object>
 {
 	public static final String SCOPE_FORM_APPLICATION = "application";
 	public static final String SCOPE_FORM_SESSION = "session";

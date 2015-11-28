@@ -20,11 +20,9 @@ import sg.com.ioutlet.bas.DateUtil;
 import sg.com.ioutlet.common.logging.LogHelper;
 import sg.com.ioutlet.exception.BusinessException;
 import sg.com.ioutlet.exception.BusinessMultipleException;
-import sg.com.ioutlet.framework.trxhelper.TransactionControl;
-import sg.com.ioutlet.framework.web.action.awareness.FormAware;
 import sg.com.ioutlet.framework.web.action.awareness.SubmitValidationAware;
-import sg.com.ioutlet.framework.web.form.CommonForm;
 import sg.com.ioutlet.model.IoutletFunction;
+import sg.com.ioutlet.model.user.User;
 import sg.com.ioutlet.util.NumberUtil;
 import sg.com.ioutlet.web.common.action.AccessController;
 
@@ -607,5 +605,11 @@ public abstract class CommonActionSupport extends ActionSupport implements Submi
 	}
 	public void setParameters(Map<String, String[]> parameters) {
 		this.parameters = parameters;
+	}
+	
+	public User getLoggedUser()
+	{
+		return null;
+		
 	}
 }
