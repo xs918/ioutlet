@@ -6,15 +6,15 @@ import javax.persistence.EntityManager;
 import javax.persistence.FlushModeType;
 import javax.persistence.Query;
 
-import org.apache.commons.lang3.Validate;
+import org.apache.commons.lang.Validate;
 import org.hibernate.LockMode;
 import org.hibernate.internal.SessionImpl;
 
 import sg.com.ioutlet.app.comm.log.LogHelper;
 import sg.com.ioutlet.bas.CommonPojo;
 import sg.com.ioutlet.bas.CommonPojoKey;
-import sg.com.ioutlet.vo.utils.TransactionControl;
-import sg.com.ioutlet.vo.utils.TransactionInfo;
+import sg.com.ioutlet.framework.model.TransactionInfo;
+import sg.com.ioutlet.framework.trxhelper.TransactionControl;
 
 public abstract class IoutletDao extends CommonDao {
 

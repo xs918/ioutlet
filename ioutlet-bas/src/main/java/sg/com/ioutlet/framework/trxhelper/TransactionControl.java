@@ -1,8 +1,10 @@
-package sg.com.ioutlet.vo.utils;
+package sg.com.ioutlet.framework.trxhelper;
 
 import java.util.Locale;
 
 import org.jboss.logging.NDC;
+
+import sg.com.ioutlet.framework.model.TransactionInfo;
 
 public class TransactionControl {
 

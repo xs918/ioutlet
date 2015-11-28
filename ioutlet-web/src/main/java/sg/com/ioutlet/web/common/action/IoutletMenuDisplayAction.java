@@ -3,7 +3,9 @@ package sg.com.ioutlet.web.common.action;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
+import sg.com.ioutlet.framework.web.form.CommonForm;
 import sg.com.ioutlet.model.IoutletFunction;
 import sg.com.ioutlet.web.main.menu.MenuGroup;
 import sg.com.ioutlet.web.main.menu.MenuLink;
@@ -94,11 +96,11 @@ public class IoutletMenuDisplayAction extends IoutletAction {
 		LinkedHashMap<IoutletFunction, MenuLink> chartsMenu = new LinkedHashMap<IoutletFunction, MenuLink>();
 		
 		if(ac.getSalesChartsAccess()){
-			chartsMenu.put(IoutletFunction.IOLT_SALES_CHART, new MenuLink("fa fa-area-chart","saleschart", "/saleschart", "index", getText("saleschart")));
+			chartsMenu.put(IoutletFunction.IOLT_SALES_CHART, new MenuLink("fa fa-circle-o","saleschart", "/saleschart", "index", getText("saleschart")));
 		}
 		
 		if(ac.getCustomerChartsAccess()){
-			chartsMenu.put(IoutletFunction.IOLT_CUST_CHART, new MenuLink("fa fa-bar-chart","custchart", "/custchart", "index", getText("custchart")));
+			chartsMenu.put(IoutletFunction.IOLT_CUST_CHART, new MenuLink("fa fa-circle-o","custchart", "/custchart", "index", getText("custchart")));
 		}
 
 		if (chartsMenu.size() > 0)
@@ -109,11 +111,17 @@ public class IoutletMenuDisplayAction extends IoutletAction {
 		
 		LinkedHashMap<IoutletFunction, MenuLink> outletsMenu = new LinkedHashMap<IoutletFunction, MenuLink>();
 		if(ac.getStaffAccess()){
-			outletsMenu.put(IoutletFunction.IOLT_STAFF, new MenuLink("fa fa-user","staff", "/staff", "index", getText("staff")));
+			outletsMenu.put(IoutletFunction.IOLT_STAFF, new MenuLink("fa fa-circle-o","staff", "/staff", "index", getText("staff")));
 		}
 		
+		if(ac.getCustomersAccess()){
+			outletsMenu.put(IoutletFunction.IOLT_CUSTOMERS, new MenuLink("fa fa-circle-o","customers", "/customers", "index", getText("customers")));
+		}
+		
+		
+		
 		if(ac.getOutletAccess()){
-			outletsMenu.put(IoutletFunction.IOLT_CUST_CHART, new MenuLink("fa  fa-cubes","outlets", "/oulets", "index", getText("outlet")));
+			outletsMenu.put(IoutletFunction.IOLT_CUST_CHART, new MenuLink("fa fa-circle-o","outlets", "/oulets", "index", getText("outlet")));
 		}
 
 		if (outletsMenu.size() > 0)
@@ -146,8 +154,9 @@ public class IoutletMenuDisplayAction extends IoutletAction {
 	}
 	@Override
 	public String getFunctionId() {
-	
+		
 		return IoutletFunction.IOLT_SIDE_MENU.toString();
 	}
+	
 
 }

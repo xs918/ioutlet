@@ -7,7 +7,7 @@ import javax.ws.rs.core.UriInfo;
 
 
 
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 
 import sg.com.ioutlet.model.role.Role;
 import sg.com.ioutlet.rest.endpoint.RoleEndpoint;

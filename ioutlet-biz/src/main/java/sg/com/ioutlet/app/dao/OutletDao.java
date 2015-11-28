@@ -6,7 +6,7 @@ import java.util.Map;
 
 import javax.persistence.EntityManager;
 
-import org.apache.commons.lang3.Validate;
+import org.apache.commons.lang.Validate;
 
 import sg.com.ioutlet.bas.CommonPojoKey;
 import sg.com.ioutlet.model.outlet.Outlet;

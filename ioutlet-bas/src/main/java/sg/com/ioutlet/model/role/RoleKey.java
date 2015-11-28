@@ -3,7 +3,7 @@ package sg.com.ioutlet.model.role;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.lang.RandomStringUtils;
 
 import sg.com.ioutlet.bas.CommonPojoKey;
 

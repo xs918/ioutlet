@@ -7,7 +7,7 @@ import java.util.List;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 
 import sg.com.ioutlet.model.outlet.Outlet;
 import sg.com.ioutlet.rest.endpoint.OutletEndpoint;

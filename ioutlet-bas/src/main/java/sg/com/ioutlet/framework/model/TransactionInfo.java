@@ -1,6 +1,7 @@
-package sg.com.ioutlet.vo.utils;
+package sg.com.ioutlet.framework.model;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Locale;
 
 public class TransactionInfo implements Serializable {
@@ -20,6 +21,8 @@ public class TransactionInfo implements Serializable {
 
 	private String functionId;
 	
+	// from the form
+	private Date formLoadingDate;
 	
 	public TransactionInfo()
 	{}
@@ -64,6 +67,15 @@ public class TransactionInfo implements Serializable {
 	public void setFunctionId(String functionId) {
 		this.functionId = functionId;
 	}
+
+	public Date getFormLoadingDate() {
+		return formLoadingDate;
+	}
+
+	public void setFormLoadingDate(Date formLoadingDate) {
+		this.formLoadingDate = formLoadingDate;
+	}
+
 
 
 	
