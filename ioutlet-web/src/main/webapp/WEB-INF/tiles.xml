@@ -27,4 +27,10 @@
     </definition>
     
     
+        <definition name="SG.COM.IOUTLET.DASH.INDEX" extends="baseLayout">
+        <put-attribute name="title" value="index"/>
+        <put-attribute name="content" value="/WEB-INF/pages/ioutlet/dash/index.jsp"/>                           
+    </definition>
+    
+    
 </tiles-definitions>

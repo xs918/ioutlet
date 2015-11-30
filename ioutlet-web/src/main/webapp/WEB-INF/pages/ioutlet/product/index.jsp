@@ -32,7 +32,7 @@
                   </div>
 			</div>
 			<div class="col-md-4">
-				<button type="button" class="btn btn-primary">Add A Product</button>
+				<button type="button" class="btn btn-sm btn-default btn-flat pull-right">Add A Product</button>
 			</div>
 		</div>
 
