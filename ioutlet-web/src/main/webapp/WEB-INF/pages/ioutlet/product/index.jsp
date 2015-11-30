@@ -20,7 +20,7 @@
 <body>
 <div class="box box-primary">
 <div class="box-header with-border">
-	<div class="container-fluid">
+	
 		<div class="row">
 			<div class="col-md-2">
 				<input type="checkbox" value=""> Check All
@@ -35,7 +35,7 @@
 				<button type="button" class="btn btn-primary">Add A Product</button>
 			</div>
 		</div>
-	</div>
+
 </div>
 	<!-- /.box-header -->
 	<div class="table-responsive">
