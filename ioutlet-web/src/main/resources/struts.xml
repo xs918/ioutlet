@@ -9,5 +9,4 @@
 
  	<constant name="struts.devMode" value="false" />
  	<include file="struts-ioutlet-main.xml"/>
-
 </struts>

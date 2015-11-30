@@ -155,6 +155,11 @@ public class IoutletMenuDisplayAction extends IoutletDisplayAction {
 		
 		return IoutletFunction.IOLT_SIDE_MENU.toString();
 	}
+	@Override
+	protected String onSubmit() {
+		
+		return SUCCESS;
+	}
 	
 
 }

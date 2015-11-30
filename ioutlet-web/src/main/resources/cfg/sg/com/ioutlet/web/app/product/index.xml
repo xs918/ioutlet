@@ -7,10 +7,10 @@
   - of how to break up the configuration file into multiple files.
 -->
 <struts>
-	<include file="cfg/sg/com/ioutlet/web/app/product/main.xml"/>
 
 
-    <package name="default" namespace="/" extends="struts-default">
+
+    <package name="product" namespace="/product" extends="struts-default">
 
 
 	<!-- <default-interceptor-ref name="loggedinuser" /> -->
@@ -21,16 +21,13 @@
         </result-types>
 
 
-         <action name="sidemenu" class="sg.com.ioutlet.web.common.action.IoutletMenuDisplayAction">
-            <result type="tiles">leftsidebar</result>
-        </action>
         
-        
-         <action name="index" class="sg.com.ioutlet.web.main.MainPageDisplayAction" method="input">
-            <result name="input" type="tiles">index</result>
+         <action name="index" class="sg.com.ioutlet.web.app.product.action.ProductIndexAction" method="input">
+            <result name="input" type="tiles">SG.COM.IOUTLET.PRODUCT.INDEX</result>
         </action>
 
         <!-- Add additional "example" package actions here. -->
 
     </package>
+
 </struts>

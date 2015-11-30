@@ -1,7 +1,6 @@
 package sg.com.ioutlet.web.common.action;
 
 import java.util.Collection;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -9,9 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import sg.com.ioutlet.framework.trxhelper.TransactionControl;
 import sg.com.ioutlet.framework.web.action.CommonActionSupport;
-import sg.com.ioutlet.framework.web.form.CommonForm;
 import sg.com.ioutlet.model.IoutletFunction;
 import sg.com.ioutlet.web.main.menu.MenuFactory;
 import sg.com.ioutlet.web.main.menu.MenuGroup;
@@ -102,21 +99,11 @@ public abstract  class IoutletDisplayAction extends CommonActionSupport {
 	
 	
 
-	@Override
-	protected String onLoad() {
-
-		logger.trace("onLoad");
-		return null;
-		
-	}
 
 
 
-	@Override
-	protected String onSubmit() {
-		logger.trace("onSubmit");
-		return SUCCESS;
-	}
+
+
 
 	@Override
 	public String getDomainId() {

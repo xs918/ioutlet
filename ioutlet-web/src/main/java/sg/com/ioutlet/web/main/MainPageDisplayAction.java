@@ -51,4 +51,10 @@ public class MainPageDisplayAction extends IoutletDisplayAction {
 		this.message = message;
 	}
 
+
+	@Override
+	protected String onSubmit() {
+	return SUCCESS;
+	}
+
 }
