@@ -96,11 +96,7 @@ public abstract class CommonActionSupport extends ActionSupport implements Submi
 		// if there is a requirement to perform post onload, override this method
 	}
 	
-	public String execute()
-	{
-		logger.trace("execute");
-		return onSubmit();
-	}	
+
 	
 	
 	
@@ -156,7 +152,7 @@ public abstract class CommonActionSupport extends ActionSupport implements Submi
 		logger.trace("setServletRequest");
 		this.request = request;
 	}
-	private String sfld;
+	protected String sfld="true";
 	
 	public String getSfld()
 	{
@@ -164,6 +160,8 @@ public abstract class CommonActionSupport extends ActionSupport implements Submi
 	}
 	public void setSfld(String sfld)
 	{
+		
+		System.out.println("Setter:"+sfld);
 		this.sfld = sfld;
 	}
 	

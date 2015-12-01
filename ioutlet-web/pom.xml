@@ -158,10 +158,13 @@
         </dependency>
         
         
-		<dependency>
+       <dependency>
 			<groupId>sg.com.ioutlet.eap</groupId>
-			<artifactId>ioutlet-bas</artifactId>
+			<artifactId>ioutlet-bridge</artifactId>
 		</dependency>
+		
+		
+        
 	</dependencies>
 	<build>
 		<finalName>ioutlet-web</finalName>

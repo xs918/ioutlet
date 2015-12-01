@@ -41,6 +41,7 @@
 	 
 	   <s:if test="%{#menugroup.size == 1 }">
 			<s:url id="linkMenu" namespace="%{#menugroup.firstMenu.namespace}" action="%{#menugroup.firstMenu.action}">
+			<s:param name="sfld">true</s:param>
 	    	</s:url>
 			<li><a href="<s:property value="%{linkMenu}"/>"> <i class="<s:property value="%{#menugroup.iconStyle}"/>"></i>
 					<span>
@@ -62,6 +63,7 @@
 			    <ul class="treeview-menu">
 					 <s:iterator value="#menugroup.menus.values" id="menu">
 						 <s:url id="linkMenu" namespace="%{#menu.namespace}" action="%{#menu.action}">
+						 <s:param name="sfld">true</s:param>
 						 </s:url>
 							<li><a href="<s:property value="%{linkMenu}"/>">
 							<i class="<s:property value="%{#menu.iconStyle}"/>"></i>

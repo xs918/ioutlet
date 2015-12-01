@@ -18,6 +18,7 @@ public abstract class IoutletAction extends IoutletDisplayAction implements Form
 
 	protected CommonForm model;	
 	protected String formScopeKey;
+	protected abstract CommonForm constructForm();
 
 	@Override
 	public void saveForm() {
@@ -59,7 +60,7 @@ public abstract class IoutletAction extends IoutletDisplayAction implements Form
 
 		CommonForm form = null;
 		String key = getFormClassName();
-
+        System.out.println("getSfld:"+getSfld());
 		if (getSfld() != null) {
 			if (logger.isDebugEnabled())
 				logger.debug("Form loading ignored as the skip form loading parameter sfld["
@@ -121,6 +122,39 @@ public abstract class IoutletAction extends IoutletDisplayAction implements Form
 	}
 
 
+	public String execute()
+	{
+		logger.trace("execute");
+		
+		if(model != null)
+		{
+			if(model.getFormLoadingDate() != null)
+				TransactionControl.getTransactionInfo().setFormLoadingDate(model.getFormLoadingDate());
+			else
+			{
+				TransactionControl.getTransactionInfo().setFormLoadingDate(new Date());
+				model.setFormLoadingDate(TransactionControl.getTransactionInfo().getFormLoadingDate());
+			}
+		}
+		return onSubmit();
+	}	
+	
+	
+	public String preOnSubmit()
+	{
+		logger.trace("preOnSubmit");
+		//if there is a requirement to perform some actions before onSubmit, override this method
+		return SUCCESS;
+	}
+	protected abstract String onSubmit();
+	public void postOnSubmit()
+	{
+		logger.trace("postOnSubmit");
+		// if there is a requirement to perform post onload, override this method
+	}	
+	
+	
+	
 	@Override
 	public CommonForm getModel() {
 		if (model == null) {
@@ -134,6 +168,14 @@ public abstract class IoutletAction extends IoutletDisplayAction implements Form
 		}
 		return model;
 	}
+	
+	public void setModel(CommonForm model)
+	{
+		logger.trace("setModel");
+		this.model = model;
+	}
+	
+	
 
 	public String getFormScope() {
 		return formScope;
@@ -172,10 +214,7 @@ public abstract class IoutletAction extends IoutletDisplayAction implements Form
 	}
 
 
-	protected CommonForm constructForm() {
-		logger.trace("constructForm");
-		return null;
-	}
+
 
 	@Override
 	public String getDomainId() {
