@@ -22,17 +22,17 @@
 <div class="box-header with-border">
 	
 		<div class="row">
-			<div class="col-md-2">
+			<div class="col-md-2 input-lg">
 				<input type="checkbox" value=""> Check All
 			</div>
-			<div class="col-md-6">
+			<div class="col-md-5">
                   <div class="has-feedback">
-                      <input type="text" class="form-control input-sm" placeholder="Search product by name,sno">
+                      <input type="text" class="form-control input-lg" placeholder="Search product by name,sno">
                       <span class="glyphicon glyphicon-search form-control-feedback"></span>
                   </div>
 			</div>
-			<div class="col-md-4">
-				<button type="button" class="btn btn-sm btn-default btn-flat pull-right">Add A Product</button>
+			<div class="col-md-5">
+				<button type="button" class="btn btn-lg btn-default btn-flat pull-right">Add A Product</button>
 			</div>
 		</div>
 

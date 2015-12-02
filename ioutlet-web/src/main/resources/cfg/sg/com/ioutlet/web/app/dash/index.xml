@@ -10,7 +10,7 @@
 
 
 
-    <package name="dash" namespace="/dashboard" extends="struts-default">
+    <package name="dash" namespace="/dashboard" extends="iolt-default">
 
 
 	<!-- <default-interceptor-ref name="loggedinuser" /> -->

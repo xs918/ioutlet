@@ -9,4 +9,8 @@
 
  	<constant name="struts.devMode" value="false" />
  	<include file="struts-ioutlet-main.xml"/>
+ 	
+ 	<include file="cfg/sg/com/ioutlet/web/app/product/main.xml"/>
+	<include file="cfg/sg/com/ioutlet/web/app/dash/main.xml"/>
+  
 </struts>

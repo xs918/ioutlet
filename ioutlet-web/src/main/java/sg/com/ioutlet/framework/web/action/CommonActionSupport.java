@@ -44,14 +44,13 @@ public abstract class CommonActionSupport extends ActionSupport implements Submi
 	
 
 	
-	protected Map<String,Object>  application;
+	protected Map<String,Object>  application ;
 
 
-	protected Map<String,Object> session;
+	protected Map<String,Object> session  ;
 
 
-	protected  Map<String,Object> parameter;
-	protected Map<String, String[]> parameters;
+	protected Map<String, String[]> parameters ;
 	
 
 	protected HttpServletRequest request;
@@ -152,7 +151,7 @@ public abstract class CommonActionSupport extends ActionSupport implements Submi
 		logger.trace("setServletRequest");
 		this.request = request;
 	}
-	protected String sfld="true";
+	protected String sfld;
 	
 	public String getSfld()
 	{
@@ -204,7 +203,7 @@ public abstract class CommonActionSupport extends ActionSupport implements Submi
 	 */
 	protected Object findFromAllScope(String key)
 	{
-		Object obj = parameter.get(key);
+		Object obj = parameters.get(key);
 		if (obj != null) return obj;
 
 		obj = session.get(key);
@@ -223,7 +222,7 @@ public abstract class CommonActionSupport extends ActionSupport implements Submi
 	 */
 	protected void removeFromAllScope(String key)
 	{
-		parameter.remove(key);
+		parameters.remove(key);
 		session.remove(key);
 		application.remove(key);
 	}
@@ -574,12 +573,7 @@ public abstract class CommonActionSupport extends ActionSupport implements Submi
 		return value;
 	}
 	
-	public Map<String, Object> getParameter() {
-		return parameter;
-	}
-	public void setParameter(Map<String, Object> parameter) {
-		this.parameter = parameter;
-	}
+
 	public HttpServletRequest getRequest() {
 		return request;
 	}

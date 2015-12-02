@@ -10,7 +10,7 @@
 
 
 
-    <package name="product" namespace="/product" extends="struts-default">
+    <package name="product" namespace="/product" extends="iolt-default">
 
 
 	<!-- <default-interceptor-ref name="loggedinuser" /> -->
