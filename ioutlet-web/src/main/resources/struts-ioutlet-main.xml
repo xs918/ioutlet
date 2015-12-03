@@ -17,8 +17,27 @@
 		
         <result-types>
             <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult"/>
+            			<result-type name="redirect-action"
+				class="org.apache.struts2.dispatcher.ServletActionRedirectResult"
+				default="false" />				
+			<result-type name="json" class="org.apache.struts2.json.JSONResult" default="false" />	
         </result-types>
 
+      <interceptors>
+         <interceptor name="authorization-check"
+				class="sg.com.ioutlet.framework.web.interceptor.AuthorizationCheckInterceptor">
+				<param name="authenticatorImpl">
+					sg.com.kpmg.ace.authenticator.impl.AceAuthenticator
+				</param>
+		</interceptor>
+			
+			
+		 <interceptor-stack name="security-required">
+				<!--<interceptor-ref name="authenticated-check" /> -->
+				<interceptor-ref name="authorization-check" />
+		</interceptor-stack>
+
+		</interceptors>
 		
 		<default-interceptor-ref name="defaultStack" />
 

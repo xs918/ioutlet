@@ -20,6 +20,7 @@ import sg.com.ioutlet.bas.DateUtil;
 import sg.com.ioutlet.common.logging.LogHelper;
 import sg.com.ioutlet.exception.BusinessException;
 import sg.com.ioutlet.exception.BusinessMultipleException;
+import sg.com.ioutlet.framework.web.action.awareness.AuthorizationAware;
 import sg.com.ioutlet.framework.web.action.awareness.SubmitValidationAware;
 import sg.com.ioutlet.model.IoutletFunction;
 import sg.com.ioutlet.model.user.User;
@@ -29,7 +30,7 @@ import sg.com.ioutlet.web.common.action.AccessController;
 import com.opensymphony.xwork2.ActionSupport;
 
 
-public abstract class CommonActionSupport extends ActionSupport implements SubmitValidationAware, ApplicationAware, SessionAware, ServletRequestAware, ParameterAware {
+public abstract class CommonActionSupport extends ActionSupport implements AuthorizationAware, SubmitValidationAware, ApplicationAware, SessionAware, ServletRequestAware, ParameterAware {
 	/**
 	 * 
 	 */

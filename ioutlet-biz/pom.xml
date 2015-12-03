@@ -104,12 +104,7 @@
 		</dependency>
 
 
-		<!-- core utility -->
-		<dependency>
-			<groupId>commons-logging</groupId>
-			<artifactId>commons-logging</artifactId>
-			<version>1.1.1</version>
-		</dependency>
+
 
 		<!-- core utility end -->
 		<dependency>
