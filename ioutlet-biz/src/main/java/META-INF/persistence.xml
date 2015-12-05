@@ -8,9 +8,8 @@
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<jta-data-source>java:/mysql</jta-data-source>
 		<mapping-file>sg/com/ioutlet/bas/CommonPojo.xml</mapping-file>
-		<mapping-file>sg/com/ioutlet/model/role/Role.xml</mapping-file>
-		<mapping-file>sg/com/ioutlet/model/Depart.xml</mapping-file>
-		<mapping-file>sg/com/ioutlet/model/user/User.xml</mapping-file>
+		<mapping-file>sg/com/ioutlet/ace/role/Role.xml</mapping-file>
+		<mapping-file>sg/com/ioutlet/ace/user/User.xml</mapping-file>
 		<mapping-file>sg/com/ioutlet/model/outlet/Outlet.xml</mapping-file>
 	
 		 <class>sg.com.ioutlet.model.Member</class>	

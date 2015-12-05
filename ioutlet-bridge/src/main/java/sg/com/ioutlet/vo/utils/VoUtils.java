@@ -1,9 +1,9 @@
 package sg.com.ioutlet.vo.utils;
 
+import sg.com.ioutlet.ace.role.Role;
+import sg.com.ioutlet.ace.user.User;
 import sg.com.ioutlet.bas.CommonPojo;
 import sg.com.ioutlet.model.outlet.Outlet;
-import sg.com.ioutlet.model.role.Role;
-import sg.com.ioutlet.model.user.User;
 import sg.com.ioutlet.vo.CommonVo;
 import sg.com.ioutlet.vo.OutletVo;
 import sg.com.ioutlet.vo.RoleVo;

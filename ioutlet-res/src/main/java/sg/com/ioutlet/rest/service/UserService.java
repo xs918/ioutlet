@@ -9,7 +9,7 @@ import javax.ws.rs.core.UriInfo;
 
 import org.apache.commons.lang.StringUtils;
 
-import sg.com.ioutlet.model.user.User;
+import sg.com.ioutlet.ace.user.User;
 import sg.com.ioutlet.rest.endpoint.RoleEndpoint;
 import sg.com.ioutlet.rest.endpoint.UserEndpoint;
 import sg.com.ioutlet.rest.exception.DataNotAcceptableException;
@@ -22,7 +22,7 @@ public class UserService extends CommonService {
 	public List<UserVo> getAllUsers(UriInfo uriInfo) {
 
 		List<UserVo> uvList = new ArrayList<UserVo>();
-		for (User u : getter.getAllUsers()) {
+		for (User u : ace.getAllUsers()) {
 			UserVo uv = VoUtils.getUserVo(u);
 			uv.addLink(getUriForSelf(uriInfo, uv), "self");
 			uv.addLink(getUriForRole(uriInfo, uv), "role");
@@ -34,7 +34,7 @@ public class UserService extends CommonService {
 
 	public  List<UserVo> getUsersByRole(UriInfo uriInfo, String roleId) {
 		List<UserVo> uvList = new ArrayList<UserVo>();
-		for (User u : getter.getAllUsersByRoleId(roleId)) {
+		for (User u : ace.getAllUsersByRoleId(roleId)) {
 			UserVo uv = VoUtils.getUserVo(u);
 			uv.addLink(getUriForSelf(uriInfo, uv), "self");
 			uv.addLink(getUriForRole(uriInfo, uv), "role");
@@ -47,7 +47,7 @@ public class UserService extends CommonService {
 	
 	
 	public UserVo getUserById(String userId,UriInfo uriInfo) {
-		User usr =  getter.getUserById(userId);
+		User usr =  ace.getUserById(userId);
 		if(usr == null)
 		{
 			throw new DataNotFoundException("User did not exist for id - "+ userId);
@@ -60,7 +60,7 @@ public class UserService extends CommonService {
 		return uv;
 	}
 	public Response addUser(UserVo userVo, UriInfo uriInfo) {
-		User usr =  setter.addUser(userVo);
+		User usr =  ace.addUser(userVo);
 		if(usr==null)
 		{
 			throw new DataNotFoundException("add new user failed - "+ userVo.getName());
@@ -81,7 +81,7 @@ public class UserService extends CommonService {
 		{
 			throw new DataNotAcceptableException("User Id must not be empty or null");
 		}
-		User usr =  setter.updateUser(userVo);
+		User usr =  ace.updateUser(userVo);
 		if (usr == null)
 		{
 			throw new DataNotFoundException("Update user failed: user did not exist - " + userVo.getId() );
@@ -96,7 +96,7 @@ public class UserService extends CommonService {
 	}
 
 	public void deleteUser(String userId) {
-		setter.deleteUser(userId);
+		ace.deleteUser(userId);
 		
 	}
 

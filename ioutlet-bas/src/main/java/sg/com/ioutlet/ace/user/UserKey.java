@@ -1,4 +1,4 @@
-package sg.com.ioutlet.model.user;
+package sg.com.ioutlet.ace.user;
 
 import java.util.ArrayList;
 import java.util.List;

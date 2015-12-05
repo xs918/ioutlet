@@ -1,12 +1,12 @@
-package sg.com.ioutlet.model.role;
+package sg.com.ioutlet.ace.role;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import sg.com.ioutlet.ace.user.User;
 import sg.com.ioutlet.bas.CommonPojo;
 import sg.com.ioutlet.bas.CommonPojoKey;
-import sg.com.ioutlet.model.user.User;
 
 /**
  * The persistent class for the depart database table.

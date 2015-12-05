@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-import sg.com.ioutlet.model.role.Role;
+import sg.com.ioutlet.ace.role.Role;
 @XmlRootElement
 public class RoleVo {
 	Role role;

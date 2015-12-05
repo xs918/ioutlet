@@ -11,7 +11,7 @@ public interface  CommonForm extends Serializable {
 	public static final String VALIDATION_TYPE_CUSTOM = "VC";
 	
 	public abstract void reset();
-	public Map<?, ?> validate();
+	public Map<String, String> validate();
 	public boolean validate(ActionSupport as);
 	public String getValidationType();
 	public String getActionType();

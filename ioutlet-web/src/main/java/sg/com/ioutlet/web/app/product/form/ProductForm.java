@@ -23,7 +23,7 @@ public class ProductForm extends IoutletForm{
 	
 
 	@Override
-	public Map<?, ?> validate() {
+	public Map<String, String> validate() {
 		return null;
 	}
 

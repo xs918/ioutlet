@@ -1,4 +1,4 @@
-package sg.com.ioutlet.model.role;
+package sg.com.ioutlet.ace.role;
 
 import java.util.ArrayList;
 import java.util.List;

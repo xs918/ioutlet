@@ -5,6 +5,10 @@ import java.util.Date;
 
 public class UserInfo implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String userId;
 	private String userName;
 	private String userUuid;
@@ -12,8 +16,7 @@ public class UserInfo implements Serializable {
 	private boolean accountExpired;
 	private boolean accountLocked;
 	private Date lastLoginTime;
-	private EntityInfo entityInfo;
-	public UserInfo()
+		public UserInfo()
 	{}
 	public UserInfo(String userId, String userName, String userUuid, boolean changePwdRequried, boolean accountExpired, boolean accountLocked,Date lastLoginTime)
 	{
@@ -67,12 +70,6 @@ public class UserInfo implements Serializable {
 	}
 	public void setLastLoginTime(Date lastLoginTime) {
 		this.lastLoginTime = lastLoginTime;
-	}
-	public EntityInfo getEntityInfo() {
-		return entityInfo;
-	}
-	public void setEntityInfo(EntityInfo entityInfo) {
-		this.entityInfo = entityInfo;
 	}
 
 	

@@ -1,40 +1,66 @@
-package sg.com.ioutlet.model.user;
+package sg.com.ioutlet.ace.user;
 
+import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import sg.com.ioutlet.ace.password.PasswordUtil;
+import sg.com.ioutlet.ace.role.Role;
+import sg.com.ioutlet.ace.user.img.UserImg;
+import sg.com.ioutlet.bas.Address;
 import sg.com.ioutlet.bas.CommonPojo;
 import sg.com.ioutlet.bas.CommonPojoKey;
 import sg.com.ioutlet.bas.Gender;
-import sg.com.ioutlet.model.role.Role;
+
 
 
 
 public class User extends CommonPojo {
 	private static final long serialVersionUID = 1L;
 	public static final String ENTITY_NAME = "User";
+	public static final int MAX_FAIL_COUNT = 10;
 
 	private UserKey key;
+	private String userId;
 	private String emailId;
 
-	private String password;
+	private String storedPassword;
 
-	private String profilePic;
 	private String name;
 	private Gender gender=Gender.U;
 	private Date birthDay;
 	private String otherDetail;
-	private String address1;
-	private String address2;
-	private String address3;
-	private String address4;
-	private String address5;
 	private String postCode;
 	private String langCode;
 	private String currLoc;
-	private Role role;
-	BigDecimal rewardPoint;
+
+	private BigDecimal rewardPoint;
+	
+	private boolean locked;
+	
+	private int loginFailureAttempts;
+
+	private int loginFailureAttemptsHistory;
+
+	private Date lastLoginTime;
+
+	private Date lastLoginTimeHistory;
+
+	private Date accountActivateTime;
+
+
+	private Date lastPasswordChangedTime;
+
+	private Date lastLockedTime;
+
+	private boolean changePasswordRequired;
+	
+	private List<UserImg> imges;
+	private List<Address> address;
+	private List<Role> roles;
 
 	public User() {
 
@@ -54,7 +80,7 @@ public class User extends CommonPojo {
 	}
 
 	public enum Field {
-		key, emailId(50), password(200), profilePic(50), name(200),gender,birthDay, otherDetail(
+		key, emailId(50), storedPassword(200), profilePic(50), name(200),gender,birthDay, otherDetail(
 				500), address1(200), address2(200), address3(200), address4(200), address5(
 				200), postCode(10), langCode,currLoc,role, rewardPoint(16, 2);
 
@@ -80,7 +106,7 @@ public class User extends CommonPojo {
 
 		List<Object[]> fields = new ArrayList<Object[]>();
 		fields.add(new Object[] { Field.emailId.name(), emailId });
-		fields.add(new Object[] { Field.password.name(), password });
+		fields.add(new Object[] { Field.storedPassword.name(), storedPassword });
 		fields.add(new Object[] { Field.profilePic.name(), profilePic });
 		fields.add(new Object[] { Field.name.name(), name });
 		fields.add(new Object[] { Field.gender.name(), gender });
@@ -107,7 +133,7 @@ public class User extends CommonPojo {
 		int i = 0;
 
 		this.emailId = (String) objects[i++];
-		this.password = (String) objects[i++];
+		this.storedPassword = (String) objects[i++];
 		this.profilePic = (String) objects[i++];
 		this.name = (String) objects[i++];
 		this.gender =(Gender) objects[i++];
@@ -154,12 +180,10 @@ public class User extends CommonPojo {
 	}
 
 	public String getPassword() {
-		return password;
+		return storedPassword;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+
 
 	public String getProfilePic() {
 		return profilePic;
@@ -283,6 +307,163 @@ public class User extends CommonPojo {
 
 	public void setCurrLoc(String currLoc) {
 		this.currLoc = currLoc;
+	}
+
+	public boolean isLocked() {
+		return locked;
+	}
+
+	public void setLocked(boolean locked) {
+		this.locked = locked;
+	}
+
+	public int getLoginFailureAttempts() {
+		return loginFailureAttempts;
+	}
+
+	public void setLoginFailureAttempts(int loginFailureAttempts) {
+		this.loginFailureAttempts = loginFailureAttempts;
+	}
+
+	public int getLoginFailureAttemptsHistory() {
+		return loginFailureAttemptsHistory;
+	}
+
+	public void setLoginFailureAttemptsHistory(int loginFailureAttemptsHistory) {
+		this.loginFailureAttemptsHistory = loginFailureAttemptsHistory;
+	}
+
+	public Date getLastLoginTime() {
+		return lastLoginTime;
+	}
+
+	public void setLastLoginTime(Date lastLoginTime) {
+		this.lastLoginTime = lastLoginTime;
+	}
+
+	public Date getLastLoginTimeHistory() {
+		return lastLoginTimeHistory;
+	}
+
+	public void setLastLoginTimeHistory(Date lastLoginTimeHistory) {
+		this.lastLoginTimeHistory = lastLoginTimeHistory;
+	}
+
+	public Date getAccountActivateTime() {
+		return accountActivateTime;
+	}
+
+	public void setAccountActivateTime(Date accountActivateTime) {
+		this.accountActivateTime = accountActivateTime;
+	}
+
+	public Date getLastPasswordChangedTime() {
+		return lastPasswordChangedTime;
+	}
+
+	public void setLastPasswordChangedTime(Date lastPasswordChangedTime) {
+		this.lastPasswordChangedTime = lastPasswordChangedTime;
+	}
+
+	public Date getLastLockedTime() {
+		return lastLockedTime;
+	}
+
+	public void setLastLockedTime(Date lastLockedTime) {
+		this.lastLockedTime = lastLockedTime;
+	}
+
+	public boolean isChangePasswordRequired() {
+		return changePasswordRequired;
+	}
+
+	public void setChangePasswordRequired(boolean changePasswordRequired) {
+		this.changePasswordRequired = changePasswordRequired;
+	}
+
+	
+	public void setPassword(String password)
+	{
+		try
+		{
+			this.storedPassword = PasswordUtil.encodePassword(password, null);
+		}
+		catch (UnsupportedEncodingException ex)
+		{
+
+		}
+		catch (NoSuchAlgorithmException ex)
+		{
+
+		}
+		catch (NullPointerException e)
+		{
+
+		}
+		catch (Exception e)
+		{
+
+		}
+	}
+
+	public String getStoredPassword()
+	{
+		return this.storedPassword;
+	}
+
+	public void setStoredPassword(String storedPassword)
+	{
+		this.storedPassword = storedPassword;
+	}
+
+	
+	public boolean isPasswordMatch(String userInputPassword)
+	{
+		try
+		{
+			if (PasswordUtil.isPasswordMatched(userInputPassword, storedPassword))
+			{
+				return true;
+			}
+		}
+		catch (Exception ex)
+		{
+
+		}
+		return false;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public boolean isAccountExpired() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean isActive() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public Object getStatus() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public UserConfig getUserConfig() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	public int getMaxFailCount()
+	{
+		return MAX_FAIL_COUNT;
 	}
 
 

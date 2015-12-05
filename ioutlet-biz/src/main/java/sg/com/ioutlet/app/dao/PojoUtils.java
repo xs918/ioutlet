@@ -1,16 +1,18 @@
 package sg.com.ioutlet.app.dao;
 
+import sg.com.ioutlet.ace.role.Role;
+import sg.com.ioutlet.ace.role.RoleKey;
+import sg.com.ioutlet.ace.user.User;
 import sg.com.ioutlet.model.outlet.Outlet;
-import sg.com.ioutlet.model.role.Role;
-import sg.com.ioutlet.model.role.RoleKey;
-import sg.com.ioutlet.model.user.User;
 import sg.com.ioutlet.vo.OutletVo;
 import sg.com.ioutlet.vo.RoleVo;
 import sg.com.ioutlet.vo.UserVo;
 
+
+
 public class PojoUtils {
 
-	public static Role updateRoleFromVo(Role role, RoleVo roleVo) {
+	public static Role updateRoleFromVo( Role role, RoleVo roleVo) {
 		role.setName(roleVo.getName());
 		role.setDescription(roleVo.getDescription());
 		role.setStartDate(roleVo.getStartDate());

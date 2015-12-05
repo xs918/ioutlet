@@ -4,9 +4,11 @@ import java.util.Date;
 
 import sg.com.ioutlet.framework.trxhelper.TransactionControl;
 import sg.com.ioutlet.framework.web.action.awareness.FormAware;
+import sg.com.ioutlet.framework.web.action.awareness.ReturnPathAware;
 import sg.com.ioutlet.framework.web.form.CommonForm;
+import sg.com.ioutlet.web.common.message.GlobalMessages;
 
-public abstract class IoutletAction extends IoutletDisplayAction implements FormAware {
+public abstract class IoutletAction extends IoutletDisplayAction implements FormAware, ReturnPathAware {
 
 	/**
 	 * 
@@ -18,6 +20,11 @@ public abstract class IoutletAction extends IoutletDisplayAction implements Form
 
 	protected CommonForm model;	
 	protected String formScopeKey;
+	
+	
+	private String errorReport;
+	
+	
 	protected abstract CommonForm constructForm();
 
 	@Override
@@ -121,6 +128,82 @@ public abstract class IoutletAction extends IoutletDisplayAction implements Form
 
 	}
 
+	/**
+	 * Reset the form
+	 */
+	public void resetForm()
+	{
+		logger.trace("resetForm");
+		Date fld = new Date();
+		model.setFormLoadingDate(fld);
+		TransactionControl.getTransactionInfo().setFormLoadingDate(fld);
+		model.reset();
+		saveForm();
+	}
+	
+	
+	// ReturnPathAware Implementations 
+
+		/**
+		 * When user click cancel, clear the form. Go back to result 'cancel'
+		 */
+		public String doCancel()
+		{
+			logger.trace("doCancel");
+			Object m = getModel();
+			if(m instanceof CommonForm && m !=null)
+			{
+				clearForm();
+				((CommonForm)m).reset();
+				if(logger.isDebugEnabled())
+					logger.debug("form resetted");
+			}
+			addActionMessage(GlobalMessages.ACTION_CANCEL_AS_REQUEST.toString());
+			return RETURN_CANCEL;
+		}
+		/**
+		 * When user click back, no clearing of form. Go back to result 'back'
+		 */
+		public String doBack()
+		{
+			logger.trace("doBack");
+			saveForm();
+			if(logger.isDebugEnabled())
+				logger.debug("form saved");
+			return RETURN_BACK;
+		}
+		/**
+		 * When user click reset, clear the form. Go back to result 'input'
+		 */
+		public String doReset()
+		{
+			logger.trace("doReset");
+			Object m = getModel();
+			if(m instanceof CommonForm && m !=null)
+			{
+				// reset form
+				resetForm();
+				if(logger.isDebugEnabled())
+					logger.debug("form resetted");
+			}
+			return INPUT;
+		}
+		/**
+		 * If there is special button required, implementation class required to overide this method.
+		 * 
+		 */
+		public String doCustom()
+		{
+			logger.trace("doCustom");
+			if(logger.isDebugEnabled())
+				logger.debug("DOING CUSTOM");
+			logger.warn("Do custom is called without overwriting by implementation class. Going to 'error' result");
+			return ERROR;
+		}
+		
+		
+	
+	
 
 	public String execute()
 	{
@@ -219,6 +302,14 @@ public abstract class IoutletAction extends IoutletDisplayAction implements Form
 	@Override
 	public String getDomainId() {
 		return DOMAIN_ID;
+	}
+
+	public String getErrorReport() {
+		return errorReport;
+	}
+
+	public void setErrorReport(String errorReport) {
+		this.errorReport = errorReport;
 	}
 
 

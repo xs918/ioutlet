@@ -16,6 +16,7 @@ import org.apache.struts2.interceptor.ParameterAware;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 
+import sg.com.ioutlet.ace.user.User;
 import sg.com.ioutlet.bas.DateUtil;
 import sg.com.ioutlet.common.logging.LogHelper;
 import sg.com.ioutlet.exception.BusinessException;
@@ -23,7 +24,6 @@ import sg.com.ioutlet.exception.BusinessMultipleException;
 import sg.com.ioutlet.framework.web.action.awareness.AuthorizationAware;
 import sg.com.ioutlet.framework.web.action.awareness.SubmitValidationAware;
 import sg.com.ioutlet.model.IoutletFunction;
-import sg.com.ioutlet.model.user.User;
 import sg.com.ioutlet.util.NumberUtil;
 import sg.com.ioutlet.web.common.action.AccessController;
 
@@ -171,7 +171,7 @@ public abstract class CommonActionSupport extends ActionSupport implements Autho
 	 * @param map
 	 */
 
-	public void processFieldValidation(Map<String,Object> map)
+	public void processFieldValidation(Map<String,String> map)
 	{
 		Set<String> keys = map.keySet();
 		if (!keys.isEmpty())
@@ -181,8 +181,8 @@ public abstract class CommonActionSupport extends ActionSupport implements Autho
 			String value;
 			while (it.hasNext())
 			{
-				key = (String) it.next();
-				value = (String) map.get(key);
+				key = it.next();
+				value = map.get(key);
 				addFieldError(key, getText(value));
 			}
 		}

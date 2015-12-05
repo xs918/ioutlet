@@ -24,22 +24,79 @@
         </result-types>
 
       <interceptors>
-         <interceptor name="authorization-check"
-				class="sg.com.ioutlet.framework.web.interceptor.AuthorizationCheckInterceptor">
-				<param name="authenticatorImpl">
-					sg.com.kpmg.ace.authenticator.impl.AceAuthenticator
+        
+
+		
+		<interceptor name="form-load"
+				class="sg.com.kpmg.framework.web.interceptor.FormLoadingInterceptor">
+				<param name="includeMethods">input</param>
+		</interceptor>
+		
+		<interceptor name="form-submit"
+				class="sg.com.kpmg.framework.web.interceptor.FormSubmitInterceptor">
+				<param name="excludeMethods">
+					input,back,cancel,complete
 				</param>
 		</interceptor>
-			
-			
-		 <interceptor-stack name="security-required">
-				<!--<interceptor-ref name="authenticated-check" /> -->
+		
+		<interceptor-stack name="form-required">
+				<interceptor-ref name="form-load" />
+				<interceptor-ref name="form-submit" />
+		</interceptor-stack>
+		
+		
+		
+		
+		<interceptor name="authorization-check"
+				class="sg.com.ioutlet.framework.web.interceptor.AuthorizationCheckInterceptor">
+		</interceptor>
+		
+		
+		<interceptor-stack name="security-required">
 				<interceptor-ref name="authorization-check" />
 		</interceptor-stack>
+			
+		
+		
+			
+		<interceptor name="uncatch-biz-exception"
+				class="sg.com.kpmg.factorpro.web.common.interceptor.BusinessExceptionInterceptor" >
+		</interceptor>	
+		
+
+			
+		
+		<interceptor name="transaction-control"
+				class="sg.com.ioutlet.framework.web.interceptor.TransactionControlInterceptor">
+		</interceptor>
+				
+				
+	 		
+		<interceptor-stack name="framework-required">
+				<interceptor-ref name="uncatch-biz-exception" />
+				<interceptor-ref name="transaction-control" />
+		</interceptor-stack>
+			
+			
+
+
+
+		<interceptor-stack name="ioutletdefaultStack">
+			<interceptor-ref name="defaultStack" />
+			<interceptor-ref name="form-required" />
+			<interceptor-ref name="security-required" />
+			<interceptor-ref name="framework-required" />
+		</interceptor-stack>
+
+
+
+
+	
+
 
 		</interceptors>
 		
-		<default-interceptor-ref name="defaultStack" />
+		<default-interceptor-ref name="ioutletdefaultStack" />
 
          <action name="sidemenu" class="sg.com.ioutlet.web.common.action.IoutletMenuDisplayAction">
             <result type="tiles">leftsidebar</result>

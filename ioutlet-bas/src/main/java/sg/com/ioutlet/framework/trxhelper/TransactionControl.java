@@ -28,12 +28,12 @@ public class TransactionControl {
 		return ti;		
 	}
 	
-	public static void initTrxInfo(String requestIp, String requestUser, Locale requestLocale, String requestId, String functionId)
+	public static void initTrxInfo(String requestIp, String requestUser, Locale requestLocale, String requestId, String functionId,String domainId)
 	{
 		if(requestUser == null)
 			requestUser = GUEST;
 		
-		TransactionInfo ti = new TransactionInfo(requestIp, requestUser, requestLocale, functionId);
+		TransactionInfo ti = new TransactionInfo(requestIp, requestUser, requestLocale, functionId, domainId);
 		setTransactionInfo(ti);
 		
 		NDC.push(functionId);

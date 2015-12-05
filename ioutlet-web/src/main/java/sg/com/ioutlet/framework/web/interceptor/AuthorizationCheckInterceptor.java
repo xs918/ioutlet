@@ -9,9 +9,8 @@ import sg.com.ioutlet.framework.authorization.model.AccessFunction;
 import sg.com.ioutlet.framework.authorization.model.AuthenticationInfo;
 import sg.com.ioutlet.framework.web.WebConstants;
 import sg.com.ioutlet.framework.web.action.awareness.AuthorizationAware;
-import sg.com.ioutlet.framework.web.authentiaction.AclFactory;
-import sg.com.ioutlet.framework.web.authentiaction.Authenticator;
-import sg.com.ioutlet.framework.web.model.EntityInfo;
+import sg.com.ioutlet.framework.web.authentication.AclFactory;
+import sg.com.ioutlet.framework.web.authentication.Authenticator;
 import sg.com.ioutlet.framework.web.model.UserInfo;
 
 import com.opensymphony.xwork2.ActionInvocation;
@@ -33,7 +32,15 @@ public class AuthorizationCheckInterceptor extends CommonInterceptor {
 	 */
 
 
-
+	 @Override
+	 public void destroy() {
+	        //release resources here
+	 }
+	 
+	    @Override
+	 public void init() {
+	        // create resources here
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -115,9 +122,7 @@ public class AuthorizationCheckInterceptor extends CommonInterceptor {
 					userInfo.setAccountLocked(ai.isAccountLocked());
 					userInfo.setChangePwdRequried(ai.isChangePwdRequired());
 					userInfo.setUserName(ai.getUserName());
-					//Set ENTITY INFO
-					if(ai.getUserInfo()!=null)
-						userInfo.setEntityInfo((EntityInfo)ai.getUserInfo().get(EntityInfo.ENTITY_INFO));
+			
 					
 					getSession().put(WebConstants.LOGGED_IN_USER_INFO.toString(), userInfo);
 					if(logger.isDebugEnabled())
@@ -145,8 +150,6 @@ public class AuthorizationCheckInterceptor extends CommonInterceptor {
 					userInfo.setChangePwdRequried(ai.isChangePwdRequired());
 					userInfo.setUserName(ai.getUserName());
 					//Set ENTITY INFO
-					if(ai.getUserInfo()!=null)
-						userInfo.setEntityInfo((EntityInfo)ai.getUserInfo().get(EntityInfo.ENTITY_INFO));
 					
 					getSession().put(WebConstants.LOGGED_IN_USER_INFO.toString(), userInfo);
 					getSession().remove(WebConstants.RELOAD_USER);

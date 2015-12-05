@@ -5,11 +5,9 @@ import java.util.List;
 
 import javax.ws.rs.core.UriInfo;
 
-
-
 import org.apache.commons.lang.StringUtils;
 
-import sg.com.ioutlet.model.role.Role;
+import sg.com.ioutlet.ace.role.Role;
 import sg.com.ioutlet.rest.endpoint.RoleEndpoint;
 import sg.com.ioutlet.rest.exception.DataNotAcceptableException;
 import sg.com.ioutlet.rest.exception.DataNotFoundException;
@@ -21,7 +19,7 @@ public class RoleService extends CommonService {
 	public List<RoleVo> getAllRole(UriInfo uriInfo) {
 
 		List<RoleVo> rvList = new ArrayList<RoleVo>();
-		for (Role r : getter.getAllRoles()) {
+		for (Role r : ace.getAllRoles()) {
 			RoleVo rv = VoUtils.getRoleVo(r);
 			rv.addLink(getUriForSelf(uriInfo, rv), "self");
 			rv.addLink(getUriForUser(uriInfo, rv), "users");
@@ -34,7 +32,7 @@ public class RoleService extends CommonService {
 
 	public RoleVo getRoleById(UriInfo uriInfo , String id) {
 
-		Role role =  getter.getRoleById(id);
+		Role role =  ace.getRoleById(id);
 		if(null == role)
 		{
 			throw new DataNotFoundException("Role did not exist for role - "+id);
@@ -54,7 +52,7 @@ public class RoleService extends CommonService {
 	}
 
 	public RoleVo addRole(RoleVo roleVo) {
-		Role newRole = setter.addRole(roleVo);
+		Role newRole = ace.addRole(roleVo);
 		if (newRole == null) {
 			throw new DataNotAcceptableException("add new role failed - "
 					+ roleVo.getName());
@@ -65,7 +63,7 @@ public class RoleService extends CommonService {
 
 	public void deleteRole(String id) {
 
-		setter.deleteRole(id);
+		ace.deleteRole(id);
 
 	}
 	private String getUriForSelf(UriInfo uriInfo, RoleVo roleVo) {
@@ -87,7 +85,7 @@ public class RoleService extends CommonService {
 		{
 			throw new DataNotAcceptableException("Role Id must not be empty or null");
 		}
-		Role newRole = setter.updateRole(roleVo);
+		Role newRole = ace.updateRole(roleVo);
 		
 		if (newRole == null)
 		{

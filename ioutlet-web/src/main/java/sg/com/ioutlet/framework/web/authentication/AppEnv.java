@@ -1,4 +1,4 @@
-package sg.com.ioutlet.framework.web.authentiaction;
+package sg.com.ioutlet.framework.web.authentication;
 
 public class AppEnv {
 

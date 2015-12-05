@@ -8,9 +8,10 @@ import javax.persistence.EntityManager;
 
 import org.apache.commons.lang.Validate;
 
+import sg.com.ioutlet.ace.user.User;
+import sg.com.ioutlet.ace.user.UserKey;
 import sg.com.ioutlet.bas.CommonPojoKey;
-import sg.com.ioutlet.model.user.User;
-import sg.com.ioutlet.model.user.UserKey;
+
 
 public class UserDao extends IoutletDao {
 
@@ -113,6 +114,12 @@ public class UserDao extends IoutletDao {
 					maxResult);
 		}
 		
+	}
+
+
+	public User getByUsrId(String userId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

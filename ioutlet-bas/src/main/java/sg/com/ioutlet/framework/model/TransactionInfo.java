@@ -3,6 +3,7 @@ package sg.com.ioutlet.framework.model;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Locale;
+import java.util.UUID;
 
 public class TransactionInfo implements Serializable {
 	
@@ -14,6 +15,8 @@ public class TransactionInfo implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private String requestIp;
+	
+	private String requestId;
 
 	private String requestUser;
 
@@ -21,18 +24,20 @@ public class TransactionInfo implements Serializable {
 
 	private String functionId;
 	
+	private String domainId;
 	// from the form
 	private Date formLoadingDate;
 	
 	public TransactionInfo()
 	{}
 	
-	public TransactionInfo(String requestIp,String requestUser,Locale requestLocale,String functionId)
+	public TransactionInfo(String requestIp,String requestUser,Locale requestLocale,String functionId,String domainId )
 	{
 		this.functionId = functionId;
 		this.requestIp = requestIp;
 		this.requestUser =requestUser;
 		this.requestLocale = requestLocale;
+		this.domainId=domainId;
 	}
 	
 	
@@ -75,6 +80,28 @@ public class TransactionInfo implements Serializable {
 	public void setFormLoadingDate(Date formLoadingDate) {
 		this.formLoadingDate = formLoadingDate;
 	}
+
+	public String getDomainId() {
+		return domainId;
+	}
+
+	public void setDomainId(String domainId) {
+		this.domainId = domainId;
+	}
+
+	public String getRequestId() {
+		return requestId;
+	}
+
+	public void setRequestId(String requestId) {
+		this.requestId = UUID.randomUUID().toString().toUpperCase();
+	}
+
+	public Date getTransactionStartDate() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 
 

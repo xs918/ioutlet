@@ -8,9 +8,10 @@ import javax.persistence.EntityManager;
 
 import org.apache.commons.lang.Validate;
 
+import sg.com.ioutlet.ace.role.Role;
+import sg.com.ioutlet.ace.role.RoleKey;
 import sg.com.ioutlet.bas.CommonPojoKey;
-import sg.com.ioutlet.model.role.Role;
-import sg.com.ioutlet.model.role.RoleKey;
+
 
 public class RoleDao extends IoutletDao {
 
