@@ -2,7 +2,7 @@ package  sg.com.ioutlet.web.common.action;
 
 import java.util.Set;
 
-import sg.com.ioutlet.model.IoutletFunction;
+import sg.com.ioutlet.framework.authorization.model.IoutletFunction;
 
 public class AccessController {
 	private Set<IoutletFunction> accessFunctionIds;

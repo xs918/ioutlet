@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd">
+	<named-query name="Domain.getByDomainUuid.String">
+		<query>
+			SELECT d
+			FROM Domain d
+			WHERE d.Domain.key.uuid = :ROLE_UUID
+			AND d.recordStatus='A'
+		</query>
+	</named-query>
+
+
+	<named-query name="Domain.getAll">
+		<query>
+			SELECT d
+			FROM Domain d
+			WHERE d.recordStatus='A'
+		</query>
+	</named-query>
+
+
+
+
+	<entity class="sg.com.ioutlet.ace.domain.Domain" access="FIELD">
+		<table name="DOMAIN" />
+		
+
+
+
+		<attributes>
+			<embedded-id name="key" />
+		     <basic name="id" optional="false">
+				<column name="ID" nullable="false" length="100" />
+			</basic>
+			<basic name="name" optional="false">
+				<column name="NAME" nullable="false" length="100" />
+			</basic>
+				     <basic name="description" optional="false">
+				<column name="DESCRIPTION" nullable="false" length="200" />
+			</basic>
+				     <basic name="url" optional="false">
+				<column name="URL" nullable="false" length="100" />
+			</basic>
+			
+
+		</attributes>
+	</entity>
+	<embeddable class="sg.com.ioutlet.ace.domain.DomainKey"
+		access="FIELD">
+		<attributes>
+			<basic name="uuid" optional="false">
+				<column name="UUID" nullable="false" length="40" />
+			</basic>
+		</attributes>
+	</embeddable>
+
+</entity-mappings>
+
+ 

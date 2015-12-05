@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import sg.com.ioutlet.ace.user.User;
+import sg.com.ioutlet.ace.functionaccess.FunctionAccess;
+import sg.com.ioutlet.ace.userrole.UserRole;
 import sg.com.ioutlet.bas.CommonPojo;
 import sg.com.ioutlet.bas.CommonPojoKey;
 
@@ -17,13 +18,17 @@ public class Role extends CommonPojo  {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	public static final String ENTITY_NAME = "UserRole";
+	public static final String ENTITY_NAME = "Role";
 	private RoleKey key;
 	private Date endDate;
 	private String name;
 	private Date startDate;
 	private String description;
-	private List<User> users;
+	
+	private List<UserRole> userRoles;
+	
+	private List<FunctionAccess> functionAccesses;
+	
 
 	public Role() {
 
@@ -132,8 +137,22 @@ public class Role extends CommonPojo  {
 		
 	}
 
-	public List<User> getUsers() {
-		return users;
+	public List<UserRole> getUserRoles() {
+		return userRoles;
 	}
+
+	public void setUserRoles(List<UserRole> userRoles) {
+		this.userRoles = userRoles;
+	}
+
+	public List<FunctionAccess> getFunctionAccesses() {
+		return functionAccesses;
+	}
+
+	public void setFunctionAccesses(List<FunctionAccess> functionAccesses) {
+		this.functionAccesses = functionAccesses;
+	}
+
+
 
 }

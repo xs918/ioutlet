@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import sg.com.ioutlet.model.IoutletFunction;
+import sg.com.ioutlet.framework.authorization.model.IoutletFunction;
 
 
 public class MenuGroup implements Serializable

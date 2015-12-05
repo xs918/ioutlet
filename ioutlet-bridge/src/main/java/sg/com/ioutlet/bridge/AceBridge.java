@@ -1,11 +1,13 @@
 package sg.com.ioutlet.bridge;
 
 import java.util.List;
+import java.util.Map;
 
-import sg.com.ioutlet.ace.domain.Domain;
 import sg.com.ioutlet.ace.function.Function;
 import sg.com.ioutlet.ace.role.Role;
 import sg.com.ioutlet.ace.user.User;
+import sg.com.ioutlet.framework.authorization.model.AccessFunction;
+import sg.com.ioutlet.framework.authorization.model.AuthorizationInfo;
 import sg.com.ioutlet.framework.model.TransactionInfo;
 import sg.com.ioutlet.vo.RoleVo;
 import sg.com.ioutlet.vo.UserVo;
@@ -16,12 +18,11 @@ public interface AceBridge
 	/**************************getter*****************************/
 	
 	
-	public boolean login(String userId, String password, String tokenId, String requestIp, String requestId, String functionId, String domainId, String sessionId);
+	public boolean login(String userId, String password, String requestIp, String requestId, String functionId, String domainId, String sessionId);
 
-	public List<Domain> getDomains(String loginUserId, TransactionInfo transactionInfo);
 
-	public List<Function> getFunctionsByUserProfileAndDomainId(
-			String loginUserId, String domainId, TransactionInfo transactionInfo);
+	public List<Function> getFunctionsByUserProfile(
+			String loginUserId, TransactionInfo transactionInfo);
 	public User getUserProfileById(String userid,TransactionInfo ti);
 	public List<Role> getAllRoles();
 	public Role getRoleById(String id);
@@ -41,6 +42,12 @@ public interface AceBridge
 	User updateUser(UserVo userVo);
 
 	void deleteUser(String userId);
+
+
+	public Map<String, AccessFunction> getFunctionAccess(String domainId);
+
+
+	public AuthorizationInfo getAuthenticationInfo(String userId);
 
 
 }

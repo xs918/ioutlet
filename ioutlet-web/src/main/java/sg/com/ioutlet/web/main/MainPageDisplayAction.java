@@ -1,6 +1,6 @@
 package sg.com.ioutlet.web.main;
 
-import sg.com.ioutlet.model.IoutletFunction;
+import sg.com.ioutlet.framework.authorization.model.IoutletFunction;
 import sg.com.ioutlet.web.common.action.IoutletDisplayAction;
 
 public class MainPageDisplayAction extends IoutletDisplayAction {

@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import sg.com.ioutlet.framework.authorization.model.IoutletFunction;
 import sg.com.ioutlet.framework.web.action.CommonActionSupport;
-import sg.com.ioutlet.model.IoutletFunction;
 import sg.com.ioutlet.web.main.menu.MenuFactory;
 import sg.com.ioutlet.web.main.menu.MenuGroup;
 import sg.com.ioutlet.web.main.menu.MenuLink;

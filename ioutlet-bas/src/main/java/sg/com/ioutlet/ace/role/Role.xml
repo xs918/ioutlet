@@ -46,12 +46,22 @@
 			</basic>
 
 
-	    <one-to-many name="users" mapped-by="role">
+	    <one-to-many name="userRoles" mapped-by="role">
 				<cascade>
 					<cascade-merge />
 					<cascade-remove />
 				</cascade>
 		</one-to-many>
+		
+	     
+	     <one-to-many name="functionAccesses" mapped-by="role">
+				<cascade>
+					<cascade-merge />
+					<cascade-remove />
+				</cascade>
+		</one-to-many>
+		
+		
 		
 		</attributes>
 	</entity>

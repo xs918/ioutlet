@@ -8,9 +8,6 @@ import java.util.Date;
 import java.util.List;
 
 import sg.com.ioutlet.ace.password.PasswordUtil;
-import sg.com.ioutlet.ace.role.Role;
-import sg.com.ioutlet.ace.user.img.UserImg;
-import sg.com.ioutlet.bas.Address;
 import sg.com.ioutlet.bas.CommonPojo;
 import sg.com.ioutlet.bas.CommonPojoKey;
 import sg.com.ioutlet.bas.Gender;
@@ -317,6 +314,51 @@ public class User extends CommonPojo {
 
 	public void setUserId(String userId) {
 		this.userId = userId;
+	}
+
+	public enum Field {
+		key, userId(100), emailId(100), storedPassword(50), name(50), gender,dayOfBirth,
+		description(200),postCode(10),langCode(10),currLoc(50),rewardPoint,
+		locked(1),loginFailureAttempt,lastLoginTime,activeTime,lastPasswordChangedTime,lastLockedTime;
+		public int length = 255;
+		public int precision;
+		public int scale;
+
+		private Field() {
+		}
+
+		private Field(int length) {
+			this.length = length;
+		}
+
+		private Field(int precision, int scale) {
+			this.precision = precision;
+			this.scale = scale;
+		}
+	}
+
+	@Override
+	public List<Object[]> getFields() {
+		List<Object[]> fields = new ArrayList<Object[]>();
+		fields.add(new Object[] { Field.userId.name(), userId });
+		fields.add(new Object[] { Field.emailId.name(), emailId });
+		fields.add(new Object[] { Field.storedPassword.name(), storedPassword });
+		fields.add(new Object[] { Field.storedPassword.name(), storedPassword });
+		fields.add(new Object[] { Field.gender.name(), gender });
+			
+		fields.add(new Object[] { Field.dayOfBirth.name(), dayOfBirth });
+		fields.add(new Object[] { Field.description.name(), description });
+		fields.add(new Object[] { Field.description.name(), description });
+		fields.add(new Object[] { Field.langCode.name(), langCode });
+		fields.add(new Object[] { Field.langCode.name(), langCode });
+		fields.add(new Object[] { Field.rewardPoint.name(), rewardPoint });
+		fields.add(new Object[] { Field.loginFailureAttempt.name(), loginFailureAttempt });
+		fields.add(new Object[] { Field.loginFailureAttempt.name(), loginFailureAttempt });
+		fields.add(new Object[] { Field.loginFailureAttempt.name(), loginFailureAttempt });
+		fields.add(new Object[] { Field.lastPasswordChangedTime.name(), lastPasswordChangedTime });
+		fields.add(new Object[] { Field.lastLockedTime.name(), lastLockedTime });
+		
+		return fields;
 	}
 
 

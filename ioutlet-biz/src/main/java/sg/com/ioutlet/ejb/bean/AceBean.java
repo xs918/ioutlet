@@ -3,20 +3,21 @@ package sg.com.ioutlet.ejb.bean;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
-import sg.com.ioutlet.ace.domain.Domain;
 import sg.com.ioutlet.ace.function.Function;
 import sg.com.ioutlet.ace.password.PasswordUtil;
 import sg.com.ioutlet.ace.role.Role;
 import sg.com.ioutlet.ace.role.RoleKey;
 import sg.com.ioutlet.ace.user.User;
 import sg.com.ioutlet.ace.user.UserKey;
-import sg.com.ioutlet.ace.user.UserStatus;
 import sg.com.ioutlet.app.dao.PojoUtils;
 import sg.com.ioutlet.app.dao.RoleDao;
 import sg.com.ioutlet.app.dao.UserDao;
 import sg.com.ioutlet.bridge.AceBridge;
 import sg.com.ioutlet.common.logging.LogHelper;
+import sg.com.ioutlet.framework.authorization.model.AccessFunction;
+import sg.com.ioutlet.framework.authorization.model.AuthorizationInfo;
 import sg.com.ioutlet.framework.model.TransactionInfo;
 import sg.com.ioutlet.framework.trxhelper.TransactionControl;
 import sg.com.ioutlet.vo.RoleVo;
@@ -144,26 +145,15 @@ public class AceBean extends EjbEntityManager implements AceBridge  {
       
 		
 	}
+
+
 	@Override
-	public List<Domain> getDomains(String loginUserId,
-			TransactionInfo transactionInfo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public List<Function> getFunctionsByUserProfileAndDomainId(
-			String loginUserId, String domainId, TransactionInfo transactionInfo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public sg.com.ioutlet.ace.user.User getUserProfileById(String userid,
+	public  User getUserProfileById(String userid,
 			TransactionInfo ti) {
-		// TODO Auto-generated method stub
-		return null;
+			return null;
 	}
 	@Override
-	public boolean login(String userId, String inPassword, String tokenId,
+	public boolean login(String userId, String inPassword, 
 			String requestIp, String requestId, String functionId,
 			String domainId, String sessionId) {
 	
@@ -183,15 +173,7 @@ public class AceBean extends EjbEntityManager implements AceBridge  {
 		{
 			return false;
 		}
-        else
-		{
-        	if (uspf.isAccountExpired())
-			{   
-        		logger.info("Login Fail: Account Expired | " + userId);
-				return false;
-			}
-		}
-        
+
         try
 		{
         	
@@ -201,19 +183,8 @@ public class AceBean extends EjbEntityManager implements AceBridge  {
 				return false;
 				
 			}
-			if (!uspf.isActive())		      
-			{
-
-				logger.info("Login Fail: Account Not Active (Suspended) | " + userId);
-				return false;
-			}
+		
 			
-			if(uspf.getStatus().equals(UserStatus.S))
-			{
-
-				logger.info("Login Fail: Account Not Active (Suspended) | " + userId);
-				return false;
-			}
 			
 			if (PasswordUtil.isPasswordMatched(inPassword, uspf.getStoredPassword()))
 			{
@@ -221,10 +192,8 @@ public class AceBean extends EjbEntityManager implements AceBridge  {
 				
 				// LOGIN SUCCESS
 
-				uspf.setLastLoginTimeHistory(uspf.getLastLoginTime());
 				uspf.setLastLoginTime(TransactionControl.getTransactionInfo().getTransactionStartDate());
-				uspf.setLoginFailureAttemptsHistory(uspf.getLoginFailureAttempts());
-				uspf.setLoginFailureAttempts(0);
+				uspf.setLoginFailureAttempt(0);
 				dao.update(uspf);
 				logger.info("Login Successful:" + userId);
 				return true;
@@ -236,9 +205,9 @@ public class AceBean extends EjbEntityManager implements AceBridge  {
 				{
 					logger.debug("Login Fail: Invalid Credential | " + userId);
 				}
-				int failCounts = uspf.getLoginFailureAttempts();
+				int failCounts = uspf.getMaxFailCount();
 				failCounts++;
-				uspf.setLoginFailureAttempts(failCounts);	
+				uspf.setLoginFailureAttempt(failCounts);	
 				if (failCounts >= uspf.getMaxFailCount())
 				{
 					// LOCK ACCOUNT
@@ -260,6 +229,22 @@ public class AceBean extends EjbEntityManager implements AceBridge  {
 			
 		
 		
+	}
+	@Override
+	public List<Function> getFunctionsByUserProfile(String loginUserId,
+			TransactionInfo transactionInfo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public Map<String, AccessFunction> getFunctionAccess(String domainId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public AuthorizationInfo getAuthenticationInfo(String userId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

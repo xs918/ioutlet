@@ -25,22 +25,13 @@ public class PojoUtils {
 
 		user.setEmailId(userVo.getEmailId());
 		user.setPassword(userVo.getPassword());
-		user.setProfilePic(userVo.getProfilePic());
 		user.setName(userVo.getName());
 		user.setGender(userVo.getGender());
-		user.setBirthDay(userVo.getBirthDay());
-		user.setOtherDetail(userVo.getOtherDetail());
-		user.setAddress1(userVo.getAddress1());
-		user.setAddress2(userVo.getAddress2());
-		user.setAddress3(userVo.getAddress3());
-		user.setAddress4(userVo.getAddress4());
-		user.setAddress5(userVo.getAddress5());
 		user.setPostCode(userVo.getPostCode());
 		user.setLangCode(userVo.getLangCode());
 		user.setCurrLoc(userVo.getCurrLoc());
 
 		RoleKey roleKey = new RoleKey(userVo.getRoleId());
-		user.setRole(new Role(roleKey));
 		user.setRewardPoint(userVo.getRewardPoint());
 
 		return user;

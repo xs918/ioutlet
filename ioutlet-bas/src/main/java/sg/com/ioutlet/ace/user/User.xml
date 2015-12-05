@@ -30,18 +30,29 @@
 
 		<attributes>
 			<embedded-id name="key" />
+			
+			
+
+
+			
+			
+		     <basic name="userId" optional="false">
+				<column name="USER_ID" nullable="false" length="100" />
+			</basic>
 
 			<basic name="emailId" optional="false">
 				<column name="EMAIL_ID" nullable="false" length="50" />
 			</basic>
 
-			<basic name="password" optional="false">
-				<column name="PASSWORD" nullable="false" length="50" />
+			<basic name="storedPassword" optional="false">
+				<column name="STORED_PASSWORD" nullable="false" length="50" />
 			</basic>
 
-			<basic name="profilePic" optional="true">
-				<column name="PROFILE_PIC" length="50" nullable="true" />
+			<basic name="name" optional="true">
+				<column name="name" length="100" nullable="true" />
 			</basic>
+			
+			
 			<basic name="name" optional="true">
 				<column name="NAME" nullable="true" length="50" />
 			</basic>
@@ -53,43 +64,60 @@
 
 
 
-			<basic name="birthDay" optional="true">
-				<column name="BIRTH_DAY" nullable="true" />
+			<basic name="dayOfBirth" optional="true">
+				<column name="DAY_OF_BIRTH" nullable="true" />
 			</basic>
 
+			<basic name="description" optional="true">
+				<column name="DESCRIPTION" nullable="true" length="200" />
+			</basic>
 
-			<basic name="otherDetail" optional="true">
-				<column name="OTHER_DETAIL" nullable="true" length="200" />
-			</basic>
-			<basic name="address1" optional="true">
-				<column name="ADDR1" nullable="true" length="200" />
-			</basic>
-			<basic name="address2" optional="true">
-				<column name="ADDR2" nullable="true" length="200" />
-			</basic>
-			<basic name="address3" optional="true">
-				<column name="ADDR3" nullable="true" length="200" />
-			</basic>
-			<basic name="address4" optional="true">
-				<column name="ADDR4" nullable="true" length="50" />
-			</basic>
-			<basic name="address5" optional="true">
-				<column name="ADDR5" nullable="true" length="50" />
-			</basic>
 			<basic name="postCode" optional="true">
 				<column name="POST_CODE" nullable="true" length="10" />
 			</basic>
+			
+			<basic name="currLoc" optional="true">
+				<column name="CURR_LOC" nullable="true" length="50" />
+			</basic>
+	
+			<basic name="langCode" optional="true">
+				<column name="LANG_CODE" nullable="true" length="10" />
+			</basic>
+			
 			<basic name="rewardPoint" optional="true">
 				<column name="REWARD_POINT" nullable="true" precision="16"
 					scale="2" />
 			</basic>
-			<basic name="langCode" optional="true">
-				<column name="LANG_CODE" nullable="true" length="4" />
+			
+		    <basic name="locked" optional="true">
+				<column name="LOCKED" nullable="true" length="1"/>
 			</basic>
+			
+			  <basic name="loginFailureAttempt" optional="true">
+				<column name="LOGIN_FAILURE_ATTEMPT" nullable="true"/>
+			</basic>
+			
+			
+			  <basic name="lastLoginTime" optional="true">
+			   <column name="LAST_LOGIN_TIME" nullable="true" />
+			</basic>
+			
+			  <basic name="activeTime" optional="true">
+				<column name="ACTIVE_TIME" nullable="true"/>
+			</basic>
+			
+				  <basic name="lastPasswordChangedTime" optional="true">
+				<column name="PASSWORD_CHANGE_TIME" nullable="true" />
+			</basic>
+			
+		   <basic name="lastLockedTime" optional="true">
+				<column name="PASSWORD_CHANGE_TIME" nullable="true" />
+			</basic>
+			
+			
 
-			<basic name="currLoc" optional="true">
-				<column name="CURR_LOC" nullable="true" length="40" />
-			</basic>
+	
+		
 
 			<many-to-one name="role" optional="false">
 				<join-column name="ROLE_UUID" referenced-column-name="UUID"

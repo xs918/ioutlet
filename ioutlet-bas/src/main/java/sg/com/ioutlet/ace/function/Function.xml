@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd">
+	<named-query name="User.getByRoleUuid.String">
+		<query>
+			SELECT u 
+			FROM User u
+			WHERE u.role.key.uuid = :ROLE_UUID
+			AND u.recordStatus='A'
+		</query>
+	</named-query>
+
+
+	<named-query name="User.getAll">
+		<query>
+			SELECT u
+			FROM User u
+			WHERE u.recordStatus='A'
+		</query>
+	</named-query>
+
+
+
+
+	<entity class="sg.com.ioutlet.ace.userrole.UserRole" access="FIELD">
+		<table name="USER_ROLES" />
+
+
+
+		<attributes>
+			<embedded-id name="key" />
+			
+
+			<many-to-one name="domain" optional="false">
+				<join-column name="DOMAIN_UUID" referenced-column-name="UUID"
+					insertable="true" updatable="true" />
+			</many-to-one>
+			
+
+			
+			
+
+
+
+		</attributes>
+	</entity>
+	<embeddable class="sg.com.ioutlet.ace.userrole.UserRoleKey"
+		access="FIELD">
+		<attributes>
+			<basic name="uuid" optional="false">
+				<column name="UUID" nullable="false" length="40" />
+			</basic>
+		</attributes>
+	</embeddable>
+
+</entity-mappings>
+
+ 

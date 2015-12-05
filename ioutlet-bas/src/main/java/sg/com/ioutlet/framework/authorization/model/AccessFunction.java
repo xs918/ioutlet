@@ -6,6 +6,4 @@ public interface AccessFunction {
 	public String getName();
 	public String getNamespace();
 	public String getAction();
-	public int getDisplayIndex();
-	public boolean isMenuItem();
 }

@@ -21,9 +21,9 @@ import sg.com.ioutlet.bas.DateUtil;
 import sg.com.ioutlet.common.logging.LogHelper;
 import sg.com.ioutlet.exception.BusinessException;
 import sg.com.ioutlet.exception.BusinessMultipleException;
+import sg.com.ioutlet.framework.authorization.model.IoutletFunction;
 import sg.com.ioutlet.framework.web.action.awareness.AuthorizationAware;
 import sg.com.ioutlet.framework.web.action.awareness.SubmitValidationAware;
-import sg.com.ioutlet.model.IoutletFunction;
 import sg.com.ioutlet.util.NumberUtil;
 import sg.com.ioutlet.web.common.action.AccessController;
 

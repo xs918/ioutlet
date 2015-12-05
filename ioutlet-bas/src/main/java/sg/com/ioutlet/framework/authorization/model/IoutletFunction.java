@@ -1,4 +1,4 @@
-package sg.com.ioutlet.model;
+package sg.com.ioutlet.framework.authorization.model;
 
 public enum IoutletFunction 
 {

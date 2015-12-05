@@ -3,16 +3,12 @@ package sg.com.ioutlet.framework.web.interceptor;
 import java.util.Map;
 import java.util.Set;
 
+import sg.com.ioutlet.ace.user.User;
 import sg.com.ioutlet.bas.SystemException;
-import sg.com.ioutlet.framework.authorization.Authorizor;
 import sg.com.ioutlet.framework.authorization.model.AccessFunction;
-import sg.com.ioutlet.framework.authorization.model.AuthenticationInfo;
+import sg.com.ioutlet.framework.authorization.model.AuthorizationInfo;
 import sg.com.ioutlet.framework.web.WebConstants;
 import sg.com.ioutlet.framework.web.action.awareness.AuthorizationAware;
-import sg.com.ioutlet.framework.web.authentication.AclFactory;
-import sg.com.ioutlet.framework.web.authentication.Authenticator;
-import sg.com.ioutlet.framework.web.model.UserInfo;
-
 import com.opensymphony.xwork2.ActionInvocation;
 
 public class AuthorizationCheckInterceptor extends CommonInterceptor {
@@ -64,10 +60,10 @@ public class AuthorizationCheckInterceptor extends CommonInterceptor {
 				throw new SystemException("The mandatory information : domainId/functionId/userId ["+domainId+"/"+functionId+"/"+userId+"] not defined");
 			}
 			
-			UserInfo userInfo = (UserInfo) getSession().get(WebConstants.LOGGED_IN_USER_INFO.toString());
+			User userInfo = (User) getSession().get(WebConstants.LOGGED_IN_USER_INFO.toString());
+		
 			Set<String> availableFunctions = (Set<String>) getSession().get(WebConstants.USER_DOMAIN_FUNCTIONS.toString()+domainId);
 			
-			//check the one stored in the session is the same as the one requesting
 			if(userInfo!=null){
 				if(!userInfo.getUserId().equalsIgnoreCase(userId)){
 					
@@ -77,107 +73,65 @@ public class AuthorizationCheckInterceptor extends CommonInterceptor {
 				}
 			}
 			
-			
-			if((availableFunctions == null || availableFunctions.isEmpty()) || userInfo == null)
+			if(availableFunctions == null || availableFunctions.isEmpty()) 
 			{
-				Authorizor auth=AclFactory.getAuthorizor(domainId);
-				
+				AuthorizationInfo auth =  this.getAce().getAuthenticationInfo(userId);
 				if(auth == null)
 				{
-					throw new SystemException("authenticatorImpl Class defined for this interceptor is not available");
+					throw new SystemException("Can not load the Authorization Info ");
 				}
-				
-				if(availableFunctions == null || availableFunctions.isEmpty())
-				{		
-					
-					Map<String, AccessFunction> accessfuncs = auth.getAuthorizationInfo(userId).getFunctionAccess(domainId);
-					availableFunctions = accessfuncs.keySet();
-					if(availableFunctions == null)
-					{
-						if(logger.isDebugEnabled())
-						{
-							logger.debug("No functions available for this user in this domain");
-						}
-						return UNATHORIZED;
-					}
-					
-					getSession().put(WebConstants.USER_DOMAIN_FUNCTIONS.toString()+domainId, availableFunctions);						
-					if(logger.isDebugEnabled())
-					{
-						logger.debug(availableFunctions.size()+" functions available for this user in this domain");
-					}
-				
-				}
-				if(userInfo == null)
+				Map<String, AccessFunction> accessfuncs = auth.getFunctionAccess(domainId);
+				availableFunctions = accessfuncs.keySet();
+				if(availableFunctions == null||availableFunctions.isEmpty())
 				{
-					
-					//Authenticator atn = AuthenticatorFactory.getAuthenticator();
-					Authenticator atn = AclFactory.getAuthenticator(domainId);
-					AuthenticationInfo ai = atn.getAuthenticationInfo(getRequest(), userId);
-					userInfo = new UserInfo();
-					userInfo.setUserId(userId);
-					userInfo.setUserUuid(ai.getUserUuid());
-					userInfo.setLastLoginTime(ai.getLastLoginTime());
-					userInfo.setAccountExpired(ai.isAccountExpired());
-					userInfo.setAccountLocked(ai.isAccountLocked());
-					userInfo.setChangePwdRequried(ai.isChangePwdRequired());
-					userInfo.setUserName(ai.getUserName());
-			
-					
-					getSession().put(WebConstants.LOGGED_IN_USER_INFO.toString(), userInfo);
 					if(logger.isDebugEnabled())
 					{
-						logger.debug("User Name: "+userInfo.getUserName()+"\n" +
-								"User uuid: "+userInfo.getUserUuid()+"\n" +
-								"Acc Expired: "+userInfo.isAccountExpired()+"\n " +
-								"Account Locked: "+userInfo.isAccountLocked()+"\n" +
-								"ChangePwd Required: "+userInfo.isChangePwdRequried());
+						logger.debug("No functions available for this user in this domain");
 					}
+					return UNATHORIZED;
 				}
+				
+				if(auth.getUser()==null)
+				{
+					return UNATHORIZED;
+				}
+				getSession().put(WebConstants.USER_DOMAIN_FUNCTIONS.toString()+domainId, availableFunctions);						
+				
+				
 			}
-			else
+			
+			if(userInfo == null)
 			{
-				if(getSession().get(WebConstants.RELOAD_USER) != null)
-				{
-					Authenticator atn = AclFactory.getAuthenticator(domainId);
-					AuthenticationInfo ai = atn.getAuthenticationInfo(getRequest(), userId);
-					userInfo = new UserInfo();
-					userInfo.setUserId(userId);
-					userInfo.setUserUuid(ai.getUserUuid());
-					userInfo.setLastLoginTime(ai.getLastLoginTime());
-					userInfo.setAccountExpired(ai.isAccountExpired());
-					userInfo.setAccountLocked(ai.isAccountLocked());
-					userInfo.setChangePwdRequried(ai.isChangePwdRequired());
-					userInfo.setUserName(ai.getUserName());
-					//Set ENTITY INFO
-					
-					getSession().put(WebConstants.LOGGED_IN_USER_INFO.toString(), userInfo);
-					getSession().remove(WebConstants.RELOAD_USER);
-				}
+				userInfo =  this.getAce().getUserById(userId);	
+				if(userInfo == null)
+			    {
+					throw new SystemException("Can not load the user:"+userId);
+			    }
+				
+				getSession().put(WebConstants.LOGGED_IN_USER_INFO.toString(), userInfo);
+				
 			}
-
 			
-
-			
+			if(getSession().get(WebConstants.RELOAD_USER) != null)
+			{
+				
+				userInfo =  this.getAce().getUserById(userId);		
+				getSession().put(WebConstants.LOGGED_IN_USER_INFO.toString(), userInfo);
+				getSession().remove(WebConstants.RELOAD_USER);
+			}
 			if(!availableFunctions.contains(functionId) && !availableFunctions.contains("*") )
-		
 			  	return UNATHORIZED;
 			
 			
-			if(userInfo != null)
-			{
-				if(userInfo.isChangePwdRequried() && !functionId.equals("CHANGE_USERPROFILE_PASSWORD"))
-				{
-					return CHANGE_PASSWORD;
-				}
-			}
 		
+		     if(functionId.equals("CHANGE_USERPROFILE_PASSWORD"))
+             {
+                   return CHANGE_PASSWORD;
+             }
+
 			String result;
 			
 			result = actionInvocation.invoke();
-
-	
-			
 			return result;
 		}
 		else

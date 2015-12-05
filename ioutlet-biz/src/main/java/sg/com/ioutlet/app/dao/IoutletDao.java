@@ -164,25 +164,15 @@ public abstract class IoutletDao extends CommonDao {
 
 	public void prepareCreation(CommonPojo pojo) {
 		TransactionInfo trxInfo = TransactionControl.getTransactionInfo();
-		pojo.setCreationPgm(trxInfo.getFunctionId());
-		pojo.setCreationUser(trxInfo.getRequestUser());
 		pojo.setLudPgm(trxInfo.getFunctionId());
-		pojo.setCreationUser(trxInfo.getRequestUser());
-
 		pojo.prepareCreate();
 	}
 
 	public void prepareUpdating(CommonPojo pojo) {
 		TransactionInfo trxInfo = TransactionControl.getTransactionInfo();
-		if (pojo.getCreationPgm() == null)
-			pojo.setCreationPgm(trxInfo.getFunctionId());
-
-		if (pojo.getCreationUser() == null)
-			pojo.setCreationUser(trxInfo.getRequestUser());
-
+	
 		pojo.setLudPgm(trxInfo.getFunctionId());
-		pojo.setCreationUser(trxInfo.getRequestUser());
-
+	
 		pojo.prepareUpdate();
 	}
 }

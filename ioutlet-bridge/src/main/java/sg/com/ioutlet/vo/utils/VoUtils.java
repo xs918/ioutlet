@@ -35,23 +35,15 @@ public class VoUtils {
 
 		vo.setPassword(user.getPassword());
 
-		vo.setProfilePic(user.getProfilePic());
 		vo.setName(user.getName());
 		vo.setGender(user.getGender());
-		vo.setBirthDay(user.getBirthDay());
+		vo.setBirthDay(user.getDayOfBirth());
 
-		vo.setOtherDetail(user.getOtherDetail());
+		vo.setOtherDetail(user.getDescription());
 
-		vo.setAddress1(user.getAddress1());
-		vo.setAddress2(user.getAddress2());
-		vo.setAddress3(user.getAddress3());
-		vo.setAddress4(user.getAddress4());
-		vo.setAddress5(user.getAddress5());
-		
 		vo.setPostCode(user.getPostCode());
 		vo.setLangCode(user.getLangCode());
 		vo.setCurrLoc(user.getCurrLoc());
-		vo.setRoleId(user.getRole().getKey().getUuid());
 		vo.setRewardPoint(user.getRewardPoint());
 		populateCommonFields(vo,user);
 		
@@ -60,9 +52,7 @@ public class VoUtils {
 	}
 	private static void populateCommonFields(CommonVo vo, CommonPojo pojo)
 	{
-		vo.setCreationUser(pojo.getCreationUser());
-		vo.setCreationPgm(pojo.getCreationPgm());
-		vo.setCreationTime(pojo.getCreationTime());
+			vo.setCreationTime(pojo.getCreationTime());
 		vo.setLudUser(pojo.getLudUser());
 		vo.setLudPgm(pojo.getLudPgm());
 		vo.setLudTime(pojo.getLudTime());

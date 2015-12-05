@@ -1,7 +1,7 @@
 package sg.com.ioutlet.web.app.product.action;
 
+import sg.com.ioutlet.framework.authorization.model.IoutletFunction;
 import sg.com.ioutlet.framework.web.form.CommonForm;
-import sg.com.ioutlet.model.IoutletFunction;
 import sg.com.ioutlet.web.app.product.form.ProductForm;
 import sg.com.ioutlet.web.app.product.handler.ProductActionHandler;
 import sg.com.ioutlet.web.common.action.IoutletAction;

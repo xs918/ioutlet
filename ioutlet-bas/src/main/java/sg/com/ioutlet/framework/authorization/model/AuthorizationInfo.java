@@ -6,22 +6,15 @@ import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
 
+import sg.com.ioutlet.ace.user.User;
 import sg.com.ioutlet.bas.SystemException;
 import sg.com.ioutlet.common.logging.LogHelper;
 
 public class AuthorizationInfo {
 	protected LogHelper logger = LogHelper.getInstance(getClass().getName());
-	private DomainAccess[] domains;
+	private DomainAccess domains;
+	private User user;
 	private Map<String,Map<String, AccessFunction>> accessibleFunctions;
-	public DomainAccess[] getDomains()
-	{
-		return domains;
-	}
-	
-	public void setDomains(DomainAccess[] domains)
-	{
-		this.domains = domains;
-	}
 	
 	public Map<String, Map<String, AccessFunction>> getAccessibleFunctions()
 	{
@@ -94,5 +87,21 @@ public class AuthorizationInfo {
 		}
 			
 		return false;		
+	}
+
+	public DomainAccess getDomains() {
+		return domains;
+	}
+
+	public void setDomains(DomainAccess domains) {
+		this.domains = domains;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 }
