@@ -40,12 +40,6 @@ public abstract class CommonPojo implements Serializable {
 		}
 	}
 
-
-
-	private String creationUser;
-
-	private String creationPgm;
-
 	private Date creationTime;
 
 	private String ludUser;
@@ -147,22 +141,6 @@ public abstract class CommonPojo implements Serializable {
 
 	
 	
-	public String getCreationUser() {
-		return creationUser;
-	}
-
-	public void setCreationUser(String creationUser) {
-		this.creationUser = creationUser;
-	}
-
-	public String getCreationPgm() {
-		return creationPgm;
-	}
-
-	public void setCreationPgm(String creationPgm) {
-		this.creationPgm = creationPgm;
-	}
-
 	public Date getCreationTime() {
 		return creationTime;
 	}

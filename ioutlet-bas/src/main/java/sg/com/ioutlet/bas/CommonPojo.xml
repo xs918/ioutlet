@@ -5,13 +5,7 @@
 	<mapped-superclass class="sg.com.ioutlet.bas.CommonPojo"
 		access="FIELD">
 		<attributes>
-			<basic name="creationUser" optional="false">
-				<column name="CREATION_USER" nullable="false" />
-			</basic>
-			<basic name="creationPgm" optional="false">
-				<column name="CREATION_PGM" nullable="false" />
-			</basic>
-
+		
 			<basic name="creationTime" optional="false">
 				<column name="CREATION_TIME" nullable="false" />
 			</basic>
@@ -28,7 +22,7 @@
 			</basic>
 
 			<basic name="recordStatus" optional="false">
-				<column name="RECORD_STATUS" nullable="false" length="1" />
+				<column name="REC_STATUS" nullable="false" length="1" />
 				<enumerated>STRING</enumerated>
 			</basic>
 			

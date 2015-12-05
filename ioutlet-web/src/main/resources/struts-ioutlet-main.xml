@@ -96,7 +96,7 @@
 
 		</interceptors>
 		
-		<default-interceptor-ref name="ioutletdefaultStack" />
+		<default-interceptor-ref name="defaultStack" />
 
          <action name="sidemenu" class="sg.com.ioutlet.web.common.action.IoutletMenuDisplayAction">
             <result type="tiles">leftsidebar</result>
