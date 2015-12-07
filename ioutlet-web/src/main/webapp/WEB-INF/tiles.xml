@@ -14,6 +14,14 @@
         <put-attribute name="content" value="/template/ioutlet/body.jsp"/>
         <put-attribute name="footer" value="/template/ioutlet/footer.jsp"/>
     </definition>
+    
+    
+    <definition name="blank" template="/template/ioutlet/blank.jsp">
+         <put-attribute name="content" value="/template/ioutlet/body.jsp"/>
+        <put-attribute name="footer" value="/template/ioutlet/footer.jsp"/>
+    </definition>
+    
+    
 
     <definition name="index" extends="baseLayout">
         <put-attribute name="title" value="index"/>
@@ -27,10 +35,22 @@
     </definition>
     
     
-        <definition name="SG.COM.IOUTLET.DASH.INDEX" extends="baseLayout">
+    <definition name="SG.COM.IOUTLET.DASH.INDEX" extends="baseLayout">
         <put-attribute name="title" value="index"/>
         <put-attribute name="content" value="/WEB-INF/pages/ioutlet/dash/index.jsp"/>                           
     </definition>
+    
+    <definition name="SG.COM.IOUTLET.USER.REG" extends="blank">
+        <put-attribute name="title" value="index"/>
+        <put-attribute name="content" value="/WEB-INF/pages/ioutlet/user/regist.jsp"/>                           
+    </definition>
+    
+    <definition name="SG.COM.IOUTLET.USER.SUCCESS" extends="blank">
+        <put-attribute name="title" value="index"/>
+        <put-attribute name="content" value="/WEB-INF/pages/ioutlet/user/success.jsp"/>                           
+    </definition>
+    
+    
     
     
 </tiles-definitions>

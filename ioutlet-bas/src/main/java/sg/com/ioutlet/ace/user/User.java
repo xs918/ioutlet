@@ -25,7 +25,7 @@ public class User extends CommonPojo {
 	private String emailId;
 	private String storedPassword;
 	private String name;
-	private Gender gender=Gender.U;
+	private Gender gender=Gender.O;
 	private Date dayOfBirth;
 	private String description;
 	private String postCode;

@@ -23,7 +23,7 @@
 			WHERE U.recordStatus='A'
 		</query>
 	</named-query>
-	<entity class="sg.com.ioutlet.model.role.Role" access="FIELD">
+	<entity class="sg.com.ioutlet.ace.role.Role" access="FIELD">
 		<table name="ROLES" />
 		<attributes>
 			<embedded-id name="key" />

@@ -19,6 +19,19 @@
 	</properties>
 
 	<dependencies>
+	
+	<dependency>
+	<groupId>com.jgeppert.struts2.jquery</groupId>
+	<artifactId>struts2-jquery-plugin</artifactId>
+	<version>3.7.1</version>
+</dependency>
+	
+	
+<dependency>
+	<groupId>com.jgeppert.struts2.bootstrap</groupId>
+	<artifactId>struts2-bootstrap-plugin</artifactId>
+	<version>2.0.4</version>
+</dependency>
 
 
 		<dependency>

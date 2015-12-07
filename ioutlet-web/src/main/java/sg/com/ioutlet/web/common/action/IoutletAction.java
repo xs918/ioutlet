@@ -67,8 +67,7 @@ public abstract class IoutletAction extends IoutletDisplayAction implements Form
 
 		CommonForm form = null;
 		String key = getFormClassName();
-        System.out.println("getSfld:"+getSfld());
-		if (getSfld() != null) {
+     	if (getSfld() != null) {
 			if (logger.isDebugEnabled())
 				logger.debug("Form loading ignored as the skip form loading parameter sfld["
 						+ getSfld() + "] is present");
@@ -208,6 +207,7 @@ public abstract class IoutletAction extends IoutletDisplayAction implements Form
 	public String execute()
 	{
 		logger.trace("execute");
+		System.out.println("execute");
 		
 		if(model != null)
 		{

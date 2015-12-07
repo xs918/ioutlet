@@ -20,20 +20,19 @@
             			<result-type name="redirect-action"
 				class="org.apache.struts2.dispatcher.ServletActionRedirectResult"
 				default="false" />				
-			<result-type name="json" class="org.apache.struts2.json.JSONResult" default="false" />	
-        </result-types>
+	     </result-types>
 
       <interceptors>
         
 
 		
 		<interceptor name="form-load"
-				class="sg.com.kpmg.framework.web.interceptor.FormLoadingInterceptor">
+				class="sg.com.ioutlet.framework.web.interceptor.FormLoadingInterceptor">
 				<param name="includeMethods">input</param>
 		</interceptor>
 		
 		<interceptor name="form-submit"
-				class="sg.com.kpmg.framework.web.interceptor.FormSubmitInterceptor">
+				class="sg.com.ioutlet.framework.web.interceptor.FormSubmitInterceptor">
 				<param name="excludeMethods">
 					input,back,cancel,complete
 				</param>
@@ -60,7 +59,7 @@
 		
 			
 		<interceptor name="uncatch-biz-exception"
-				class="sg.com.kpmg.factorpro.web.common.interceptor.BusinessExceptionInterceptor" >
+				class="sg.com.ioutlet.framework.web.interceptor.BusinessExceptionInterceptor" >
 		</interceptor>	
 		
 
@@ -76,11 +75,7 @@
 				<interceptor-ref name="uncatch-biz-exception" />
 				<interceptor-ref name="transaction-control" />
 		</interceptor-stack>
-			
-			
-
-
-
+	
 		<interceptor-stack name="ioutletdefaultStack">
 			<interceptor-ref name="defaultStack" />
 			<interceptor-ref name="form-required" />
@@ -88,10 +83,6 @@
 			<interceptor-ref name="framework-required" />
 		</interceptor-stack>
 
-
-
-
-	
 
 
 		</interceptors>

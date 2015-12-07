@@ -8,9 +8,12 @@
 	<constant name="struts.custom.i18n.resources" value="global,package" />
 
  	<constant name="struts.devMode" value="false" />
+ 	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+ 	
  	<include file="struts-ioutlet-main.xml"/>
  	
  	<include file="cfg/sg/com/ioutlet/web/app/product/main.xml"/>
 	<include file="cfg/sg/com/ioutlet/web/app/dash/main.xml"/>
-  
+  	<include file="cfg/sg/com/ioutlet/web/app/user/main.xml"/>
+ 
 </struts>

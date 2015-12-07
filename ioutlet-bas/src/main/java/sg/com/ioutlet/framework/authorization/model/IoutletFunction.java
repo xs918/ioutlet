@@ -12,6 +12,7 @@ public enum IoutletFunction
         IOLT_PAYMENTS("pay"),
         IOLT_CUSTOMERS("cust"),
         IOLT_OUTLETS("out"),
+        IOLT_USER_REG("reg"),
         
     	//* SUB MENU LIST***/
         PAY_CREDIT_CARDS(IOLT_PAYMENTS.inModule()),

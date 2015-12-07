@@ -3,7 +3,7 @@ package sg.com.ioutlet.bas;
 public enum Gender {
 
 	
-F("Female"),M("Male"),U("UNKOWN");
+F("Female"),M("Male"),O("Other");
 
 private String gender;	
 
@@ -25,6 +25,6 @@ public String getGender() {
 
 public String toString()
 {
-	return this.name();
+	return this.gender;
 }
 }
