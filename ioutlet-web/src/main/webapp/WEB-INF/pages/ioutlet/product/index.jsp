@@ -11,11 +11,28 @@
 <title>Products</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/plugins/datatables/dataTables.bootstrap.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/ioutlet.css">
 
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.edit').css('opacity',0.0);
+		$('tr').hover(
+			function(){
+				$('.edit').stop().fadeTo('slow',1);
+		    },
+		    function(){
+		    	$('.edit').stop().fadeTo('slow',0.0);
+		    });
+	});
+
+
+</script>
 </head>
 <body>
 <div class="box box-primary">
@@ -43,53 +60,22 @@
 			<tbody>
 				<tr>
 					<td><input type="checkbox" value=""></td>
-
-
 					<td>
 						<!-- User Image --> <img
 						src="<s:property value="%{userProfileImageLink}"/>"
 						class="img-circle" alt="User Image">
 
 					</td>
-					<td>SUEDE PEEP TOES</td>
+					<td>Testing</td>
 					<td>$159.23</td>
 					<td>in Stoken</td>
 					<td>visible</td>
-				</tr>
-
-				<tr>
-					<td><input type="checkbox" value=""></td>
-
-
-					<td>
-						<!-- User Image --> <img
-						src="<s:property value="%{userProfileImageLink}"/>"
-						class="img-circle" alt="User Image">
-
+					<td class="edit">
+						<i class="fa fa-files-o fa-2x"></i><label>Copy</label>
+	    				<i class="fa fa-pencil-square-o fa-2x"></i><label>Edit</label>
+					    <i class="fa fa-recycle fa-2x"></i><label>Delete</label>
 					</td>
-					<td>SUEDE PEEP TOES</td>
-					<td>$159.23</td>
-					<td>in Stoken</td>
-					<td>visible</td>
 				</tr>
-
-				<tr>
-					<td><input type="checkbox" value=""></td>
-
-
-					<td>
-						<!-- User Image --> <img
-						src="<s:property value="%{userProfileImageLink}"/>"
-						class="img-circle" alt="User Image">
-
-					</td>
-					<td>SUEDE PEEP TOES</td>
-					<td>$159.23</td>
-					<td>in Stoken</td>
-					<td>visible</td>
-				</tr>
-
-
 			</tbody>
 		</table>
 		<!-- /.table -->
