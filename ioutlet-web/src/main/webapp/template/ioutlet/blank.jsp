@@ -13,6 +13,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <title>AdminLTE 2 | Starter</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+     <s:url includeParams="none" id="scripts.main" value="/js/factorpro/main.js"/>
+     <script type="text/javascript" src="<s:property value="%{scripts.main}"/>"></script>
+  
+    
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="<%=request.getContextPath()%>/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome -->
@@ -35,11 +39,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <![endif]-->
   </head>
     <body>
+      <s:actionerror /> <s:actionmessage />
+<%-- 	
+			<s:if test="%{getErrorReport()!=null}">
+			   <a href="#" class="show_hide">Show/Hide Error Report</a>
+			    <div class="slidingDiv">
+						<textarea name="address" style="width: 100%; height: 100%" wrap="hard" rows="18" readonly="readonly"><s:property value="%{getErrorReport()}"/></textarea>
+				</div>
+		    </s:if> --%>
+		
     
-      <tiles:insertAttribute name="content" />
-    
-  
- 
+          
+         <section class="content">
+           <tiles:insertAttribute name="content" />
+         </section>
+   
    
     <!-- REQUIRED JS SCRIPTS -->
     <!-- jQuery 2.1.4 -->

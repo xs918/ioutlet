@@ -79,15 +79,15 @@
 		<interceptor-stack name="ioutletdefaultStack">
 			<interceptor-ref name="defaultStack" />
 			<interceptor-ref name="form-required" />
-			<interceptor-ref name="security-required" />
-			<interceptor-ref name="framework-required" />
+		<!-- 	<interceptor-ref name="security-required" /> -->
+		<!-- 	<interceptor-ref name="framework-required" /> -->
 		</interceptor-stack>
 
 
 
 		</interceptors>
 		
-		<default-interceptor-ref name="defaultStack" />
+		<default-interceptor-ref name="ioutletdefaultStack" />
 
          <action name="sidemenu" class="sg.com.ioutlet.web.common.action.IoutletMenuDisplayAction">
             <result type="tiles">leftsidebar</result>

@@ -144,7 +144,16 @@
                         
                                      
          
+                       <s:label
+                        value="%{getText('actionType')}"
+                        />
+                        <s:label
+                        value="%{actionType}"
+                        />
                         
+                        
+                                     
+               
                                      
     
    

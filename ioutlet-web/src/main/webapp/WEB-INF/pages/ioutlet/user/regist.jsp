@@ -128,8 +128,7 @@ function submitForm(myForm)
 
 <s:form enctype="multipart/form-data" theme="bootstrap"  method="post"
   cssClass="form-Vertical">
-            
-            
+   <s:include value="/WEB-INF/pages/common/formparts/common.jsp" />           
    <div class="row setup-content" id="step-1">
       <div class="col-xs-2">
 			          </div>
@@ -328,7 +327,7 @@ function submitForm(myForm)
 
 
     </div>
-             <s:submit cssClass="btn btn-success btn-lg pull-right" onclick="return submitForm()" />
+             <s:submit cssClass="btn btn-success btn-lg pull-right" onclick="submitForm('form')" />
     	   </div>
 	</div>                     
                
