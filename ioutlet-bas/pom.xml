@@ -90,11 +90,7 @@
 
 
 
-		<!-- common string package ends -->
-		<dependency>
-			<groupId>sg.com.ioutlet.eap</groupId>
-			<artifactId>ioutlet-bas</artifactId>
-		</dependency>
+
 	</dependencies>
 
 

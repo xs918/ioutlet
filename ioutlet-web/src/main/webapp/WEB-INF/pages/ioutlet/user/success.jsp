@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="sj" uri="/struts-jquery-tags" %>
+<%@ taglib prefix="k" uri="/extended-struts-tags"%>
+
 <html>
 <head>
     <meta charset="utf-8">
@@ -157,7 +159,10 @@
                                      
     
    
-         <s:submit cssClass="btn btn-primary pull-right" onclick="return isBack()">back</s:submit>
+       	<s:submit value="%{getText('previous')}" cssClass="btn btn-primary pull-right" onclick="isBack('form')">
+		</s:submit>
+         
+         
          <s:submit cssClass="btn btn-primary pull-right" onclick="return submitForm()" />
          </s:form>
 

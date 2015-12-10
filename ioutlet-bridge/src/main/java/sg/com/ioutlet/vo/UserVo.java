@@ -17,7 +17,7 @@ public class UserVo  extends CommonVo{
 
 	private String profilePic;
 	private String name;
-	private Gender gender=Gender.U;
+	private Gender gender=Gender.O;
 	private Date birthDay;
 	private String otherDetail;
 	private String address1;
