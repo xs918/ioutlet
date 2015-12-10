@@ -1,7 +1,10 @@
 package sg.com.ioutlet.web.app.product.action;
 
+import java.util.List;
+
 import sg.com.ioutlet.framework.authorization.model.IoutletFunction;
 import sg.com.ioutlet.framework.web.form.CommonForm;
+import sg.com.ioutlet.model.product.Product;
 import sg.com.ioutlet.web.app.product.form.ProductForm;
 import sg.com.ioutlet.web.app.product.handler.ProductActionHandler;
 import sg.com.ioutlet.web.common.action.IoutletAction;
@@ -12,7 +15,7 @@ public class ProductIndexAction extends IoutletAction{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+	List<Product> plist;
 	
 	
 	@Override
@@ -45,7 +48,10 @@ public class ProductIndexAction extends IoutletAction{
 	protected String onLoad() {
 		
 		System.out.println(this.getSfld());
-	
+		ProductForm form = (ProductForm) getModel();
+		ProductActionHandler handler = new ProductActionHandler(this);
+		plist=handler.getAllProducts();
+		
 		return INPUT;
 	}
 	

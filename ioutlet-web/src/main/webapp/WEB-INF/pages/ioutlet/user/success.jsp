@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="sj" uri="/struts-jquery-tags" %>
-<%@ taglib prefix="k" uri="/extended-struts-tags"%>
+
 
 <html>
 <head>

@@ -71,9 +71,9 @@
 					<td>in Stoken</td>
 					<td>visible</td>
 					<td class="edit">
-						<i class="fa fa-files-o fa-2x"></i><label>Copy</label>
-	    				<i class="fa fa-pencil-square-o fa-2x"></i><label>Edit</label>
-					    <i class="fa fa-recycle fa-2x"></i><label>Delete</label>
+						<i class="fa fa-files-o fa-2x"></i>
+	    				<i class="fa fa-pencil-square-o fa-2x"></i>
+					    <i class="fa fa-recycle fa-2x"></i>
 					</td>
 				</tr>
 			</tbody>
