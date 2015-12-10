@@ -92,11 +92,14 @@ public class UserRegistForm extends IoutletForm {
 			as.addFieldError("userId", as.getText("username.required"));
 		}
 		
+		if (as.getFieldErrors().size() > 0)
+		{
+			return false;
+		}
+		return true;
 		
 		
-		
-		
-		return false;
+
 	}
 
 	public String getUserId() {

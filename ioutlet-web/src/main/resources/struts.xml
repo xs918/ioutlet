@@ -9,7 +9,11 @@
 
  	<constant name="struts.devMode" value="false" />
  	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+ 	<constant name="struts.multipart.saveDir" value="/app/IOLT/tmp" />
+ 
  	
+
+
  	<include file="struts-ioutlet-main.xml"/>
  	
  	<include file="cfg/sg/com/ioutlet/web/app/product/main.xml"/>

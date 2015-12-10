@@ -157,7 +157,7 @@
                                      
     
    
-
+         <s:submit cssClass="btn btn-primary pull-right" onclick="return isBack()">back</s:submit>
          <s:submit cssClass="btn btn-primary pull-right" onclick="return submitForm()" />
          </s:form>
 
