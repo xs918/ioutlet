@@ -244,12 +244,17 @@ function isCustomBack(formid ,buttonName)
 }
 function isBack(formid)
 {
+	alert("isBack:"+formid);
+	
 	document.forms[formid].elements['model.actionType'].value = 'backAct';
 }
 
 function isSubmit(formid)
 {
+	alert("isSubmit:"+formid);
 	document.forms[formid].elements['model.actionType'].value = 'submitAct';
+
+	
 }
 
 

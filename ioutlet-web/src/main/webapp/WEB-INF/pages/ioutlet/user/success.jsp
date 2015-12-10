@@ -20,7 +20,7 @@
 
 
 <body>
-<s:form enctype="multipart/form-data" theme="bootstrap"  method="post"
+<s:form enctype="multipart/form-data" theme="bootstrap" action="form"  method="post"
   cssClass="form-horizontal" label="%{getText('register.a.new.membership')}">
             
             
@@ -157,9 +157,9 @@
                                      
                
                                      
-    
+      <s:include value="/WEB-INF/pages/common/formparts/common.jsp" />     
    
-       	<s:submit value="%{getText('previous')}" cssClass="btn btn-primary pull-right" onclick="isBack('form')">
+       	<s:submit value="%{getText('previous')}" cssClass="btn btn-primary pull-right" onclick="return isBack('form')">
 		</s:submit>
          
          

@@ -13,7 +13,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <title>AdminLTE 2 | Starter</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-     <s:url includeParams="none" id="scripts.main" value="/js/factorpro/main.js"/>
+     <s:url includeParams="none" id="scripts.main" value="/js/main.js"/>
      <script type="text/javascript" src="<s:property value="%{scripts.main}"/>"></script>
   
     
