@@ -6,6 +6,7 @@
 <struts>
 
 	<constant name="struts.custom.i18n.resources" value="global,package" />
+	<constant name="struts.multipart.maxSize" value="100971520" /> <!-- 20MB -->
 
  	<constant name="struts.devMode" value="false" />
  	<constant name="struts.enable.DynamicMethodInvocation" value="true" />

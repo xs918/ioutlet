@@ -23,7 +23,7 @@
 
 
 
-	<entity class="sg.com.ioutlet.model.user.User" access="FIELD">
+	<entity class="sg.com.ioutlet.ace.user.User" access="FIELD">
 		<table name="USERS" />
 
 
@@ -115,16 +115,12 @@
 			</basic>
 			
 			
-
-	
-		
-
-			<many-to-one name="role" optional="false">
-				<join-column name="ROLE_UUID" referenced-column-name="UUID"
-					insertable="true" updatable="true" />
-			</many-to-one>
-
-
+		<one-to-many name="userImg" mapped-by="user">
+				<cascade>
+					<cascade-merge />
+					<cascade-remove />
+				</cascade>
+		</one-to-many>
 
 		</attributes>
 	</entity>
@@ -132,7 +128,7 @@
 		access="FIELD">
 		<attributes>
 			<basic name="uuid" optional="false">
-				<column name="UUID" nullable="false" length="40" />
+				<column name="UUID" nullable="false" length="50" />
 			</basic>
 		</attributes>
 	</embeddable>

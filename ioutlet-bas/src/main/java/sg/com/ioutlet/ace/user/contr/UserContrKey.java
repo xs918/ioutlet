@@ -1,4 +1,4 @@
-package sg.com.ioutlet.ace.userrole;
+package sg.com.ioutlet.ace.user.contr;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,13 +6,12 @@ import java.util.UUID;
 
 import sg.com.ioutlet.bas.CommonPojoKey;
 
-public class UserRoleKey extends CommonPojoKey {
-
+public class UserContrKey extends CommonPojoKey {
 	/**
-	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private static final String ENTITY_NAME = "UserRoleKey";
+	
+	public static final String ENTITY_NAME = "UserContrKey";
 
 
 	public String entityName()
@@ -38,11 +37,11 @@ public class UserRoleKey extends CommonPojoKey {
 	
    private String uuid;
 	
-	public UserRoleKey()
+	public UserContrKey()
 	{
 		this.uuid = UUID.randomUUID().toString();
 	}
-	public UserRoleKey(String uuid)
+	public UserContrKey(String uuid)
 	{
 		this.uuid = uuid;
 	}
@@ -76,4 +75,6 @@ public class UserRoleKey extends CommonPojoKey {
 	{
 		return super.hashCode();
 	}
+
+
 }

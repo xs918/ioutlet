@@ -2,10 +2,8 @@ package sg.com.ioutlet.web.app.user.action;
 
 import sg.com.ioutlet.framework.authorization.model.IoutletFunction;
 import sg.com.ioutlet.framework.web.form.CommonForm;
-import sg.com.ioutlet.web.app.product.form.ProductForm;
-import sg.com.ioutlet.web.app.product.handler.ProductActionHandler;
-import sg.com.ioutlet.web.app.user.UserActionActionHandler;
 import sg.com.ioutlet.web.app.user.form.UserRegistForm;
+import sg.com.ioutlet.web.app.user.handler.UserActionActionHandler;
 import sg.com.ioutlet.web.common.action.IoutletAction;
 
 public class UserRegistIndexAction extends IoutletAction {
@@ -23,7 +21,13 @@ public class UserRegistIndexAction extends IoutletAction {
 	@Override
 	protected String onSubmit() {
 		System.out.println("call onsubmit");
-	
+		UserRegistForm form = (UserRegistForm) getModel();
+		UserActionActionHandler handler = new UserActionActionHandler(this);
+		boolean result = handler.registeUserProfile(form);
+		if(!result)
+		{
+			return INPUT; 
+		}
 		return SUCCESS;
 	}
 

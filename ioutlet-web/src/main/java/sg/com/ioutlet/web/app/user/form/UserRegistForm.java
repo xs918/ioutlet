@@ -1,13 +1,17 @@
 package sg.com.ioutlet.web.app.user.form;
 
+import java.io.File;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+import sg.com.ioutlet.ace.user.User;
+import sg.com.ioutlet.ace.user.img.UserImg;
 import sg.com.ioutlet.bas.Gender;
 import sg.com.ioutlet.web.common.form.IoutletForm;
 
@@ -24,6 +28,9 @@ public class UserRegistForm extends IoutletForm {
 	private Gender gender = Gender.O;
 	private Date dayOfBirth;
 	private String description;
+	private String address1;
+	private String address2;
+	private String address3;
 	private String postCode;
 	private String langCode;
 	private String currLoc;
@@ -31,12 +38,6 @@ public class UserRegistForm extends IoutletForm {
 	private String regNoOfCompany;
 	private String nameOfCompany;
 	private String telephone;
-
-	
-
-
-
-	
 	private BigDecimal rewardPoint;
 	private boolean locked;
 	private int loginFailureAttempt;
@@ -45,11 +46,19 @@ public class UserRegistForm extends IoutletForm {
 	private Date lastPasswordChangedTime;
 	private Date lastLockedTime;
 	
+	private User regUser;
 	
 	private Map<String,String> langMap;
 	private Map<String,String> locMap;
 	private Map<String,String> genderMap;
 	
+	
+	
+	private File[] userImgFile;
+	
+	private List<UserImg> usrImgs;
+	
+	private String saveDirectory ="C:/Test/Upload";
 
 	@Override
 	public void reset() {
@@ -146,6 +155,30 @@ public class UserRegistForm extends IoutletForm {
 
 	public String getDescription() {
 		return description;
+	}
+
+	public String getAddress1() {
+		return address1;
+	}
+
+	public void setAddress1(String address1) {
+		this.address1 = address1;
+	}
+
+	public String getAddress2() {
+		return address2;
+	}
+
+	public void setAddress2(String address2) {
+		this.address2 = address2;
+	}
+
+	public String getAddress3() {
+		return address3;
+	}
+
+	public void setAddress3(String address3) {
+		this.address3 = address3;
 	}
 
 	public void setDescription(String description) {
@@ -303,6 +336,38 @@ public class UserRegistForm extends IoutletForm {
 
 	public void setGenderMap(Map<String,String> genderMap) {
 		this.genderMap = genderMap;
+	}
+
+	public File[] getUserImgFile() {
+		return userImgFile;
+	}
+
+	public void setUserImgFile(File[] userImg) {
+		this.userImgFile = userImg;
+	}
+
+	public String getSaveDirectory() {
+		return saveDirectory;
+	}
+
+	public void setSaveDirectory(String saveDirectory) {
+		this.saveDirectory = saveDirectory;
+	}
+
+	public User getRegUser() {
+		return regUser;
+	}
+
+	public void setRegUser(User regUser) {
+		this.regUser = regUser;
+	}
+
+	public List<UserImg> getUsrImgs() {
+		return usrImgs;
+	}
+
+	public void setUsrImgs(List<UserImg> usrImgs) {
+		this.usrImgs = usrImgs;
 	}
 
 }

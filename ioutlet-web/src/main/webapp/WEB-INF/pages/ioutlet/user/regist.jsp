@@ -200,8 +200,8 @@ function submitForm(myForm)
                       <s:file
                         tooltip="Upload Your Picture"
                         label="Picture"
-                        name="profileImg"/>
-                        
+                        name="userImgs" />
+                       
                         
                   <s:textarea
                         tooltip="enter your other descrption"

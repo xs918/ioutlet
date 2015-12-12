@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import sg.com.ioutlet.ace.functionaccess.FunctionAccess;
-import sg.com.ioutlet.ace.userrole.UserRole;
+import sg.com.ioutlet.ace.plan.Plan;
 import sg.com.ioutlet.bas.CommonPojo;
 import sg.com.ioutlet.bas.CommonPojoKey;
 
@@ -25,7 +25,7 @@ public class Role extends CommonPojo  {
 	private Date startDate;
 	private String description;
 	
-	private List<UserRole> userRoles;
+	private List<Plan> plans;
 	
 	private List<FunctionAccess> functionAccesses;
 	
@@ -137,12 +137,12 @@ public class Role extends CommonPojo  {
 		
 	}
 
-	public List<UserRole> getUserRoles() {
-		return userRoles;
+	public List<Plan> getPlans() {
+		return plans;
 	}
 
-	public void setUserRoles(List<UserRole> userRoles) {
-		this.userRoles = userRoles;
+	public void setPlans(List<Plan> plans) {
+		this.plans = plans;
 	}
 
 	public List<FunctionAccess> getFunctionAccesses() {

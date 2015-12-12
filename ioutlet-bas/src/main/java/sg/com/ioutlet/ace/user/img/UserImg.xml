@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd">
+	<named-query name="User.getByRoleUuid.String">
+		<query>
+			SELECT u 
+			FROM User u
+			WHERE u.role.key.uuid = :ROLE_UUID
+			AND u.recordStatus='A'
+		</query>
+	</named-query>
+
+
+	<named-query name="User.getAll">
+		<query>
+			SELECT u
+			FROM User u
+			WHERE u.recordStatus='A'
+		</query>
+	</named-query>
+
+
+
+
+	<entity class="sg.com.ioutlet.ace.user.img.UserImg" access="FIELD">
+		<table name="user_img" />
+
+
+
+		<attributes>
+			<embedded-id name="key" />
+			
+			
+
+
+			
+			
+		     <basic name="imgName" optional="false">
+				<column name="IMG_NAME" nullable="false" length="100" />
+			</basic>
+
+			<basic name="imgUrl" optional="false">
+				<column name="IMG_URL" nullable="false" length="255" />
+			</basic>
+
+			<basic name="proImg" optional="false">
+				<column name="pro_Img" nullable="false" length="1" />
+			</basic>
+
+		    <basic name="proImg" optional="false" >
+				<column name="PRO_IMG" nullable="false" length="1" />
+			</basic>
+	
+			<many-to-one name="user" optional="false">
+				<join-column name="USER_UUID" referenced-column-name="UUID"
+					insertable="true" updatable="true" />
+			</many-to-one>
+
+
+
+		</attributes>
+	</entity>
+	<embeddable class="sg.com.ioutlet.model.user.UserKey"
+		access="FIELD">
+		<attributes>
+			<basic name="uuid" optional="false">
+				<column name="UUID" nullable="false" length="40" />
+			</basic>
+		</attributes>
+	</embeddable>
+
+</entity-mappings>
+
+ 
