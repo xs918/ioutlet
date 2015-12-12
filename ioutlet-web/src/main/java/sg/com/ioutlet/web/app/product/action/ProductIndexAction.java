@@ -15,7 +15,7 @@ public class ProductIndexAction extends IoutletAction{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	List<Product> plist;
+
 	
 	
 	@Override
@@ -37,6 +37,7 @@ public class ProductIndexAction extends IoutletAction{
 		ProductForm form = (ProductForm) getModel();
 		ProductActionHandler handler = new ProductActionHandler(this);
 		handler.getProducts("ABC");
+		
 		form.setProductName("Males Shirt");
 		
 		
@@ -50,7 +51,7 @@ public class ProductIndexAction extends IoutletAction{
 		System.out.println(this.getSfld());
 		ProductForm form = (ProductForm) getModel();
 		ProductActionHandler handler = new ProductActionHandler(this);
-		plist=handler.getAllProducts();
+		form.setPlist(handler.getAllProducts());
 		
 		return INPUT;
 	}

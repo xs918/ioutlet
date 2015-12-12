@@ -1,10 +1,12 @@
 package sg.com.ioutlet.web.app.product.form;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Map;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+import sg.com.ioutlet.model.product.Product;
 import sg.com.ioutlet.web.common.form.IoutletForm;
 
 public class ProductForm extends IoutletForm{
@@ -20,8 +22,9 @@ public class ProductForm extends IoutletForm{
 	
 	private BigDecimal productPrice;
 	
+	public List<Product> plist;
 	
-
+	
 	@Override
 	public Map<String, String> validate() {
 		return null;
@@ -62,6 +65,13 @@ public class ProductForm extends IoutletForm{
 		this.productPrice = productPrice;
 	}
 
+	public List<Product> getPlist() {
+		return plist;
+	}
+
+	public void setPlist(List<Product> plist) {
+		this.plist = plist;
+	}
 
 	
 

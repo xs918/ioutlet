@@ -21,6 +21,9 @@
 
 <script type="text/javascript">
 	$(document).ready(function(){
+		var id = document.getElementById('counter').value;
+		alert(id);
+		
 		$('.edit').css('opacity',0.0);
 		$('tr').hover(
 			function(){
@@ -58,7 +61,11 @@
 	<div class="table-responsive">
 		<table class="table table-hover">
 			<tbody>
+			<s:set name="counter" value="0" />
+			<s:iterator value="plist" id="pro">
 				<tr>
+				  <s:hidden id="%{#counter}" name="%{#counter}" value="%{#counter}"  />
+				                
 					<td><input type="checkbox" value=""></td>
 					<td>
 						<!-- User Image --> <img
@@ -66,8 +73,8 @@
 						class="img-circle" alt="User Image">
 
 					</td>
-					<td>Testing</td>
-					<td>$159.23</td>
+					<td><s:property value="%{#pro.id}"/></td>
+					<td><s:property value="%{#pro.description}"/></td>
 					<td>in Stoken</td>
 					<td>visible</td>
 					<td class="edit">
@@ -76,6 +83,8 @@
 					    <i class="fa fa-recycle fa-2x"></i>
 					</td>
 				</tr>
+			<s:set name="counter" value="#counter + 1" />  
+			</s:iterator>
 			</tbody>
 		</table>
 		<!-- /.table -->
