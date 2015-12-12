@@ -21,21 +21,20 @@
 
 <script type="text/javascript">
 	$(document).ready(function(){
-		var id = document.getElementById('counter').value;
-		alert(id);
-		
+		$('.fa').css("padding-right",20);
+		$('.edit').css("vertical-align","bottom");
+		$('.edit').css("text-align","right");
 		$('.edit').css('opacity',0.0);
-		$('tr').hover(
+		$('table tr').hover(
 			function(){
-				$('.edit').stop().fadeTo('slow',1);
+				$(this).find('.edit').stop().fadeTo('slow',1);
 		    },
 		    function(){
-		    	$('.edit').stop().fadeTo('slow',0.0);
+		    	$(this).find('.edit').stop().fadeTo('slow',0.0);
 		    });
 	});
-
-
 </script>
+
 </head>
 <body>
 <div class="box box-primary">
@@ -61,7 +60,6 @@
 	<div class="table-responsive">
 		<table class="table table-hover">
 			<tbody>
-			<s:set name="counter" value="0" />
 			<s:iterator value="plist" id="pro">
 				<tr>
 				  <s:hidden id="%{#counter}" name="%{#counter}" value="%{#counter}"  />
@@ -80,10 +78,9 @@
 					<td class="edit">
 						<i class="fa fa-files-o fa-2x"></i>
 	    				<i class="fa fa-pencil-square-o fa-2x"></i>
-					    <i class="fa fa-recycle fa-2x"></i>
+					    <i class="fa fa-trash-o fa-2x"></i>
 					</td>
 				</tr>
-			<s:set name="counter" value="#counter + 1" />  
 			</s:iterator>
 			</tbody>
 		</table>
