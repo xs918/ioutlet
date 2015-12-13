@@ -20,7 +20,7 @@
 
 
 <body>
-<s:form enctype="multipart/form-data" theme="bootstrap" action="form"  method="post"
+<s:form  theme="bootstrap" action="form"  method="post"
   cssClass="form-horizontal" label="%{getText('register.a.new.membership')}">
             
             

@@ -7,19 +7,25 @@ import sg.com.ioutlet.ace.user.User;
 import sg.com.ioutlet.bas.CommonPojo;
 import sg.com.ioutlet.bas.CommonPojoKey;
 
-public class UserImg extends CommonPojo {
+public class Imge extends CommonPojo {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	public static final String ENTITY_NAME = "UserImg";
-	private UserImgKey key;
+	private ImgeKey key;
 	private User user;
 	private String imgName;
+	private String fullPath;
 	private String imgUrl;
 	private boolean proImg;
 
+	
+	public Imge()
+	{
+		key = new ImgeKey();
+	}
 	@Override
 	public String entityName() {
 		return ENTITY_NAME;
@@ -33,7 +39,7 @@ public class UserImg extends CommonPojo {
 
 	@Override
 	public void setKey(CommonPojoKey key) {
-	   this.key  =  (UserImgKey) key;
+	   this.key  =  (ImgeKey) key;
 
 	}
 	public enum Field {
@@ -81,13 +87,6 @@ public class UserImg extends CommonPojo {
 
 	}
 
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
 
 	public String getImgName() {
 		return imgName;
@@ -113,8 +112,24 @@ public class UserImg extends CommonPojo {
 		this.proImg = proImg;
 	}
 
-	public void setKey(UserImgKey key) {
+	public void setKey(ImgeKey key) {
 		this.key = key;
 	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	public String getFullPath() {
+		return fullPath;
+	}
+	public void setFullPath(String fullPath) {
+		this.fullPath = fullPath;
+	}
+
+
 
 }

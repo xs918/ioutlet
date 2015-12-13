@@ -12,10 +12,10 @@
 
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="<%=request.getContextPath()%>/bootstrap/css/bootstrap.min.css">
+    
      <sj:head jqueryui="false"/>
      <s:head />
 </head>
-
 <script type="text/javascript">
 function submitForm(myForm)
 {
@@ -197,12 +197,10 @@ function submitForm(myForm)
                           name="gender"
                         />
                  
-                      <s:file
-                        tooltip="Upload Your Picture"
-                        label="Picture"
-                        name="userImgs" />
-                       
-                        
+  
+                   <s:file name="userImgFiles" label="upload User Profile" multiple="true"/>
+                    
+  
                   <s:textarea
                         tooltip="enter your other descrption"
                         label="Description"
@@ -383,6 +381,10 @@ $(document).ready(function () {
 
     $('div.setup-panel div a.btn-primary').trigger('click');
 });
+
+
+
+
 </script>
 
 </body>

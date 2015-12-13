@@ -11,7 +11,7 @@ import org.apache.commons.lang3.StringUtils;
 import com.opensymphony.xwork2.ActionSupport;
 
 import sg.com.ioutlet.ace.user.User;
-import sg.com.ioutlet.ace.user.img.UserImg;
+import sg.com.ioutlet.ace.user.img.Imge;
 import sg.com.ioutlet.bas.Gender;
 import sg.com.ioutlet.web.common.form.IoutletForm;
 
@@ -54,9 +54,15 @@ public class UserRegistForm extends IoutletForm {
 	
 	
 	
-	private File[] userImgFile;
+	private String[] userImgFilesFileName;
 	
-	private List<UserImg> usrImgs;
+	private String[] userImgFilesContentType;
+	
+	private File[] userImgFiles;
+	
+	
+	
+	private List<Imge> usrImgs;
 	
 	private String saveDirectory ="C:/Test/Upload";
 
@@ -338,13 +344,6 @@ public class UserRegistForm extends IoutletForm {
 		this.genderMap = genderMap;
 	}
 
-	public File[] getUserImgFile() {
-		return userImgFile;
-	}
-
-	public void setUserImgFile(File[] userImg) {
-		this.userImgFile = userImg;
-	}
 
 	public String getSaveDirectory() {
 		return saveDirectory;
@@ -362,12 +361,40 @@ public class UserRegistForm extends IoutletForm {
 		this.regUser = regUser;
 	}
 
-	public List<UserImg> getUsrImgs() {
+
+
+	public File[] getUserImgFiles() {
+		return userImgFiles;
+	}
+
+	public void setUserImgFiles(File[] userImgFiles) {
+		this.userImgFiles = userImgFiles;
+	}
+
+	public List<Imge> getUsrImgs() {
 		return usrImgs;
 	}
 
-	public void setUsrImgs(List<UserImg> usrImgs) {
+	public void setUsrImgs(List<Imge> usrImgs) {
 		this.usrImgs = usrImgs;
 	}
 
+	public String[] getUserImgFilesFileName() {
+		return userImgFilesFileName;
+	}
+
+	public void setUserImgFilesFileName(String[] userImgFilesFileName) {
+		this.userImgFilesFileName = userImgFilesFileName;
+	}
+
+	public String[] getUserImgFilesContentType() {
+		return userImgFilesContentType;
+	}
+
+	public void setUserImgFilesContentType(String[] userImgFilesContentType) {
+		this.userImgFilesContentType = userImgFilesContentType;
+	}
+
+	
+	
 }

@@ -6,11 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
 
 import com.opensymphony.xwork2.ActionSupport;
 
 import sg.com.ioutlet.ace.user.User;
-import sg.com.ioutlet.ace.user.img.UserImg;
+import sg.com.ioutlet.ace.user.img.Imge;
 import sg.com.ioutlet.web.app.user.form.UserRegistForm;
 import sg.com.ioutlet.web.common.handler.IoutletActionHandler;
 
@@ -60,44 +61,27 @@ public class UserActionActionHandler extends  IoutletActionHandler{
 		
 	}
 	
-	public void doUpload(UserRegistForm form)
+	
+	public void createUserImgObjs(UserRegistForm form)
 	{
-		List<UserImg> usrImgs = new ArrayList<UserImg>();
+		List<Imge> usrImgs = new ArrayList<Imge>();
 		
 		
-		 for (int i = 0; i < form.getUserImgFile().length; i++) {
+		 for (int i = 0; i < form.getUserImgFiles().length; i++) {
 			 
-			File destFile = new File(form.getSaveDirectory() + File.separator + form.getUserId()+i);
-			File uploadedFile = form.getUserImgFile()[i];
-			try {
-                FileUtils.copyFile(uploadedFile, destFile);
-            } catch (IOException ex) {
-                System.out.println("Could not copy file " + uploadedFile.getName());
-             
-                this.addActionError(getText("upload.file.failed:"+uploadedFile.getName()));
-               
-                 for(int j=0;j<=i;j++)
-                 {
-                 	 
-                	 File deleteFile = new File(form.getSaveDirectory() + File.separator + form.getUserId()+j);
-                 	 try {
-						FileUtils.forceDelete(deleteFile);
-					} catch (IOException e) {
-					
-						   this.addActionError(getText("rollback.upload.file.failed:"+form.getUserId()+j));
-						
-					}
-                  	 
-                 }
+		
+		    String extName =FilenameUtils.getExtension(form.getUserImgFilesFileName()[i]);
+		    	
+		    String fullPath=form.getSaveDirectory() + File.separator + form.getUserId();
+		    String imgName=i+"."+extName;
+		  
 
-                 this.addActionError(ex.getMessage());
-            	return;
-            }
-			 
-			UserImg usrImg = new UserImg();
+	
+	
+			Imge usrImg = new Imge();
 			usrImg.setUser(form.getRegUser());
-			usrImg.setImgName(destFile.getName());
-			usrImg.setImgUrl(destFile.getAbsolutePath());
+			usrImg.setFullPath(fullPath);
+			usrImg.setImgName(imgName);
 			usrImgs.add(usrImg);
 			
 		}
@@ -109,8 +93,15 @@ public class UserActionActionHandler extends  IoutletActionHandler{
 	
 	public boolean registeUserProfile(UserRegistForm form) {
 		this.createUserObject(form);
-		this.doUpload(form);
-		return setterBridge.registeUserProfile(form.getRegUser(),form.getUsrImgs());
+		this.createUserImgObjs(form);
+		if (!this.uploadFiles(form.getUserImgFiles(), form.getUsrImgs()))
+		{
+		
+		  return false;
+		}
+		this.deleteFile(form.getUsrImgs());
+		return true;
+		//return setterBridge.registeUserProfile(form.getRegUser(),form.getUsrImgs());
 	   
 	}
 

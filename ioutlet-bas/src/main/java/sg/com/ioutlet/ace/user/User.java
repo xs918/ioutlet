@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 import sg.com.ioutlet.ace.password.PasswordUtil;
-import sg.com.ioutlet.ace.user.img.UserImg;
+import sg.com.ioutlet.ace.user.img.Imge;
 import sg.com.ioutlet.bas.CommonPojo;
 import sg.com.ioutlet.bas.CommonPojoKey;
 import sg.com.ioutlet.bas.Gender;
@@ -45,7 +45,7 @@ public class User extends CommonPojo {
     private Date lastPasswordChangedTime;
 	private Date lastLockedTime;
 	
-	private List<UserImg> userImg;
+	private List<Imge> userImg;
 
 
 	public User() {
@@ -351,11 +351,11 @@ public class User extends CommonPojo {
 	}
 	
 
-	public List<UserImg> getUserImg() {
+	public List<Imge> getUserImg() {
 		return userImg;
 	}
 
-	public void setUserImg(List<UserImg> userImg) {
+	public void setUserImg(List<Imge> userImg) {
 		this.userImg = userImg;
 	}
 
