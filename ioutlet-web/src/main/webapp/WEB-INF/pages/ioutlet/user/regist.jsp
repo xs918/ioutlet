@@ -136,27 +136,28 @@ function submitForm(myForm)
 		  <div class="col-xs-8">
 		  <h3> Account Info</h3>
 		                   <s:textfield
-		                        label="%{getText('login.id')}"
+		                        label="%{getText('user.id')}"
 		                        name="userId"
-		                          maxLength="50"
-		                        tooltip="Enter your login id here"/>
+		                        maxLength="50"
+		                        required = "true"
+		                        tooltip="getText('enter.your.user.id.here')"/>
 		                           
 		                           
 		                         <s:textfield
 		                        label="%{getText('email')}"
 		                        name="emailId"
 		                         maxLength="50"
-		                        tooltip="Enter your Name here"/>
+		                        tooltip="getText('enter.your.email.here')"/>
 		                        
 		                        
 		
 		                <s:password
 		                        label="%{getText('password')}"
 		                        name="password"
-		                           maxLength="25"
-		                          placeholder="%{getText('login.pwd')}" 
-		                        tooltip="Enter your Password here"/>
-		
+		                        maxLength="25"
+		                        required = ""
+		                       oninvalid="this.setCustomValidity('%{getText('user.validate')}')"
+		               />
 		
 		
 		            
@@ -164,8 +165,9 @@ function submitForm(myForm)
 		                 <s:password
 		                          label="%{getText('retype.password')}"
 		                        name="retypePassword"
+		                          required = "true"
 		                            maxLength="25"
-		                        tooltip="Enter your Password here"/>
+		                       tooltip="getText('retype.your.password.here')"/>
 		                        
                 
 		                <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>

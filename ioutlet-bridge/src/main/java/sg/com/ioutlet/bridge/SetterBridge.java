@@ -3,7 +3,7 @@ package sg.com.ioutlet.bridge;
 import java.util.List;
 
 import sg.com.ioutlet.ace.user.User;
-import sg.com.ioutlet.ace.user.img.Imge;
+import sg.com.ioutlet.model.img.Imge;
 import sg.com.ioutlet.model.outlet.Outlet;
 import sg.com.ioutlet.vo.OutletVo;
 

@@ -1,4 +1,4 @@
-package sg.com.ioutlet.ace.user.img;
+package sg.com.ioutlet.model.img;
 
 import java.util.ArrayList;
 import java.util.List;

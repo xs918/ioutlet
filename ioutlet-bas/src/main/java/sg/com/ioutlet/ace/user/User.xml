@@ -2,14 +2,17 @@
 <entity-mappings version="2.0"
 	xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd">
-	<named-query name="User.getByRoleUuid.String">
+	
+	
+		<named-query name="User.getByUsrId.String">
 		<query>
 			SELECT u 
 			FROM User u
-			WHERE u.role.key.uuid = :ROLE_UUID
+			WHERE u.userId = :USER_ID
 			AND u.recordStatus='A'
 		</query>
 	</named-query>
+	
 
 
 	<named-query name="User.getAll">
@@ -41,17 +44,13 @@
 			</basic>
 
 			<basic name="emailId" optional="false">
-				<column name="EMAIL_ID" nullable="false" length="50" />
+				<column name="EMAIL_ID" nullable="false" length="100" />
 			</basic>
 
 			<basic name="storedPassword" optional="false">
 				<column name="STORED_PASSWORD" nullable="false" length="50" />
 			</basic>
 
-			<basic name="name" optional="true">
-				<column name="name" length="100" nullable="true" />
-			</basic>
-			
 			
 			<basic name="name" optional="true">
 				<column name="NAME" nullable="true" length="50" />
@@ -68,8 +67,14 @@
 				<column name="DAY_OF_BIRTH" nullable="true" />
 			</basic>
 
-			<basic name="description" optional="true">
-				<column name="DESCRIPTION" nullable="true" length="200" />
+			<basic name="address1" optional="true">
+				<column name="ADDRESS_1" nullable="true" length="150" />
+			</basic>
+			<basic name="address2" optional="true">
+				<column name="ADDRESS_2" nullable="true" length="150" />
+			</basic>
+			<basic name="address3" optional="true">
+				<column name="ADDRESS_3" nullable="true" length="150" />
 			</basic>
 
 			<basic name="postCode" optional="true">
@@ -107,11 +112,11 @@
 			</basic>
 			
 				  <basic name="lastPasswordChangedTime" optional="true">
-				<column name="PASSWORD_CHANGE_TIME" nullable="true" />
+				<column name="LAST_PASSWORD_CHANGED_TIME" nullable="true" />
 			</basic>
 			
 		   <basic name="lastLockedTime" optional="true">
-				<column name="PASSWORD_CHANGE_TIME" nullable="true" />
+				<column name="LAST_LOCKED_TIME" nullable="true" />
 			</basic>
 			
 			
@@ -124,7 +129,7 @@
 
 		</attributes>
 	</entity>
-	<embeddable class="sg.com.ioutlet.model.user.UserKey"
+	<embeddable class="sg.com.ioutlet.ace.user.UserKey"
 		access="FIELD">
 		<attributes>
 			<basic name="uuid" optional="false">

@@ -118,9 +118,16 @@ public class UserDao extends IoutletDao {
 
 
 	public User getByUsrId(String userId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		logger.trace("getByUsrId");
+		Validate.notNull(userId, "'userId' must not be null.");
+
+		Map<String, Object> m = new HashMap<String, Object>();
+		m.put("USER_ID", userId);
+		
+		
+		String queryName = "User.getByUsrId.String";
+		return (User) getByQueryName(queryName, m);
+		}
 
 
 }

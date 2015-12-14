@@ -8,9 +8,10 @@ import java.util.TreeMap;
 
 import org.apache.commons.io.FileUtils;
 
-import sg.com.ioutlet.ace.user.img.Imge;
 import sg.com.ioutlet.bas.Gender;
+import sg.com.ioutlet.framework.web.common.AliOssUtils;
 import sg.com.ioutlet.framework.web.handler.CommonActionHandler;
+import sg.com.ioutlet.model.img.Imge;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -57,45 +58,34 @@ public class IoutletActionHandler  extends CommonActionHandler  {
   		
   	}
 	
+  	public void uploadFile(File file,Imge imge) throws IOException
+  	{
+  		String destFileName = imge.getFullPath()+File.separator+imge.getImgName();
+  		File destFile = new File(destFileName);
+  		String url =   AliOssUtils.getUrl(BUCKET_NAME, destFileName);
+  		FileUtils.copyFile(file, destFile);
+		AliOssUtils.uploadImge(BUCKET_NAME,destFileName,file);
+		imge.setImgUrl(url);
+		
+  		
+  	}
 
-	public boolean uploadFiles(File[] file,List<Imge> imges)
+	public void uploadFiles(File[] file,List<Imge> imges) throws IOException
 	{
+		
 		if(imges!=null && file!=null && file.length == imges.size())
 		{
 		
+			
 			for (int i = 0;i<file.length;i++)
 			{
-				 
-		   		File destFile = new File(imges.get(i).getFullPath()+File.separator+imges.get(i).getImgName());
-				   
-				  
-					try {
-				       FileUtils.copyFile(file[i], destFile);
-					 } catch (IOException ex) {
-					
-						 for(int j=0;j<=i;j++)
-						 {     
-							 
-					       	  try {
-					       		
-					       		  
-					       		File deleteFile = new File(imges.get(j).getFullPath()+File.separator+imges.get(j).getImgName());
-					       		  
-								FileUtils.forceDelete(deleteFile);
-							    } catch (IOException e) {
-							
-							    }
-						 
-						 }
-		      			 return false;
-					 }
-					imges.get(i).setImgUrl(destFile.getAbsolutePath());
+				
+				uploadFile(file[i],imges.get(i));
 			}
 			
-			return true;
+			
 		}
-		return false;
-	
+		
 	}
 	
 	

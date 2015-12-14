@@ -8,10 +8,10 @@ import java.util.Date;
 import java.util.List;
 
 import sg.com.ioutlet.ace.password.PasswordUtil;
-import sg.com.ioutlet.ace.user.img.Imge;
 import sg.com.ioutlet.bas.CommonPojo;
 import sg.com.ioutlet.bas.CommonPojoKey;
 import sg.com.ioutlet.bas.Gender;
+import sg.com.ioutlet.model.img.Imge;
 
 
 

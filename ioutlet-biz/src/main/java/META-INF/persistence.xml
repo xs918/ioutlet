@@ -9,9 +9,9 @@
 		<jta-data-source>java:/mysql</jta-data-source>
 		<mapping-file>sg/com/ioutlet/bas/CommonPojo.xml</mapping-file>
 		<mapping-file>sg/com/ioutlet/ace/user/User.xml</mapping-file>
-	    <mapping-file>sg/com/ioutlet/ace/user/img/UserImg.xml</mapping-file>
-	
-			<properties>
+		<mapping-file>sg/com/ioutlet/model/img/Imge.xml</mapping-file>
+		
+		<properties>
 			<!-- Properties for Hibernate -->
 			<!-- <property name="hibernate.hbm2ddl.auto" value="create-drop" /> -->
 			<property name="hibernate.show_sql" value="false" />

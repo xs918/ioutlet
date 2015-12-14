@@ -1,4 +1,4 @@
-package sg.com.ioutlet.ace.user.img;
+package sg.com.ioutlet.model.img;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,8 +19,7 @@ public class Imge extends CommonPojo {
 	private String imgName;
 	private String fullPath;
 	private String imgUrl;
-	private boolean proImg;
-
+	
 	
 	public Imge()
 	{
@@ -32,7 +31,7 @@ public class Imge extends CommonPojo {
 	}
 
 	@Override
-	public CommonPojoKey getKey() {
+	public ImgeKey getKey() {
 
 		return this.key;
 	}
@@ -43,7 +42,7 @@ public class Imge extends CommonPojo {
 
 	}
 	public enum Field {
-		key, user, imgName(100), imgUrl(255), proImg(1);
+		key, user, imgName(50), fullPath(255),imgUrl(510);
 		public int length = 255;
 		public int precision;
 		public int scale;
@@ -67,6 +66,7 @@ public class Imge extends CommonPojo {
 		fields.add(new Object[] { Field.key.name(), key });
 		fields.add(new Object[] { Field.user.name(), user });
 		fields.add(new Object[] { Field.imgName.name(), imgName });
+		fields.add(new Object[] { Field.fullPath.name(), fullPath });
 		fields.add(new Object[] { Field.imgUrl.name(), imgUrl });
 		
 		
@@ -80,9 +80,9 @@ public class Imge extends CommonPojo {
 		int i = 0;
 		this.user = (User) objects[i++];
 		this.imgName = (String) objects[i++];
+		this.fullPath = (String) objects[i++];
 		this.imgUrl = (String) objects[i++];
-		this.proImg=  (boolean) objects[i++];
-
+	
 		
 
 	}
@@ -104,13 +104,6 @@ public class Imge extends CommonPojo {
 		this.imgUrl = imgUrl;
 	}
 
-	public boolean isProImg() {
-		return proImg;
-	}
-
-	public void setProImg(boolean proImg) {
-		this.proImg = proImg;
-	}
 
 	public void setKey(ImgeKey key) {
 		this.key = key;

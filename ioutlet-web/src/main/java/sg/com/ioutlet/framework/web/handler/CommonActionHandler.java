@@ -13,6 +13,8 @@ import sg.com.ioutlet.framework.web.common.IoutletBridgerLookup;
 public abstract class CommonActionHandler {
 	protected LogHelper logger = LogHelper.getInstance((getClass().getName()));
 
+	public static String BUCKET_NAME ="iolt";
+	
 	private ActionSupport action;
 	
 	protected GetterBridge getterBridge;

@@ -10,7 +10,7 @@
 
  	<constant name="struts.devMode" value="false" />
  	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
- 	<constant name="struts.multipart.saveDir" value="/app/IOLT/tmp" />
+ 	<constant name="struts.multipart.saveDir" value="/tmp/iolt" />
  
  	
 

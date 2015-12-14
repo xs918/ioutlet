@@ -18,7 +18,7 @@
 			</basic>
 
 			<basic name="ludPgm" optional="false">
-				<column name="LUD_PGM" nullable="false" />
+				<column name="LUD_PGM" nullable="false" length="100" />
 			</basic>
 
 			<basic name="recordStatus" optional="false">

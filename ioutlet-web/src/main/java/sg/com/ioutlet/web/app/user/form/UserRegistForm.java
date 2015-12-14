@@ -8,12 +8,12 @@ import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 
-import com.opensymphony.xwork2.ActionSupport;
-
 import sg.com.ioutlet.ace.user.User;
-import sg.com.ioutlet.ace.user.img.Imge;
 import sg.com.ioutlet.bas.Gender;
+import sg.com.ioutlet.model.img.Imge;
 import sg.com.ioutlet.web.common.form.IoutletForm;
+
+import com.opensymphony.xwork2.ActionSupport;
 
 public class UserRegistForm extends IoutletForm {
 	/**
@@ -64,7 +64,7 @@ public class UserRegistForm extends IoutletForm {
 	
 	private List<Imge> usrImgs;
 	
-	private String saveDirectory ="C:/Test/Upload";
+	private String saveDirectory ="/tmp/iolt/Test/Upload";
 
 	@Override
 	public void reset() {

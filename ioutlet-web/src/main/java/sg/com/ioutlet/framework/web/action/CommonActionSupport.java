@@ -58,7 +58,7 @@ public abstract class CommonActionSupport extends ActionSupport implements Autho
 	
 	
 	public  static final String EMPTY = ""; 
-	public static final String BUCKET="ioutlet";
+	public static final String BUCKET_NAME="iolt";
 	
 
 	public static final String IMG_PATH =  "http://ioutlet.oss-cn-hangzhou.aliyuncs.com/img";
