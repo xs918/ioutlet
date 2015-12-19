@@ -4,6 +4,7 @@ import java.util.Map;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+import sg.com.ioutlet.bridge.AceBridge;
 import sg.com.ioutlet.bridge.GetterBridge;
 import sg.com.ioutlet.bridge.SetterBridge;
 import sg.com.ioutlet.common.logging.LogHelper;
@@ -21,6 +22,9 @@ public abstract class CommonActionHandler {
 	
 	protected SetterBridge setterBridge;
 	
+	protected AceBridge aceBridge;
+	
+	
 
 	public CommonActionHandler(ActionSupport action)
 	{
@@ -33,7 +37,7 @@ public abstract class CommonActionHandler {
 	{
 		getterBridge =IoutletBridgerLookup.lookupGetterBridge();
 		setterBridge=IoutletBridgerLookup.lookupSetterBridge();
-
+	    aceBridge =IoutletBridgerLookup.lookupAceBridge();
 	}
 	
 	protected void addFieldError(String fieldName, String errorKey)

@@ -8,6 +8,7 @@ import java.util.List;
 import org.apache.commons.io.FilenameUtils;
 
 import sg.com.ioutlet.ace.user.User;
+import sg.com.ioutlet.framework.web.common.OssUtils;
 import sg.com.ioutlet.model.img.Imge;
 import sg.com.ioutlet.web.app.user.form.UserRegistForm;
 import sg.com.ioutlet.web.common.handler.IoutletActionHandler;
@@ -71,7 +72,7 @@ public class UserActionActionHandler extends  IoutletActionHandler{
 		
 		    String extName =FilenameUtils.getExtension(form.getUserImgFilesFileName()[i]);
 		    	
-		    String fullPath=form.getRegUser().entityName() + File.separator + form.getUserId();
+		    String fullPath=form.getRegUser().entityName() + OssUtils.CLOUD_PATH_SEPARATOR + form.getUserId();
 		    String imgName=i+"."+extName;
 		  
 
@@ -93,17 +94,29 @@ public class UserActionActionHandler extends  IoutletActionHandler{
 	public boolean registeUserProfile(UserRegistForm form) {
 		this.createUserObject(form);
 		this.createUserImgObjs(form);
-		try {
-			this.uploadFiles(form.getUserImgFiles(), form.getUsrImgs());
-		} catch (IOException e) {
+		
+		
+	
+		try
+		{
+			  this.uploadFiles(form.getUserImgFiles(), form.getUsrImgs());
 			
-		this.addActionError(getText("upload.file.failed")+e.getMessage());
+		} 
+		catch (IOException e) 
+		{
+				
+			this.addActionError(getText("upload.file.failed")+e.getMessage());
+			return false;
 		}
 
-
-	//	this.deleteFile(form.getUsrImgs());
-		return setterBridge.registeUserProfile(form.getRegUser(),form.getUsrImgs());
-	   
+		
+		boolean isSuccess= aceBridge.registeUserProfile(form.getRegUser(),form.getUsrImgs());
+		if(!isSuccess) // remove file from list
+		{
+			this.deleteFile(form.getUsrImgs());
+		}
+		
+	   return isSuccess;
 	}
 
 

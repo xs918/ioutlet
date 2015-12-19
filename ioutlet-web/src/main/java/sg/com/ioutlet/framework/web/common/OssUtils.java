@@ -3,20 +3,19 @@ package sg.com.ioutlet.framework.web.common;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStream;
 
 import com.aliyun.openservices.oss.OSSClient;
-import com.aliyun.openservices.oss.model.OSSObject;
 import com.aliyun.openservices.oss.model.ObjectMetadata;
 import com.aliyun.openservices.oss.model.PutObjectResult;
 
-public class AliOssUtils {
+public class OssUtils {
 	
 	private static  String ACCESS_KEY_ID = "I14ejnRM6My7CyZq";
     private static String ACCESS_KEY_SECRET = "YOCIjo8nAUNC3wJ3BJfQYTlY6t7nuj";
     private static String  HOST_NAME="oss-cn-hangzhou.aliyuncs.com";
     private static String URL_HEADER="http://";
+    public static String CLOUD_PATH_SEPARATOR="/";
      
     private static OSSClient client; 
     
@@ -49,7 +48,7 @@ public class AliOssUtils {
     
     }
     
-    public static String uploadImge(String bucketName, String key,File file) throws FileNotFoundException {
+    public static String upload(String bucketName, String key,File file) throws FileNotFoundException {
     
     	if(client == null)
     	{
@@ -60,8 +59,7 @@ public class AliOssUtils {
     	meta.setContentLength(file.length());
     	
     	PutObjectResult result = client.putObject(bucketName, key, content, meta);
-        System.out.println("	client.getEndpoint():"+	client.getBucketLocation("iolt"));
-    	return result.getETag();
+     	return result.getETag();
     	
 
     }
@@ -71,6 +69,15 @@ public class AliOssUtils {
     	String url=URL_HEADER+bucketName+"."+HOST_NAME+"/"+fileFullPath;
     	return url;
     	
+    }
+    
+    public static void  delete(String bucketName, String key)  {
+    	if(client == null)
+    	{
+    		client= new OSSClient(ACCESS_KEY_ID, ACCESS_KEY_SECRET);
+    	}
+    	client.deleteObject(bucketName, key);
+    	  
     }
     
 }

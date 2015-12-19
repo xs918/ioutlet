@@ -1,5 +1,7 @@
 package sg.com.ioutlet.web.app.user.action;
 
+import org.apache.commons.lang.StringUtils;
+
 import sg.com.ioutlet.framework.authorization.model.IoutletFunction;
 import sg.com.ioutlet.framework.web.form.CommonForm;
 import sg.com.ioutlet.web.app.user.form.UserRegistForm;
@@ -24,6 +26,14 @@ public class UserRegistIndexAction extends IoutletAction {
 		UserRegistForm form = (UserRegistForm) getModel();
 		UserActionActionHandler handler = new UserActionActionHandler(this);
 		boolean result = handler.registeUserProfile(form);
+		
+		
+		System.out.println("buttonType:"+form.getButtonType());
+		
+		if(StringUtils.equalsIgnoreCase(form.getButtonType(),"delete"))
+		{
+			
+		}
 		if(!result)
 		{
 			return INPUT; 

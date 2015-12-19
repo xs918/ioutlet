@@ -9,7 +9,7 @@ import java.util.TreeMap;
 import org.apache.commons.io.FileUtils;
 
 import sg.com.ioutlet.bas.Gender;
-import sg.com.ioutlet.framework.web.common.AliOssUtils;
+import sg.com.ioutlet.framework.web.common.OssUtils;
 import sg.com.ioutlet.framework.web.handler.CommonActionHandler;
 import sg.com.ioutlet.model.img.Imge;
 
@@ -60,11 +60,11 @@ public class IoutletActionHandler  extends CommonActionHandler  {
 	
   	public void uploadFile(File file,Imge imge) throws IOException
   	{
-  		String destFileName = imge.getFullPath()+File.separator+imge.getImgName();
+  		String destFileName = imge.getFullPath()+OssUtils.CLOUD_PATH_SEPARATOR+imge.getImgName();
   		File destFile = new File(destFileName);
-  		String url =   AliOssUtils.getUrl(BUCKET_NAME, destFileName);
+  		String url =   OssUtils.getUrl(BUCKET_NAME, destFileName);
   		FileUtils.copyFile(file, destFile);
-		AliOssUtils.uploadImge(BUCKET_NAME,destFileName,file);
+		OssUtils.upload(BUCKET_NAME,destFileName,file);
 		imge.setImgUrl(url);
 		
   		
@@ -89,39 +89,24 @@ public class IoutletActionHandler  extends CommonActionHandler  {
 	}
 	
 	
-	void removeFile(File file)
-	{
-		File parentFile = file.getParentFile();
-	
-		try {
-			FileUtils.forceDelete(file);
-			if(parentFile.isDirectory())
-			{
-				if(parentFile.listFiles().length == 0)
-				{
-					removeFile(parentFile);
-				}
-				
-			}
-		
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		
-	}
-	
+
 	public void deleteFile(List<Imge> imges)
 	{
-		
-		if(imges !=null)
+		if(imges!=null)
 		{
-			for(Imge img:imges)
-			{
-				File deleteFile= new File(img.getFullPath()+File.separator+img.getImgName());
-				removeFile(deleteFile);
+		
 			
+			for (Imge img:imges)
+			{
+				String destFileName = img.getFullPath()+OssUtils.CLOUD_PATH_SEPARATOR+img.getImgName();
+			  	
+				OssUtils.delete(BUCKET_NAME, destFileName);
+				
 			}
+			
+			
 		}
+
+	
 	}
 }

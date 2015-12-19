@@ -5,12 +5,16 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import javax.ejb.Remote;
+import javax.ejb.Stateless;
+
 import sg.com.ioutlet.ace.function.Function;
 import sg.com.ioutlet.ace.password.PasswordUtil;
 import sg.com.ioutlet.ace.role.Role;
 import sg.com.ioutlet.ace.role.RoleKey;
 import sg.com.ioutlet.ace.user.User;
 import sg.com.ioutlet.ace.user.UserKey;
+import sg.com.ioutlet.app.dao.ImgeDao;
 import sg.com.ioutlet.app.dao.PojoUtils;
 import sg.com.ioutlet.app.dao.RoleDao;
 import sg.com.ioutlet.app.dao.UserDao;
@@ -20,9 +24,11 @@ import sg.com.ioutlet.framework.authorization.model.AccessFunction;
 import sg.com.ioutlet.framework.authorization.model.AuthorizationInfo;
 import sg.com.ioutlet.framework.model.TransactionInfo;
 import sg.com.ioutlet.framework.trxhelper.TransactionControl;
+import sg.com.ioutlet.model.img.Imge;
 import sg.com.ioutlet.vo.RoleVo;
 import sg.com.ioutlet.vo.UserVo;
-
+@Stateless
+@Remote(AceBridge.class)
 public class AceBean extends EjbEntityManager implements AceBridge  {
 	protected LogHelper logger = LogHelper.getInstance(AceBean.class.getName());
 
@@ -67,6 +73,24 @@ public class AceBean extends EjbEntityManager implements AceBridge  {
 
 	
 	/**********************************setter*************************************/
+	
+	@Override
+	public boolean registeUserProfile(User regUser, List<Imge> usrImgs) {
+		UserDao uDao =  new UserDao(this.getEntityManager());
+		ImgeDao iDao =  new ImgeDao(this.getEntityManager());
+		uDao.create(regUser);
+		for(Imge i:usrImgs)
+		{
+			i.setUser(regUser);
+			iDao.create(i);
+		}
+
+		
+		return true;
+	}
+
+	
+	
 	@Override
 	public Role addRole(RoleVo roleVo) {
 		RoleDao dao = new RoleDao(this.getEntityManager());

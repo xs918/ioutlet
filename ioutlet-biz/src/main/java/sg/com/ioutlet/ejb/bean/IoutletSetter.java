@@ -1,17 +1,11 @@
 package sg.com.ioutlet.ejb.bean;
 
-import java.util.List;
-
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 
-import sg.com.ioutlet.ace.user.User;
-import sg.com.ioutlet.app.dao.ImgeDao;
 import sg.com.ioutlet.app.dao.OutletDao;
 import sg.com.ioutlet.app.dao.PojoUtils;
-import sg.com.ioutlet.app.dao.UserDao;
 import sg.com.ioutlet.bridge.SetterBridge;
-import sg.com.ioutlet.model.img.Imge;
 import sg.com.ioutlet.model.outlet.Outlet;
 import sg.com.ioutlet.model.outlet.OutletKey;
 import sg.com.ioutlet.vo.OutletVo;
@@ -61,20 +55,6 @@ public class IoutletSetter extends EjbEntityManager implements SetterBridge {
 		
 	}
 
-	@Override
-	public boolean registeUserProfile(User regUser, List<Imge> usrImgs) {
-		UserDao uDao =  new UserDao(this.getEntityManager());
-		ImgeDao iDao =  new ImgeDao(this.getEntityManager());
-		uDao.create(regUser);
-		for(Imge i:usrImgs)
-		{
-			i.setUser(regUser);
-			iDao.create(i);
-		}
-
-		
-		return true;
-	}
 
 	
 

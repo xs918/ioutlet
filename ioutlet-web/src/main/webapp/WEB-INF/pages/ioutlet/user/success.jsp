@@ -161,7 +161,9 @@
    
        	<s:submit value="%{getText('previous')}" cssClass="btn btn-primary pull-right" onclick="return isBack('form')">
 		</s:submit>
-         
+           	<s:submit value="%{getText('delete')}" cssClass="btn btn-primary pull-right" onclick="return isCustomSubmit('form','delete')">
+		</s:submit>
+    
          
          <s:submit cssClass="btn btn-primary pull-right" onclick="return submitForm()" />
          </s:form>

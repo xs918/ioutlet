@@ -86,8 +86,8 @@ public class IoutletBridgerLookup {
 		String appName = "ioutlet-ear";
 		String moduleName = "ioutlet-biz";
 		String distinctName = "";
-		String beanName = "IoutletGetter";
-		String viewClassName = GetterBridge.class.getName();
+		String beanName = "AceBean";
+		String viewClassName = AceBridge.class.getName();
 
 		String lookName = "ejb:" + appName + "/" + moduleName + "/"
 				+ distinctName + "/" + beanName + "!" + viewClassName;
