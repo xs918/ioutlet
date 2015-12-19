@@ -18,7 +18,7 @@
 
 
 
-    <entity class="sg.com.ioutlet.model.outlet.BizInfo"
+    <entity class="sg.com.ioutlet.model.bizinfo.BizInfo"
           access="FIELD">
     <table name="BIZ_INFOS"/>
     
@@ -26,9 +26,15 @@
       
       <attributes>
        	<embedded-id name="key" />
+       	
+       	 <basic name="regId" optional="false">
+			<column name="REG_ID" nullable="false" length="50"/>
+	    </basic>
+	    
+	    
        
-      	<basic name="name" optional="false">
-			<column name="NAME" nullable="false" length="50"/>
+      	<basic name="regName" optional="false">
+			<column name="REG_NAME" nullable="false" length="50"/>
 	    </basic>
 	
 	
@@ -54,18 +60,15 @@
 			<column name="POST_CODE" nullable="false" length="200"/>
 	    </basic>
 	  	
-	 
-	 
-	   <!--  <one-to-many name="products" mapped-by="outlet">
-				<cascade>
-					<cascade-merge />
-					<cascade-remove />
-				</cascade>
-		</one-to-many> -->
+		
+			<one-to-one name="user" optional="true">
+				<primary-key-join-column name="USER_UUID" referenced-column-name="UUID" />
+			</one-to-one>
+		
 	    
 	    </attributes>
 	 </entity>
-	<embeddable class="sg.com.ioutlet.model.outlet.BizInfoKey"
+	<embeddable class="sg.com.ioutlet.model.bizinfo.BizInfoKey"
 		access="FIELD">
 		<attributes>
 			<basic name="uuid" optional="false">

@@ -45,6 +45,13 @@
         <put-attribute name="content" value="/WEB-INF/pages/ioutlet/user/regist.jsp"/>                           
     </definition>
     
+     <definition name="SG.COM.IOUTLET.USER.LOGIN" extends="blank">
+        <put-attribute name="title" value="index"/>
+        <put-attribute name="content" value="/WEB-INF/pages/ioutlet/user/login.jsp"/>                           
+    </definition>
+    
+    
+    
     <definition name="SG.COM.IOUTLET.USER.SUCCESS" extends="blank">
         <put-attribute name="title" value="index"/>
         <put-attribute name="content" value="/WEB-INF/pages/ioutlet/user/success.jsp"/>                           

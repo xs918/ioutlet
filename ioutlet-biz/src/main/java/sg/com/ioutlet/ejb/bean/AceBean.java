@@ -14,6 +14,7 @@ import sg.com.ioutlet.ace.role.Role;
 import sg.com.ioutlet.ace.role.RoleKey;
 import sg.com.ioutlet.ace.user.User;
 import sg.com.ioutlet.ace.user.UserKey;
+import sg.com.ioutlet.app.dao.BizInfoDao;
 import sg.com.ioutlet.app.dao.ImgeDao;
 import sg.com.ioutlet.app.dao.PojoUtils;
 import sg.com.ioutlet.app.dao.RoleDao;
@@ -85,6 +86,9 @@ public class AceBean extends EjbEntityManager implements AceBridge  {
 			iDao.create(i);
 		}
 
+		BizInfoDao bDao =  new BizInfoDao(this.getEntityManager());
+		
+		bDao.create(regUser.getBizinfo());
 		
 		return true;
 	}

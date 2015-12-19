@@ -11,6 +11,7 @@ import sg.com.ioutlet.ace.password.PasswordUtil;
 import sg.com.ioutlet.bas.CommonPojo;
 import sg.com.ioutlet.bas.CommonPojoKey;
 import sg.com.ioutlet.bas.Gender;
+import sg.com.ioutlet.model.bizinfo.BizInfo;
 import sg.com.ioutlet.model.img.Imge;
 
 
@@ -40,6 +41,7 @@ public class User extends CommonPojo {
 	private Date lastLockedTime;
 	
 	private List<Imge> userImg;
+	private BizInfo bizinfo;
 
 
 	public User() {
@@ -81,6 +83,7 @@ public class User extends CommonPojo {
 		this.activeTime = (Date) objects[i++];
 		this.lastPasswordChangedTime = (Date) objects[i++];
 		this.lastLockedTime = (Date) objects[i++];
+		this.bizinfo = (BizInfo) objects[i++];
 		
 
 	
@@ -321,7 +324,7 @@ public class User extends CommonPojo {
 	public enum Field {
 		key, userId(100), emailId(100), storedPassword(50), name(50), gender,dayOfBirth,
 		description(200),langCode(10),currLoc(50),rewardPoint,
-		locked(1),loginFailureAttempt,lastLoginTime,activeTime,lastPasswordChangedTime,lastLockedTime;
+		locked(1),loginFailureAttempt,lastLoginTime,activeTime,lastPasswordChangedTime,lastLockedTime,bizinfo;
 		public int length = 255;
 		public int precision;
 		public int scale;
@@ -359,7 +362,17 @@ public class User extends CommonPojo {
 		fields.add(new Object[] { Field.lastPasswordChangedTime.name(), lastPasswordChangedTime });
 		fields.add(new Object[] { Field.lastLockedTime.name(), lastLockedTime });
 		
+		fields.add(new Object[] { Field.bizinfo.name(), bizinfo });
+		
 		return fields;
+	}
+
+	public BizInfo getBizinfo() {
+		return bizinfo;
+	}
+
+	public void setBizinfo(BizInfo bizinfo) {
+		this.bizinfo = bizinfo;
 	}
 
 

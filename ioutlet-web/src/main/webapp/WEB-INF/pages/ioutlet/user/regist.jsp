@@ -16,17 +16,6 @@
      <sj:head jqueryui="false"/>
      <s:head />
 </head>
-<script type="text/javascript">
-function submitForm(myForm)
-{
-	var myForm = document.getElementsByTagName("form");
-	myForm[0].action="form!"
-	myForm[0].submit();
-};
-
-
-
-</script>
 
 <style type="text/css">
 
@@ -81,23 +70,20 @@ function submitForm(myForm)
 
 <body>
 <div class="container">
-  <h2>Modal Example</h2>
-  <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
-</div>
 
- <div class="modal fade" id="myModal" role="dialog">
-<div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-  
-		    <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal">&times;</button>
-		        <h4 class="modal-title">User Registration</h4>
-		      </div>
-    
-        <div class="modal-body">
+
+  		
+		        
+		        <h4>User Registration
+		
+		           <a href="login"><span class="fa fa-sign-in"></span>Login</a>
+		           
+			 </h4>
+		     
+		 
+		 
+		        
+
 <div class="stepwizard">
     <div class="stepwizard-row setup-panel">
         <div class="stepwizard-step">
@@ -180,7 +166,12 @@ function submitForm(myForm)
    </div>     
             
    <div class="row setup-content" id="step-2">
-          <div class="col-xs-12">
+         <div class="col-xs-2">
+			          </div>
+			          
+		  <div class="col-xs-8">
+		  
+        
             <h3>User Information</h3>
             
                 <s:textfield
@@ -237,11 +228,15 @@ function submitForm(myForm)
    <s:property value="%{getText('next')}"/>
   </button>
           </div>
+          		  <div class="col-xs-2">
+          		  </div>
     </div>
               
 
     <div class="row setup-content" id="step-3">
-          <div class="col-xs-12">
+      <div class="col-xs-2">
+          		  </div>
+          <div class="col-xs-8">
             <h3> Company Information</h3>
 		         <s:textfield
 		          label="%{getText('reg.no.of.company')}"
@@ -255,7 +250,15 @@ function submitForm(myForm)
 		                        name="nameOfCompany"
 		                        maxLength="150"
 		                        tooltip="%{getText('enter.your.name.of.company')}"/>
-		                        
+		             
+		                      <s:textfield
+		                       label="%{getText('telephone')}"
+		                       name="telephone"
+		                       maxLength="20"
+		                       tooltip="%{getText('enter.your.telephone.no.here')}"
+		                       
+		                       />
+		                                  
 		                        
 		                              <s:textfield
 		                       label="%{getText('detail.address')}"
@@ -285,11 +288,17 @@ function submitForm(myForm)
 			         	             <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
 		                
 		   </div>
+		     <div class="col-xs-2">
+          		  </div>
+          		  
 	</div>                     
        
        
        <div class="row setup-content" id="step-4">
-          <div class="col-xs-12">
+         <div class="col-xs-2">
+          		  </div>
+          		  
+          <div class="col-xs-8">
             <h3>Choose your plan</h3>
             
              <div class="col-xs-6">
@@ -344,6 +353,8 @@ function submitForm(myForm)
     </div>
              <s:submit cssClass="btn btn-success btn-lg pull-right" onclick="isSubmit()" />
     	   </div>
+    	     <div class="col-xs-2">
+          		  </div>
 	</div>                     
                
          </s:form>
@@ -351,9 +362,7 @@ function submitForm(myForm)
          
            
         
-         </div>
-         </div>
-</div>
+
 <script src="<%=request.getContextPath()%>/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 <script>
 $(document).ready(function () {

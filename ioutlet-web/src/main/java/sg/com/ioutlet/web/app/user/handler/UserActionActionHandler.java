@@ -9,6 +9,7 @@ import org.apache.commons.io.FilenameUtils;
 
 import sg.com.ioutlet.ace.user.User;
 import sg.com.ioutlet.framework.web.common.OssUtils;
+import sg.com.ioutlet.model.bizinfo.BizInfo;
 import sg.com.ioutlet.model.img.Imge;
 import sg.com.ioutlet.web.app.user.form.UserRegistForm;
 import sg.com.ioutlet.web.common.handler.IoutletActionHandler;
@@ -50,6 +51,17 @@ public class UserActionActionHandler extends  IoutletActionHandler{
 		usr.setActiveTime(null);
 		usr.setLastPasswordChangedTime(null);
 		usr.setLastLockedTime(null);
+		
+		
+		BizInfo bizinfo = new BizInfo();
+		bizinfo.setRegId(form.getRegNoOfCompany());
+		bizinfo.setRegName(form.getNameOfCompany());
+		bizinfo.setTelPhone(form.getTelephone());
+		bizinfo.setAddr1(form.getAddress1());
+		bizinfo.setAddr2(form.getAddress2());
+		bizinfo.setAddr3(form.getAddress3());
+		bizinfo.setPostCode(form.getPostCode());
+		usr.setBizinfo(bizinfo);
 		
 		form.setRegUser(usr);
 

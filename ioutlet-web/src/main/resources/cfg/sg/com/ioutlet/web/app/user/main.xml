@@ -5,4 +5,5 @@
  
 <struts>
  	<include file="cfg/sg/com/ioutlet/web/app/user/index.xml"/>
+ 	<include file="cfg/sg/com/ioutlet/web/app/user/login.xml"/>
 </struts>

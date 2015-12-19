@@ -41,8 +41,7 @@ public class VoUtils {
 
 		vo.setOtherDetail(user.getDescription());
 
-		vo.setPostCode(user.getPostCode());
-		vo.setLangCode(user.getLangCode());
+			vo.setLangCode(user.getLangCode());
 		vo.setCurrLoc(user.getCurrLoc());
 		vo.setRewardPoint(user.getRewardPoint());
 		populateCommonFields(vo,user);
