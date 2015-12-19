@@ -67,20 +67,6 @@
 				<column name="DAY_OF_BIRTH" nullable="true" />
 			</basic>
 
-			<basic name="address1" optional="true">
-				<column name="ADDRESS_1" nullable="true" length="150" />
-			</basic>
-			<basic name="address2" optional="true">
-				<column name="ADDRESS_2" nullable="true" length="150" />
-			</basic>
-			<basic name="address3" optional="true">
-				<column name="ADDRESS_3" nullable="true" length="150" />
-			</basic>
-
-			<basic name="postCode" optional="true">
-				<column name="POST_CODE" nullable="true" length="10" />
-			</basic>
-			
 			<basic name="currLoc" optional="true">
 				<column name="CURR_LOC" nullable="true" length="50" />
 			</basic>

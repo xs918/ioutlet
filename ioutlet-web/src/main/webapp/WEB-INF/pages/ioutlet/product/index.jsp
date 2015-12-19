@@ -38,8 +38,10 @@
 </head>
 <body>
 <div class="box box-primary">
+<s:form enctype="multipart/form-data" theme="bootstrap" action="form" method="post">
+<s:include value="/WEB-INF/pages/common/formparts/common.jsp" />        
 <div class="box-header with-border">
-	
+
 		<div class="row">
 			<div class="col-md-2 input-lg">
 				<input type="checkbox" value=""> Check All
@@ -51,7 +53,7 @@
                   </div>
 			</div>
 			<div class="col-md-5">
-				<button type="button" class="btn btn-lg btn-default btn-flat pull-right">Add A Product</button>
+					   <s:submit cssClass="btn btn-lg btn-default btn-flat pull-right" onclick="isCustomSubmit('form','addButton')" />
 			</div>
 		</div>
 
@@ -86,6 +88,7 @@
 		</table>
 		<!-- /.table -->
 	</div>
+</s:form>
 </div>	<!-- /.box-body -->
 
 

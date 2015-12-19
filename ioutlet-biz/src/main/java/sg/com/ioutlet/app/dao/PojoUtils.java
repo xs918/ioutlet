@@ -27,7 +27,6 @@ public class PojoUtils {
 		user.setPassword(userVo.getPassword());
 		user.setName(userVo.getName());
 		user.setGender(userVo.getGender());
-		user.setPostCode(userVo.getPostCode());
 		user.setLangCode(userVo.getLangCode());
 		user.setCurrLoc(userVo.getCurrLoc());
 

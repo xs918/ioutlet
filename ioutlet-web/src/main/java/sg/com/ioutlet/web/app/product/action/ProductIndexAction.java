@@ -38,6 +38,7 @@ public class ProductIndexAction extends IoutletAction{
 		ProductActionHandler handler = new ProductActionHandler(this);
 		handler.getProducts("ABC");
 		
+		System.out.println("form:"+form.getButtonType());
 		form.setProductName("Males Shirt");
 		
 		

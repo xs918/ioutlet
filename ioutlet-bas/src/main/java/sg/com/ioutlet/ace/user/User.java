@@ -29,12 +29,6 @@ public class User extends CommonPojo {
 	private Gender gender=Gender.O;
 	private Date dayOfBirth;
 	private String description;
-	
-	private String address1;
-	private String address2;
-	private String address3;
-	
-	private String postCode;
 	private String langCode;
 	private String currLoc;
 	private BigDecimal rewardPoint;	
@@ -77,11 +71,6 @@ public class User extends CommonPojo {
 		this.gender =(Gender) objects[i++];
 		this.dayOfBirth =(Date) objects[i++];
 		this.description = (String) objects[i++];
-		this.address1= (String) objects[i++];
-		this.address2= (String) objects[i++];
-		this.address3= (String) objects[i++];
-		
-		this.postCode = (String) objects[i++];
 		this.langCode = (String) objects[i++];
 		this.currLoc = (String) objects[i++];
 		this.rewardPoint = (BigDecimal) objects[i++];
@@ -143,38 +132,7 @@ public class User extends CommonPojo {
 	public void setGender(Gender gender) {
 		this.gender = gender;
 	}
-	public String getAddress1() {
-		return address1;
-	}
-
-	public void setAddress1(String address1) {
-		this.address1 = address1;
-	}
-
-	public String getAddress2() {
-		return address2;
-	}
-
-	public void setAddress2(String address2) {
-		this.address2 = address2;
-	}
-
-	public String getAddress3() {
-		return address3;
-	}
-
-	public void setAddress3(String address3) {
-		this.address3 = address3;
-	}
-
 	
-	public String getPostCode() {
-		return postCode;
-	}
-
-	public void setPostCode(String postCode) {
-		this.postCode = postCode;
-	}
 
 
 
@@ -362,7 +320,7 @@ public class User extends CommonPojo {
 
 	public enum Field {
 		key, userId(100), emailId(100), storedPassword(50), name(50), gender,dayOfBirth,
-		description(200),address1(150),address2(150),address3(150),postCode(10),langCode(10),currLoc(50),rewardPoint,
+		description(200),langCode(10),currLoc(50),rewardPoint,
 		locked(1),loginFailureAttempt,lastLoginTime,activeTime,lastPasswordChangedTime,lastLockedTime;
 		public int length = 255;
 		public int precision;
@@ -392,10 +350,6 @@ public class User extends CommonPojo {
 		fields.add(new Object[] { Field.gender.name(), gender });
 		fields.add(new Object[] { Field.dayOfBirth.name(), dayOfBirth });
 		fields.add(new Object[] { Field.description.name(), description });
-		fields.add(new Object[] { Field.address1.name(), address1 });
-		fields.add(new Object[] { Field.address2.name(), address2 });
-		fields.add(new Object[] { Field.address3.name(), address3 });
-		fields.add(new Object[] { Field.postCode.name(), postCode });
 		fields.add(new Object[] { Field.langCode.name(), langCode });
 		fields.add(new Object[] { Field.currLoc.name(), currLoc });
 		fields.add(new Object[] { Field.rewardPoint.name(), rewardPoint });

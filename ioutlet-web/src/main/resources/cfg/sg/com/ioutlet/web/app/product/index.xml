@@ -26,6 +26,23 @@
             <result name="input" type="tiles">SG.COM.IOUTLET.PRODUCT.INDEX</result>
         </action>
 
+
+     <action name="form!*" class="sg.com.ioutlet.web.app.product.action.ProductIndexAction" method="{*}">
+            <result name="input" type="tiles">SG.COM.IOUTLET.USER.REG</result>
+            <result name="success" type="tiles">SG.COM.IOUTLET.USER.SUCCESS</result>
+    
+    		<!-- DISPLAY PAGE -->
+			<result name="back" type="redirect-action">
+				<param name="namespace">
+					/
+				</param>
+				<param name="actionName">register!input</param>				
+			</result>
+			
+			
+        </action>
+        
+        
         <!-- Add additional "example" package actions here. -->
 
     </package>

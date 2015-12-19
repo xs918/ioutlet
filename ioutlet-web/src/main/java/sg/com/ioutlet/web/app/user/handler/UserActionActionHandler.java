@@ -41,10 +41,6 @@ public class UserActionActionHandler extends  IoutletActionHandler{
 		usr.setGender(form.getGender());
 		usr.setDayOfBirth(form.getDayOfBirth());
 		usr.setDescription(form.getDescription());
-		usr.setAddress1(form.getAddress1());
-		usr.setAddress2(form.getAddress2());
-		usr.setAddress3(form.getAddress3());
-		usr.setPostCode(form.getPostCode());
 		usr.setLangCode(form.getLangCode());
 		usr.setCurrLoc(form.getCurrLoc());
 		usr.setRewardPoint(form.getRewardPoint());

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd">
+	
+  
+  
+   	<named-query name="BizInfo.getAll">
+		<query>
+			SELECT s 
+			FROM BizInfo s
+			where s.recordStatus='A'
+		</query>
+	</named-query> 
+	
+	
+	
+
+
+
+    <entity class="sg.com.ioutlet.model.outlet.BizInfo"
+          access="FIELD">
+    <table name="BIZ_INFOS"/>
+    
+    
+      
+      <attributes>
+       	<embedded-id name="key" />
+       
+      	<basic name="name" optional="false">
+			<column name="NAME" nullable="false" length="50"/>
+	    </basic>
+	
+	
+	
+		<basic name="telPhone" optional="true">
+			<column name="TEL_PHONE" nullable="true" length="50"/>
+	    </basic>
+	
+	
+		
+	    <basic name="addr1" optional="false">
+			<column name="ADDRESS1" nullable="false" length="150"/>
+	    </basic>
+	        <basic name="addr2" optional="false">
+			<column name="ADDRESS2" nullable="false" length="150"/>
+	    </basic>
+	        <basic name="addr3" optional="true">
+			<column name="ADDRESS3" nullable="true" length="150"/>
+	    </basic>
+	
+	    
+	    <basic name="postCode" optional="false">
+			<column name="POST_CODE" nullable="false" length="200"/>
+	    </basic>
+	  	
+	 
+	 
+	   <!--  <one-to-many name="products" mapped-by="outlet">
+				<cascade>
+					<cascade-merge />
+					<cascade-remove />
+				</cascade>
+		</one-to-many> -->
+	    
+	    </attributes>
+	 </entity>
+	<embeddable class="sg.com.ioutlet.model.outlet.BizInfoKey"
+		access="FIELD">
+		<attributes>
+			<basic name="uuid" optional="false">
+				<column name="UUID" nullable="false" length="40" />
+			</basic>
+		</attributes>
+	</embeddable>
+	
+	
+ </entity-mappings>
+
+ 
