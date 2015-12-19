@@ -139,25 +139,25 @@ function submitForm(myForm)
 		                        label="%{getText('user.id')}"
 		                        name="userId"
 		                        maxLength="50"
-		                        required = "true"
-		                        tooltip="getText('enter.your.user.id.here')"/>
+		                        placeholder="%{getText('only.allow.letters.numbers.and.underscore')}"
+		                     />
 		                           
 		                           
-		                         <s:textfield
+		                        <s:textfield
 		                        label="%{getText('email')}"
 		                        name="emailId"
-		                         maxLength="50"
-		                        tooltip="getText('enter.your.email.here')"/>
+		                        maxLength="50"
+		                        placeholder="sample@gmail.com"
+		                         />
 		                        
 		                        
 		
 		                <s:password
 		                        label="%{getText('password')}"
 		                        name="password"
+		                        placeholder="%{getText('at.least.6.characters')}"
 		                        maxLength="25"
-		                        required = ""
-		                       oninvalid="this.setCustomValidity('%{getText('user.validate')}')"
-		               />
+		                 />
 		
 		
 		            
@@ -167,10 +167,12 @@ function submitForm(myForm)
 		                        name="retypePassword"
 		                          required = "true"
 		                            maxLength="25"
-		                       tooltip="getText('retype.your.password.here')"/>
+		                       placeholder="%{getText('retype.your.password.here')}"/>
 		                        
                 
-		                <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
+		                <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >
+		                  <s:property value="%{getText('next')}"/>
+		                </button>
 			          </div>
 			          
 			          <div class="col-xs-2">
@@ -183,53 +185,57 @@ function submitForm(myForm)
             
                 <s:textfield
 		                       label="%{getText('full.name')}"
-		                        name="name"
-		                          maxLength="50"
-		                        tooltip="Enter your full name here"/>
+		                       name="name"
+		                       maxLength="50"
+		                       tooltip="Enter your full name here"/>
 		                        
 		                        
 		                        
 		            
 		                        
 		                        
-                        <s:select
-                        tooltip="Choose your gender here"
-                        label="Gender"
-                        list="genderMap"
-                          name="gender"
-                        />
+		                        <s:select
+		                        tooltip="Choose your gender here"
+		                        label="Gender"
+		                        list="genderMap"
+		                          name="gender"
+		                        />
                  
   
-                   <s:file name="userImgFiles" label="upload User Profile" multiple="true"/>
+                  				 <s:file name="userImgFiles"  label="%{getText('update.profile.picture')}" multiple="true"/>
                     
   
-                  <s:textarea
-                        tooltip="enter your other descrption"
-                        label="Description"
-                        name="description"
-                         cols="50"
-                        rows="4"/>
-                
+				                  <s:textarea
+				                        tooltip="%{getText('enter.your.details.here')}"
+				                        label="%{getText('description')}"
+				                        name="description"
+				                         cols="50"
+				                        rows="4"/>
+				                
      
-                 
-                       <s:select
-                        tooltip="What language you prefer use"
-                        label="language"
-                        list="langMap"
-                         name="langCode"
-                 />
-                 
+				                 
+				                  <s:select
+				                        tooltip="%{getText('What.default.language.you.prefer.use')}"
+				                        label="%{getText('default.language')}"
+				                        list="langMap"
+				                         name="langCode"
+				                 />
+				                 
                  
                         
                         
                                    
-                <s:select
-                        tooltip="Where are you from"
-                        label="Location"
-                        list="locMap"
-                         name="currLoc"
-                 />
-  <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
+			                <s:select
+			                        tooltip="%{getText('location')}"
+			                        label="%{getText('location')}"
+			                        list="locMap"
+			                         name="currLoc"
+			                 />
+			                 
+			          
+  <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >  
+   <s:property value="%{getText('next')}"/>
+  </button>
           </div>
     </div>
               
@@ -238,36 +244,45 @@ function submitForm(myForm)
           <div class="col-xs-12">
             <h3> Company Information</h3>
 		         <s:textfield
-		                        label="Reg No. Of Company"
+		          label="%{getText('reg.no.of.company')}"
 		                        name="regNoOfCompany"
-		                        elementCssClass="col-sm-3"
 		                        maxLength="50"
-		                        tooltip="Enter your Company Reg. No. here"/>
+		                        tooltip="%{getText('enter.your.regist.no.of.company')}"/>
 		           
-		                <s:textfield
-		                        label="Name of Company"
+		           
+		          <s:textfield
+		          label="%{getText('name.of.company')}"
 		                        name="nameOfCompany"
-		                         maxLength="50"
-		                        tooltip="Enter your Name here"/>
-		           
-		                <s:textfield
-		                        label="Telephone of Company"
-		                        name="telephone"
-		                         maxLength="50"
-		                        tooltip="Enter your Company Telephone here"/>
-		           
-		            
-		                <s:textfield
-		                        label="detail address"
-		                        name="address"
-		                          tooltip="Enter your address here"/>
-		
-		
-		                <s:textfield
-		                        label="post code"
+		                        maxLength="150"
+		                        tooltip="%{getText('enter.your.name.of.company')}"/>
+		                        
+		                        
+		                              <s:textfield
+		                       label="%{getText('detail.address')}"
+		                       name="address1"
+		                       maxLength="50"
+		                       tooltip="%{getText('enter.your.detail.address')}"
+		                       
+		                       />
+		                       
+		                        <s:textfield
+		                       name="address2"
+		                       maxLength="50"
+		                       
+		                       />
+		                       <s:textfield
+		                       name="address3"
+		                       maxLength="50"
+		                       
+		                       />
+		                       
+		                      <s:textfield
+		                        label="%{getText('post.code')}"
 		                        name="postCode"
-		                          tooltip="Enter your postcode here"/>
-		                <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
+		                        tooltip="%{getText('enter.your.post.code')}"
+		                       />
+		                       
+			         	             <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
 		                
 		   </div>
 	</div>                     
