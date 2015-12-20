@@ -28,7 +28,7 @@ public class UserRegistIndexAction extends IoutletAction {
 		boolean result = handler.registeUserProfile(form);
 		
 		
-		System.out.println("buttonType:"+form.getButtonType());
+	
 		
 		if(StringUtils.equalsIgnoreCase(form.getButtonType(),"delete"))
 		{

@@ -39,7 +39,30 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <![endif]-->
   </head>
     <body>
-      <s:actionerror /> <s:actionmessage />
+  <s:if test="hasActionErrors()">  
+  <div class="alert text-center alert-danger fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong><s:property value="%{getText('error.colon')}"/></strong> 
+   
+   <s:iterator value="actionErrors">
+	<span class="msg"><s:property escape="false" />
+	</span>
+   </s:iterator>
+
+  </div>
+  </s:if>
+  
+  <s:if test="hasActionMessages()">  
+   <div class="alert alert-info fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong><s:property value="%{getText('info')}"/></strong> 
+     <s:actionmessage />
+  </div>
+  </s:if>
+  
+  
+  
+      
 <%-- 	
 			<s:if test="%{getErrorReport()!=null}">
 			   <a href="#" class="show_hide">Show/Hide Error Report</a>

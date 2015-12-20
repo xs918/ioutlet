@@ -13,6 +13,7 @@ public enum IoutletFunction
         IOLT_CUSTOMERS("cust"),
         IOLT_OUTLETS("out"),
         IOLT_USER_REG("reg"),
+        IOLT_USER_AUTH("login"),
         
     	//* SUB MENU LIST***/
         PAY_CREDIT_CARDS(IOLT_PAYMENTS.inModule()),

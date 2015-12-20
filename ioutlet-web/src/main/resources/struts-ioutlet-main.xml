@@ -89,10 +89,7 @@
 		
 		<default-interceptor-ref name="ioutletdefaultStack" />
 
-         <action name="sidemenu" class="sg.com.ioutlet.web.common.action.IoutletMenuDisplayAction">
-            <result type="tiles">leftsidebar</result>
-        </action>
-        
+          
         
          <action name="index" class="sg.com.ioutlet.web.main.MainPageDisplayAction" method="input">
             <result name="input" type="tiles">index</result>

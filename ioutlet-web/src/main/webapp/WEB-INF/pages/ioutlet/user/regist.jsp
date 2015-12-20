@@ -74,11 +74,17 @@
 
   		
 		        
-		        <h4>User Registration
+                   
+				 <s:url id="login" namespace="/login" action="index">
+					<s:param name="sfld">true</s:param>
+			     </s:url>
+		          <p class="bg-default text-primary">Create an account
+		            <a href="<s:property value='%{login}'/>"><span class="fa fa-sign-in"></span>Login</a>
+		          </p>
 		
-		           <a href="login"><span class="fa fa-sign-in"></span>Login</a>
+		         
 		           
-			 </h4>
+		
 		     
 		 
 		 
@@ -116,10 +122,10 @@
   cssClass="form-Vertical">
    <s:include value="/WEB-INF/pages/common/formparts/common.jsp" />           
    <div class="row setup-content" id="step-1">
-      <div class="col-xs-2">
+      <div class="col-xs-2 col-lg-2">
 			          </div>
 			          
-		  <div class="col-xs-8">
+		  <div class="col-xs-6 col-lg-6">
 		  <h3> Account Info</h3>
 		                   <s:textfield
 		                        label="%{getText('user.id')}"
@@ -141,8 +147,8 @@
 		                <s:password
 		                        label="%{getText('password')}"
 		                        name="password"
-		                        placeholder="%{getText('at.least.6.characters')}"
-		                        maxLength="25"
+		                        placeholder="%{getText('character.minimum.8.case.sensitive')}"
+		                        maxLength="20"
 		                 />
 		
 		
@@ -151,25 +157,24 @@
 		                 <s:password
 		                          label="%{getText('retype.password')}"
 		                        name="retypePassword"
-		                          required = "true"
-		                            maxLength="25"
+		                          maxLength="20"
 		                       placeholder="%{getText('retype.your.password.here')}"/>
 		                        
                 
-		                <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >
+		                <button class="btn btn-info nextBtn btn-sm pull-right" type="button" >
 		                  <s:property value="%{getText('next')}"/>
 		                </button>
 			          </div>
 			          
-			          <div class="col-xs-2">
+			          <div class="col-xs-4 col-lg-4">
 			          </div>
    </div>     
             
    <div class="row setup-content" id="step-2">
-         <div class="col-xs-2">
+         <div class="col-xs-2 col-lg-2">
 			          </div>
 			          
-		  <div class="col-xs-8">
+		  <div class="col-xs-6 col-lg-6">
 		  
         
             <h3>User Information</h3>
@@ -178,7 +183,7 @@
 		                       label="%{getText('full.name')}"
 		                       name="name"
 		                       maxLength="50"
-		                       tooltip="Enter your full name here"/>
+		               />
 		                        
 		                        
 		                        
@@ -186,7 +191,7 @@
 		                        
 		                        
 		                        <s:select
-		                        tooltip="Choose your gender here"
+		                        tooltip="%{getText('choose.your.gender.here')}"
 		                        label="Gender"
 		                        list="genderMap"
 		                          name="gender"
@@ -224,38 +229,38 @@
 			                 />
 			                 
 			          
-  <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >  
+  <button class="btn btn-info nextBtn btn-sm pull-right" type="button" >  
    <s:property value="%{getText('next')}"/>
   </button>
           </div>
-          		  <div class="col-xs-2">
+          		  <div class="col-xs-4 col-lg-4">
           		  </div>
     </div>
               
 
     <div class="row setup-content" id="step-3">
-      <div class="col-xs-2">
-          		  </div>
-          <div class="col-xs-8">
+      <div class="col-xs-2 col-lg-2">
+      </div>
+       <div class="col-xs-6 col-lg-6">
             <h3> Company Information</h3>
 		         <s:textfield
 		          label="%{getText('reg.no.of.company')}"
 		                        name="regNoOfCompany"
 		                        maxLength="50"
-		                        tooltip="%{getText('enter.your.regist.no.of.company')}"/>
+		                         placeholder="%{getText('enter.your.regist.no.of.company')}"/>
 		           
 		           
 		          <s:textfield
 		          label="%{getText('name.of.company')}"
 		                        name="nameOfCompany"
 		                        maxLength="150"
-		                        tooltip="%{getText('enter.your.name.of.company')}"/>
+		                        placeholder="%{getText('enter.your.name.of.company')}"/>
 		             
 		                      <s:textfield
 		                       label="%{getText('telephone')}"
 		                       name="telephone"
 		                       maxLength="20"
-		                       tooltip="%{getText('enter.your.telephone.no.here')}"
+		                       placeholder="%{getText('enter.your.telephone.no.here')}"
 		                       
 		                       />
 		                                  
@@ -282,83 +287,84 @@
 		                      <s:textfield
 		                        label="%{getText('post.code')}"
 		                        name="postCode"
-		                        tooltip="%{getText('enter.your.post.code')}"
+		                        placeholder="%{getText('enter.your.post.code')}"
 		                       />
 		                       
-			         	             <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
+			         	             <button class="btn btn-info nextBtn btn-sm pull-right" type="button" >Next</button>
 		                
-		   </div>
-		     <div class="col-xs-2">
-          		  </div>
+		 </div>
+		  <div class="col-xs-4 col-lg-4">
+          </div>
           		  
 	</div>                     
        
        
        <div class="row setup-content" id="step-4">
-         <div class="col-xs-2">
-          		  </div>
           		  
-          <div class="col-xs-8">
+          <div class="col-xs-2 col-lg-2">
+          </div>
+       		  
+          <div class="col-xs-6 col-lg-6">
             <h3>Choose your plan</h3>
-            
-             <div class="col-xs-6">
-             
-      <table class="table">
-    <thead>
-      <tr>
-        <th>Plan</th>
-        <th>Cost</th>
-        <th colspan="2">Benifit</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Free</td>
-        <td>$0/month</td>
-        <td>free add 5 
-</td>
-<td>
-  <button class="btn btn-default" type="button" >Choose</button>
-</td>
-      </tr>
-      <tr>
-        <td>Basic</td>
-        <td>$5/mth</td>
-        <td>free add 10 product</td>
-       <td>
-  <button class="btn btn-default" type="button" >Choose</button>
-</td>
-      </tr>
-      <tr>
-        <td>Advance</td>
-        <td>$10/month</td>
-        <td>ulitmiate add product and view the product review,customer report</td>
-        <td>
-  <button class="btn btn-default" type="button" >Choose</button>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  </div>
-    <div class="col-xs-6">
-    
-    <div class="panel panel-default">
-	  <div class="panel-heading">Each plan includes:</div>
-	  <div class="panel-body">Free setup</div>
-	   <div class="panel-body">Custome reminder</div>
-	    <div class="panel-body">Email support</div>
-	</div>
-
-
-    </div>
-             <s:submit cssClass="btn btn-success btn-lg pull-right" onclick="isSubmit()" />
-    	   </div>
-    	     <div class="col-xs-2">
-          		  </div>
+           <div class="row">
+            <div class="col-xs-4 col-lg-4">
+		        <table class="table">
+				    <thead>
+				      <tr>
+				        <th>Plan</th>
+				        <th>Cost</th>
+				        <th colspan="2">Benifit</th>
+				      </tr>
+				    </thead>
+				    <tbody>
+				      <tr>
+				        <td>Free</td>
+				        <td>$0/month</td>
+				        <td>free add 5 </td>
+						<td>
+						  <button class="btn btn-default" type="button" >Choose</button>
+						</td>
+				      </tr>
+				      <tr>
+				        <td>Basic</td>
+				        <td>$5/mth</td>
+				        <td>free add 10 product</td>
+				       <td>
+						  <button class="btn btn-default" type="button" >Choose</button>
+						</td>
+				      </tr>
+				      <tr>
+				        <td>Advance</td>
+				        <td>$10/month</td>
+				        <td>ulitmiate add product and view the product review,customer report</td>
+				        <td>
+				  		<button class="btn btn-default" type="button" >Choose</button>
+						</td>
+				      </tr>
+				   </tbody>
+		  	 </table>
+		  </div>
+	      <div class="col-xs-2 col-lg-2">
+	      
+	      <p class="text-muted">This text is muted.</p>
+			  <p class="text-primary">This text is important.</p>
+			  <p class="text-success">This text indicates success.</p>
+			  <p class="text-info">This text represents some information.</p>
+			  <p class="text-warning">This text represents a warning.</p>
+			  <p class="text-danger">This text represents danger.</p>
+			  
+          </div>
+         </div> 
+         <div class="row">
+          <s:submit cssClass="btn btn-primary btn-sm pull-right" onclick="isSubmit('regist')" />
+         </div>
+     </div>
+    	 
+     <div class="col-xs-4 col-xs-4">  </div>
 	</div>                     
                
-         </s:form>
-         </div> <!--  modal body -->
+  </s:form>
+ </div>
          
            
         

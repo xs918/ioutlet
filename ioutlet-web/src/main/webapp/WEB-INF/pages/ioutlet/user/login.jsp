@@ -12,7 +12,6 @@
       </div><!-- /.login-logo -->
       <div class="login-box-body">
         <p class="login-box-msg">Sign in to start your session</p>
-        
         <s:form  theme="bootstrap" action="form" method="post">
          <s:include value="/WEB-INF/pages/common/formparts/common.jsp" />    
 		   <div class="form-group has-feedback">
@@ -23,10 +22,10 @@
     
           <div class="form-group has-feedback">
            
-            <s:password name="password" placeholder="%{getText('password')}"  maxLength="25" />
+            <s:password name="password" placeholder="%{getText('password')}"  maxLength="20" />
              <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
-          <s:submit value="%{getText('sign.in')}" cssClass="btn btn-primary btn-block btn-flat" onclick="isSubmit()" />
+          <s:submit value="%{getText('sign.in')}" cssClass="btn btn-primary btn-block btn-flat" onclick="isSubmit('form')" />
             
             
           </s:form>
@@ -36,7 +35,11 @@
         
              <s:property value="%{getText('i.forgot.my.password')}"/>
          </a><br>
-        <a href="register" class="text-center">
+        
+        <s:url id="regist" namespace="/regist" action="index">
+			<s:param name="sfld">true</s:param>
+	     </s:url>
+	   <a href="<s:property value='%{regist}'/>" class="text-center">
              <s:property value="%{getText('register.a.new.membership')}"/>
        </a>
 

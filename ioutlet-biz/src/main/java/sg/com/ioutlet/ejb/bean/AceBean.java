@@ -53,10 +53,9 @@ public class AceBean extends EjbEntityManager implements AceBridge  {
 	
 	/*----------User start---------------*/
 	@Override
-	public User getUserById(String id) {
+	public User getUserById(String userId) {
 		UserDao dao = new UserDao(em);
-		UserKey key = new UserKey(id);
-		return dao.getByKey(key);
+		return dao.getByUsrId(userId);
 		
 	}
 	@Override
@@ -78,18 +77,24 @@ public class AceBean extends EjbEntityManager implements AceBridge  {
 	@Override
 	public boolean registeUserProfile(User regUser, List<Imge> usrImgs) {
 		UserDao uDao =  new UserDao(this.getEntityManager());
-		ImgeDao iDao =  new ImgeDao(this.getEntityManager());
+		
 		uDao.create(regUser);
-		for(Imge i:usrImgs)
+		if(usrImgs!=null)
 		{
-			i.setUser(regUser);
-			iDao.create(i);
+			ImgeDao iDao =  new ImgeDao(this.getEntityManager());
+			for(Imge i:usrImgs)
+			{
+				i.setUser(regUser);
+				iDao.create(i);
+			}
 		}
 
-		BizInfoDao bDao =  new BizInfoDao(this.getEntityManager());
-		
-		bDao.create(regUser.getBizinfo());
-		
+		if(regUser.getBizinfo()!=null)
+		{
+			BizInfoDao bDao =  new BizInfoDao(this.getEntityManager());
+			
+			bDao.create(regUser.getBizinfo());
+		}
 		return true;
 	}
 

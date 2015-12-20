@@ -251,7 +251,6 @@ function isBack(formid)
 
 function isSubmit(formid)
 {
-	alert("isSubmit:"+formid);
 	document.forms[formid].elements['model.actionType'].value = 'submitAct';
 
 	

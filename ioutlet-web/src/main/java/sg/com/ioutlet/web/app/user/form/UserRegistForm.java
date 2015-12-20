@@ -79,7 +79,10 @@ public class UserRegistForm extends IoutletForm {
 		postCode = EMPTY;
 		langCode = EMPTY;
 		currLoc = EMPTY;
-
+		address1=EMPTY;
+		address2=EMPTY;
+		address3=EMPTY;
+		
 		rewardPoint = null;
 		locked = false;
 		loginFailureAttempt = 0;
@@ -104,8 +107,57 @@ public class UserRegistForm extends IoutletForm {
 	
 		
 		if (StringUtils.isBlank(userId)) {
-			as.addFieldError("userId", as.getText("username.required"));
+			as.addFieldError("userId", as.getText("user.id.is.required"));
 		}
+		
+		if (StringUtils.isBlank(emailId)) {
+			as.addFieldError("emailId", as.getText("email.is.required"));
+		}
+		else if(!isValidEmailAddress(emailId))
+		{
+			as.addFieldError("emailId", as.getText("email.is.invalid"));
+		}
+		if(StringUtils.isBlank(password))
+		{
+			as.addFieldError("password", as.getText("password.is.required"));
+		}else if(!isAcceptablePassword(password))
+		{
+			
+			as.addFieldError("password", as.getText("password.is.invalid"));
+		}
+		if(!StringUtils.equalsIgnoreCase(retypePassword, password))
+		{
+			as.addFieldError("retypePassword", as.getText("retype.password.dont.match"));
+		}
+		if(StringUtils.isBlank(name))
+		{
+			as.addFieldError("name", as.getText("full.name.is.required"));
+		}
+		
+		
+		if(StringUtils.isBlank(regNoOfCompany))
+		{
+
+			as.addFieldError("regNoOfCompany", as.getText("reg.no.of.company.is.required"));
+		}
+		
+		
+		if(StringUtils.isBlank(nameOfCompany))
+		{
+
+			as.addFieldError("nameOfCompany", as.getText("name.of.company.is.required"));
+		}
+		
+		
+		if(StringUtils.isBlank(telephone))
+		{
+
+			as.addFieldError("telephone", as.getText("telephone.no.of.company.is.required"));
+		}
+		
+	
+		
+		
 		
 		if (as.getFieldErrors().size() > 0)
 		{

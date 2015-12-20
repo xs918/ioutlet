@@ -13,7 +13,7 @@
 
 
 
-    <package name="login" namespace="/" extends="iolt-default">
+    <package name="login" namespace="/login" extends="iolt-default">
 
 
 	<!-- <default-interceptor-ref name="loggedinuser" /> -->
@@ -21,13 +21,18 @@
 	
      
         
-         <action name="login" class="sg.com.ioutlet.web.app.user.action.UserRegistIndexAction" method="input">
+         <action name="index" class="sg.com.ioutlet.web.app.user.action.UserAuthAction" method="input">
             <result name="input" type="tiles">SG.COM.IOUTLET.USER.LOGIN</result>
             </action>
         
-        <action name="form!*" class="sg.com.ioutlet.web.app.user.action.UserRegistIndexAction" method="{*}">
-            <result name="input" type="tiles">SG.COM.IOUTLET.USER.REG</result>
-            <result name="success" type="tiles">SG.COM.IOUTLET.USER.SUCCESS</result>
+        <action name="form!*" class="sg.com.ioutlet.web.app.user.action.UserAuthAction" method="{*}">
+                <result name="input" type="tiles">SG.COM.IOUTLET.USER.LOGIN</result>
+                <result name="success" type="redirect-action">
+                <param name="namespace">
+					/
+				</param>
+				<param name="actionName">index!input</param>		
+                </result>
     
     		<!-- DISPLAY PAGE -->
 			<result name="back" type="redirect-action">

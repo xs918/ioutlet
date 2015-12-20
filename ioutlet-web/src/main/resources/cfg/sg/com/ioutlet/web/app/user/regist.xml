@@ -13,7 +13,7 @@
 
 
 
-    <package name="user" namespace="/" extends="iolt-default">
+    <package name="user" namespace="/regist" extends="iolt-default">
 
 
 	<!-- <default-interceptor-ref name="loggedinuser" /> -->
@@ -25,7 +25,7 @@
 
 
         
-         <action name="register" class="sg.com.ioutlet.web.app.user.action.UserRegistIndexAction" method="input">
+         <action name="index" class="sg.com.ioutlet.web.app.user.action.UserRegistIndexAction" method="input">
             <result name="input" type="tiles">SG.COM.IOUTLET.USER.REG</result>
             <result name="success" type="tiles">SG.COM.IOUTLET.DASH.INDEX</result>
     
@@ -37,10 +37,8 @@
     
     		<!-- DISPLAY PAGE -->
 			<result name="back" type="redirect-action">
-				<param name="namespace">
-					/
-				</param>
-				<param name="actionName">register!input</param>				
+				<param name="namespace">/regist</param>
+				<param name="actionName">index!input</param>				
 			</result>
 			
 			

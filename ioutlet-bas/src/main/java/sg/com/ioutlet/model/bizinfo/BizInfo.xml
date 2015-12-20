@@ -62,7 +62,7 @@
 	  	
 		
 			<one-to-one name="user" optional="true">
-				<primary-key-join-column name="USER_UUID" referenced-column-name="UUID" />
+				<join-column name="USER_UUID" referenced-column-name="UUID" />
 			</one-to-one>
 		
 	    
