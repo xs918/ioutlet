@@ -98,8 +98,17 @@ public abstract  class IoutletDisplayAction extends CommonActionSupport {
 	}
 	
 	
+	private String userId;
 
 
+	@Override
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		 this.userId = userId;
+	}
 
 
 

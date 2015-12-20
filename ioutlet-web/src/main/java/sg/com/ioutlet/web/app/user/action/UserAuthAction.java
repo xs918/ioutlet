@@ -5,7 +5,6 @@ import sg.com.ioutlet.framework.authorization.model.IoutletFunction;
 import sg.com.ioutlet.framework.web.WebConstants;
 import sg.com.ioutlet.framework.web.form.CommonForm;
 import sg.com.ioutlet.web.app.user.form.UserAuthForm;
-import sg.com.ioutlet.web.app.user.form.UserRegistForm;
 import sg.com.ioutlet.web.app.user.handler.UserActionActionHandler;
 import sg.com.ioutlet.web.common.action.IoutletAction;
 
@@ -20,8 +19,8 @@ public class UserAuthAction extends IoutletAction{
 	protected CommonForm constructForm() {
 		return new UserAuthForm();
 	}
-	@Override
-	protected String onLoad() {
+	
+	protected String login() {
 		System.out.println("ling input");
 	   return INPUT;
 	}
@@ -40,9 +39,9 @@ public class UserAuthAction extends IoutletAction{
     		return INPUT;
     	}
 		
-	
+	    
     	this.session.put(WebConstants.LOGGED_IN_USER_INFO.toString(), loginUser);
-    	
+    	this.setUserId("xs918");
 		return SUCCESS;
 	}
 

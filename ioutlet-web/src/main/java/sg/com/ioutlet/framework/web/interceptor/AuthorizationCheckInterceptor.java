@@ -9,6 +9,9 @@ import sg.com.ioutlet.framework.authorization.model.AccessFunction;
 import sg.com.ioutlet.framework.authorization.model.AuthorizationInfo;
 import sg.com.ioutlet.framework.web.WebConstants;
 import sg.com.ioutlet.framework.web.action.awareness.AuthorizationAware;
+import sg.com.ioutlet.web.app.user.action.UserAuthAction;
+import sg.com.ioutlet.web.app.user.action.UserRegistIndexAction;
+
 import com.opensymphony.xwork2.ActionInvocation;
 
 public class AuthorizationCheckInterceptor extends CommonInterceptor {
@@ -44,6 +47,13 @@ public class AuthorizationCheckInterceptor extends CommonInterceptor {
 		logger.trace("doIntercept");
 		long start = System.currentTimeMillis();
 		Object action = actionInvocation.getAction();
+		
+		if(action instanceof UserAuthAction || action instanceof UserRegistIndexAction)
+		{
+			String result = actionInvocation.invoke();
+			return result;
+			
+		}
 		if (action instanceof AuthorizationAware)
 		{
 			
@@ -53,7 +63,7 @@ public class AuthorizationCheckInterceptor extends CommonInterceptor {
 			String functionId = aa.getFunctionId();
 			String userId = aa.getUserId();
 			
-			
+			System.out.println("domainId:"+domainId+ "functionId:"+functionId+"userId:"+userId);
 			
 			if(domainId == null || functionId == null || userId == null)
 			{

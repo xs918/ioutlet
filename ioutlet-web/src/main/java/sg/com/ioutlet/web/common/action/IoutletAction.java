@@ -24,6 +24,7 @@ public abstract class IoutletAction extends IoutletDisplayAction implements Form
 	
 	private String errorReport;
 	
+
 	
 	protected abstract CommonForm constructForm();
 

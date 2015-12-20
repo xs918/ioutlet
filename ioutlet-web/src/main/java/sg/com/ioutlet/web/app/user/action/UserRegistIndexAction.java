@@ -25,6 +25,8 @@ public class UserRegistIndexAction extends IoutletAction {
 		System.out.println("call onsubmit");
 		UserRegistForm form = (UserRegistForm) getModel();
 		UserActionActionHandler handler = new UserActionActionHandler(this);
+	
+		
 		boolean result = handler.registeUserProfile(form);
 		
 		
@@ -41,8 +43,8 @@ public class UserRegistIndexAction extends IoutletAction {
 		return SUCCESS;
 	}
 
-	@Override
-	protected String onLoad() {
+
+	protected String regist() {
 		UserRegistForm form = (UserRegistForm) getModel();
 		UserActionActionHandler handler = new UserActionActionHandler(this);
 		handler.loadDefaultValue(form);

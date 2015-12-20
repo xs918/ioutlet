@@ -261,10 +261,7 @@ public abstract class CommonActionSupport extends ActionSupport implements Autho
 	 * Authentication & Authorization
 	 */
 
-	public String getUserId()
-	{
-		return request.getRemoteUser();
-	}
+	public abstract String getUserId();
 	
 	
 
