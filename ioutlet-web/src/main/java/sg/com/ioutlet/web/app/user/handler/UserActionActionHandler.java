@@ -140,7 +140,7 @@ public class UserActionActionHandler extends  IoutletActionHandler{
 
 	public User userLogin(String userId, String password) {
 		User loginUser = aceBridge.getUserById(userId);
-		if(!loginUser.isPasswordMatch(password))
+		if(loginUser==null||!loginUser.isPasswordMatch(password))
 		{
 			return null;
 		}

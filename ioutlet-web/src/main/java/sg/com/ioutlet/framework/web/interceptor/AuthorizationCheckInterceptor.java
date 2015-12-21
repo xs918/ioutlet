@@ -9,8 +9,6 @@ import sg.com.ioutlet.framework.authorization.model.AccessFunction;
 import sg.com.ioutlet.framework.authorization.model.AuthorizationInfo;
 import sg.com.ioutlet.framework.web.WebConstants;
 import sg.com.ioutlet.framework.web.action.awareness.AuthorizationAware;
-import sg.com.ioutlet.web.app.user.action.UserAuthAction;
-import sg.com.ioutlet.web.app.user.action.UserRegistIndexAction;
 
 import com.opensymphony.xwork2.ActionInvocation;
 
@@ -22,6 +20,8 @@ public class AuthorizationCheckInterceptor extends CommonInterceptor {
 	private static final long serialVersionUID = 1L;
 
 	private static final String UNATHORIZED = "unathorized";
+	
+	private static final String LOGIN = "login";
 	
 	private static final String CHANGE_PASSWORD = "changepassword";
 
@@ -48,12 +48,7 @@ public class AuthorizationCheckInterceptor extends CommonInterceptor {
 		long start = System.currentTimeMillis();
 		Object action = actionInvocation.getAction();
 		
-		if(action instanceof UserAuthAction || action instanceof UserRegistIndexAction)
-		{
-			String result = actionInvocation.invoke();
-			return result;
-			
-		}
+
 		if (action instanceof AuthorizationAware)
 		{
 			
@@ -61,31 +56,31 @@ public class AuthorizationCheckInterceptor extends CommonInterceptor {
 			AuthorizationAware aa = (AuthorizationAware) action;
 			String domainId = aa.getDomainId();
 			String functionId = aa.getFunctionId();
-			String userId = aa.getUserId();
-			
-			System.out.println("domainId:"+domainId+ "functionId:"+functionId+"userId:"+userId);
-			
-			if(domainId == null || functionId == null || userId == null)
-			{
-				throw new SystemException("The mandatory information : domainId/functionId/userId ["+domainId+"/"+functionId+"/"+userId+"] not defined");
-			}
+				
 			
 			User userInfo = (User) getSession().get(WebConstants.LOGGED_IN_USER_INFO.toString());
+			
+			
+			if(userInfo==null)
+			{
+				return LOGIN;
+			}
+			
+			
+			
+			if(domainId == null || functionId == null)
+			{
+				throw new SystemException("The mandatory information : domainId/functionId ["+domainId+"/"+functionId+"] not defined");
+			}
+			
 		
 			Set<String> availableFunctions = (Set<String>) getSession().get(WebConstants.USER_DOMAIN_FUNCTIONS.toString()+domainId);
 			
-			if(userInfo!=null){
-				if(!userInfo.getUserId().equalsIgnoreCase(userId)){
-					
-					logger.info("The current user in the Session is different from the authenticated user from the request.Invalidating the existing session...");
-					userInfo=null; //need to reload the user
-					availableFunctions=null;//need to reload the functions
-				}
-			}
+			
 			
 			if(availableFunctions == null || availableFunctions.isEmpty()) 
 			{
-				AuthorizationInfo auth =  this.getAce().getAuthenticationInfo(userId);
+				AuthorizationInfo auth =  this.getAce().getAuthenticationInfo(userInfo.getUserId());
 				if(auth == null)
 				{
 					throw new SystemException("Can not load the Authorization Info ");
@@ -110,25 +105,9 @@ public class AuthorizationCheckInterceptor extends CommonInterceptor {
 				
 			}
 			
-			if(userInfo == null)
-			{
-				userInfo =  this.getAce().getUserById(userId);	
-				if(userInfo == null)
-			    {
-					throw new SystemException("Can not load the user:"+userId);
-			    }
-				
-				getSession().put(WebConstants.LOGGED_IN_USER_INFO.toString(), userInfo);
-				
-			}
 			
-			if(getSession().get(WebConstants.RELOAD_USER) != null)
-			{
-				
-				userInfo =  this.getAce().getUserById(userId);		
-				getSession().put(WebConstants.LOGGED_IN_USER_INFO.toString(), userInfo);
-				getSession().remove(WebConstants.RELOAD_USER);
-			}
+			
+			
 			if(!availableFunctions.contains(functionId) && !availableFunctions.contains("*") )
 			  	return UNATHORIZED;
 			
@@ -139,7 +118,7 @@ public class AuthorizationCheckInterceptor extends CommonInterceptor {
                    return CHANGE_PASSWORD;
              }
 
-			String result;
+			String result=null;
 			
 			result = actionInvocation.invoke();
 			return result;

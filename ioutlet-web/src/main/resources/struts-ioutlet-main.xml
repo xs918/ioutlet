@@ -51,7 +51,7 @@
 		</interceptor>
 		
 		
-		<interceptor-stack name="security-required">
+		<interceptor-stack name="loggedinuser">
 				<interceptor-ref name="authorization-check" />
 		</interceptor-stack>
 			
@@ -79,7 +79,6 @@
 		<interceptor-stack name="ioutletdefaultStack">
 			<interceptor-ref name="defaultStack" />
 			<interceptor-ref name="form-required" />
-		<interceptor-ref name="security-required" /> 
 		<!-- 	<interceptor-ref name="framework-required" /> -->
 		</interceptor-stack>
 
@@ -90,8 +89,76 @@
 		<default-interceptor-ref name="ioutletdefaultStack" />
 
           
+          
+         <global-results>
+			<result name="error" type="tiles">COMMON.ERROR</result>
+			<result name="invalid.token" type="tiles">
+				COMMON.ERROR
+			</result>
+			<result name="invalid.input" type="tiles">
+				COMMON.ERROR
+			</result>
+			<result name="dirty.request" type="tiles">
+				COMMON.ERROR
+			</result>
+			<result name="unathorized">
+				<param name="location">/errors/403.jsp</param>
+			</result>
+			<result name="eoprunning">
+				<param name="location">/errors/batch.jsp</param>
+			</result>
+			<result name="un.supported.chars">
+				<param name="location">
+					/errors/specialcharacter.jsp
+				</param>
+			</result>
+
+			
+            <result name="login" type="redirect-action">
+				<param name="namespace">/login</param>
+				<param name="actionName">index</param>
+			</result>
+
+
+
+			<result name="changepassword" type="redirect">
+				<param name="location">/changepassword.jsp</param>
+			</result>
+
+			<result name="dynamic" type="redirect-action">
+				<param name="action">
+					${#session.dynamic_result_action}
+				</param>
+				<param name="namespace">
+					${#session.dynamic_result_namespace}
+				</param>
+			</result>
+			<result name="dynamic_back" type="redirect-action">
+				<param name="action">
+					${#session.dynamic_back_action}
+				</param>
+				<param name="namespace">
+					${#session.dynamic_back_namespace}
+				</param>
+			</result>
+
+			<!-- Added by Hee Kian @ 04/08/2008, configure the report viewer -->
+			<result name="displayreport" type="redirect-action">
+				<param name="namespace">/reportviewer</param>
+				<param name="actionName">index</param>
+			</result>
+
+			<!-- added by Wunna, wait page for wait and execute interceptor -->
+			<result name="wait">
+				/WEB-INF/pages/common/workflow/wait.jsp
+			</result>
+
+		</global-results>
+		
+		
         
          <action name="index" class="sg.com.ioutlet.web.main.MainPageDisplayAction" method="input">
+           <interceptor-ref name="loggedinuser" />
             <result name="input" type="tiles">index</result>
         </action>
 

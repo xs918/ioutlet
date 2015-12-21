@@ -1,5 +1,6 @@
 package sg.com.ioutlet.framework.authorization.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
@@ -10,7 +11,12 @@ import sg.com.ioutlet.ace.user.User;
 import sg.com.ioutlet.bas.SystemException;
 import sg.com.ioutlet.common.logging.LogHelper;
 
-public class AuthorizationInfo {
+public class AuthorizationInfo   implements Serializable {/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5291991280711766718L;
+
+
 	protected LogHelper logger = LogHelper.getInstance(getClass().getName());
 	private DomainAccess domains;
 	private User user;

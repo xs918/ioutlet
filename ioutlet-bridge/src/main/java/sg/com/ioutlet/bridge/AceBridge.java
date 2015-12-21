@@ -22,8 +22,8 @@ public interface AceBridge
 	public boolean login(String userId, String password, String requestIp, String requestId, String functionId, String domainId, String sessionId);
 
 
-	public List<Function> getFunctionsByUserProfile(
-			String loginUserId, TransactionInfo transactionInfo);
+//	public List<Function> getFunctionsByUserProfile(
+//			String loginUserId, TransactionInfo transactionInfo);
 	public User getUserProfileById(String userid,TransactionInfo ti);
 	public List<Role> getAllRoles();
 	public Role getRoleById(String id);
@@ -48,8 +48,8 @@ public interface AceBridge
 	void deleteUser(String userId);
 
 
-	public Map<String, AccessFunction> getFunctionAccess(String domainId);
-
+//	public Map<String, AccessFunction> getFunctionAccess(String domainId);
+//
 
 	public AuthorizationInfo getAuthenticationInfo(String userId);
 

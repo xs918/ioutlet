@@ -16,14 +16,6 @@
     <package name="user" namespace="/regist" extends="iolt-default">
 
 
-	<!-- <default-interceptor-ref name="loggedinuser" /> -->
-	
-	
-        <result-types>
-            <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult"/>
-        </result-types>
-
-
         
          <action name="index" class="sg.com.ioutlet.web.app.user.action.UserRegistIndexAction" method="input">
             <result name="input" type="tiles">SG.COM.IOUTLET.USER.REG</result>

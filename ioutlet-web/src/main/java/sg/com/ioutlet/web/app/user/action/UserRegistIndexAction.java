@@ -43,8 +43,8 @@ public class UserRegistIndexAction extends IoutletAction {
 		return SUCCESS;
 	}
 
-
-	protected String regist() {
+	@Override
+	protected String onLoad() {
 		UserRegistForm form = (UserRegistForm) getModel();
 		UserActionActionHandler handler = new UserActionActionHandler(this);
 		handler.loadDefaultValue(form);
@@ -68,4 +68,6 @@ public class UserRegistIndexAction extends IoutletAction {
 	{
 		return getText("register u account here");
 	}
+
+
 }

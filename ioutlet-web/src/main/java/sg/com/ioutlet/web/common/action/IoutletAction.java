@@ -8,7 +8,7 @@ import sg.com.ioutlet.framework.web.action.awareness.ReturnPathAware;
 import sg.com.ioutlet.framework.web.form.CommonForm;
 import sg.com.ioutlet.web.common.message.GlobalMessages;
 
-public abstract class IoutletAction extends IoutletDisplayAction implements FormAware, ReturnPathAware {
+public abstract class IoutletAction extends IoutletDisplayAction implements  FormAware, ReturnPathAware {
 
 	/**
 	 * 

@@ -38,6 +38,7 @@ public abstract class CommonInterceptor extends MethodFilterInterceptor
 	protected Map<String, Object> getSession()
 	{
 		return ActionContext.getContext().getSession();
+		
 	}
 	public AceBridge getAce() {
 		return IoutletBridgerLookup.lookupAceBridge();

@@ -4,6 +4,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -30,7 +31,7 @@ import sg.com.ioutlet.web.common.action.AccessController;
 import com.opensymphony.xwork2.ActionSupport;
 
 
-public abstract class CommonActionSupport extends ActionSupport implements AuthorizationAware, SubmitValidationAware, ApplicationAware, SessionAware, ServletRequestAware, ParameterAware {
+public abstract class CommonActionSupport extends ActionSupport implements SubmitValidationAware, ApplicationAware, SessionAware, ServletRequestAware, ParameterAware {
 	/**
 	 * 
 	 */
@@ -72,7 +73,6 @@ public abstract class CommonActionSupport extends ActionSupport implements Autho
 	}
 	protected void doInit()
 	{
-		
 	}
 	
 	
@@ -256,16 +256,6 @@ public abstract class CommonActionSupport extends ActionSupport implements Autho
 			return null;
 		}
 	}
-
-	/**
-	 * Authentication & Authorization
-	 */
-
-	public abstract String getUserId();
-	
-	
-
-
 
 
 	public abstract String getDomainId();

@@ -4,7 +4,6 @@ import java.util.List;
 
 import sg.com.ioutlet.framework.authorization.model.IoutletFunction;
 import sg.com.ioutlet.framework.web.form.CommonForm;
-import sg.com.ioutlet.model.product.Product;
 import sg.com.ioutlet.web.app.product.form.ProductForm;
 import sg.com.ioutlet.web.app.product.handler.ProductActionHandler;
 import sg.com.ioutlet.web.common.action.IoutletAction;

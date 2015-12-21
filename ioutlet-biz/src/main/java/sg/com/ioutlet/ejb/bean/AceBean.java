@@ -1,6 +1,7 @@
 package sg.com.ioutlet.ejb.bean;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -263,21 +264,33 @@ public class AceBean extends EjbEntityManager implements AceBridge  {
 		
 		
 	}
-	@Override
-	public List<Function> getFunctionsByUserProfile(String loginUserId,
-			TransactionInfo transactionInfo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public Map<String, AccessFunction> getFunctionAccess(String domainId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	@Override
+//	public List<Function> getFunctionsByUserProfile(String loginUserId,
+//			TransactionInfo transactionInfo) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//	@Override
+//	public Map<String, AccessFunction> getFunctionAccess(String domainId) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 	@Override
 	public AuthorizationInfo getAuthenticationInfo(String userId) {
-		// TODO Auto-generated method stub
-		return null;
+		AuthorizationInfo auth = new AuthorizationInfo();
+		UserDao dao = new UserDao(this.getEntityManager());
+		User loginUser=dao.getByUsrId(userId);
+		auth.setUser(loginUser);
+		
+		Map<String,Map<String, AccessFunction>> accessFunMap = new 	HashMap<String,Map<String, AccessFunction>>();
+		
+		Map<String, AccessFunction> accessFunction = new HashMap<String, AccessFunction>();
+		
+		accessFunction.put("*",  new Function());
+		accessFunMap.put("IOLT", accessFunction);
+		auth.setAccessibleFunctions(accessFunMap);
+		
+		return auth;
 	}
 
 

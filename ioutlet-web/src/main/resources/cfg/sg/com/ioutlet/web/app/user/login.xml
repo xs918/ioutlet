@@ -16,11 +16,6 @@
     <package name="login" namespace="/login" extends="iolt-default">
 
 
-	<!-- <default-interceptor-ref name="loggedinuser" /> -->
-	
-	
-     
-        
          <action name="index" class="sg.com.ioutlet.web.app.user.action.UserAuthAction" method="input">
             <result name="input" type="tiles">SG.COM.IOUTLET.USER.LOGIN</result>
             </action>

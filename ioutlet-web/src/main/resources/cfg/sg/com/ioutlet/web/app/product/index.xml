@@ -13,14 +13,8 @@
     <package name="product" namespace="/product" extends="iolt-default">
 
 
-	<!-- <default-interceptor-ref name="loggedinuser" /> -->
+	  <default-interceptor-ref name="loggedinuser" />
 	
-	
-        <result-types>
-            <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult"/>
-        </result-types>
-
-
         
          <action name="index" class="sg.com.ioutlet.web.app.product.action.ProductIndexAction" method="input">
             <result name="input" type="tiles">SG.COM.IOUTLET.PRODUCT.INDEX</result>

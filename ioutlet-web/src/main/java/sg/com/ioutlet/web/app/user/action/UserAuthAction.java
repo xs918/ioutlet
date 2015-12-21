@@ -19,8 +19,8 @@ public class UserAuthAction extends IoutletAction{
 	protected CommonForm constructForm() {
 		return new UserAuthForm();
 	}
-	
-	protected String login() {
+	@Override
+	protected String onLoad() {
 		System.out.println("ling input");
 	   return INPUT;
 	}
@@ -41,8 +41,7 @@ public class UserAuthAction extends IoutletAction{
 		
 	    
     	this.session.put(WebConstants.LOGGED_IN_USER_INFO.toString(), loginUser);
-    	this.setUserId("xs918");
-		return SUCCESS;
+   		return SUCCESS;
 	}
 
 	@Override

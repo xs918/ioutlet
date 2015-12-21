@@ -10,11 +10,12 @@ import java.util.Set;
 
 import sg.com.ioutlet.framework.authorization.model.IoutletFunction;
 import sg.com.ioutlet.framework.web.action.CommonActionSupport;
+import sg.com.ioutlet.framework.web.action.awareness.AuthorizationAware;
 import sg.com.ioutlet.web.main.menu.MenuFactory;
 import sg.com.ioutlet.web.main.menu.MenuGroup;
 import sg.com.ioutlet.web.main.menu.MenuLink;
 
-public abstract  class IoutletDisplayAction extends CommonActionSupport {
+public abstract  class IoutletDisplayAction extends CommonActionSupport  implements AuthorizationAware  {
 
 	/**
 	 * 
@@ -98,22 +99,7 @@ public abstract  class IoutletDisplayAction extends CommonActionSupport {
 	}
 	
 	
-	private String userId;
-
-
-	@Override
-	public String getUserId() {
-		return userId;
-	}
-
-	public void setUserId(String userId) {
-		 this.userId = userId;
-	}
-
-
-
-
-
+	
 	@Override
 	public String getDomainId() {
 		return DOMAIN_ID;
