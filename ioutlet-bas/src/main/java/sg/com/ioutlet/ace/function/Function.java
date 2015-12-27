@@ -2,16 +2,15 @@
 package sg.com.ioutlet.ace.function;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import sg.com.ioutlet.ace.domain.Domain;
 import sg.com.ioutlet.ace.functionaccess.FunctionAccess;
 import sg.com.ioutlet.bas.CommonPojo;
 import sg.com.ioutlet.bas.CommonPojoKey;
-import sg.com.ioutlet.framework.authorization.model.AccessFunction;
+import sg.com.ioutlet.framework.authorization.model.IoltFunction;
 
-public class Function   extends CommonPojo implements AccessFunction
+public class Function   extends CommonPojo 
 {
 
 	/**
@@ -23,9 +22,11 @@ public class Function   extends CommonPojo implements AccessFunction
 
 	private FunctionKey key;
 	
-	private String id;
+	private IoltFunction id;
 
 	
+
+
 	private String name;
 
 	
@@ -41,16 +42,22 @@ public class Function   extends CommonPojo implements AccessFunction
 	private Domain domain;
 
 
+	private List<FunctionAccess> accessFunctions;
+
+	public Function(FunctionKey key)
+	{
+		this.key=key;
+	}
 	
-	private Collection<FunctionAccess> functionAccesses;
-	
-	
-	
+	public Function()
+	{
+		
+	}
 	public enum Field {
 		key,
-        id(200),
-        name(100),
-		description(100),
+        id(100),
+        name(200),
+		description(255),
 		action(255),
 		namespace(255),
 		domain;
@@ -74,16 +81,6 @@ public class Function   extends CommonPojo implements AccessFunction
 	}
 	
 	
-
-	public String getId()
-	{
-		return id;
-	}
-
-	public void setId(String id)
-	{
-		this.id = id;
-	}
 
 	public String getName()
 	{
@@ -139,16 +136,6 @@ public class Function   extends CommonPojo implements AccessFunction
 	}
 
 	
-	public Collection<FunctionAccess> getFunctionAccesses()
-	{
-		return functionAccesses;
-	}
-
-	public void setFunctionAccesses(Collection<FunctionAccess> functionAccesses)
-	{
-		this.functionAccesses = functionAccesses;
-	}
-
 
 	
 	public String getRecordReference()
@@ -196,8 +183,19 @@ public class Function   extends CommonPojo implements AccessFunction
 		
 	}
 
-	@Override
-	public String getUuid() {
-		 return key.getUuid();
+	public List<FunctionAccess> getAccessFunctions() {
+		return accessFunctions;
+	}
+
+	public void setAccessFunctions(List<FunctionAccess> accessFunctions) {
+		this.accessFunctions = accessFunctions;
+	}
+
+	public IoltFunction getId() {
+		return id;
+	}
+
+	public void setId(IoltFunction id) {
+		this.id = id;
 	}
 }

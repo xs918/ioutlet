@@ -8,9 +8,11 @@ import sg.com.ioutlet.ace.function.Function;
 import sg.com.ioutlet.ace.role.Role;
 import sg.com.ioutlet.bas.CommonPojo;
 import sg.com.ioutlet.bas.CommonPojoKey;
+import sg.com.ioutlet.framework.authorization.model.AccessFunction;
+import sg.com.ioutlet.framework.authorization.model.IoltFunction;
 
 
-public class FunctionAccess  extends CommonPojo
+public class FunctionAccess  extends CommonPojo implements AccessFunction
 {
 	/**
 	 * 
@@ -22,12 +24,25 @@ public class FunctionAccess  extends CommonPojo
 	private Function function;
 
 	private Role role;
+	
+	private int maxLimit;
 
+	public FunctionAccess(FunctionAccessKey key)
+	{
+		this.key =key;
+	}
+	
+	public FunctionAccess()
+	{
+		
+	}
+	
+	
 	public Function getFunction()
 	{
 		return function;
 	}
-	public String getFunctionId()
+	public IoltFunction getFunctionId()
 	{
 		if(function != null)
 			return function.getId();
@@ -103,4 +118,42 @@ public class FunctionAccess  extends CommonPojo
 		
 		
 	}
+	public int getMaxLimit() {
+		return maxLimit;
+	}
+	public void setMaxLimit(int maxLimit) {
+		this.maxLimit = maxLimit;
+	}
+	@Override
+	public String getUuid() {
+		if(function != null)
+			return function.getKey().getUuid();
+		return null;
+		
+	}
+	@Override
+	public String getId() {
+		return this.getFunctionId().toString();
+	}
+	@Override
+	public String getName() {
+		if(function != null)
+			return function.getName();
+		return null;
+		
+		
+	}
+	@Override
+	public String getNamespace() {
+		if(function != null)
+			return function.getNamespace();
+		return null;
+	}
+	@Override
+	public String getAction() {
+		if(function != null)
+			return function.getAction();
+		return null;
+	}
+
 }

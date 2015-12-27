@@ -3,8 +3,13 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <html>
 
+<s:url id="index" namespace="/" action="index">
+			<s:param name="sfld">true</s:param>
+</s:url>
+	     
+	     
         <!-- Logo -->
-        <a href="index2.html" class="logo">
+        <a href="<s:property value='%{index}'/>" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini"><b>O</b>LT</span>
           <!-- logo for regular state and mobile devices -->

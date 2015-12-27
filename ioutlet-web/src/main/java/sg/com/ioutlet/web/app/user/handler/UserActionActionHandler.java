@@ -2,10 +2,14 @@ package sg.com.ioutlet.web.app.user.handler;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.io.FilenameUtils;
 
+import sg.com.ioutlet.ace.functionaccess.FunctionAccess;
+import sg.com.ioutlet.ace.role.Role;
 import sg.com.ioutlet.ace.user.User;
 import sg.com.ioutlet.framework.web.common.OssUtils;
 import sg.com.ioutlet.model.bizinfo.BizInfo;
@@ -29,7 +33,14 @@ public class UserActionActionHandler extends  IoutletActionHandler{
 		form.setGenderMap(this.getGenderMap());
 		form.setLocMap(this.getLocMap());
 		
+		Map<Role,List<FunctionAccess>> funAceMap = this.getAllRolesWithFunction();
+		
+		
+		form.setAllRoleFunctionAccessMap(funAceMap);
+		form.setRoles(new ArrayList<Role>(funAceMap.keySet()));
 	}
+
+
 
 	public void createUserObject(UserRegistForm form)
 	{

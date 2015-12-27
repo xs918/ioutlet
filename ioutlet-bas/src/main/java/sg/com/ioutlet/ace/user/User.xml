@@ -105,6 +105,11 @@
 				<column name="LAST_LOCKED_TIME" nullable="true" />
 			</basic>
 
+	  	 <many-to-one name="role" optional="false">
+				<join-column name="ROLE_UUID" referenced-column-name="UUID"
+					insertable="true" updatable="true" />
+		</many-to-one>
+			
 		<one-to-many name="userImg" mapped-by="user">
 				<cascade>
 					<cascade-merge />
@@ -112,6 +117,8 @@
 				</cascade>
 		</one-to-many>
 	  	<one-to-one name="bizinfo" mapped-by="user" />
+
+			
 		</attributes>
 	</entity>
 	<embeddable class="sg.com.ioutlet.ace.user.UserKey"

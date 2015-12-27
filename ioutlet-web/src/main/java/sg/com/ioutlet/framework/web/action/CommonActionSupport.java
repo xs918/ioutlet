@@ -4,7 +4,6 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -22,8 +21,7 @@ import sg.com.ioutlet.bas.DateUtil;
 import sg.com.ioutlet.common.logging.LogHelper;
 import sg.com.ioutlet.exception.BusinessException;
 import sg.com.ioutlet.exception.BusinessMultipleException;
-import sg.com.ioutlet.framework.authorization.model.IoutletFunction;
-import sg.com.ioutlet.framework.web.action.awareness.AuthorizationAware;
+import sg.com.ioutlet.framework.authorization.model.IoltFunction;
 import sg.com.ioutlet.framework.web.action.awareness.SubmitValidationAware;
 import sg.com.ioutlet.util.NumberUtil;
 import sg.com.ioutlet.web.common.action.AccessController;
@@ -262,16 +260,16 @@ public abstract class CommonActionSupport extends ActionSupport implements Submi
 
 	public abstract String getFunctionId();
 
-	protected Set<IoutletFunction> availableFunctionIds;
+	protected Set<IoltFunction> availableFunctionIds;
 
 	protected AccessController accessControl;
 
-	public Set<IoutletFunction> getAvailableFunctionIds()
+	public Set<IoltFunction> getAvailableFunctionIds()
 	{
 		return this.availableFunctionIds;
 	}
 
-	public void setAvailableFunctionIds(Set<IoutletFunction> availableFunctionIds)
+	public void setAvailableFunctionIds(Set<IoltFunction> availableFunctionIds)
 	{
 		this.availableFunctionIds = availableFunctionIds;
 	}

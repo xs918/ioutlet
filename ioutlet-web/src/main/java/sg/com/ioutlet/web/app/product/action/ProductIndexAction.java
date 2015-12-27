@@ -2,7 +2,7 @@ package sg.com.ioutlet.web.app.product.action;
 
 import java.util.List;
 
-import sg.com.ioutlet.framework.authorization.model.IoutletFunction;
+import sg.com.ioutlet.framework.authorization.model.IoltFunction;
 import sg.com.ioutlet.framework.web.form.CommonForm;
 import sg.com.ioutlet.web.app.product.form.ProductForm;
 import sg.com.ioutlet.web.app.product.handler.ProductActionHandler;
@@ -27,7 +27,7 @@ public class ProductIndexAction extends IoutletAction{
 
 	@Override
 	public String getFunctionId() {
-		return IoutletFunction.IOLT_PRODUCTS.toString();
+		return IoltFunction.IOLT_PRODUCTS.toString();
 	}
 
 

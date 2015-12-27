@@ -78,8 +78,10 @@
 	
 		<interceptor-stack name="ioutletdefaultStack">
 			<interceptor-ref name="defaultStack" />
+			<interceptor-ref name="loggedinuser" />
 			<interceptor-ref name="form-required" />
-		<!-- 	<interceptor-ref name="framework-required" /> -->
+		    <interceptor-ref name="transaction-control" />
+	        <interceptor-ref name="uncatch-biz-exception" />
 		</interceptor-stack>
 
 
@@ -158,7 +160,6 @@
 		
         
          <action name="index" class="sg.com.ioutlet.web.main.MainPageDisplayAction" method="input">
-           <interceptor-ref name="loggedinuser" />
             <result name="input" type="tiles">index</result>
         </action>
 

@@ -131,6 +131,11 @@
 	<version>OTS-2.0.4</version>
 </dependency>
         
+        <dependency>
+	<groupId>org.apache.struts</groupId>
+	<artifactId>struts2-dojo-plugin</artifactId>
+	<version>2.3.24.1</version>
+</dependency>
         
         
         

@@ -1,11 +1,10 @@
 package sg.com.ioutlet.ace.role;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import sg.com.ioutlet.ace.functionaccess.FunctionAccess;
-import sg.com.ioutlet.ace.plan.Plan;
 import sg.com.ioutlet.bas.CommonPojo;
 import sg.com.ioutlet.bas.CommonPojoKey;
 
@@ -20,16 +19,12 @@ public class Role extends CommonPojo  {
 	private static final long serialVersionUID = 1L;
 	public static final String ENTITY_NAME = "Role";
 	private RoleKey key;
-	private Date endDate;
 	private String name;
-	private Date startDate;
 	private String description;
-	
-	private List<Plan> plans;
-	
-	private List<FunctionAccess> functionAccesses;
-	
+	private BigDecimal price;
+	private List<FunctionAccess> accessFunctions;
 
+	
 	public Role() {
 
 		this.key = new RoleKey();
@@ -65,8 +60,6 @@ public class Role extends CommonPojo  {
 		List<Object[]> fields = new ArrayList<Object[]>();
 		fields.add(new Object[] { Field.name.name(), name });
 		fields.add(new Object[] { Field.description.name(), description });
-		fields.add(new Object[] { Field.startDate.name(), startDate });
-		fields.add(new Object[] { Field.endDate.name(), endDate });
 		return fields;
 
 	}
@@ -77,9 +70,7 @@ public class Role extends CommonPojo  {
 
 		this.name = (String) objects[i++];
 		this.description = (String) objects[i++];
-		this.startDate = (Date) objects[i++];
-		this.endDate = (Date) objects[i++];
-
+	
 	}
 
 	public String getDescription() {
@@ -90,28 +81,13 @@ public class Role extends CommonPojo  {
 		this.description = description;
 	}
 
-	public Date getEndDate() {
-		return this.endDate;
-	}
-
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
-	}
-
+	
 	public String getName() {
 		return this.name;
 	}
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public Date getStartDate() {
-		return this.startDate;
-	}
-
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
 	}
 
 	
@@ -137,20 +113,24 @@ public class Role extends CommonPojo  {
 		
 	}
 
-	public List<Plan> getPlans() {
-		return plans;
+	
+	
+
+
+	public BigDecimal getPrice() {
+		return price;
 	}
 
-	public void setPlans(List<Plan> plans) {
-		this.plans = plans;
+	public void setPrice(BigDecimal price) {
+		this.price = price;
 	}
 
-	public List<FunctionAccess> getFunctionAccesses() {
-		return functionAccesses;
+	public List<FunctionAccess> getAccessFunctions() {
+		return accessFunctions;
 	}
 
-	public void setFunctionAccesses(List<FunctionAccess> functionAccesses) {
-		this.functionAccesses = functionAccesses;
+	public void setAccessFunctions(List<FunctionAccess> accessFunctions) {
+		this.accessFunctions = accessFunctions;
 	}
 
 

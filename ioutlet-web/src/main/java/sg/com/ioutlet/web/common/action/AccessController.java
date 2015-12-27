@@ -2,86 +2,86 @@ package  sg.com.ioutlet.web.common.action;
 
 import java.util.Set;
 
-import sg.com.ioutlet.framework.authorization.model.IoutletFunction;
+import sg.com.ioutlet.framework.authorization.model.IoltFunction;
 
 public class AccessController {
-	private Set<IoutletFunction> accessFunctionIds;
+	private Set<IoltFunction> accessFunctionIds;
 
-	public AccessController(Set<IoutletFunction> accessFunctionIds)
+	public AccessController(Set<IoltFunction> accessFunctionIds)
 	{
 		this.accessFunctionIds = accessFunctionIds;
 	}
 
 	public boolean getDashBoardAccess()
 	{
-		if (accessFunctionIds.contains(IoutletFunction.ALL_FUNC)) return true;
-		return accessFunctionIds.contains(IoutletFunction.IOLT_DASH_BOARD);
+		if (accessFunctionIds.contains(IoltFunction.ALL_FUNC)) return true;
+		return accessFunctionIds.contains(IoltFunction.IOLT_DASH_BOARD);
 	}
 
 	
 	
 	public boolean getProductsAccess()
 	{
-		if (accessFunctionIds.contains(IoutletFunction.ALL_FUNC)) return true;
-		return accessFunctionIds.contains(IoutletFunction.IOLT_PRODUCTS);
+		if (accessFunctionIds.contains(IoltFunction.ALL_FUNC)) return true;
+		return accessFunctionIds.contains(IoltFunction.IOLT_PRODUCTS);
 	}
 
 
 	public boolean getOrdersAccess()
 	{
-		if (accessFunctionIds.contains(IoutletFunction.ALL_FUNC)) return true;
-		return accessFunctionIds.contains(IoutletFunction.IOLT_ORDERS);
+		if (accessFunctionIds.contains(IoltFunction.ALL_FUNC)) return true;
+		return accessFunctionIds.contains(IoltFunction.IOLT_ORDERS);
 	}
 
 
 	public boolean getPaymentsAccess()
 	{
-		if (accessFunctionIds.contains(IoutletFunction.ALL_FUNC)) return true;
-		return accessFunctionIds.contains(IoutletFunction.IOLT_PAYMENTS);
+		if (accessFunctionIds.contains(IoltFunction.ALL_FUNC)) return true;
+		return accessFunctionIds.contains(IoltFunction.IOLT_PAYMENTS);
 	}
 
 
 	public boolean getCustomersAccess()
 	{
-		if (accessFunctionIds.contains(IoutletFunction.ALL_FUNC)) return true;
-		return accessFunctionIds.contains(IoutletFunction.IOLT_CUSTOMERS);
+		if (accessFunctionIds.contains(IoltFunction.ALL_FUNC)) return true;
+		return accessFunctionIds.contains(IoltFunction.IOLT_CUSTOMERS);
 	}
 
 	public boolean getIOutletsAccess()
 	{
-		if (accessFunctionIds.contains(IoutletFunction.ALL_FUNC)) return true;
-		return accessFunctionIds.contains(IoutletFunction.IOLT_OUTLETS);
+		if (accessFunctionIds.contains(IoltFunction.ALL_FUNC)) return true;
+		return accessFunctionIds.contains(IoltFunction.IOLT_OUTLETS);
 	}
 
 	public boolean getSalesChartsAccess() {
-		if (accessFunctionIds.contains(IoutletFunction.ALL_FUNC)) return true;
-		return accessFunctionIds.contains(IoutletFunction.IOLT_SALES_CHART);
+		if (accessFunctionIds.contains(IoltFunction.ALL_FUNC)) return true;
+		return accessFunctionIds.contains(IoltFunction.IOLT_SALES_CHART);
 	}
 
 	public boolean getCustomerChartsAccess() {
-		if (accessFunctionIds.contains(IoutletFunction.ALL_FUNC)) return true;
-		return accessFunctionIds.contains(IoutletFunction.IOLT_CUST_CHART);
+		if (accessFunctionIds.contains(IoltFunction.ALL_FUNC)) return true;
+		return accessFunctionIds.contains(IoltFunction.IOLT_CUST_CHART);
 	
 	}
 
 	public boolean getCollectionAccess() {
-		if (accessFunctionIds.contains(IoutletFunction.ALL_FUNC)) return true;
-		return accessFunctionIds.contains(IoutletFunction.IOLT_COLLECTIONS);
+		if (accessFunctionIds.contains(IoltFunction.ALL_FUNC)) return true;
+		return accessFunctionIds.contains(IoltFunction.IOLT_COLLECTIONS);
 	}
 
 	public boolean getDiscountsAccess() {
-		if (accessFunctionIds.contains(IoutletFunction.ALL_FUNC)) return true;
-		return accessFunctionIds.contains(IoutletFunction.IOLT_DISCOUNTS);
+		if (accessFunctionIds.contains(IoltFunction.ALL_FUNC)) return true;
+		return accessFunctionIds.contains(IoltFunction.IOLT_DISCOUNTS);
 	}
 
 	public boolean getStaffAccess() {
-		if (accessFunctionIds.contains(IoutletFunction.ALL_FUNC)) return true;
-		return accessFunctionIds.contains(IoutletFunction.IOLT_STAFF);
+		if (accessFunctionIds.contains(IoltFunction.ALL_FUNC)) return true;
+		return accessFunctionIds.contains(IoltFunction.IOLT_STAFF);
 	}
 
 	public boolean getOutletAccess() {
-		if (accessFunctionIds.contains(IoutletFunction.ALL_FUNC)) return true;
-		return accessFunctionIds.contains(IoutletFunction.IOLT_OUTLETS);
+		if (accessFunctionIds.contains(IoltFunction.ALL_FUNC)) return true;
+		return accessFunctionIds.contains(IoltFunction.IOLT_OUTLETS);
 	}
 
      

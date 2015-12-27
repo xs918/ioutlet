@@ -13,7 +13,6 @@
     <package name="product" namespace="/product" extends="iolt-default">
 
 
-	  <default-interceptor-ref name="loggedinuser" />
 	
         
          <action name="index" class="sg.com.ioutlet.web.app.product.action.ProductIndexAction" method="input">

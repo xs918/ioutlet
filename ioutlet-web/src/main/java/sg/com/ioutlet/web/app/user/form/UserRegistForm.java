@@ -3,11 +3,14 @@ package sg.com.ioutlet.web.app.user.form;
 import java.io.File;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 
+import sg.com.ioutlet.ace.functionaccess.FunctionAccess;
+import sg.com.ioutlet.ace.role.Role;
 import sg.com.ioutlet.ace.user.User;
 import sg.com.ioutlet.bas.Gender;
 import sg.com.ioutlet.model.img.Imge;
@@ -48,10 +51,12 @@ public class UserRegistForm extends IoutletForm {
 	
 	private User regUser;
 	
+	private List<Role> roles;
+	
 	private Map<String,String> langMap;
 	private Map<String,String> locMap;
 	private Map<String,String> genderMap;
-	
+    private  Map<Role,List<FunctionAccess>> allRoleFunctionAccessMap=new HashMap<Role,List<FunctionAccess>>();
 	
 	
 	private String[] userImgFilesFileName;
@@ -59,6 +64,11 @@ public class UserRegistForm extends IoutletForm {
 	private String[] userImgFilesContentType;
 	
 	private File[] userImgFiles;
+	
+	public List<FunctionAccess> getFunctionAccess(Role role)
+	{
+		return allRoleFunctionAccessMap.get(role);
+	}
 	
 	
 	
@@ -445,6 +455,22 @@ public class UserRegistForm extends IoutletForm {
 
 	public void setUserImgFilesContentType(String[] userImgFilesContentType) {
 		this.userImgFilesContentType = userImgFilesContentType;
+	}
+
+	public List<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
+	}
+
+	public Map<Role,List<FunctionAccess>> getAllRoleFunctionAccessMap() {
+		return allRoleFunctionAccessMap;
+	}
+
+	public void setAllRoleFunctionAccessMap(Map<Role,List<FunctionAccess>> allRoleFunctionAccessMap) {
+		this.allRoleFunctionAccessMap = allRoleFunctionAccessMap;
 	}
 
 	

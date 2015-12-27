@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import sg.com.ioutlet.ace.function.Function;
+import sg.com.ioutlet.ace.functionaccess.FunctionAccess;
 import sg.com.ioutlet.ace.role.Role;
 import sg.com.ioutlet.ace.user.User;
 import sg.com.ioutlet.framework.authorization.model.AccessFunction;
@@ -26,6 +27,7 @@ public interface AceBridge
 //			String loginUserId, TransactionInfo transactionInfo);
 	public User getUserProfileById(String userid,TransactionInfo ti);
 	public List<Role> getAllRoles();
+	public Map<Role,List<FunctionAccess>> getAllRolesWithFunction();
 	public Role getRoleById(String id);
 	public User getUserById(String id);
 	public List<User> getAllUsers();
@@ -52,6 +54,9 @@ public interface AceBridge
 //
 
 	public AuthorizationInfo getAuthenticationInfo(String userId);
+
+
+	
 
 
 }

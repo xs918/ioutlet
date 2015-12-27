@@ -1,6 +1,6 @@
 package sg.com.ioutlet.web.main;
 
-import sg.com.ioutlet.framework.authorization.model.IoutletFunction;
+import sg.com.ioutlet.framework.authorization.model.IoltFunction;
 import sg.com.ioutlet.web.common.action.IoutletDisplayAction;
 
 public class MainPageDisplayAction extends IoutletDisplayAction {
@@ -24,7 +24,7 @@ public class MainPageDisplayAction extends IoutletDisplayAction {
 	@Override
 	public String getFunctionId() {
 		
-		return IoutletFunction.IOLT_MAIN_PAGE.inModule();
+		return IoltFunction.IOLT_MAIN_PAGE.inModule();
 	}
 	
 	@Override

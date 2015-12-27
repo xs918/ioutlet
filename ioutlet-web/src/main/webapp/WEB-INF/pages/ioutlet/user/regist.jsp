@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="sj" uri="/struts-jquery-tags" %>
+
 <html>
 <head>
     <meta charset="utf-8">
@@ -306,56 +307,55 @@
        		  
           <div class="col-xs-6 col-lg-6">
             <h3>Choose your plan</h3>
-           <div class="row">
-            <div class="col-xs-4 col-lg-4">
-		        <table class="table">
+             <table class="table">
 				    <thead>
 				      <tr>
 				        <th>Plan</th>
-				        <th>Cost</th>
-				        <th colspan="2">Benifit</th>
+				        <th>description</th>
+				        <th colspan="2">cost</th>
 				      </tr>
 				    </thead>
 				    <tbody>
-				      <tr>
-				        <td>Free</td>
-				        <td>$0/month</td>
-				        <td>free add 5 </td>
-						<td>
-						  <button class="btn btn-default" type="button" >Choose</button>
+				    	<s:iterator value="roles" id="role">
+				    	 <tr>
+				    	<td><s:property value="%{#role.name}"/></td>
+					    <td><s:property value="%{#role.description}"/>
+				    	 <td><s:property value="%{#role.price}"/>
+				    	 <td>
+				    	 
+				    	 
+				    	
+				    	
+				    	<s:submit class="btn btn-info btn-sm pull-right" type="button" onclick="isChoose('%{#role.name}')" >Choose
+				    	</s:submit>
+		  			
 						</td>
-				      </tr>
-				      <tr>
-				        <td>Basic</td>
-				        <td>$5/mth</td>
-				        <td>free add 10 product</td>
-				       <td>
-						  <button class="btn btn-default" type="button" >Choose</button>
-						</td>
-				      </tr>
-				      <tr>
-				        <td>Advance</td>
-				        <td>$10/month</td>
-				        <td>ulitmiate add product and view the product review,customer report</td>
-				        <td>
-				  		<button class="btn btn-default" type="button" >Choose</button>
-						</td>
-				      </tr>
+				 
+				    	 </tr>
+				    	</s:iterator>
 				   </tbody>
 		  	 </table>
-		  </div>
-	      <div class="col-xs-2 col-lg-2">
-	      
-	      <p class="text-muted">This text is muted.</p>
-			  <p class="text-primary">This text is important.</p>
-			  <p class="text-success">This text indicates success.</p>
-			  <p class="text-info">This text represents some information.</p>
-			  <p class="text-warning">This text represents a warning.</p>
-			  <p class="text-danger">This text represents danger.</p>
-			  
+		  <div id="selectedPlan">
+		      <h3>Your selected</h3>
+		   
+		   	<s:iterator value="roles" id="role">
+				    	 <tr>
+				    	<td><h2><s:property value="%{#role.name}"/></h2></td>
+				    	 </tr>
+				    	    	<s:iterator value="%{#role.accessFunctions}" id="function">
+				    	    	   <tr>
+							    	<td><s:property value="%{#function.name}"/></td>
+							    	 </tr>
+				    	    	
+				    	    	
+				    	    	</s:iterator>
+          
+			</s:iterator>
+          
           </div>
-         </div> 
-         <div class="row">
+     
+     
+		 <div class="row">
           <s:submit cssClass="btn btn-primary btn-sm pull-right" onclick="isSubmit('regist')" />
          </div>
      </div>
@@ -414,7 +414,16 @@ $(document).ready(function () {
     $('div.setup-panel div a.btn-primary').trigger('click');
 });
 
-
+function isChoose(id)
+{
+	alert("id:"+id);
+    personObj = new Object();
+    personObj.firstname = "John";
+    personObj.lastname = "Doe";
+    personObj.age = 50;
+    personObj.eyecolor = "blue"; 
+    $("#selectedPlan").text($.param(personObj));
+};
 
 
 </script>

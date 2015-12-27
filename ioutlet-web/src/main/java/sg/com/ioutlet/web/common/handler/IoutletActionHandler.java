@@ -8,6 +8,8 @@ import java.util.TreeMap;
 
 import org.apache.commons.io.FileUtils;
 
+import sg.com.ioutlet.ace.functionaccess.FunctionAccess;
+import sg.com.ioutlet.ace.role.Role;
 import sg.com.ioutlet.bas.Gender;
 import sg.com.ioutlet.framework.web.common.OssUtils;
 import sg.com.ioutlet.framework.web.handler.CommonActionHandler;
@@ -26,7 +28,12 @@ public class IoutletActionHandler  extends CommonActionHandler  {
 	
 	}
 
-	
+	public Map<Role,List<FunctionAccess>> getAllRolesWithFunction() {
+      	return aceBridge.getAllRolesWithFunction();
+		  	
+		
+		
+	}
 	public Map<String,String> getGenderMap()
   	{
   		Map<String,String> genderMap  = new TreeMap<String,String>();

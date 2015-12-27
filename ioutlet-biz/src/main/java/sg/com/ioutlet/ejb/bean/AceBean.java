@@ -1,5 +1,6 @@
 package sg.com.ioutlet.ejb.bean;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -9,7 +10,9 @@ import java.util.Map;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 
+import sg.com.ioutlet.ace.domain.Domain;
 import sg.com.ioutlet.ace.function.Function;
+import sg.com.ioutlet.ace.functionaccess.FunctionAccess;
 import sg.com.ioutlet.ace.password.PasswordUtil;
 import sg.com.ioutlet.ace.role.Role;
 import sg.com.ioutlet.ace.role.RoleKey;
@@ -24,6 +27,7 @@ import sg.com.ioutlet.bridge.AceBridge;
 import sg.com.ioutlet.common.logging.LogHelper;
 import sg.com.ioutlet.framework.authorization.model.AccessFunction;
 import sg.com.ioutlet.framework.authorization.model.AuthorizationInfo;
+import sg.com.ioutlet.framework.authorization.model.IoltFunction;
 import sg.com.ioutlet.framework.model.TransactionInfo;
 import sg.com.ioutlet.framework.trxhelper.TransactionControl;
 import sg.com.ioutlet.model.img.Imge;
@@ -49,6 +53,25 @@ public class AceBean extends EjbEntityManager implements AceBridge  {
 		return dao.getAll();
 
 	}
+	@Override
+	public Map<Role,List<FunctionAccess>> getAllRolesWithFunction()
+	{
+		RoleDao dao = new RoleDao(em);
+		Map<Role,List<FunctionAccess>> functionMap = new HashMap<Role,List<FunctionAccess>> ();
+		List<Role> roles =dao.getAllWithFunction();
+		for(Role r:roles)
+		{
+		 List<FunctionAccess> accessFunctions  = new ArrayList<FunctionAccess>();
+		 for(FunctionAccess fac:r.getAccessFunctions())
+		 {
+			 accessFunctions.add(fac);
+		 }
+		 functionMap.put(r, accessFunctions);
+		}
+		return functionMap;
+	}
+	
+	
 	/*----------role end---------------*/
 	
 	
@@ -264,6 +287,7 @@ public class AceBean extends EjbEntityManager implements AceBridge  {
 		
 		
 	}
+
 //	@Override
 //	public List<Function> getFunctionsByUserProfile(String loginUserId,
 //			TransactionInfo transactionInfo) {
@@ -281,15 +305,23 @@ public class AceBean extends EjbEntityManager implements AceBridge  {
 		UserDao dao = new UserDao(this.getEntityManager());
 		User loginUser=dao.getByUsrId(userId);
 		auth.setUser(loginUser);
+		Role role = loginUser.getRole();
 		
-		Map<String,Map<String, AccessFunction>> accessFunMap = new 	HashMap<String,Map<String, AccessFunction>>();
+		Map<String,Map<IoltFunction, FunctionAccess>> domainAceFunMap = new HashMap<String,Map<IoltFunction, FunctionAccess>>();
 		
-		Map<String, AccessFunction> accessFunction = new HashMap<String, AccessFunction>();
+		Map<IoltFunction, FunctionAccess> functionMap = new HashMap<IoltFunction, FunctionAccess> ();
 		
-		accessFunction.put("*",  new Function());
-		accessFunMap.put("IOLT", accessFunction);
-		auth.setAccessibleFunctions(accessFunMap);
-		
+		for(FunctionAccess fac:role.getAccessFunctions())
+		{
+			Domain domain = fac.getFunction().getDomain();
+			IoltFunction ioltf=	fac.getFunctionId();
+			System.out.println("**domain:"+domain.getId()+ " getFunctionId:"+fac.getFunctionId() + " ioltf: "+ioltf.toString());
+			
+			functionMap.put(fac.getFunctionId(), fac);
+			domainAceFunMap.put(domain.getId(), functionMap);
+		}
+		auth.setAccessibleFunctions(domainAceFunMap);
+			
 		return auth;
 	}
 

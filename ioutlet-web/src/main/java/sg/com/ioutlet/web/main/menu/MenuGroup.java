@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import sg.com.ioutlet.framework.authorization.model.IoutletFunction;
+import sg.com.ioutlet.framework.authorization.model.IoltFunction;
 
 
 public class MenuGroup implements Serializable
@@ -20,7 +20,7 @@ public class MenuGroup implements Serializable
 	
 	private String iconStyle;
 	private String title;
-	private HashMap<IoutletFunction, MenuLink> menus;
+	private HashMap<IoltFunction, MenuLink> menus;
 	
 
 	
@@ -44,11 +44,11 @@ public class MenuGroup implements Serializable
 	public MenuGroup(String iconStyle,String title){
 		this.iconStyle=iconStyle;
 		this.title = title;
-		menus = new HashMap<IoutletFunction, MenuLink>();
+		menus = new HashMap<IoltFunction, MenuLink>();
 
 	}
 	
-	public MenuGroup(String iconStyle,String title, HashMap<IoutletFunction, MenuLink> menus){
+	public MenuGroup(String iconStyle,String title, HashMap<IoltFunction, MenuLink> menus){
 		this.iconStyle=iconStyle;
 		this.title = title;
 		this.menus = menus;
@@ -56,13 +56,13 @@ public class MenuGroup implements Serializable
 	
 
 
-	public HashMap<IoutletFunction, MenuLink> getMenus()
+	public HashMap<IoltFunction, MenuLink> getMenus()
 	{
 		return menus;
 	}
 	
 
-	public void setMenus(HashMap<IoutletFunction, MenuLink> menus)
+	public void setMenus(HashMap<IoltFunction, MenuLink> menus)
 	{
 		this.menus = menus;
 	}
@@ -84,11 +84,11 @@ public class MenuGroup implements Serializable
 		this.iconStyle = iconStyle;
 	}
 
-	public void addMenu(IoutletFunction function, MenuLink menu){
+	public void addMenu(IoltFunction function, MenuLink menu){
 		menus.put(function, menu);
 	}
 	
-	public MenuLink getMenuByIOLTFunction(IoutletFunction function){
+	public MenuLink getMenuByIOLTFunction(IoltFunction function){
 		return menus.get(function);
 	}
 }

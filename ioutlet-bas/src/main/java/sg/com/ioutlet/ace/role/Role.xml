@@ -20,9 +20,20 @@
 		<query>
 			SELECT u
 			FROM Role u
-			WHERE U.recordStatus='A'
+			WHERE u.recordStatus='A'
 		</query>
 	</named-query>
+	
+	<named-query name="Role.getAllWithFunction">
+		<query>
+		SELECT r
+			FROM Role r
+		    left join r.accessFunctions  f
+		    WHERE r.recordStatus='A'
+		</query>
+	</named-query>
+	
+	
 	<entity class="sg.com.ioutlet.ace.role.Role" access="FIELD">
 		<table name="ROLES" />
 		<attributes>
@@ -33,39 +44,24 @@
 			</basic>
 
 			<basic name="description" optional="true">
-				<column name="DESCRIPTION" nullable="true" length="200" />
+				<column name="DESCRIPTION" nullable="true" length="255" />
 			</basic>
 
-			<basic name="startDate" optional="true">
-				<column name="START_DATE" nullable="true" />
-			</basic>
-
-
-			<basic name="endDate" optional="true">
-				<column name="END_DATE" nullable="true" />
-			</basic>
-
-
-	    <one-to-many name="userRoles" mapped-by="role">
+	
+			<basic name="price" optional="true">
+					<column name="PRICE" nullable="true" precision="16"
+						scale="2" />
+		    </basic>
+			<one-to-many name="accessFunctions" mapped-by="role">
 				<cascade>
 					<cascade-merge />
 					<cascade-remove />
 				</cascade>
-		</one-to-many>
-		
-	     
-	     <one-to-many name="functionAccesses" mapped-by="role">
-				<cascade>
-					<cascade-merge />
-					<cascade-remove />
-				</cascade>
-		</one-to-many>
-		
-		
+		   </one-to-many>
 		
 		</attributes>
 	</entity>
-	<embeddable class="sg.com.ioutlet.model.role.RoleKey"
+	<embeddable class="sg.com.ioutlet.ace.role.RoleKey"
 		access="FIELD">
 		<attributes>
 			<basic name="uuid" optional="false">

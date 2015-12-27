@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.lang.StringUtils;
 import org.jboss.logging.NDC;
 
+import sg.com.ioutlet.ace.user.User;
 import sg.com.ioutlet.framework.trxhelper.TransactionControl;
 import sg.com.ioutlet.framework.web.WebConstants;
 import sg.com.ioutlet.framework.web.action.CommonActionSupport;
@@ -34,9 +35,19 @@ public class TransactionControlInterceptor  extends CommonInterceptor{
 			HttpServletRequest request = getRequest();
 
 			String clientIp = request.getRemoteAddr();
-			String processUser = request.getRemoteUser();
+			User userInfo = (User) getSession().get(WebConstants.LOGGED_IN_USER_INFO.toString());
+			String processUser=GUEST;
+			if(userInfo!=null)
+			{
+				processUser = userInfo.getUserId();
+			}
 			HttpSession session = request.getSession();
+			System.out.println("clientIp:"+clientIp);
+			System.out.println("processUser:"+processUser);
+			
 			String sessionId = (String) session.getAttribute(WebConstants.SESSION_ID.toString());
+			System.out.println("sessionId:"+sessionId);
+			
 			if (StringUtils.isEmpty(sessionId))
 			{
 				session.setAttribute(WebConstants.SESSION_ID.toString(), TransactionIdGenerator.getUniversallyUniqueID());
@@ -44,7 +55,7 @@ public class TransactionControlInterceptor  extends CommonInterceptor{
 			
 			TransactionControl.getTransactionInfo().setFunctionId(funcId);
 			TransactionControl.getTransactionInfo().setRequestIp(clientIp);
-			TransactionControl.getTransactionInfo().setRequestUser(processUser == null ? GUEST : processUser);
+			TransactionControl.getTransactionInfo().setRequestUser(processUser);
 			TransactionControl.getTransactionInfo().setRequestLocale(request.getLocale());
 			TransactionControl.getTransactionInfo().setDomainId(cas.getDomainId());
 			NDC.push(clientIp);

@@ -15,8 +15,6 @@ public class PojoUtils {
 	public static Role updateRoleFromVo( Role role, RoleVo roleVo) {
 		role.setName(roleVo.getName());
 		role.setDescription(roleVo.getDescription());
-		role.setStartDate(roleVo.getStartDate());
-		role.setEndDate(roleVo.getEndDate());
 		return role;
 
 	}

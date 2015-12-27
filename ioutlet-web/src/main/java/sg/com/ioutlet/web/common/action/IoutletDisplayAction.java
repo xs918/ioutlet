@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import sg.com.ioutlet.framework.authorization.model.IoutletFunction;
+import sg.com.ioutlet.framework.authorization.model.IoltFunction;
 import sg.com.ioutlet.framework.web.action.CommonActionSupport;
 import sg.com.ioutlet.framework.web.action.awareness.AuthorizationAware;
 import sg.com.ioutlet.web.main.menu.MenuFactory;
@@ -28,13 +28,13 @@ public abstract  class IoutletDisplayAction extends CommonActionSupport  impleme
 	public List<MenuGroup> getMenuItems() {
 		MenuFactory mf = new MenuFactory();
 		if (accessControl == null) {
-			Set<IoutletFunction> availableFunctionIds = new HashSet<IoutletFunction>();
-			availableFunctionIds.add(IoutletFunction.ALL_FUNC);
+			Set<IoltFunction> availableFunctionIds = new HashSet<IoltFunction>();
+			availableFunctionIds.add(IoltFunction.ALL_FUNC);
 
 			accessControl = new AccessController(availableFunctionIds);
 		}
 		List<MenuGroup> m1 = mf.generateMenus(
-				IoutletFunction.IOLT_SIDE_MENU.inModule(), getAccessControl());
+				IoltFunction.IOLT_SIDE_MENU.inModule(), getAccessControl());
 		return m1;
 
 	}
@@ -44,13 +44,13 @@ public abstract  class IoutletDisplayAction extends CommonActionSupport  impleme
 		Map<String, MenuLink> menumMap = new HashMap<String, MenuLink>();
 		MenuFactory mf = new MenuFactory();
 
-		mg = mf.generateMenus(IoutletFunction.IOLT_SIDE_MENU.inModule(),
+		mg = mf.generateMenus(IoltFunction.IOLT_SIDE_MENU.inModule(),
 				getAccessControl());
 
 		if (mg != null && mg.size() > 0) {
 			Collection<MenuLink> mNL = mg.get(0).getMenus().values();
 			Iterator<MenuLink> i = mNL.iterator();
-			menumMap.put(IoutletFunction.IOLT_SIDE_MENU.inModule(), i.next());
+			menumMap.put(IoltFunction.IOLT_SIDE_MENU.inModule(), i.next());
 		}
 
 		return menumMap;

@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 import sg.com.ioutlet.ace.password.PasswordUtil;
+import sg.com.ioutlet.ace.role.Role;
 import sg.com.ioutlet.bas.CommonPojo;
 import sg.com.ioutlet.bas.CommonPojoKey;
 import sg.com.ioutlet.bas.Gender;
@@ -39,9 +40,11 @@ public class User extends CommonPojo {
 	private Date activeTime;
     private Date lastPasswordChangedTime;
 	private Date lastLockedTime;
+	private Role role;
 	
 	private List<Imge> userImg;
 	private BizInfo bizinfo;
+	
 
 
 	public User() {
@@ -324,7 +327,8 @@ public class User extends CommonPojo {
 	public enum Field {
 		key, userId(100), emailId(100), storedPassword(50), name(50), gender,dayOfBirth,
 		description(200),langCode(10),currLoc(50),rewardPoint,
-		locked(1),loginFailureAttempt,lastLoginTime,activeTime,lastPasswordChangedTime,lastLockedTime,bizinfo;
+		locked(1),loginFailureAttempt,lastLoginTime,activeTime,lastPasswordChangedTime,
+		lastLockedTime,bizinfo,role;
 		public int length = 255;
 		public int precision;
 		public int scale;
@@ -363,6 +367,7 @@ public class User extends CommonPojo {
 		fields.add(new Object[] { Field.lastLockedTime.name(), lastLockedTime });
 		
 		fields.add(new Object[] { Field.bizinfo.name(), bizinfo });
+		fields.add(new Object[] { Field.role.name(), role });
 		
 		return fields;
 	}
@@ -373,6 +378,14 @@ public class User extends CommonPojo {
 
 	public void setBizinfo(BizInfo bizinfo) {
 		this.bizinfo = bizinfo;
+	}
+
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
 	}
 
 

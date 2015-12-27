@@ -1,12 +1,11 @@
 package sg.com.ioutlet.framework.authorization.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
 
+import sg.com.ioutlet.ace.functionaccess.FunctionAccess;
 import sg.com.ioutlet.ace.user.User;
 import sg.com.ioutlet.bas.SystemException;
 import sg.com.ioutlet.common.logging.LogHelper;
@@ -20,45 +19,27 @@ public class AuthorizationInfo   implements Serializable {/**
 	protected LogHelper logger = LogHelper.getInstance(getClass().getName());
 	private DomainAccess domains;
 	private User user;
-	private Map<String,Map<String, AccessFunction>> accessibleFunctions;
+	private Map<String,Map<IoltFunction, FunctionAccess>> accessibleFunctions;
 	
-	public Map<String, Map<String, AccessFunction>> getAccessibleFunctions()
+	public Map<String, Map<IoltFunction, FunctionAccess>> getAccessibleFunctions()
 	{
 		return accessibleFunctions;
 	}
 	
-	public void setAccessibleFunctions(Map<String, Map<String, AccessFunction>> accessibleFunctions)
+	public void setAccessibleFunctions(Map<String, Map<IoltFunction, FunctionAccess>> accessibleFunctions)
 	{
 		this.accessibleFunctions = accessibleFunctions;
 	}
 	
-	public Collection<AccessFunction> getFunctions(String domainId, String[] filterFunctions)
-	{
-		Map<String,AccessFunction> flist = getFunctionAccess(domainId);
-		Collection<AccessFunction> result = new ArrayList<AccessFunction>();
-		AccessFunction af;
-		if(filterFunctions != null)
-		{
-		
-			for(String functionId : filterFunctions)
-			{
-				af = flist.get(functionId);
-				if(af !=null)
-					result.add(af);
-			}
-			
-		}
-		return result;
-	}
 	
 	public AccessFunction getFunction(String domainId, String functionId)
 	{
-		Map<String,AccessFunction> flist = getFunctionAccess(domainId);
+		Map<IoltFunction,FunctionAccess> flist = getFunctionAccess(domainId);
 		return flist.get(functionId);
 	}
 	
 	
-	public Map<String,AccessFunction> getFunctionAccess(String domainId)
+	public Map<IoltFunction,FunctionAccess> getFunctionAccess(String domainId)
 	{
 		return accessibleFunctions.get(domainId);
 	}
@@ -68,7 +49,7 @@ public class AuthorizationInfo   implements Serializable {/**
 		if(StringUtils.isEmpty(domainId) || StringUtils.isEmpty(functionId))
 			throw new SystemException("Domain ID and Function ID must present");
 
-		Map<String, AccessFunction> functionAccess = accessibleFunctions.get(domainId);
+		Map<IoltFunction, FunctionAccess> functionAccess = accessibleFunctions.get(domainId);
 		if(functionAccess == null)
 				return false;
 		if(functionAccess.containsKey(functionId))

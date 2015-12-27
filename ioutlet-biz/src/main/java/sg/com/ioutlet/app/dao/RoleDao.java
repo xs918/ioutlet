@@ -91,6 +91,25 @@ public class RoleDao extends IoutletDao {
 					maxResult);
 		}
 	}
+	public List<Role> getAllWithFunction() {
+		logger.trace("getAll");
+
+		return getAllWithFunction(0, Integer.MAX_VALUE);
+
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Role> getAllWithFunction(int startPosition, int maxResult) {
+		logger.trace("getAll");
+
+		String queryName = "Role.getAllWithFunction";
+		if (isMultiResultLists(startPosition, maxResult)) {
+			return (List<Role>) getListByQueryName(queryName);
+		} else {
+			return (List<Role>) getListByQueryName(queryName, startPosition,
+					maxResult);
+		}
+	}
 
 
 

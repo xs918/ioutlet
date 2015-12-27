@@ -3,12 +3,14 @@ package sg.com.ioutlet.framework.web.interceptor;
 import java.util.Map;
 import java.util.Set;
 
+import sg.com.ioutlet.ace.functionaccess.FunctionAccess;
 import sg.com.ioutlet.ace.user.User;
 import sg.com.ioutlet.bas.SystemException;
-import sg.com.ioutlet.framework.authorization.model.AccessFunction;
 import sg.com.ioutlet.framework.authorization.model.AuthorizationInfo;
+import sg.com.ioutlet.framework.authorization.model.IoltFunction;
 import sg.com.ioutlet.framework.web.WebConstants;
 import sg.com.ioutlet.framework.web.action.awareness.AuthorizationAware;
+import sg.com.ioutlet.framework.web.action.awareness.UnAuthorizationAware;
 
 import com.opensymphony.xwork2.ActionInvocation;
 
@@ -48,23 +50,25 @@ public class AuthorizationCheckInterceptor extends CommonInterceptor {
 		long start = System.currentTimeMillis();
 		Object action = actionInvocation.getAction();
 		
+		if(action instanceof UnAuthorizationAware)
+		{
+			
+			return actionInvocation.invoke();
+		}
 
 		if (action instanceof AuthorizationAware)
 		{
-			
 						
 			AuthorizationAware aa = (AuthorizationAware) action;
 			String domainId = aa.getDomainId();
 			String functionId = aa.getFunctionId();
-				
-			
+		 	
 			User userInfo = (User) getSession().get(WebConstants.LOGGED_IN_USER_INFO.toString());
-			
-			
 			if(userInfo==null)
 			{
 				return LOGIN;
 			}
+		
 			
 			
 			
@@ -74,8 +78,7 @@ public class AuthorizationCheckInterceptor extends CommonInterceptor {
 			}
 			
 		
-			Set<String> availableFunctions = (Set<String>) getSession().get(WebConstants.USER_DOMAIN_FUNCTIONS.toString()+domainId);
-			
+			Set<IoltFunction> availableFunctions = (Set<IoltFunction>) getSession().get(WebConstants.USER_DOMAIN_FUNCTIONS.toString()+userInfo.getUserId());
 			
 			
 			if(availableFunctions == null || availableFunctions.isEmpty()) 
@@ -85,10 +88,15 @@ public class AuthorizationCheckInterceptor extends CommonInterceptor {
 				{
 					throw new SystemException("Can not load the Authorization Info ");
 				}
-				Map<String, AccessFunction> accessfuncs = auth.getFunctionAccess(domainId);
-				availableFunctions = accessfuncs.keySet();
+				Map<IoltFunction, FunctionAccess> accessfuncs = auth.getFunctionAccess(domainId);
+			
+				if(accessfuncs!=null)
+				{
+				  availableFunctions = accessfuncs.keySet();
+				}
 				if(availableFunctions == null||availableFunctions.isEmpty())
 				{
+					
 					if(logger.isDebugEnabled())
 					{
 						logger.debug("No functions available for this user in this domain");
@@ -98,19 +106,21 @@ public class AuthorizationCheckInterceptor extends CommonInterceptor {
 				
 				if(auth.getUser()==null)
 				{
-					return UNATHORIZED;
+						return UNATHORIZED;
 				}
-				getSession().put(WebConstants.USER_DOMAIN_FUNCTIONS.toString()+domainId, availableFunctions);						
+				getSession().put(WebConstants.USER_DOMAIN_FUNCTIONS.toString()+domainId+auth.getUser().getUserId(), availableFunctions);						
 				
 				
 			}
 			
 			
 			
-			
-			if(!availableFunctions.contains(functionId) && !availableFunctions.contains("*") )
+				
+			if(!availableFunctions.contains(functionId) && !availableFunctions.contains(IoltFunction.ALL_FUNC) )
+			{
+				getSession().clear();
 			  	return UNATHORIZED;
-			
+			}
 			
 		
 		     if(functionId.equals("CHANGE_USERPROFILE_PASSWORD"))

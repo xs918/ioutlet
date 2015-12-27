@@ -27,6 +27,16 @@ public class Domain extends CommonPojo implements DomainAccess {
 
 	private String url;
 	
+	public Domain(DomainKey key)
+	{
+		this.key =key;
+	}
+	
+	public Domain()
+	{
+		
+	}
+	
 	public String getId() {
 		return id;
 	}

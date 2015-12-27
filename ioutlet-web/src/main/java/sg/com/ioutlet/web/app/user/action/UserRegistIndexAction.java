@@ -2,13 +2,14 @@ package sg.com.ioutlet.web.app.user.action;
 
 import org.apache.commons.lang.StringUtils;
 
-import sg.com.ioutlet.framework.authorization.model.IoutletFunction;
+import sg.com.ioutlet.framework.authorization.model.IoltFunction;
+import sg.com.ioutlet.framework.web.action.awareness.UnAuthorizationAware;
 import sg.com.ioutlet.framework.web.form.CommonForm;
 import sg.com.ioutlet.web.app.user.form.UserRegistForm;
 import sg.com.ioutlet.web.app.user.handler.UserActionActionHandler;
 import sg.com.ioutlet.web.common.action.IoutletAction;
 
-public class UserRegistIndexAction extends IoutletAction {
+public class UserRegistIndexAction extends IoutletAction implements UnAuthorizationAware{
 
 	/**
 	 * 
@@ -54,7 +55,7 @@ public class UserRegistIndexAction extends IoutletAction {
 	@Override
 	public String getFunctionId() {
 		
-		return IoutletFunction.IOLT_USER_REG.toString();
+		return IoltFunction.IOLT_USER_REG.toString();
 		
 	}
 	@Override

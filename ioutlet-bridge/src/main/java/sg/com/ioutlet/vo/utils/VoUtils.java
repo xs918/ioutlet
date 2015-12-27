@@ -17,8 +17,6 @@ public class VoUtils {
 		vo.setId(role.getKey().getUuid());
 		vo.setName(role.getName());
 		vo.setDescription(role.getDescription());
-		vo.setStartDate(role.getStartDate());
-		vo.setEndDate(role.getEndDate());
 		populateCommonFields(vo,role);
 		return vo;
 

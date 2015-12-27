@@ -1,6 +1,6 @@
 package sg.com.ioutlet.framework.authorization.model;
 
-public enum IoutletFunction 
+public enum IoltFunction 
 {
 	    ALL_FUNC("*"),
 	    IOLT_SIDE_MENU("sidebar"),
@@ -32,15 +32,15 @@ public enum IoutletFunction
 		private String module;
 		private boolean menuItem=true;
 	
-		private IoutletFunction(){
+		private IoltFunction(){
 			
 		}
 		
-		private IoutletFunction(String module){
+		private IoltFunction(String module){
 			this.module = module;
 		}
 		
-		private IoutletFunction(String module,boolean menuItem){
+		private IoltFunction(String module,boolean menuItem){
 			this.module = module;
 			this.menuItem=menuItem;
 		}
