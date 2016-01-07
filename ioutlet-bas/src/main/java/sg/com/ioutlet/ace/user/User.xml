@@ -8,6 +8,7 @@
 		<query>
 			SELECT u 
 			FROM User u
+			left join fetch u.userImg  i
 			WHERE u.userId = :USER_ID
 			AND u.recordStatus='A'
 		</query>

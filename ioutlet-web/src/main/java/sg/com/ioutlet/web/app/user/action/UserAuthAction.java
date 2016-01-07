@@ -1,5 +1,7 @@
 package sg.com.ioutlet.web.app.user.action;
 
+import com.opensymphony.xwork2.util.logging.Logger;
+
 import sg.com.ioutlet.ace.user.User;
 import sg.com.ioutlet.framework.authorization.model.IoltFunction;
 import sg.com.ioutlet.framework.web.WebConstants;
@@ -39,9 +41,7 @@ public class UserAuthAction extends IoutletAction implements UnAuthorizationAwar
     		this.addActionError(getText("user.id.or.password.incorrect"));
     		return INPUT;
     	}
-		
-	    
-    	this.session.put(WebConstants.LOGGED_IN_USER_INFO.toString(), loginUser);
+		this.session.put(WebConstants.LOGGED_IN_USER_INFO.toString(), loginUser);
    		return SUCCESS;
 	}
 

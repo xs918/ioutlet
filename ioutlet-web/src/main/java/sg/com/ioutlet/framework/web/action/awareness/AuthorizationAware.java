@@ -1,5 +1,7 @@
 package sg.com.ioutlet.framework.web.action.awareness;
 
+import sg.com.ioutlet.ace.user.User;
+
 public interface AuthorizationAware {
 
 	
@@ -12,5 +14,6 @@ public interface AuthorizationAware {
 	 * @return the function id of the system
 	 */
 	public abstract String getFunctionId();
+	public abstract void setUserProfile(User user);
 
 }

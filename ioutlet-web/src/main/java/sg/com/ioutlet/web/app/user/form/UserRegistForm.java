@@ -6,13 +6,13 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 import org.apache.commons.lang3.StringUtils;
 
 import sg.com.ioutlet.ace.functionaccess.FunctionAccess;
 import sg.com.ioutlet.ace.role.Role;
 import sg.com.ioutlet.ace.user.User;
-import sg.com.ioutlet.bas.Gender;
 import sg.com.ioutlet.model.img.Imge;
 import sg.com.ioutlet.web.common.form.IoutletForm;
 
@@ -28,7 +28,7 @@ public class UserRegistForm extends IoutletForm {
 	private String password;
 	private String retypePassword;
 	private String name;
-	private Gender gender = Gender.O;
+	private String gender;
 	private Date dayOfBirth;
 	private String description;
 	private String address1;
@@ -53,9 +53,9 @@ public class UserRegistForm extends IoutletForm {
 	
 	private List<Role> roles;
 	
-	private Map<String,String> langMap;
-	private Map<String,String> locMap;
-	private Map<String,String> genderMap;
+	private TreeMap<String,String> langMap;
+	private TreeMap<String,String> locMap;
+	private TreeMap<String,String> genderMap;
     private  Map<Role,List<FunctionAccess>> allRoleFunctionAccessMap=new HashMap<Role,List<FunctionAccess>>();
 	
 	
@@ -83,7 +83,7 @@ public class UserRegistForm extends IoutletForm {
 		password = EMPTY;
 		retypePassword=EMPTY;
 		name = EMPTY;
-		gender = Gender.O;
+		gender =EMPTY;
 		dayOfBirth = null;
 		description = EMPTY;
 		postCode = EMPTY;
@@ -205,11 +205,11 @@ public class UserRegistForm extends IoutletForm {
 		this.name = name;
 	}
 
-	public Gender getGender() {
+	public String getGender() {
 		return gender;
 	}
 
-	public void setGender(Gender gender) {
+	public void setGender(String gender) {
 		this.gender = gender;
 	}
 
@@ -386,7 +386,7 @@ public class UserRegistForm extends IoutletForm {
 		return langMap;
 	}
 
-	public void setLangMap(Map<String,String> langMap) {
+	public void setLangMap(TreeMap<String,String> langMap) {
 		this.langMap = langMap;
 	}
 
@@ -394,15 +394,15 @@ public class UserRegistForm extends IoutletForm {
 		return locMap;
 	}
 
-	public void setLocMap(Map<String,String> locMap) {
+	public void setLocMap(TreeMap<String,String> locMap) {
 		this.locMap = locMap;
 	}
 
-	public Map<String,String> getGenderMap() {
+	public TreeMap<String,String> getGenderMap() {
 		return genderMap;
 	}
 
-	public void setGenderMap(Map<String,String> genderMap) {
+	public void setGenderMap(TreeMap<String,String> genderMap) {
 		this.genderMap = genderMap;
 	}
 

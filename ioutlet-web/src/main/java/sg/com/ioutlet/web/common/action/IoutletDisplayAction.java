@@ -8,6 +8,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.commons.lang3.StringUtils;
+
+import sg.com.ioutlet.ace.user.User;
 import sg.com.ioutlet.framework.authorization.model.IoltFunction;
 import sg.com.ioutlet.framework.web.action.CommonActionSupport;
 import sg.com.ioutlet.framework.web.action.awareness.AuthorizationAware;
@@ -23,6 +26,21 @@ public abstract  class IoutletDisplayAction extends CommonActionSupport  impleme
 	private static final long serialVersionUID = 1L;
 	private static final String DOMAIN_ID = "IOLT";
 
+	
+	private User userProfile;
+	@Override
+	public void setUserProfile(User user) {
+
+		userProfile = user;
+		
+	}
+	
+	public User getUserProfile()
+	{
+		return userProfile;
+		
+	}
+	
 	
 
 	public List<MenuGroup> getMenuItems() {
@@ -72,10 +90,25 @@ public abstract  class IoutletDisplayAction extends CommonActionSupport  impleme
 	}
 
 	public String getUserProfileImageLink() {
-		return IMG_PATH + "/" + "user3-128x128.jpg";
+		
+		String userImageUrl="";
+		if(userProfile!=null && userProfile.getUserImg()!=null)
+		{
+			userImageUrl = userProfile.getUserImg().get(0).getImgUrl();
+		}
+		
+		
+		if(StringUtils.isBlank(userImageUrl))
+		{
+			userImageUrl=IMG_PATH + "/" + "user3-128x128.jpg";
+		}
+		
+		return userImageUrl;
+			
+			
 	}
-
-
+	
+	
 
 
 
@@ -103,6 +136,9 @@ public abstract  class IoutletDisplayAction extends CommonActionSupport  impleme
 	@Override
 	public String getDomainId() {
 		return DOMAIN_ID;
+	}
+
+	public void setUserProfileImageLink(String userProfileImageLink) {
 	}
 
 

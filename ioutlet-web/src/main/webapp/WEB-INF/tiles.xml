@@ -58,6 +58,12 @@
     </definition>
     
     
+    <definition name="COMMON.ERROR" extends="blank">
+		<put-attribute name="title" value="Error. General Error" />
+		<put-attribute name="content" value="/WEB-INF/pages/common/error.jsp" />
+	</definition>
+    
+    
     
     
 </tiles-definitions>

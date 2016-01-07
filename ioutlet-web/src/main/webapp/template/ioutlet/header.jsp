@@ -7,7 +7,9 @@
 			<s:param name="sfld">true</s:param>
 </s:url>
 	     
-	     
+<s:url id="logout" value="/logout.jsp"></s:url>
+
+
         <!-- Logo -->
         <a href="<s:property value='%{index}'/>" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
@@ -122,15 +124,16 @@
                   <!-- The user image in the navbar-->
                   <img src="<s:property value="%{userProfileImageLink}"/>"  class="user-image" alt="User Image">
                   <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                  <span class="hidden-xs">Alexander Pierce</span>
+                  <span class="hidden-xs"> <s:property value="%{userProfile.name}"/>
+                 </span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- The user image in the menu -->
                   <li class="user-header">
                     <img src="<s:property value="%{userProfileImageLink}"/>" class="img-circle" alt="User Image">
                     <p>
-                      Alexander Pierce - Web Developer
-                      <small>Member since Nov. 2012</small>
+                       <s:property value="%{userProfile.name}"/> - <s:property value="%{userProfile.role.name}"/>
+                      <small>Member since <s:property value="%{userProfile.creationTime}"/></small>
                     </p>
                   </li>
                   <!-- Menu Body -->
@@ -151,7 +154,7 @@
                       <a href="#" class="btn btn-default btn-flat">Profile</a>
                     </div>
                     <div class="pull-right">
-                      <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                      <a href="<s:property value='%{logout}'/>" class="btn btn-default btn-flat"><s:property value="%{getText('log.out')}"/></a>
                     </div>
                   </li>
                 </ul>

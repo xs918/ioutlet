@@ -189,15 +189,18 @@
 		                        
 		                        
 		            
-		                        
-		                        
+		         
 		                        <s:select
 		                        tooltip="%{getText('choose.your.gender.here')}"
-		                        label="Gender"
+		                        label="%{getText('gender')}"
 		                        list="genderMap"
-		                          name="gender"
+		                        name="gender"
 		                        />
-                 
+		                        
+		         
+		
+		
+                
   
                   				 <s:file name="userImgFiles"  label="%{getText('update.profile.picture')}" multiple="true"/>
                     
@@ -217,18 +220,18 @@
 				                        list="langMap"
 				                         name="langCode"
 				                 />
-				                 
+				        
                  
                         
                         
                                    
-			                <s:select
+		      			   <s:select
 			                        tooltip="%{getText('location')}"
 			                        label="%{getText('location')}"
 			                        list="locMap"
 			                         name="currLoc"
 			                 />
-			                 
+			               
 			          
   <button class="btn btn-info nextBtn btn-sm pull-right" type="button" >  
    <s:property value="%{getText('next')}"/>

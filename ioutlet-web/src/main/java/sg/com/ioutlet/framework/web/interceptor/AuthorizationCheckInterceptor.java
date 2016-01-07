@@ -110,6 +110,9 @@ public class AuthorizationCheckInterceptor extends CommonInterceptor {
 				}
 				getSession().put(WebConstants.USER_DOMAIN_FUNCTIONS.toString()+domainId+auth.getUser().getUserId(), availableFunctions);						
 				
+		
+			    aa.setUserProfile(auth.getUser());
+				
 				
 			}
 			
@@ -129,7 +132,7 @@ public class AuthorizationCheckInterceptor extends CommonInterceptor {
              }
 
 			String result=null;
-			
+		
 			result = actionInvocation.invoke();
 			return result;
 		}

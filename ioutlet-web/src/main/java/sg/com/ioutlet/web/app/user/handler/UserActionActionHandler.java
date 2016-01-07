@@ -2,7 +2,6 @@ package sg.com.ioutlet.web.app.user.handler;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -11,6 +10,7 @@ import org.apache.commons.io.FilenameUtils;
 import sg.com.ioutlet.ace.functionaccess.FunctionAccess;
 import sg.com.ioutlet.ace.role.Role;
 import sg.com.ioutlet.ace.user.User;
+import sg.com.ioutlet.bas.Gender;
 import sg.com.ioutlet.framework.web.common.OssUtils;
 import sg.com.ioutlet.model.bizinfo.BizInfo;
 import sg.com.ioutlet.model.img.Imge;
@@ -49,7 +49,7 @@ public class UserActionActionHandler extends  IoutletActionHandler{
 		usr.setName(form.getName());
 		usr.setEmailId(form.getEmailId());
 		usr.setPassword(form.getPassword());
-		usr.setGender(form.getGender());
+		usr.setGender(Gender.valueOf(form.getGender()));
 		usr.setDayOfBirth(form.getDayOfBirth());
 		usr.setDescription(form.getDescription());
 		usr.setLangCode(form.getLangCode());

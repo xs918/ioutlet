@@ -34,9 +34,9 @@ public class IoutletActionHandler  extends CommonActionHandler  {
 		
 		
 	}
-	public Map<String,String> getGenderMap()
+	public TreeMap<String,String> getGenderMap()
   	{
-  		Map<String,String> genderMap  = new TreeMap<String,String>();
+		TreeMap<String,String> genderMap  = new TreeMap<String,String>();
   		genderMap.put(Gender.F.name(), Gender.F.toString());
   		genderMap.put(Gender.M.name(), Gender.M.toString());
   		genderMap.put(Gender.O.name(), Gender.O.toString());
@@ -44,9 +44,9 @@ public class IoutletActionHandler  extends CommonActionHandler  {
   		
   	}
 	
-  	public Map<String,String> getLangMap()
+  	public TreeMap<String,String> getLangMap()
   	{
-  		Map<String,String> langMap  = new TreeMap<String,String>();
+  		TreeMap<String,String> langMap  = new TreeMap<String,String>();
   		langMap.put("cn","Chinese");
   		langMap.put("jp", "Japanese");
   		langMap.put("en","English");
@@ -55,9 +55,9 @@ public class IoutletActionHandler  extends CommonActionHandler  {
   	}
 	
   	
-  	public Map<String,String> getLocMap()
+  	public TreeMap<String,String> getLocMap()
   	{
-  		Map<String,String> locMap  = new TreeMap<String,String>();
+  		TreeMap<String,String> locMap  = new TreeMap<String,String>();
   		locMap.put("cn","China");
   		locMap.put("jp", "Japan");
   		locMap.put("sg","Singapore");
@@ -68,11 +68,9 @@ public class IoutletActionHandler  extends CommonActionHandler  {
   	public void uploadFile(File file,Imge imge) throws IOException
   	{
   		String destFileName = imge.getFullPath()+OssUtils.CLOUD_PATH_SEPARATOR+imge.getImgName();
-  		File destFile = new File(destFileName);
-  		String url =   OssUtils.getUrl(BUCKET_NAME, destFileName);
-  		FileUtils.copyFile(file, destFile);
-		OssUtils.upload(BUCKET_NAME,destFileName,file);
-		imge.setImgUrl(url);
+  		OssUtils.singleUpload(BUCKET_NAME,destFileName,file);
+		String url =   OssUtils.getResourceUrl(BUCKET_NAME, destFileName);
+	 	imge.setImgUrl(url);
 		
   		
   	}

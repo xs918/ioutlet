@@ -59,7 +59,6 @@
 
 </div>
 	<!-- /.box-header -->
-	<div class="table-responsive">
 		<table class="table table-hover">
 			<tbody>
 			<s:iterator value="plist" id="pro">
@@ -68,10 +67,12 @@
 				                
 					<td><input type="checkbox" value=""></td>
 					<td>
-						<!-- User Image --> <img
-						src="<s:property value="%{userProfileImageLink}"/>"
-						class="img-circle" alt="User Image">
-
+					
+		<a href="<s:property value="%{userProfileImageLink}"/>">
+          <img src="<s:property value="%{userProfileImageLink}"/>"  class="img-circle" alt="productimages" style="width:150px;height:150px">
+        </a>
+      
+     
 					</td>
 					<td><s:property value="%{#pro.id}"/></td>
 					<td><s:property value="%{#pro.description}"/></td>
@@ -87,7 +88,7 @@
 			</tbody>
 		</table>
 		<!-- /.table -->
-	</div>
+
 </s:form>
 </div>	<!-- /.box-body -->
 
