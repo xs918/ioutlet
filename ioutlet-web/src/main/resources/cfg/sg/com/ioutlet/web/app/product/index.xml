@@ -19,6 +19,9 @@
             <result name="input" type="tiles">SG.COM.IOUTLET.PRODUCT.INDEX</result>
         </action>
 
+         <action name="edit" class="sg.com.ioutlet.web.app.product.action.ProductEditAction" method="input">
+            <result name="input" type="tiles">SG.COM.IOUTLET.PRODUCT.EDIT</result>
+        </action>
 
      <action name="form!*" class="sg.com.ioutlet.web.app.product.action.ProductIndexAction" method="{*}">
             <result name="input" type="tiles">SG.COM.IOUTLET.USER.REG</result>

@@ -34,6 +34,18 @@
 		    });
 	});
 </script>
+<script type="text/javascript">
+
+/*
+	function popupEdit()
+	{
+		window.open("../product/edit!input.action","mywindow2","status=1,width=465px,scrollbars=1");	 
+	}
+*/
+document.getElementById('fa fa-pencil-square-o fa-2x').setAttribute(data-toggle,'modal');
+document.getElementById('fa fa-pencil-square-o fa-2x').setAttribute(data-target,'#exampleModal');
+
+</script>
 
 </head>
 <body>
@@ -79,8 +91,8 @@
 					<td>in Stoken</td>
 					<td>visible</td>
 					<td class="edit">
-						<i class="fa fa-files-o fa-2x"></i>
-	    				<i class="fa fa-pencil-square-o fa-2x"></i>
+						<i class="fa fa-files-o fa-2x" onclick="popupEdit();return false;"></i>
+	    				<i class="fa fa-pencil-square-o fa-2x" ></i>
 					    <i class="fa fa-trash-o fa-2x"></i>
 					</td>
 				</tr>
@@ -88,7 +100,30 @@
 			</tbody>
 		</table>
 		<!-- /.table -->
-
+		
+		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">New message</h4>
+      </div>
+      <div class="modal-body">
+      <!-- modal body below -->
+				<tr>
+				  <td><s:textfield name="testing" value="1hao" /></td>
+				  <td><s:textfield name="testing" value="1hao" /></td>
+				  <td><s:textfield name="testing" value="1hao" /></td>
+				  <td><s:textfield name="testing" value="1hao" /></td>
+				</tr>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Send message</button>
+      </div>
+    </div>
+  </div>
+</div>
 </s:form>
 </div>	<!-- /.box-body -->
 
