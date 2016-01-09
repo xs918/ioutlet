@@ -1,7 +1,5 @@
 package sg.com.ioutlet.web.app.user.action;
 
-import com.opensymphony.xwork2.util.logging.Logger;
-
 import sg.com.ioutlet.ace.user.User;
 import sg.com.ioutlet.framework.authorization.model.IoltFunction;
 import sg.com.ioutlet.framework.web.WebConstants;
@@ -24,8 +22,7 @@ public class UserAuthAction extends IoutletAction implements UnAuthorizationAwar
 	}
 	@Override
 	protected String onLoad() {
-		System.out.println("ling input");
-	   return INPUT;
+		   return INPUT;
 	}
 	
 	

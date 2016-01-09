@@ -79,7 +79,7 @@ public final class BusinessExceptionInterceptor extends CommonInterceptor
 					else
 						se = (RuntimeException) e.getCause();
 
-					aas.addActionError(se.toString());
+					aas.addActionError(se.getMessage());
 
 					isBusinessException = true;
 					logger.bizError("Stale Update Exception Occurred: ", se);

@@ -29,7 +29,7 @@ import sg.com.ioutlet.web.common.action.AccessController;
 import com.opensymphony.xwork2.ActionSupport;
 
 
-public abstract class CommonActionSupport extends ActionSupport implements SubmitValidationAware, ApplicationAware, SessionAware, ServletRequestAware, ParameterAware {
+public abstract class CommonActionSupport extends ActionSupport implements  SubmitValidationAware, ApplicationAware, SessionAware, ServletRequestAware, ParameterAware {
 	/**
 	 * 
 	 */
@@ -159,8 +159,7 @@ public abstract class CommonActionSupport extends ActionSupport implements Submi
 	public void setSfld(String sfld)
 	{
 		
-		System.out.println("Setter:"+sfld);
-		this.sfld = sfld;
+			this.sfld = sfld;
 	}
 	
 	

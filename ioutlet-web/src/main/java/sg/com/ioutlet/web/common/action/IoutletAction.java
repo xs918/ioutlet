@@ -65,7 +65,6 @@ public abstract class IoutletAction extends IoutletDisplayAction implements  For
 	public void loadForm() {
 
 		logger.trace("loadForm");
-
 		CommonForm form = null;
 		String key = getFormClassName();
      	if (getSfld() != null) {
@@ -77,16 +76,18 @@ public abstract class IoutletAction extends IoutletDisplayAction implements  For
 			return;
 		}
 		String cfkey = (String) findStringFromAllScope(CLEAR_FORM_FLAG);
+		
+	
+		
+		
 		if (cfkey != null) {
 			if (logger.isDebugEnabled())
 				logger.debug("Form loading ignored as the skip form loading parameter ["
 						+ CLEAR_FORM_FLAG + "] is present");
 			if (cfkey.equals(key)) {
-				// model = constructForm();
 				removeFromAllScope(key);
 				removeFromAllScope(CLEAR_FORM_FLAG);
 			} else {
-				// model = constructForm();
 				removeFromAllScope(cfkey);
 				removeFromAllScope(key);
 				removeFromAllScope(CLEAR_FORM_FLAG);
@@ -208,7 +209,6 @@ public abstract class IoutletAction extends IoutletDisplayAction implements  For
 	public String execute()
 	{
 		logger.trace("execute");
-		System.out.println("execute");
 		
 		if(model != null)
 		{
@@ -250,6 +250,7 @@ public abstract class IoutletAction extends IoutletDisplayAction implements  For
 			model.setFormLoadingDate(fld);
 			TransactionControl.getTransactionInfo().setFormLoadingDate(fld);
 		}
+		
 		return model;
 	}
 	

@@ -117,7 +117,6 @@ public class UserActionActionHandler extends  IoutletActionHandler{
 		User usr= aceBridge.getUserById(form.getUserId());
 		if(null!=usr)
 		{
-			System.out.println("user exited already");
 			addFieldError("userId", getText("user.id.has.been.existed.please.choose.new.one"));
 			return false;
 		}

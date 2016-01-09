@@ -41,6 +41,7 @@
 		<interceptor-stack name="form-required">
 				<interceptor-ref name="form-load" />
 				<interceptor-ref name="form-submit" />
+				<interceptor-ref name="modelDriven"/>
 		</interceptor-stack>
 		
 		
@@ -77,20 +78,23 @@
 		</interceptor-stack>
 	
 		<interceptor-stack name="ioutletdefaultStack">
-			<interceptor-ref name="defaultStack" />
-			<interceptor-ref name="loggedinuser" />
-			<interceptor-ref name="form-required" />
+		   <interceptor-ref name="defaultStack" />
+		   <interceptor-ref name="form-required" />
+		 	<interceptor-ref name="loggedinuser" />
 		    <interceptor-ref name="transaction-control" />
-	        <interceptor-ref name="uncatch-biz-exception" />
+	        <interceptor-ref name="uncatch-biz-exception" /> 
+	    
+      
+	       
 		</interceptor-stack>
 
 
 
 		</interceptors>
 		
-		<default-interceptor-ref name="ioutletdefaultStack" />
+	<default-interceptor-ref name="ioutletdefaultStack" />
 
-          
+           
           
          <global-results>
 			<result name="error" type="tiles">COMMON.ERROR</result>

@@ -42,11 +42,8 @@ public class TransactionControlInterceptor  extends CommonInterceptor{
 				processUser = userInfo.getUserId();
 			}
 			HttpSession session = request.getSession();
-			System.out.println("clientIp:"+clientIp);
-			System.out.println("processUser:"+processUser);
 			
 			String sessionId = (String) session.getAttribute(WebConstants.SESSION_ID.toString());
-			System.out.println("sessionId:"+sessionId);
 			
 			if (StringUtils.isEmpty(sessionId))
 			{

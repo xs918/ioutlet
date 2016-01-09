@@ -18,8 +18,7 @@ public final class FormLoadingInterceptor extends CommonInterceptor
 	protected String doIntercept(ActionInvocation actionInvocation) throws Exception
 	{
 		logger.trace("doIntercept");
-		//long start = System.currentTimeMillis();
-		logger.trace("setting form loading timestamp");
+			logger.trace("setting form loading timestamp");
 		String result = null;
 		if (actionInvocation.getAction() instanceof CommonActionSupport)
 		{
@@ -35,7 +34,6 @@ public final class FormLoadingInterceptor extends CommonInterceptor
 		{
 			// RETRIEVE ACTION
 			IoutletAction fas = ((IoutletAction) actionInvocation.getAction());
-
 			// LOAD FORM FROM SCOPE
 			fas.loadForm();
 			if(logger.isDebugEnabled())

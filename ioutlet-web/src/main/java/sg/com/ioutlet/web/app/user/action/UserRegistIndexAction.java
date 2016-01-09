@@ -18,12 +18,13 @@ public class UserRegistIndexAction extends IoutletAction implements UnAuthorizat
 
 	@Override
 	protected CommonForm constructForm() {
-		return new UserRegistForm();
+	
+		CommonForm  form =  new UserRegistForm();
+		return  form;
 	}
 
 	@Override
 	protected String onSubmit() {
-		System.out.println("call onsubmit");
 		UserRegistForm form = (UserRegistForm) getModel();
 		UserActionActionHandler handler = new UserActionActionHandler(this);
 	

@@ -37,7 +37,6 @@ public class ProductIndexAction extends IoutletAction{
 		ProductActionHandler handler = new ProductActionHandler(this);
 		handler.getProducts("ABC");
 		
-		System.out.println("form:"+form.getButtonType());
 		form.setProductName("Males Shirt");
 		
 		
@@ -48,7 +47,6 @@ public class ProductIndexAction extends IoutletAction{
 	@Override
 	protected String onLoad() {
 		
-		System.out.println(this.getSfld());
 		ProductForm form = (ProductForm) getModel();
 		ProductActionHandler handler = new ProductActionHandler(this);
 		form.setPlist(handler.getAllProducts());
