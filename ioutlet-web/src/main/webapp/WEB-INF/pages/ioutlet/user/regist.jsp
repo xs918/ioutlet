@@ -207,10 +207,11 @@
 		         
 		
 		                   <s:textfield
-		                        label="%{getText('dayOfBirth')}"
+		                        label="%{getText('day.of.birth')}"
 		                        name="dayOfBirth"
-		                        data-format="DD-MM-YYYY" data-template="D MMM YYYY"
+		                        data-format="DD/MM/YYYY" data-template="DD MM YYYY"
 		                        id="dayOfBirth"
+		                        requiredLabel="true"
 		                     />
 		                     
 		                     
@@ -461,6 +462,7 @@ $(document).ready(function () {
 
 function isChoose(btnObj)
 {
+		  
 	var roleName=btnObj.value;
     $.getJSON('<s:property value="%{jsonActCall}"/>',
     	     {

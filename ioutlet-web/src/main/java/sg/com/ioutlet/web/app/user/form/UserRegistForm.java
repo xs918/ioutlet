@@ -15,6 +15,7 @@ import org.apache.struts2.json.annotations.JSON;
 import sg.com.ioutlet.ace.functionaccess.FunctionAccess;
 import sg.com.ioutlet.ace.role.Role;
 import sg.com.ioutlet.ace.user.User;
+import sg.com.ioutlet.bas.DateUtil;
 import sg.com.ioutlet.model.img.Imge;
 import sg.com.ioutlet.web.common.form.IoutletForm;
 
@@ -31,7 +32,7 @@ public class UserRegistForm extends IoutletForm {
 	private String retypePassword;
 	private String name;
 	private String gender;
-	private Date dayOfBirth;
+	private String dayOfBirth;
 	private String description;
 	private String address1;
 	private String address2;
@@ -92,7 +93,7 @@ public class UserRegistForm extends IoutletForm {
 		retypePassword=EMPTY;
 		name = EMPTY;
 		gender =EMPTY;
-		dayOfBirth = null;
+		dayOfBirth =  EMPTY;
 		description = EMPTY;
 		postCode = EMPTY;
 		langCode = EMPTY;
@@ -173,6 +174,17 @@ public class UserRegistForm extends IoutletForm {
 			as.addFieldError("telephone", as.getText("telephone.no.of.company.is.required"));
 		}
 		
+		if(StringUtils.isBlank(dayOfBirth))
+		{
+
+			as.addFieldError("dayOfBirth", as.getText("day.of.birth.is.required"));
+		}
+		else if(!DateUtil.isValidDate(this.dayOfBirth))
+		{
+
+			as.addFieldError("dayOfBirth", as.getText("day.of.birth.is.invalid"));
+		}
+		
 	
 		
 		
@@ -222,11 +234,11 @@ public class UserRegistForm extends IoutletForm {
 		this.gender = gender;
 	}
 
-	public Date getDayOfBirth() {
+	public String getDayOfBirth() {
 		return dayOfBirth;
 	}
 
-	public void setDayOfBirth(Date dayOfBirth) {
+	public void setDayOfBirth(String dayOfBirth) {
 		this.dayOfBirth = dayOfBirth;
 	}
 

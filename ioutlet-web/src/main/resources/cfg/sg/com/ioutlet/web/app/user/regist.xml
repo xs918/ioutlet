@@ -35,11 +35,10 @@
         
         <action name="form!*" class="sg.com.ioutlet.web.app.user.action.UserRegistIndexAction" method="{*}">
             <result name="input" type="tiles">SG.COM.IOUTLET.USER.REG</result>
-            <result name="success" type="tiles">SG.COM.IOUTLET.USER.SUCCESS</result>
-    
+          
     		<!-- DISPLAY PAGE -->
-			<result name="back" type="redirect-action">
-				<param name="namespace">/regist</param>
+			<result name="success" type="redirect-action">
+				<param name="namespace">/login</param>
 				<param name="actionName">index!input</param>				
 			</result>
 			

@@ -14,6 +14,7 @@ import org.apache.commons.io.FilenameUtils;
 import sg.com.ioutlet.ace.functionaccess.FunctionAccess;
 import sg.com.ioutlet.ace.role.Role;
 import sg.com.ioutlet.ace.user.User;
+import sg.com.ioutlet.bas.DateUtil;
 import sg.com.ioutlet.bas.Gender;
 import sg.com.ioutlet.framework.trxhelper.TransactionControl;
 import sg.com.ioutlet.framework.web.common.OssUtils;
@@ -69,7 +70,8 @@ public class UserActionActionHandler extends  IoutletActionHandler{
 		usr.setEmailId(form.getEmailId());
 		usr.setPassword(form.getPassword());
 		usr.setGender(Gender.valueOf(form.getGender()));
-		usr.setDayOfBirth(form.getDayOfBirth());
+
+		usr.setDayOfBirth(DateUtil.toDateFromString(form.getDayOfBirth()));
 		usr.setDescription(form.getDescription());
 		usr.setLangCode(form.getLangCode());
 		usr.setCurrLoc(form.getCurrLoc());

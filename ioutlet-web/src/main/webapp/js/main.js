@@ -127,7 +127,6 @@ function isSearch(formid)
 
 function isCustomSearch(formid, buttonName)
 {
-	alert("isCustomSearch");
 	document.forms[formid].elements['model.actionType'].value = 'searchAct';
 	document.forms[formid].elements['model.buttonType'].value = buttonName;
 }
@@ -233,14 +232,13 @@ function isCustomBack(formid ,buttonName)
 }
 function isBack(formid)
 {
-	alert("isBack:"+formid);
 	
 	document.forms[formid].elements['model.actionType'].value = 'backAct';
 }
 
 function isSubmit(formid)
 {
-	alert("isSubmit");
+
 	document.forms[formid].elements['model.actionType'].value = 'submitAct';
 
 	
