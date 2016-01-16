@@ -2,6 +2,7 @@ package sg.com.ioutlet.web.app.user.form;
 
 import java.io.File;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.struts2.json.annotations.JSON;
 
 import sg.com.ioutlet.ace.functionaccess.FunctionAccess;
 import sg.com.ioutlet.ace.role.Role;
@@ -51,7 +53,11 @@ public class UserRegistForm extends IoutletForm {
 	
 	private User regUser;
 	
-	private List<Role> roles;
+
+	private Map<String,Role> rolesMap;
+	
+	private Role selectedRole;
+	private String selectedRoleName;
 	
 	private TreeMap<String,String> langMap;
 	private TreeMap<String,String> locMap;
@@ -64,6 +70,8 @@ public class UserRegistForm extends IoutletForm {
 	private String[] userImgFilesContentType;
 	
 	private File[] userImgFiles;
+	
+	private List<String> selectedFunction;
 	
 	public List<FunctionAccess> getFunctionAccess(Role role)
 	{
@@ -166,6 +174,7 @@ public class UserRegistForm extends IoutletForm {
 		}
 		
 	
+		
 		
 		
 		
@@ -457,14 +466,10 @@ public class UserRegistForm extends IoutletForm {
 		this.userImgFilesContentType = userImgFilesContentType;
 	}
 
-	public List<Role> getRoles() {
-		return roles;
-	}
 
-	public void setRoles(List<Role> roles) {
-		this.roles = roles;
-	}
 
+
+	@JSON(serialize=false)
 	public Map<Role,List<FunctionAccess>> getAllRoleFunctionAccessMap() {
 		return allRoleFunctionAccessMap;
 	}
@@ -472,7 +477,53 @@ public class UserRegistForm extends IoutletForm {
 	public void setAllRoleFunctionAccessMap(Map<Role,List<FunctionAccess>> allRoleFunctionAccessMap) {
 		this.allRoleFunctionAccessMap = allRoleFunctionAccessMap;
 	}
+	@JSON(serialize=false)
+	public Role getSelectedRole() {
+		return selectedRole;
+	}
 
+	public void setSelectedRole(Role selectedRole) {
+		this.selectedRole = selectedRole;
+	}
+
+
+	public String getSelectedRoleName() {
+		return selectedRoleName;
+	}
+
+	public void setSelectedRoleName(String selectedRoleName) {
+		this.selectedRoleName = selectedRoleName;
+	}
 	
-	
+
+	@JSON(serialize=false)
+	public Map<String,Role> getRolesMap() {
+		return rolesMap;
+	}
+
+	public void setRolesMap(Map<String,Role> rolesMap) {
+		this.rolesMap = rolesMap;
+	}
+
+	public List<String> getSelectedFunction() {
+		return selectedFunction;
+	}
+
+	public void setSelectedFunction(List<String> selectedFunction) {
+		this.selectedFunction = selectedFunction;
+	}
+
+	public void populateSelectedFunctionName()
+	{
+		if(getRolesMap()!=null)
+		{
+			List<String>accessFunction=  new ArrayList<String>();
+		    for(FunctionAccess a:selectedRole.getAccessFunctions())
+		    {
+		    	accessFunction.add(a.getName());
+		    	
+		    }
+		    setSelectedFunction(accessFunction);
+		}
+	}
 }

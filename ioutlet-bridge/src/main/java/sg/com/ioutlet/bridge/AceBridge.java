@@ -34,18 +34,18 @@ public interface AceBridge
 	public List<User> getAllUsersByRoleId(String roleId);
 	
 /**********************setter***********************/
-	boolean registeUserProfile(User regUser, List<Imge> usrImgs);
+	boolean registeUserProfile(User regUser, List<Imge> usrImgs,TransactionInfo ti);
 
 	
-	Role addRole(RoleVo roleVo);
+	Role addRole(RoleVo roleVo,TransactionInfo ti);
 
 	void deleteRole(String id);
 
-	Role updateRole(RoleVo roleVo);
+	Role updateRole(RoleVo roleVo,TransactionInfo ti);
 	
-	User addUser(UserVo userVo);
+	User addUser(UserVo userVo,TransactionInfo ti);
 
-	User updateUser(UserVo userVo);
+	User updateUser(UserVo userVo,TransactionInfo ti);
 
 	void deleteUser(String userId);
 

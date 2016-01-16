@@ -19,7 +19,9 @@
             <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult"/>
             			<result-type name="redirect-action"
 				class="org.apache.struts2.dispatcher.ServletActionRedirectResult"
-				default="false" />				
+				default="false" />		
+				
+			   <result-type name="json" class="org.apache.struts2.json.JSONResult" default="false" />				
 	     </result-types>
 
       <interceptors>
@@ -34,7 +36,7 @@
 		<interceptor name="form-submit"
 				class="sg.com.ioutlet.framework.web.interceptor.FormSubmitInterceptor">
 				<param name="excludeMethods">
-					input,back,cancel,complete
+					input,json,back,cancel,complete,
 				</param>
 		</interceptor>
 		

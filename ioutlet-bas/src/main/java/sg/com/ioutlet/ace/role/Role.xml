@@ -28,8 +28,8 @@
 		<query>
 		SELECT r
 			FROM Role r
-		    left join r.accessFunctions  f
-		    WHERE r.recordStatus='A'
+		    left join fetch r.accessFunctions  f
+     	    WHERE r.recordStatus='A'
 		</query>
 	</named-query>
 	
@@ -46,7 +46,10 @@
 			<basic name="description" optional="true">
 				<column name="DESCRIPTION" nullable="true" length="255" />
 			</basic>
-
+	        <basic name="isDefault" optional="true">
+				<column name="IS_DEFAULT" nullable="true" length="1"/>
+			</basic>
+			
 	
 			<basic name="price" optional="true">
 					<column name="PRICE" nullable="true" precision="16"

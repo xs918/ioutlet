@@ -2,6 +2,7 @@ package sg.com.ioutlet.web.app.user.action;
 
 import org.apache.commons.lang.StringUtils;
 
+import sg.com.ioutlet.ace.role.Role;
 import sg.com.ioutlet.framework.authorization.model.IoltFunction;
 import sg.com.ioutlet.framework.web.action.awareness.UnAuthorizationAware;
 import sg.com.ioutlet.framework.web.form.CommonForm;
@@ -15,7 +16,8 @@ public class UserRegistIndexAction extends IoutletAction implements UnAuthorizat
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	 
+	 
 	@Override
 	protected CommonForm constructForm() {
 	
@@ -27,17 +29,13 @@ public class UserRegistIndexAction extends IoutletAction implements UnAuthorizat
 	protected String onSubmit() {
 		UserRegistForm form = (UserRegistForm) getModel();
 		UserActionActionHandler handler = new UserActionActionHandler(this);
-	
+		System.out.println("onSubmit:"+form.getActionType() + " button type:"+form.getButtonType());
+		System.out.println("form:"+ form.getSelectedRoleName());
+		Role selectedRole = form.getRolesMap().get(form.getSelectedRoleName());
+		form.setSelectedRole(selectedRole);
+		
 		
 		boolean result = handler.registeUserProfile(form);
-		
-		
-	
-		
-		if(StringUtils.equalsIgnoreCase(form.getButtonType(),"delete"))
-		{
-			
-		}
 		if(!result)
 		{
 			return INPUT; 
@@ -45,8 +43,25 @@ public class UserRegistIndexAction extends IoutletAction implements UnAuthorizat
 		return SUCCESS;
 	}
 
+
+
+	public  String json()
+	{
+		System.out.println("jsonCall*********");
+		UserRegistForm form = (UserRegistForm) getModel();
+		System.out.println("ajaxSelectRoles:"+form.getSelectedRoleName());
+		Role selectedRole = form.getRolesMap().get(form.getSelectedRoleName());
+		form.setSelectedRole(selectedRole);
+		form.populateSelectedFunctionName();
+
+	
+		return SUCCESS;
+	}
+	
+	
 	@Override
 	protected String onLoad() {
+		System.out.println("onLoad  regist");
 		UserRegistForm form = (UserRegistForm) getModel();
 		UserActionActionHandler handler = new UserActionActionHandler(this);
 		handler.loadDefaultValue(form);
@@ -70,6 +85,7 @@ public class UserRegistIndexAction extends IoutletAction implements UnAuthorizat
 	{
 		return getText("register u account here");
 	}
+
 
 
 }

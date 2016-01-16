@@ -13,10 +13,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <title>Iolt | Starter</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-     <s:url includeParams="none" id="scripts.main" value="/js/main.js"/>
-     <script type="text/javascript" src="<s:property value="%{scripts.main}"/>"></script>
-  
-    
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="<%=request.getContextPath()%>/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome -->
@@ -25,20 +21,43 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="<%=request.getContextPath()%>/dist/css/AdminLTE.min.css">
-    <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
-          page. However, you can choose any other skin. Make sure you
-          apply the skin class to the body tag so the changes take effect.
-    -->
     <link rel="stylesheet" href="<%=request.getContextPath()%>/dist/css/skins/skin-blue.min.css">
+    
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+     <!-- REQUIRED JS SCRIPTS -->
+         
+    <s:url includeParams="none" id="scripts.main" value="/js/main.js"/>
+    <script type="text/javascript" src="<s:property value="%{scripts.main}"/>"></script>
+      
+     <s:url includeParams="none" id="scripts.jQuery" value="/plugins/jQuery/jQuery-2.1.4.min.js"/>
+     <script type="text/javascript" src="<s:property value="%{scripts.jQuery}"/>"></script>
+   
+    <s:url includeParams="none" id="scripts.moment" value="/js/moment.js"/>
+     <script type="text/javascript" src="<s:property value="%{scripts.moment}"/>"></script>
+   
+     <s:url includeParams="none" id="scripts.combodate" value="/js/combodate.js"/>
+     <script type="text/javascript" src="<s:property value="%{scripts.combodate}"/>"></script>
+     
+   
+    <!-- Bootstrap 3.3.5 -->
+    <script src="<%=request.getContextPath()%>/bootstrap/js/bootstrap.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="<%=request.getContextPath()%>/dist/js/app.min.js"></script>
+    
+    
+    <script src="<%=request.getContextPath()%>/js/moment.js"></script>
+    
+    <script src="<%=request.getContextPath()%>/js/combodate.js"></script>
+   
+     
   </head>
-    <body>
+   <body>
+   
+   
+   
+     
+     
+   
   <s:if test="hasActionErrors()">  
   <div class="alert text-center alert-danger fade in">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -77,14 +96,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
            <tiles:insertAttribute name="content" />
          </section>
    
+     
+      
+      
+
+    
+  
    
-    <!-- REQUIRED JS SCRIPTS -->
-    <!-- jQuery 2.1.4 -->
-    <script src="<%=request.getContextPath()%>/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-    <!-- Bootstrap 3.3.5 -->
-    <script src="<%=request.getContextPath()%>/bootstrap/js/bootstrap.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="<%=request.getContextPath()%>/dist/js/app.min.js"></script>
+     
+     
 
   </body>
 </html>

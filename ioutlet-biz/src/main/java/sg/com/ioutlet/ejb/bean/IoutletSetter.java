@@ -6,6 +6,7 @@ import javax.ejb.Stateless;
 import sg.com.ioutlet.app.dao.OutletDao;
 import sg.com.ioutlet.app.dao.PojoUtils;
 import sg.com.ioutlet.bridge.SetterBridge;
+import sg.com.ioutlet.framework.model.TransactionInfo;
 import sg.com.ioutlet.model.outlet.Outlet;
 import sg.com.ioutlet.model.outlet.OutletKey;
 import sg.com.ioutlet.vo.OutletVo;
@@ -17,8 +18,9 @@ public class IoutletSetter extends EjbEntityManager implements SetterBridge {
 	
 
 	@Override
-	public Outlet addOutlet(OutletVo outletVo) {
+	public Outlet addOutlet(OutletVo outletVo,TransactionInfo ti) {
 		OutletDao dao = new OutletDao(this.getEntityManager());
+		this.setTrxInfo(ti);
 
 		Outlet newOut = new Outlet();
 		PojoUtils.updateOutletFromVo(newOut, outletVo);
@@ -29,7 +31,8 @@ public class IoutletSetter extends EjbEntityManager implements SetterBridge {
 	}
 
 	@Override
-	public Outlet updateOutlet(OutletVo outletVo) {
+	public Outlet updateOutlet(OutletVo outletVo,TransactionInfo ti) {
+		this.setTrxInfo(ti);
 		OutletDao dao = new OutletDao(this.getEntityManager());
 		Outlet updateOutlet = dao.getByOutletUuid(outletVo.getId());
         if(null == updateOutlet)

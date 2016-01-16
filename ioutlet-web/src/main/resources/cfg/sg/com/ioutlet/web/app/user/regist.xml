@@ -23,6 +23,16 @@
     
         </action>
         
+        
+         
+            <action name="jsonAct" class="sg.com.ioutlet.web.app.user.action.UserRegistIndexAction" method="json">
+                <result type="json">
+                </result>
+            </action>
+        
+        
+        
+        
         <action name="form!*" class="sg.com.ioutlet.web.app.user.action.UserRegistIndexAction" method="{*}">
             <result name="input" type="tiles">SG.COM.IOUTLET.USER.REG</result>
             <result name="success" type="tiles">SG.COM.IOUTLET.USER.SUCCESS</result>

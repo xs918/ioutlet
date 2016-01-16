@@ -1,21 +1,12 @@
 <!DOCTYPE html>
-<%@ taglib prefix="s" uri="/struts-tags" %>
-<%@ taglib prefix="sj" uri="/struts-jquery-tags" %>
-
+<%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ taglib prefix="sx" uri="/struts-dojo-tags" %>
 <html>
 <head>
     <meta charset="utf-8">
-     <title>Advanced Examples - Struts2 Bootstrap Plugin Showcase - 
-   </title>
-     <meta name="viewport" content="width=device-width, initial-scale=1">
-     
-
-
-    <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="<%=request.getContextPath()%>/bootstrap/css/bootstrap.min.css">
-    
-     <sj:head jqueryui="false"/>
-     <s:head />
+ <sx:head />
+ <s:head />
 </head>
 
 <style type="text/css">
@@ -79,6 +70,11 @@
 				 <s:url id="login" namespace="/login" action="index">
 					<s:param name="sfld">true</s:param>
 			     </s:url>
+			     
+			     <s:url id="jsonActCall" namespace="/regist" includeParams="none" action="jsonAct" />
+			     
+			     
+			     
 		          <p class="bg-default text-primary">Create an account
 		            <a href="<s:property value='%{login}'/>"><span class="fa fa-sign-in"></span>Login</a>
 		          </p>
@@ -118,10 +114,15 @@
     </div>
 </div>
 
+<s:url id="roleajax" namespace="/regist" action="ajaxAction">
+</s:url>
+	     
+	     
 
 <s:form enctype="multipart/form-data" theme="bootstrap" action="form" method="post"
   cssClass="form-Vertical">
    <s:include value="/WEB-INF/pages/common/formparts/common.jsp" />           
+    <s:hidden name="selectedRoleName" id="selectedName"  />
    <div class="row setup-content" id="step-1">
       <div class="col-xs-2 col-lg-2">
 			          </div>
@@ -132,6 +133,7 @@
 		                        label="%{getText('user.id')}"
 		                        name="userId"
 		                        maxLength="50"
+		                         requiredLabel="true"
 		                        placeholder="%{getText('only.allow.letters.numbers.and.underscore')}"
 		                     />
 		                           
@@ -141,6 +143,7 @@
 		                        name="emailId"
 		                        maxLength="50"
 		                        placeholder="sample@gmail.com"
+		                         requiredLabel="true"
 		                         />
 		                        
 		                        
@@ -149,6 +152,7 @@
 		                        label="%{getText('password')}"
 		                        name="password"
 		                        placeholder="%{getText('character.minimum.8.case.sensitive')}"
+		                         requiredLabel="true"
 		                        maxLength="20"
 		                 />
 		
@@ -158,6 +162,7 @@
 		                 <s:password
 		                          label="%{getText('retype.password')}"
 		                        name="retypePassword"
+		                         requiredLabel="true"
 		                          maxLength="20"
 		                       placeholder="%{getText('retype.your.password.here')}"/>
 		                        
@@ -184,6 +189,7 @@
 		                       label="%{getText('full.name')}"
 		                       name="name"
 		                       maxLength="50"
+		                        requiredLabel="true"
 		               />
 		                        
 		                        
@@ -195,13 +201,23 @@
 		                        label="%{getText('gender')}"
 		                        list="genderMap"
 		                        name="gender"
+		                        
 		                        />
 		                        
 		         
 		
-		
-                
-  
+		                   <s:textfield
+		                        label="%{getText('dayOfBirth')}"
+		                        name="dayOfBirth"
+		                        data-format="DD-MM-YYYY" data-template="D MMM YYYY"
+		                        id="dayOfBirth"
+		                     />
+		                     
+		                     
+                              
+				             		
+					    
+
                   				 <s:file name="userImgFiles"  label="%{getText('update.profile.picture')}" multiple="true"/>
                     
   
@@ -240,7 +256,7 @@
           		  <div class="col-xs-4 col-lg-4">
           		  </div>
     </div>
-              
+     
 
     <div class="row setup-content" id="step-3">
       <div class="col-xs-2 col-lg-2">
@@ -250,6 +266,7 @@
 		         <s:textfield
 		          label="%{getText('reg.no.of.company')}"
 		                        name="regNoOfCompany"
+		                         requiredLabel="true"
 		                        maxLength="50"
 		                         placeholder="%{getText('enter.your.regist.no.of.company')}"/>
 		           
@@ -257,6 +274,7 @@
 		          <s:textfield
 		          label="%{getText('name.of.company')}"
 		                        name="nameOfCompany"
+		                         requiredLabel="true"
 		                        maxLength="150"
 		                        placeholder="%{getText('enter.your.name.of.company')}"/>
 		             
@@ -264,6 +282,7 @@
 		                       label="%{getText('telephone')}"
 		                       name="telephone"
 		                       maxLength="20"
+		                        requiredLabel="true"
 		                       placeholder="%{getText('enter.your.telephone.no.here')}"
 		                       
 		                       />
@@ -319,43 +338,54 @@
 				      </tr>
 				    </thead>
 				    <tbody>
-				    	<s:iterator value="roles" id="role">
+				    	<s:iterator value="rolesMap.values()" id="role">
 				    	 <tr>
 				    	<td><s:property value="%{#role.name}"/></td>
 					    <td><s:property value="%{#role.description}"/>
 				    	 <td><s:property value="%{#role.price}"/>
 				    	 <td>
 				    	 
-				    	 
+				    	 <button class="btn btn-info btn-sm pull-right"  type='button'
+				    	  value="<s:property value="%{#role.name}"/>" onclick='isChoose(this)'>
+				    	 <s:property value="%{getText('choose.your.plan')}"/>
+				    	</button>
 				    	
 				    	
-				    	<s:submit class="btn btn-info btn-sm pull-right" type="button" onclick="isChoose('%{#role.name}')" >Choose
-				    	</s:submit>
-		  			
+				  
 						</td>
 				 
 				    	 </tr>
 				    	</s:iterator>
 				   </tbody>
 		  	 </table>
-		  <div id="selectedPlan">
-		      <h3>Your selected</h3>
-		   
-		   	<s:iterator value="roles" id="role">
-				    	 <tr>
-				    	<td><h2><s:property value="%{#role.name}"/></h2></td>
-				    	 </tr>
-				    	    	<s:iterator value="%{#role.accessFunctions}" id="function">
-				    	    	   <tr>
-							    	<td><s:property value="%{#function.name}"/></td>
-							    	 </tr>
-				    	    	
-				    	    	
-				    	    	</s:iterator>
-          
-			</s:iterator>
-          
-          </div>
+		
+		 
+	  <h3 id="planSelected"><s:property value="%{getText('default.selected')}"/></h3>
+	
+	  <s:hidden name="labelyouselected" id="labelyouselected" value="%{getText('you.selected')}" />
+	  
+	  <div class="panel panel-primary" id="ajaxpanel">
+      <div class="panel-heading" id="ajaxRoleName"><s:property value="%{selectedRole.name}"/>
+      </div>
+      <s:iterator value="%{selectedFunction}" id="function">
+        <div class="panel-body" id="ajaxfunctionAccess">
+        <s:property value="%{#function}"/>
+        </div>
+        
+	  </s:iterator>
+	  </div>      	
+		<%--       <s:iterator value="rolesMap.values()" id="role">
+		      
+		       <h3><s:property value="%{#role.name}"/> </h3>
+		      
+		      
+		    	<s:iterator value="%{#role.accessFunctions}" id="function">
+				   <tr>
+					<td><s:property value="%{#function.name}"/></td>
+				   </tr>
+		       </s:iterator>
+		       </s:iterator> --%>
+        
      
      
 		 <div class="row">
@@ -372,7 +402,9 @@
            
         
 
-<script src="<%=request.getContextPath()%>/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+
+
+      
 <script>
 $(document).ready(function () {
 	    var navListItems = $('div.setup-panel div a'),
@@ -415,21 +447,67 @@ $(document).ready(function () {
     });
 
     $('div.setup-panel div a.btn-primary').trigger('click');
+
+    $('#dayOfBirth').combodate({
+       firstItem: 'name',
+       smartDays:true,
+       minYear: 1912
+      
+    });   
+	
+    
 });
 
-function isChoose(id)
+
+function isChoose(btnObj)
 {
-	alert("id:"+id);
-    personObj = new Object();
-    personObj.firstname = "John";
-    personObj.lastname = "Doe";
-    personObj.age = 50;
-    personObj.eyecolor = "blue"; 
-    $("#selectedPlan").text($.param(personObj));
+	var roleName=btnObj.value;
+    $.getJSON('<s:property value="%{jsonActCall}"/>',
+    	     {
+    	selectedRoleName : roleName
+	},
+    function(response){
+		
+	
+		
+		
+		var lis = document.querySelectorAll('#ajaxfunctionAccess');
+		for(var i=0; li=lis[i]; i++) {
+		    li.parentNode.removeChild(li);
+		 
+		}
+		
+		
+		var lis = document.querySelectorAll('#ajaxRoleName');
+		for(var i=0; li=lis[i]; i++) {
+		    li.parentNode.removeChild(li);
+		
+		}
+		
+	    var lis = document.querySelectorAll('#ajaxpanel');
+		for(var i=0; li=lis[i]; i++) {
+		    li.parentNode.removeChild(li);
+		
+		}
+		var selectLabel=$('#labelyouselected').val();
+		$('#planSelected').text(selectLabel);	
+		
+		
+		var panel='<div class="panel panel-primary" id="ajaxpanel"><div class="panel-heading" id="ajaxRoleName">'+response.selectedRoleName+'</div></div>'
+		$('#planSelected').after(panel);	
+		
+		response.selectedFunction.reverse();
+		$.each(response.selectedFunction, function(value) {
+			var listview = '<div class="panel-body" id="ajaxfunctionAccess">'+ response.selectedFunction[value]+ '</div>';
+			$('#ajaxRoleName').after(listview);
+		});	
+	}
+ )
+
+document.form.selectedRoleName.value=roleName;
 };
 
 
 </script>
-
 </body>
 </html>

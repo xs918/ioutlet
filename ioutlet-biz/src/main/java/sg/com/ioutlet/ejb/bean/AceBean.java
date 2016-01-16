@@ -61,12 +61,7 @@ public class AceBean extends EjbEntityManager implements AceBridge  {
 		List<Role> roles =dao.getAllWithFunction();
 		for(Role r:roles)
 		{
-		 List<FunctionAccess> accessFunctions  = new ArrayList<FunctionAccess>();
-		 for(FunctionAccess fac:r.getAccessFunctions())
-		 {
-			 accessFunctions.add(fac);
-		 }
-		 functionMap.put(r, accessFunctions);
+			 functionMap.put(r, r.getAccessFunctions());
 		}
 		return functionMap;
 	}
@@ -99,9 +94,9 @@ public class AceBean extends EjbEntityManager implements AceBridge  {
 	/**********************************setter*************************************/
 	
 	@Override
-	public boolean registeUserProfile(User regUser, List<Imge> usrImgs) {
+	public boolean registeUserProfile(User regUser, List<Imge> usrImgs,TransactionInfo ti) {
 		UserDao uDao =  new UserDao(this.getEntityManager());
-		
+		this.setTrxInfo(ti);
 		uDao.create(regUser);
 		if(usrImgs!=null)
 		{
@@ -125,7 +120,8 @@ public class AceBean extends EjbEntityManager implements AceBridge  {
 	
 	
 	@Override
-	public Role addRole(RoleVo roleVo) {
+	public Role addRole(RoleVo roleVo,TransactionInfo ti) {
+		this.setTrxInfo(ti);
 		RoleDao dao = new RoleDao(this.getEntityManager());
 
 		Role existRole = dao.getByRoleName(roleVo.getName());
@@ -151,7 +147,8 @@ public class AceBean extends EjbEntityManager implements AceBridge  {
 	}
 
 	@Override
-	public Role updateRole(RoleVo roleVo) {
+	public Role updateRole(RoleVo roleVo,TransactionInfo ti) {
+		this.setTrxInfo(ti);
 		RoleDao dao = new RoleDao(this.getEntityManager());
 		Role role = dao.get(new RoleKey(roleVo.getId()));
 		if (null == role) {
@@ -164,7 +161,8 @@ public class AceBean extends EjbEntityManager implements AceBridge  {
 	}
 
 	@Override
-	public User addUser(UserVo userVo) {
+	public User addUser(UserVo userVo,TransactionInfo ti) {
+		this.setTrxInfo(ti);
 		UserDao dao = new UserDao(this.getEntityManager());
 
 		User newUsr = new User();
@@ -174,7 +172,8 @@ public class AceBean extends EjbEntityManager implements AceBridge  {
 	}
 	
 	@Override
-	public User updateUser(UserVo userVo) {
+	public User updateUser(UserVo userVo,TransactionInfo ti) {
+		this.setTrxInfo(ti);
 		UserDao dao = new UserDao(this.getEntityManager());
         User updateUsr = dao.getByUuid(userVo.getId());
         if(null == updateUsr)

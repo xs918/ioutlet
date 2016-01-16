@@ -23,7 +23,7 @@ public class Role extends CommonPojo  {
 	private String description;
 	private BigDecimal price;
 	private List<FunctionAccess> accessFunctions;
-
+	private boolean isDefault;
 	
 	public Role() {
 
@@ -35,7 +35,7 @@ public class Role extends CommonPojo  {
 	}
 
 	public enum Field {
-		key, name(50), description(200), startDate, endDate;
+		key, name(50), description(200), price(16,2),isDefault(1);
 
 		public int length = 255;
 		public int precision;
@@ -60,6 +60,8 @@ public class Role extends CommonPojo  {
 		List<Object[]> fields = new ArrayList<Object[]>();
 		fields.add(new Object[] { Field.name.name(), name });
 		fields.add(new Object[] { Field.description.name(), description });
+		fields.add(new Object[] { Field.price.name(), price });
+		fields.add(new Object[] { Field.isDefault.name(), isDefault });
 		return fields;
 
 	}
@@ -133,6 +135,17 @@ public class Role extends CommonPojo  {
 		this.accessFunctions = accessFunctions;
 	}
 
+
+	public boolean isDefault() {
+		
+		return isDefault;
+	}
+
+	public void setDefault(boolean isDefault) {
+		this.isDefault = isDefault;
+	}
+
+	
 
 
 }

@@ -127,6 +127,7 @@ function isSearch(formid)
 
 function isCustomSearch(formid, buttonName)
 {
+	alert("isCustomSearch");
 	document.forms[formid].elements['model.actionType'].value = 'searchAct';
 	document.forms[formid].elements['model.buttonType'].value = buttonName;
 }
@@ -146,19 +147,7 @@ function isForward(formid)
 function htmlDecode(value) {
 	return (typeof value === 'undefined') ? '' : $('<div/>').html(value).text();
 }
-(function($){
-	  textAreaExpandingWoScrollbar = function() {
-		var 	txt = $("textarea.textArea");
-	    var  	hiddenDiv = $(document.createElement('div'));
-		hiddenDiv.addClass('hiddendiv common');
-	    $('body').append(hiddenDiv);
-	    hiddenDiv.hide();
-	   	var 	content = txt.html();
-		content = content.replace(/\n/g, '<br>');
-	   	hiddenDiv.html(content + '<br>');
-		txt.height(hiddenDiv.height() + 100);
-	  };
-	})(jQuery);
+
 
 
 function disable(item)
@@ -251,6 +240,7 @@ function isBack(formid)
 
 function isSubmit(formid)
 {
+	alert("isSubmit");
 	document.forms[formid].elements['model.actionType'].value = 'submitAct';
 
 	

@@ -1,9 +1,13 @@
 package sg.com.ioutlet.web.app.user.handler;
 
+import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 import org.apache.commons.io.FilenameUtils;
 
@@ -11,6 +15,7 @@ import sg.com.ioutlet.ace.functionaccess.FunctionAccess;
 import sg.com.ioutlet.ace.role.Role;
 import sg.com.ioutlet.ace.user.User;
 import sg.com.ioutlet.bas.Gender;
+import sg.com.ioutlet.framework.trxhelper.TransactionControl;
 import sg.com.ioutlet.framework.web.common.OssUtils;
 import sg.com.ioutlet.model.bizinfo.BizInfo;
 import sg.com.ioutlet.model.img.Imge;
@@ -37,8 +42,22 @@ public class UserActionActionHandler extends  IoutletActionHandler{
 		
 		
 		form.setAllRoleFunctionAccessMap(funAceMap);
-		form.setRoles(new ArrayList<Role>(funAceMap.keySet()));
+		Map<String,Role> rolesMap = new TreeMap<String,Role>();
+		for(Role r:funAceMap.keySet())
+		{
+			if(r.isDefault())
+			{
+					form.setSelectedRole(r);
+			        form.setSelectedRoleName(r.getName());
+			}
+			rolesMap.put(r.getName(), r);
+		}
+		form.setRolesMap(rolesMap);
+		form.populateSelectedFunctionName();
+		
+		
 	}
+
 
 
 
@@ -61,6 +80,7 @@ public class UserActionActionHandler extends  IoutletActionHandler{
 		usr.setActiveTime(null);
 		usr.setLastPasswordChangedTime(null);
 		usr.setLastLockedTime(null);
+		usr.setRole(form.getSelectedRole());
 		
 		
 		BizInfo bizinfo = new BizInfo();
@@ -89,21 +109,23 @@ public class UserActionActionHandler extends  IoutletActionHandler{
 		{
 			
 			for (int i = 0; i < form.getUserImgFiles().length; i++) {
-				 
+				File f = form.getUserImgFiles()[i];
+				
+			   File fcheck =  new File(f.getAbsolutePath());
+			   if(fcheck.exists()&&fcheck.isFile())
+			   {
+				
+				   String extName =FilenameUtils.getExtension(form.getUserImgFilesFileName()[i]);
+				   String fullPath=form.getRegUser().entityName() + OssUtils.CLOUD_PATH_SEPARATOR + form.getUserId();
+				   String imgName=i+"."+extName;
+				  
 			
-			    String extName =FilenameUtils.getExtension(form.getUserImgFilesFileName()[i]);
-			    	
-			    String fullPath=form.getRegUser().entityName() + OssUtils.CLOUD_PATH_SEPARATOR + form.getUserId();
-			    String imgName=i+"."+extName;
-			  
-	
-		
-		
-				Imge usrImg = new Imge();
-				usrImg.setUser(form.getRegUser());
-				usrImg.setFullPath(fullPath);
-				usrImg.setImgName(imgName);
-				usrImgs.add(usrImg);
+					Imge usrImg = new Imge();
+					usrImg.setUser(form.getRegUser());
+					usrImg.setFullPath(fullPath);
+					usrImg.setImgName(imgName);
+					usrImgs.add(usrImg);
+				}
 				
 			}
 			
@@ -139,7 +161,7 @@ public class UserActionActionHandler extends  IoutletActionHandler{
 		}
 
 		
-		boolean isSuccess= aceBridge.registeUserProfile(form.getRegUser(),form.getUsrImgs());
+		boolean isSuccess= aceBridge.registeUserProfile(form.getRegUser(),form.getUsrImgs(),TransactionControl.getTransactionInfo());
 		if(!isSuccess) // remove file from list
 		{
 			this.deleteFile(form.getUsrImgs());
