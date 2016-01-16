@@ -34,18 +34,7 @@
 		    });
 	});
 </script>
-<script type="text/javascript">
 
-/*
-	function popupEdit()
-	{
-		window.open("../product/edit!input.action","mywindow2","status=1,width=465px,scrollbars=1");	 
-	}
-*/
-document.getElementById('fa fa-pencil-square-o fa-2x').setAttribute(data-toggle,'modal');
-document.getElementById('fa fa-pencil-square-o fa-2x').setAttribute(data-target,'#exampleModal');
-
-</script>
 
 </head>
 <body>
@@ -78,13 +67,10 @@ document.getElementById('fa fa-pencil-square-o fa-2x').setAttribute(data-target,
 				  <s:hidden id="%{#counter}" name="%{#counter}" value="%{#counter}"  />
 				                
 					<td><input type="checkbox" value=""></td>
-					<td>
-					
-		<a href="<s:property value="%{userProfileImageLink}"/>">
-          <img src="<s:property value="%{userProfileImageLink}"/>"  class="img-circle" alt="productimages" style="width:150px;height:150px">
-        </a>
-      
-     
+					<td>	
+						<a href="<s:property value="%{userProfileImageLink}"/>">
+	          				<img src="<s:property value="%{userProfileImageLink}"/>"  class="img-circle" alt="productimages" style="width:150px;height:150px">
+	        			</a>
 					</td>
 					<td><s:property value="%{#pro.id}"/></td>
 					<td><s:property value="%{#pro.description}"/></td>
@@ -92,7 +78,7 @@ document.getElementById('fa fa-pencil-square-o fa-2x').setAttribute(data-target,
 					<td>visible</td>
 					<td class="edit">
 						<i class="fa fa-files-o fa-2x" onclick="popupEdit();return false;"></i>
-	    				<i class="fa fa-pencil-square-o fa-2x" ></i>
+	    				<i class="fa fa-pencil-square-o fa-2x" onclick='isChoose(this)' ></i>
 					    <i class="fa fa-trash-o fa-2x"></i>
 					</td>
 				</tr>
@@ -110,12 +96,14 @@ document.getElementById('fa fa-pencil-square-o fa-2x').setAttribute(data-target,
       </div>
       <div class="modal-body">
       <!-- modal body below -->
-				<tr>
-				  <td><s:textfield name="testing" value="1hao" /></td>
-				  <td><s:textfield name="testing" value="1hao" /></td>
-				  <td><s:textfield name="testing" value="1hao" /></td>
-				  <td><s:textfield name="testing" value="1hao" /></td>
-				</tr>
+      <table style="width:100%">
+          <tr><td><label>Description</label></td></tr>
+	      <tr><td><s:textfield name="testing" value="1hao" /></td></tr>
+	      <tr><td><label>Stock</label></td></tr>
+		  <tr><td><s:textfield name="testing" value="1hao" /></td></tr>
+		  <tr><td><label>Visibility</label></td></tr>
+		  <tr><td><s:textfield name="testing" value="1hao" /></td></tr>
+	  </table>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -132,4 +120,12 @@ document.getElementById('fa fa-pencil-square-o fa-2x').setAttribute(data-target,
 
 
 </body>
+<script type="text/javascript">
+	function isChoose(btnObj)
+	{
+		var rowValue=btnObj.value;
+		$("#exampleModal").modal();
+	}
+
+</script>
 </html>
