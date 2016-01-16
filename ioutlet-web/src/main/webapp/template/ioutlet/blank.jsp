@@ -71,14 +71,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
   </div>
   </s:if>
   
-  <s:if test="hasActionMessages()">  
-   <div class="alert alert-info fade in">
+   <s:if test="hasActionMessages()">  
+   <div class="alert text-center alert-info fade in">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong><s:property value="%{getText('info')}"/></strong> 
-     <s:actionmessage />
+    <strong><s:property value="%{getText('info.colon')}"/></strong> 
+    <s:iterator value="actionMessages">
+    	<span class="msg"><s:property escape="false" />
+	</span>
+   </s:iterator>
   </div>
   </s:if>
-  
+
   
   
       

@@ -33,12 +33,18 @@ public class UserAuthAction extends IoutletAction implements UnAuthorizationAwar
 		UserAuthForm form = (UserAuthForm) getModel();
 		UserActionActionHandler handler = new UserActionActionHandler(this);
 		User loginUser =  handler.userLogin(form.getUserId(),form.getPassword());
+		addActionMessage("You are valid user!");
     	if(loginUser==null)
     	{
     		this.addActionError(getText("user.id.or.password.incorrect"));
     		return INPUT;
     	}
 		this.session.put(WebConstants.LOGGED_IN_USER_INFO.toString(), loginUser);
+		
+	
+
+		
+		
    		return SUCCESS;
 	}
 

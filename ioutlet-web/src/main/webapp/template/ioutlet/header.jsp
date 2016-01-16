@@ -154,7 +154,7 @@
                       <a href="#" class="btn btn-default btn-flat">Profile</a>
                     </div>
                     <div class="pull-right">
-                      <a href="<s:property value='%{logout}'/>" class="btn btn-default btn-flat"><s:property value="%{getText('log.out')}"/></a>
+                      <a href="<s:property value='%{logout}'/>" class="btn btn-default btn-flat"><s:property value="%{getText('sign.out')}"/></a>
                     </div>
                   </li>
                 </ul>

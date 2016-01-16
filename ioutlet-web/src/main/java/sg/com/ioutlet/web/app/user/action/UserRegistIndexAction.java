@@ -40,6 +40,7 @@ public class UserRegistIndexAction extends IoutletAction implements UnAuthorizat
 		{
 			return INPUT; 
 		}
+		this.addActionMessage(this.getText("registration.successful"));
 		return SUCCESS;
 	}
 
