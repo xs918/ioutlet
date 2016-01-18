@@ -13,9 +13,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <title>AdminLTE 2 | Starter</title>
     <!-- Tell the browser to be responsive to screen width -->
 
-     <s:url includeParams="none" id="scripts.main" value="/js/main.js"/>
-     <script type="text/javascript" src="<s:property value="%{scripts.main}"/>"></script>
-  
+    
   
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -26,19 +24,51 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="<%=request.getContextPath()%>/dist/css/AdminLTE.min.css">
-    <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
-          page. However, you can choose any other skin. Make sure you
-          apply the skin class to the body tag so the changes take effect.
-    -->
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/dist/css/skins/skin-blue.min.css">
+    
+     <link rel="stylesheet" href="<%=request.getContextPath()%>/dist/css/skins/skin-blue.min.css">
+    
+ 
+    <link rel="stylesheet"
+	href="<%=request.getContextPath()%>/plugins/datatables/dataTables.bootstrap.css">
+    <link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	
+	  <link rel="stylesheet"
+	href="<%=request.getContextPath()%>/plugins/datatables/jquery.dataTables.min.css">
+	
+	
+	
+	
+	
+	
+	
+	     
+    <s:url includeParams="none" id="scripts.main" value="/js/main.js"/>
+    <script type="text/javascript" src="<s:property value="%{scripts.main}"/>"></script>
+      
+     <s:url includeParams="none" id="scripts.jQuery" value="/plugins/jQuery/jQuery-2.1.4.min.js"/>
+     <script type="text/javascript" src="<s:property value="%{scripts.jQuery}"/>"></script>
+     
+     
+    <s:url includeParams="none" id="scripts.moment" value="/js/moment.js"/>
+     <script type="text/javascript" src="<s:property value="%{scripts.moment}"/>"></script>
+   
+     <s:url includeParams="none" id="scripts.combodate" value="/js/combodate.js"/>
+     <script type="text/javascript" src="<s:property value="%{scripts.combodate}"/>"></script>
+     
+   
+    <!-- Bootstrap 3.3.5 -->
+    <script src="<%=request.getContextPath()%>/bootstrap/js/bootstrap.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="<%=request.getContextPath()%>/dist/js/app.min.js"></script>
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
+    
+    <script type="text/javascript"  src="<%=request.getContextPath()%>/plugins/datatables/jquery.dataTables.js">
+	</script>
+	
+    
+
+    </head>
   <!--
   BODY TAG OPTIONS:
   =================
@@ -151,18 +181,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="control-sidebar-bg"></div>
     </div><!-- ./wrapper -->
 
-    <!-- REQUIRED JS SCRIPTS -->
-
-    <!-- jQuery 2.1.4 -->
-    <script src="<%=request.getContextPath()%>/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-    <!-- Bootstrap 3.3.5 -->
-    <script src="<%=request.getContextPath()%>/bootstrap/js/bootstrap.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="<%=request.getContextPath()%>/dist/js/app.min.js"></script>
-
-    <!-- Optionally, you can add Slimscroll and FastClick plugins.
-         Both of these plugins are recommended to enhance the
-         user experience. Slimscroll is required when using the
-         fixed layout. -->
+   
   </body>
 </html>

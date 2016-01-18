@@ -34,6 +34,12 @@
         <put-attribute name="content" value="/WEB-INF/pages/ioutlet/product/index.jsp"/>                           
     </definition>
     
+        <definition name="SG.COM.IOUTLET.PRODUCT.INDEX2" extends="baseLayout">
+        <put-attribute name="title" value="index"/>
+        <put-attribute name="content" value="/WEB-INF/pages/ioutlet/product/index2.jsp"/>                           
+    </definition>
+    
+    
     <definition name="SG.COM.IOUTLET.PRODUCT.EDIT"  extends="blank">
         <put-attribute name="title" value="index"/>
         <put-attribute name="content" value="/WEB-INF/pages/ioutlet/product/edit.jsp"/>                           

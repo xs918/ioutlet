@@ -44,10 +44,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- AdminLTE App -->
     <script src="<%=request.getContextPath()%>/dist/js/app.min.js"></script>
     
-    
-    <script src="<%=request.getContextPath()%>/js/moment.js"></script>
-    
-    <script src="<%=request.getContextPath()%>/js/combodate.js"></script>
+
    
      
   </head>

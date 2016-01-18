@@ -18,23 +18,28 @@
          <action name="index" class="sg.com.ioutlet.web.app.product.action.ProductIndexAction" method="input">
             <result name="input" type="tiles">SG.COM.IOUTLET.PRODUCT.INDEX</result>
         </action>
+        
+         <action name="index2" class="sg.com.ioutlet.web.app.product.action.ProductIndexAction" method="input">
+            <result name="input" type="tiles">SG.COM.IOUTLET.PRODUCT.INDEX2</result>
+        </action>
+        
 
          <action name="edit" class="sg.com.ioutlet.web.app.product.action.ProductEditAction" method="input">
             <result name="input" type="tiles">SG.COM.IOUTLET.PRODUCT.EDIT</result>
         </action>
 
      <action name="form!*" class="sg.com.ioutlet.web.app.product.action.ProductIndexAction" method="{*}">
-            <result name="input" type="tiles">SG.COM.IOUTLET.USER.REG</result>
+            <result name="input" type="tiles">SG.COM.IOUTLET.PRODUCT.INDEX</result>
             <result name="success" type="tiles">SG.COM.IOUTLET.USER.SUCCESS</result>
     
-    		<!-- DISPLAY PAGE -->
+  <!--   		DISPLAY PAGE
 			<result name="back" type="redirect-action">
 				<param name="namespace">
 					/
 				</param>
 				<param name="actionName">register!input</param>				
 			</result>
-			
+			 -->
 			
         </action>
         
