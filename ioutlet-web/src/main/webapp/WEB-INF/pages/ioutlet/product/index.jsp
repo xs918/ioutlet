@@ -10,18 +10,9 @@
 <head>
 <title>Products</title>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<link rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/plugins/datatables/dataTables.bootstrap.css">
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/ioutlet.css">
-
 <script type="text/javascript">
 	$(document).ready(function(){
-		$('.fa').css("padding-right",20);
+	
 		$('.edit').css("vertical-align","bottom");
 		$('.edit').css("text-align","right");
 		$('.edit').css('opacity',0.0);

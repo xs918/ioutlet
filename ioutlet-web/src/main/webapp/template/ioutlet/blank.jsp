@@ -11,44 +11,86 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Iolt | Starter</title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- Bootstrap 3.3.5 -->
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/bootstrap/css/bootstrap.min.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/dist/css/AdminLTE.min.css">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/dist/css/skins/skin-blue.min.css">
+   
+   
+     
+    <!-- Toastr style -->
+    <link href="<%=request.getContextPath()%>/css/plugins/toastr/toastr.min.css" rel="stylesheet">
+     
+     <link rel="stylesheet" href="<%=request.getContextPath()%>/font-awesome/css/font-awesome.min.css">
     
+     <link rel="stylesheet" href="<%=request.getContextPath()%>/bootstrap/css/bootstrap.min.css" >
+  
+  
+      <!-- Gritter -->
+    <link href="<%=request.getContextPath()%>/js/plugins/gritter/jquery.gritter.css" rel="stylesheet">
 
-     <!-- REQUIRED JS SCRIPTS -->
-         
+    <link href="<%=request.getContextPath()%>/css/animate.css" rel="stylesheet">
+    <link href="<%=request.getContextPath()%>/css/style.css" rel="stylesheet">
+    
+    
     <s:url includeParams="none" id="scripts.main" value="/js/main.js"/>
     <script type="text/javascript" src="<s:property value="%{scripts.main}"/>"></script>
-      
-     <s:url includeParams="none" id="scripts.jQuery" value="/plugins/jQuery/jQuery-2.1.4.min.js"/>
-     <script type="text/javascript" src="<s:property value="%{scripts.jQuery}"/>"></script>
-   
-    <s:url includeParams="none" id="scripts.moment" value="/js/moment.js"/>
+    
+     <s:url includeParams="none" id="scripts.moment" value="/js/moment.js"/>
      <script type="text/javascript" src="<s:property value="%{scripts.moment}"/>"></script>
-   
+     
+     
      <s:url includeParams="none" id="scripts.combodate" value="/js/combodate.js"/>
      <script type="text/javascript" src="<s:property value="%{scripts.combodate}"/>"></script>
      
-   
     <!-- Bootstrap 3.3.5 -->
-    <script src="<%=request.getContextPath()%>/bootstrap/js/bootstrap.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="<%=request.getContextPath()%>/dist/js/app.min.js"></script>
-    
-
+    <script src="<%=request.getContextPath()%>/js/bootstrap.min.js"></script>
    
+    
+    <script type="text/javascript"  src="<%=request.getContextPath()%>/js/plugins/dataTables/datatables.min.js">
+	</script>
+	
+	
+    <!-- Mainly scripts -->
+    <script src="<%=request.getContextPath()%>/js/jquery-2.1.1.js"></script>
+    <script src="<%=request.getContextPath()%>/js/bootstrap.min.js"></script>
+    <script src="<%=request.getContextPath()%>/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="<%=request.getContextPath()%>/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- Flot -->
+    <script src="<%=request.getContextPath()%>/js/plugins/flot/jquery.flot.js"></script>
+    <script src="<%=request.getContextPath()%>/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+    <script src="<%=request.getContextPath()%>/js/plugins/flot/jquery.flot.spline.js"></script>
+    <script src="<%=request.getContextPath()%>/js/plugins/flot/jquery.flot.resize.js"></script>
+    <script src="<%=request.getContextPath()%>/js/plugins/flot/jquery.flot.pie.js"></script>
+
+    <!-- Peity -->
+    <script src="<%=request.getContextPath()%>/js/plugins/peity/jquery.peity.min.js"></script>
+    <script src="<%=request.getContextPath()%>/js/demo/peity-demo.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="<%=request.getContextPath()%>/js/inspinia.js"></script>
+    <script src="<%=request.getContextPath()%>/js/plugins/pace/pace.min.js"></script>
+
+    <!-- jQuery UI -->
+    <script src="<%=request.getContextPath()%>/js/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+    <!-- GITTER -->
+    <script src="<%=request.getContextPath()%>/js/plugins/gritter/jquery.gritter.min.js"></script>
+
+    <!-- Sparkline -->
+    <script src="<%=request.getContextPath()%>/js/plugins/sparkline/jquery.sparkline.min.js"></script>
+
+    <!-- Sparkline demo data  -->
+    <script src="<%=request.getContextPath()%>/js/demo/sparkline-demo.js"></script>
+
+    <!-- ChartJS-->
+    <script src="<%=request.getContextPath()%>/js/plugins/chartJs/Chart.min.js"></script>
+
+    <!-- Toastr -->
+    <script src="<%=request.getContextPath()%>/js/plugins/toastr/toastr.min.js"></script>
+	
+	
+    
      
   </head>
-   <body>
+<body class="white-bg">
    
    
    
@@ -80,16 +122,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   </s:if>
 
   
-  
-      
-<%-- 	
-			<s:if test="%{getErrorReport()!=null}">
-			   <a href="#" class="show_hide">Show/Hide Error Report</a>
-			    <div class="slidingDiv">
-						<textarea name="address" style="width: 100%; height: 100%" wrap="hard" rows="18" readonly="readonly"><s:property value="%{getErrorReport()}"/></textarea>
-				</div>
-		    </s:if> --%>
-		
+
+
     
           
          <section class="content">

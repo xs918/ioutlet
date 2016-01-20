@@ -2,185 +2,309 @@
 <%@ page  contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 2 | Starter</title>
-    <!-- Tell the browser to be responsive to screen width -->
 
+    <title>IOLT | Dashboard</title>
+
+   
+    <!-- Toastr style -->
+    <link href="<%=request.getContextPath()%>/css/plugins/toastr/toastr.min.css" rel="stylesheet">
+     
+     <link rel="stylesheet" href="<%=request.getContextPath()%>/font-awesome/css/font-awesome.min.css">
     
+     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/bootstrap.min.css" >
   
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- Bootstrap 3.3.5 -->
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/bootstrap/css/bootstrap.min.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/dist/css/AdminLTE.min.css">
+  
+      <!-- Gritter -->
+    <link href="<%=request.getContextPath()%>/js/plugins/gritter/jquery.gritter.css" rel="stylesheet">
+
+    <link href="<%=request.getContextPath()%>/css/animate.css" rel="stylesheet">
+    <link href="<%=request.getContextPath()%>/css/style.css" rel="stylesheet">
     
-     <link rel="stylesheet" href="<%=request.getContextPath()%>/dist/css/skins/skin-blue.min.css">
     
- 
-    <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/plugins/datatables/dataTables.bootstrap.css">
-    <link rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-	
-	  <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/plugins/datatables/jquery.dataTables.min.css">
-	
-	
-	
-	
-	
-	
-	
-	     
     <s:url includeParams="none" id="scripts.main" value="/js/main.js"/>
     <script type="text/javascript" src="<s:property value="%{scripts.main}"/>"></script>
-      
-     <s:url includeParams="none" id="scripts.jQuery" value="/plugins/jQuery/jQuery-2.1.4.min.js"/>
-     <script type="text/javascript" src="<s:property value="%{scripts.jQuery}"/>"></script>
-     
-     
-    <s:url includeParams="none" id="scripts.moment" value="/js/moment.js"/>
+    
+     <s:url includeParams="none" id="scripts.moment" value="/js/moment.js"/>
      <script type="text/javascript" src="<s:property value="%{scripts.moment}"/>"></script>
-   
+     
+     
      <s:url includeParams="none" id="scripts.combodate" value="/js/combodate.js"/>
      <script type="text/javascript" src="<s:property value="%{scripts.combodate}"/>"></script>
      
-   
     <!-- Bootstrap 3.3.5 -->
-    <script src="<%=request.getContextPath()%>/bootstrap/js/bootstrap.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="<%=request.getContextPath()%>/dist/js/app.min.js"></script>
-
+    <script src="<%=request.getContextPath()%>/js/bootstrap.min.js"></script>
+   
     
-    <script type="text/javascript"  src="<%=request.getContextPath()%>/plugins/datatables/jquery.dataTables.js">
+    <script type="text/javascript"  src="<%=request.getContextPath()%>/js/plugins/dataTables/datatables.min.js">
 	</script>
+	
+	
+    <!-- Mainly scripts -->
+    <script src="<%=request.getContextPath()%>/js/jquery-2.1.1.js"></script>
+    <script src="<%=request.getContextPath()%>/js/bootstrap.min.js"></script>
+    <script src="<%=request.getContextPath()%>/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="<%=request.getContextPath()%>/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- Flot -->
+    <script src="<%=request.getContextPath()%>/js/plugins/flot/jquery.flot.js"></script>
+    <script src="<%=request.getContextPath()%>/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+    <script src="<%=request.getContextPath()%>/js/plugins/flot/jquery.flot.spline.js"></script>
+    <script src="<%=request.getContextPath()%>/js/plugins/flot/jquery.flot.resize.js"></script>
+    <script src="<%=request.getContextPath()%>/js/plugins/flot/jquery.flot.pie.js"></script>
+
+    <!-- Peity -->
+    <script src="<%=request.getContextPath()%>/js/plugins/peity/jquery.peity.min.js"></script>
+    <script src="<%=request.getContextPath()%>/js/demo/peity-demo.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="<%=request.getContextPath()%>/js/inspinia.js"></script>
+    <script src="<%=request.getContextPath()%>/js/plugins/pace/pace.min.js"></script>
+
+    <!-- jQuery UI -->
+    <script src="<%=request.getContextPath()%>/js/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+    <!-- GITTER -->
+    <script src="<%=request.getContextPath()%>/js/plugins/gritter/jquery.gritter.min.js"></script>
+
+    <!-- Sparkline -->
+    <script src="<%=request.getContextPath()%>/js/plugins/sparkline/jquery.sparkline.min.js"></script>
+
+    <!-- Sparkline demo data  -->
+    <script src="<%=request.getContextPath()%>/js/demo/sparkline-demo.js"></script>
+
+    <!-- ChartJS-->
+    <script src="<%=request.getContextPath()%>/js/plugins/chartJs/Chart.min.js"></script>
+
+    <!-- Toastr -->
+    <script src="<%=request.getContextPath()%>/js/plugins/toastr/toastr.min.js"></script>
+	
 	
     
 
     </head>
-  <!--
-  BODY TAG OPTIONS:
-  =================
-  Apply one or more of the following classes to get the
-  desired effect
-  |---------------------------------------------------------|
-  | SKINS         | skin-blue                               |
-  |               | skin-black                              |
-  |               | skin-purple                             |
-  |               | skin-yellow                             |
-  |               | skin-red                                |
-  |               | skin-green                              |
-  |---------------------------------------------------------|
-  |LAYOUT OPTIONS | fixed                                   |
-  |               | layout-boxed                            |
-  |               | layout-top-nav                          |
-  |               | sidebar-collapse                        |
-  |               | sidebar-mini                            |
-  |---------------------------------------------------------|
-  -->
-  <body class="hold-transition skin-blue sidebar-mini">
-    <div class="wrapper">
-
-      <!-- Main Header -->
-      <header class="main-header">
-       <tiles:insertAttribute name="header" />
-      </header>
-      <!-- Left side column. contains the logo and sidebar -->
-      <aside class="main-sidebar">
-
-        <!-- sidebar: style can be found in sidebar.less -->
-        <section class="sidebar">
-           <tiles:insertAttribute name="leftsidebar" />
-        </section>
-        <!-- /.sidebar -->
-      </aside>
-
-      <!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        
-           
-   
-		  <s:if test="hasActionErrors()">  
-		  <div class="alert text-center alert-danger fade in">
-		    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-		    <strong><s:property value="%{getText('error.colon')}"/></strong> 
-		   
-		   <s:iterator value="actionErrors">
-			<span class="msg"><s:property escape="false" />
-			</span>
-		   </s:iterator>
+  
+  
+<body>
+  
+    
+	    <nav class="navbar-default navbar-static-side" role="navigation">
+	      <div class="sidebar-collapse">
+	        <tiles:insertAttribute name="leftsidebar" />
+	       </div>
+	    </nav>
+	   <div id="page-wrapper" class="gray-bg">
+	        <div class="row border-bottom">
+	          <tiles:insertAttribute name="header" />
+	       </div>
+		    
 		
-		  </div>
-		  </s:if>
+
+
+		    
+		
+		   <div class="row wrapper border-bottom white-bg page-heading">
+		     <div class="col-lg-10">
+		        <h2>Layouts</h2>
+		        <ol class="breadcrumb">
+		            <li>
+		                <a href="index.html">Home</a>
+		            </li>
+		            <li class="active">
+		                <strong>Layouts</strong>
+		            </li>
+		        </ol>
+		     </div>
+		     <div class="col-lg-2">
+		     </div>
+		 </div>
+		
+		 <div class="wrapper wrapper-content  animated fadeInRight">
+		 
+		    <s:if test="hasActionErrors()">  
+			    <div class="alert text-center alert-danger fade in">
+				    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				    <strong><s:property value="%{getText('error.colon')}"/></strong> 
+				   
+					 <s:iterator value="actionErrors">
+						<span class="msg"><s:property escape="false" />
+						</span>
+					 </s:iterator>
+			   	</div>
+		 	 </s:if>
 		  
-		   <s:if test="hasActionMessages()">  
-		   <div class="alert text-center alert-info fade in">
-		    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-		    <strong><s:property value="%{getText('info.colon')}"/></strong> 
-		    <s:iterator value="actionMessages">
-		    	<span class="msg"><s:property escape="false" />
-			</span>
-		   </s:iterator>
+		    <s:if test="hasActionMessages()">  
+			    <div class="alert text-center alert-info fade in">
+			    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			    <strong><s:property value="%{getText('info.colon')}"/></strong> 
+			    <s:iterator value="actionMessages">
+			    	<span class="msg"><s:property escape="false" />
+				</span>
+		        </s:iterator>
+		        </div>
+		  	</s:if>
+
+           <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox">
+                     <div class="ibox-content">
+ 
+		
+  					     <tiles:insertAttribute name="content" />
+        			 </div>
+        		     </div>
+		  		</div>
 		  </div>
-		  </s:if>
-  
+		  
+		</div>
+		
+		<div class="footer" >
+ 			<tiles:insertAttribute name="footer" />
+		</div>
 
-        <section class="content-header">
-        
-  
-          <h1>
-           <s:property value="%{pageContentHeader}"/>
-            <small><s:property value="%{pageOptionaldescription}"/></small>
-          </h1>
-          <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i><%=request.getContextPath()%></a></li>
-            <li class="active">Here</li>
-          </ol>
-        </section>
+	</div>
 
-        <!-- Main content -->
-        <section class="content">
 
-          <!-- Your Page Content Here -->
-           <tiles:insertAttribute name="content" />
 
-        </section><!-- /.content -->
-      </div><!-- /.content-wrapper -->
+    <script>
+        $(document).ready(function() {
+            setTimeout(function() {
+                toastr.options = {
+                    closeButton: true,
+                    progressBar: true,
+                    showMethod: 'slideDown',
+                    timeOut: 4000
+                };
+                toastr.success('Responsive Admin Theme', 'Welcome to INSPINIA');
 
-      <!-- Main Footer -->
-      <footer class="main-footer">
-      <tiles:insertAttribute name="footer" />
-      </footer>
+            }, 1300);
 
-      <!-- Control Sidebar -->
-      <aside class="control-sidebar control-sidebar-dark">
-        <!-- Create the tabs -->
-        <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-          <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
-          <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
-        </ul>
-        <!-- Tab panes -->
-        <div class="tab-content">
-          <tiles:insertAttribute name="ctrlsidebar" />
-        </div>
-      </aside><!-- /.control-sidebar -->
-      <!-- Add the sidebar's background. This div must be placed
-           immediately after the control sidebar -->
-      <div class="control-sidebar-bg"></div>
-    </div><!-- ./wrapper -->
 
+            var data1 = [
+                [0,4],[1,8],[2,5],[3,10],[4,4],[5,16],[6,5],[7,11],[8,6],[9,11],[10,30],[11,10],[12,13],[13,4],[14,3],[15,3],[16,6]
+            ];
+            var data2 = [
+                [0,1],[1,0],[2,2],[3,0],[4,1],[5,3],[6,1],[7,5],[8,2],[9,3],[10,2],[11,1],[12,0],[13,2],[14,8],[15,0],[16,0]
+            ];
+            $("#flot-dashboard-chart").length && $.plot($("#flot-dashboard-chart"), [
+                data1, data2
+            ],
+                    {
+                        series: {
+                            lines: {
+                                show: false,
+                                fill: true
+                            },
+                            splines: {
+                                show: true,
+                                tension: 0.4,
+                                lineWidth: 1,
+                                fill: 0.4
+                            },
+                            points: {
+                                radius: 0,
+                                show: true
+                            },
+                            shadowSize: 2
+                        },
+                        grid: {
+                            hoverable: true,
+                            clickable: true,
+                            tickColor: "#d5d5d5",
+                            borderWidth: 1,
+                            color: '#d5d5d5'
+                        },
+                        colors: ["#1ab394", "#1C84C6"],
+                        xaxis:{
+                        },
+                        yaxis: {
+                            ticks: 4
+                        },
+                        tooltip: false
+                    }
+            );
+
+            var doughnutData = [
+                {
+                    value: 300,
+                    color: "#a3e1d4",
+                    highlight: "#1ab394",
+                    label: "App"
+                },
+                {
+                    value: 50,
+                    color: "#dedede",
+                    highlight: "#1ab394",
+                    label: "Software"
+                },
+                {
+                    value: 100,
+                    color: "#A4CEE8",
+                    highlight: "#1ab394",
+                    label: "Laptop"
+                }
+            ];
+
+            var doughnutOptions = {
+                segmentShowStroke: true,
+                segmentStrokeColor: "#fff",
+                segmentStrokeWidth: 2,
+                percentageInnerCutout: 45, // This is 0 for Pie charts
+                animationSteps: 100,
+                animationEasing: "easeOutBounce",
+                animateRotate: true,
+                animateScale: false
+            };
+
+            var ctx = document.getElementById("doughnutChart").getContext("2d");
+            var DoughnutChart = new Chart(ctx).Doughnut(doughnutData, doughnutOptions);
+
+            var polarData = [
+                {
+                    value: 300,
+                    color: "#a3e1d4",
+                    highlight: "#1ab394",
+                    label: "App"
+                },
+                {
+                    value: 140,
+                    color: "#dedede",
+                    highlight: "#1ab394",
+                    label: "Software"
+                },
+                {
+                    value: 200,
+                    color: "#A4CEE8",
+                    highlight: "#1ab394",
+                    label: "Laptop"
+                }
+            ];
+
+            var polarOptions = {
+                scaleShowLabelBackdrop: true,
+                scaleBackdropColor: "rgba(255,255,255,0.75)",
+                scaleBeginAtZero: true,
+                scaleBackdropPaddingY: 1,
+                scaleBackdropPaddingX: 1,
+                scaleShowLine: true,
+                segmentShowStroke: true,
+                segmentStrokeColor: "#fff",
+                segmentStrokeWidth: 2,
+                animationSteps: 100,
+                animationEasing: "easeOutBounce",
+                animateRotate: true,
+                animateScale: false
+            };
+            var ctx = document.getElementById("polarChart").getContext("2d");
+            var Polarchart = new Chart(ctx).PolarArea(polarData, polarOptions);
+
+        });
+    </script>
    
   </body>
 </html>

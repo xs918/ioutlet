@@ -3,39 +3,30 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
-<!-- Sidebar user panel (optional) -->
-<div class="user-panel">
-	<div class="pull-left image">
-		<img src="<s:property value="%{userProfileImageLink}"/>" class="img-circle"
-			alt="User Image">
-	</div>
-	<div class="pull-left info">
-		<p><s:property value="%{userProfile.name}"/></p>
-		<!-- Status -->
-		<a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-	</div>
-</div>
+<s:url id="logout" value="/logout.jsp"></s:url>   
 
-<!-- search form (Optional) -->
-<%-- <form action="#" method="get" class="sidebar-form">
-	<div class="input-group">
-		<input type="text" name="q" class="form-control"
-			placeholder="Search..."> <span class="input-group-btn">
-			<button type="submit" name="search" id="search-btn"
-				class="btn btn-flat">
-				<i class="fa fa-search"></i>
-			</button>
-		</span>
-	</div>
-</form> --%>
-<!-- /.search form -->
-
-<!-- Sidebar Menu -->
-<ul class="sidebar-menu">
-	<li class="header">MAIN NAVIGATION</li>
-	<!-- Optionally, you can add icons to the links -->
-	
-	 <s:iterator value="menuItems" id="menugroup">
+  <ul class="nav metismenu" id="side-menu">
+	  <li class="nav-header">
+	                        <div class="dropdown profile-element"> <span>
+	                             <img alt="image" class="img-circle" src="<s:property value="%{userProfileImageLink}"/>" style="width:50px;height:50px">
+	                             </span>
+	                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+	                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">David Williams</strong>
+	                             </span> <span class="text-muted text-xs block">Art Director <b class="caret"></b></span> </span> </a>
+	                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+	                                <li><a href="profile.html">Profile</a></li>
+	                                <li><a href="contacts.html">Contacts</a></li>
+	                                <li><a href="mailbox.html">Mailbox</a></li>
+	                                <li class="divider"></li>
+	                                <li><a href="<s:property value="%{logout}"/>">Logout</a></li>
+	                            </ul>
+	                        </div>
+	                        <div class="logo-element">
+	                            ILT
+	                        </div>
+	   </li>
+	   
+	   <s:iterator value="menuItems" id="menugroup">
 	 
 	   <s:if test="%{#menugroup.size == 1 }">
 			<s:url id="linkMenu" namespace="%{#menugroup.firstMenu.namespace}" action="%{#menugroup.firstMenu.action}">
@@ -51,22 +42,31 @@
 	   </s:if>
 	   <s:else>
 		 
-	       	<li  class="treeview">
-	       	    <a href=""> <i class="<s:property value="%{#menugroup.iconStyle}"/>"></i>
-					<span>
-					<s:property value="%{#menugroup.title}"/>
-					</span><i class="fa fa-angle-left pull-right"></i>
-			    </a>
-			    
-			    <ul class="treeview-menu">
+		 
+		   
+		  
+	       	<li>
+		        <a href="#">
+			        <i class="<s:property value="%{#menugroup.iconStyle}"/>"></i>
+			       	<span class="nav-label"><s:property value="%{#menugroup.title}"/></span>
+			       	<span class="fa arrow"></span>
+		       	</a>
+	       	 
+	      
+			    <ul class="nav nav-second-level collapse">
 					 <s:iterator value="#menugroup.menus.values" id="menu">
 						 <s:url id="linkMenu" namespace="%{#menu.namespace}" action="%{#menu.action}">
 						 <s:param name="sfld">true</s:param>
 						 </s:url>
-							<li><a href="<s:property value="%{linkMenu}"/>">
-							<i class="<s:property value="%{#menu.iconStyle}"/>"></i>
-								<s:property value="%{#menu.menuText}"/>
-							</a></li>
+						 
+						    <li>
+						        <a href="<s:property value="%{linkMenu}"/>">
+						         <i class="<s:property value="%{#menu.iconStyle}"/>"></i>
+						         
+						         <s:property value="%{#menu.menuText}"/>
+						        </a>
+						    </li>
+						 
 					 </s:iterator>
 			     </ul>
 			     
@@ -74,6 +74,8 @@
 
 	   </s:else>
   </s:iterator>
-</ul>
-<!-- /.sidebar-menu -->
+  
+  
+   </ul>    
+
 </html>

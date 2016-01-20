@@ -12,9 +12,6 @@
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/compiled/theme.css" />
 
-<!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
 </head>
 <body id="search">
 
