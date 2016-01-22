@@ -64,6 +64,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="<%=request.getContextPath()%>/js/plugins/peity/jquery.peity.min.js"></script>
     <script src="<%=request.getContextPath()%>/js/demo/peity-demo.js"></script>
 
+    <script>
+     skinurl="<%=request.getContextPath()%>/skin-config.html";
+    </script>
+    
+    
     <!-- Custom and plugin javascript -->
     <script src="<%=request.getContextPath()%>/js/inspinia.js"></script>
     <script src="<%=request.getContextPath()%>/js/plugins/pace/pace.min.js"></script>

@@ -8,56 +8,52 @@
 <title>Wolf - Bootstrap Admin Theme</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<!-- stylesheets -->
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/compiled/theme.css" />
-
 </head>
-<body id="search">
+<body>
 
 
-	<div class="results">
-	
-	
 	
 
-		<!-- bulk actions -->
-		<div class="btn-group bulk-actions">
-			<button type="button"
-				class="btn btn-default dropdown-toggle disabled"
-				data-toggle="dropdown">
-				Bulk actions <span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu" role="menu">
-				<li><a href="#">Edit tags</a></li>
-				<li><a href="#">Delete products</a></li>
-				<li><a href="#">Export to CSV</a></li>
-			</ul>
+		
+		<div class="row">
+		<div class="col-xs-6 col-lg-6">
+		 <h1>Products</h1>
 		</div>
-
+		<div class="col-xs-6 col-lg-6">
+		 <a  class="btn btn-primary m-b pull-right" href="#"><i class="fa fa-plus"></i>Add a Product</a>
+		</div>
+		</div>
+	
+		
+			
+		
 		<table id="datatable-products"  class="table table-hover">
 			<thead>
 				<tr>
-					<th tabindex="0" rowspan="1" colspan="1"><input
-						class="toggle-all" type="checkbox" /></th>
-					<th tabindex="0" rowspan="1" colspan="1" >Name</th>
-					<th tabindex="0" rowspan="1" colspan="1">status</th>
-					<th tabindex="0" rowspan="1" colspan="1">Unit Price</th>
-					<th tabindex="0" rowspan="1" colspan="1"></th>
-				</tr>
+					<th tabindex="0" rowspan="1" colspan="1" id="checkboxall">
+					<input
+						class="toggle-all" type="checkbox" />
+				    </th>
+					<th tabindex="0" rowspan="1" colspan="1" id="uncheck_1">Name</th>
+					<th tabindex="0" rowspan="1" colspan="1" id="uncheck_2">status</th>
+					<th tabindex="0" rowspan="1" colspan="1" id="uncheck_3">Unit Price</th>
+					<th tabindex="0" rowspan="1" colspan="1" id="uncheck_4"></th>
+				</tr>	
+                    
 			</thead>
 			<tbody>
 				<tr>
 					<td><input name="select-product" type="checkbox" /></td>
-					<td><img class="img-responsive product-img"
+					<td><img class="img-responsive product-img-small"
 						src="<s:property value="%{userProfileImageLink}"/>" /></td>
 					<td>Some product name</td>
 					<td class=""><span class="label label-success">Available</span></td>
 					<td class="center">$159.99</td>
+					
 				</tr>
 				<tr>
 					<td><input name="select-product" type="checkbox" /></td>
-					<td><img class="img-responsive product-img"
+					<td><img class="img-responsive product-img-small"
 						src="<s:property value="%{userProfileImageLink}"/>" /></td>
 					<td>Some product name</td>
 					<td class=""><span class="label label-success">Available</span></td>
@@ -65,7 +61,7 @@
 				</tr>
 				<tr>
 					<td><input name="select-product" type="checkbox" /></td>
-					<td><img class="img-responsive product-img"
+					<td><img class="img-responsive product-img-small"
 						src="<s:property value="%{userProfileImageLink}"/>" /></td>
 					<td>Some product name</td>
 					<td class=""><span class="label label-info">Out of
@@ -74,7 +70,7 @@
 				</tr>
 				<tr>
 					<td><input name="select-product" type="checkbox" /></td>
-					<td><img class="img-responsive product-img"
+					<td><img class="img-responsive product-img-small"
 						src="<s:property value="%{userProfileImageLink}"/>" /></td>
 					<td>Some product name</td>
 					<td class=""><span class="label label-success">Available</span></td>
@@ -82,7 +78,7 @@
 				</tr>
 				<tr>
 					<td><input name="select-product" type="checkbox" /></td>
-					<td><img class="img-responsive product-img"
+					<td><img class="img-responsive product-img-small"
 						src="<s:property value="%{userProfileImageLink}"/>" /></td>
 					<td>Some product name</td>
 					<td class=""><span class="label label-success">Available</span></td>
@@ -90,7 +86,7 @@
 				</tr>
 				<tr>
 					<td><input name="select-product" type="checkbox" /></td>
-					<td><img class="img-responsive product-img"
+					<td><img class="img-responsive product-img-small"
 						src="<s:property value="%{userProfileImageLink}"/>" /></td>
 					<td>Some product name</td>
 					<td class=""><span class="label label-success">Available</span></td>
@@ -98,7 +94,7 @@
 				</tr>
 				<tr>
 					<td><input name="select-product" type="checkbox" /></td>
-					<td><img class="img-responsive product-img"
+					<td><img class="img-responsive product-img-small"
 						src="<s:property value="%{userProfileImageLink}"/>" /></td>
 					<td>Some product name</td>
 					<td class=""><span class="label label-success">Available</span></td>
@@ -106,7 +102,7 @@
 				</tr>
 				<tr>
 					<td><input name="select-product" type="checkbox" /></td>
-					<td><img class="img-responsive product-img"
+					<td><img class="img-responsive product-img-small"
 						src="<s:property value="%{userProfileImageLink}"/>" /></td>
 					<td>Some product name</td>
 					<td class=""><span class="label label-success">Available</span></td>
@@ -114,7 +110,7 @@
 				</tr>
 				<tr>
 					<td><input name="select-product" type="checkbox" /></td>
-					<td><img class="img-responsive product-img"
+					<td><img class="img-responsive product-img-small"
 						src="<s:property value="%{userProfileImageLink}"/>" /></td>
 					<td>Some product name</td>
 					<td class=""><span class="label label-success">Available</span></td>
@@ -122,7 +118,7 @@
 				</tr>
 				<tr>
 					<td><input name="select-product" type="checkbox" /></td>
-					<td><img class="img-responsive product-img"
+					<td><img class="img-responsive product-img-small"
 						src="<s:property value="%{userProfileImageLink}"/>" /></td>
 					<td>Some product name</td>
 					<td class=""><span class="label label-success">Available</span></td>
@@ -130,7 +126,7 @@
 				</tr>
 				<tr>
 					<td><input name="select-product" type="checkbox" /></td>
-					<td><img class="img-responsive product-img"
+					<td><img class="img-responsive product-img-small"
 						src="<s:property value="%{userProfileImageLink}"/>" /></td>
 					<td>Some product name</td>
 					<td class=""><span class="label label-success">Available</span></td>
@@ -138,7 +134,7 @@
 				</tr>
 				<tr>
 					<td><input name="select-product" type="checkbox" /></td>
-					<td><img class="img-responsive product-img"
+					<td><img class="img-responsive product-img-small"
 						src="<s:property value="%{userProfileImageLink}"/>" /></td>
 					<td>Some product name</td>
 					<td class=""><span class="label label-success">Available</span></td>
@@ -146,7 +142,7 @@
 				</tr>
 				<tr>
 					<td><input name="select-product" type="checkbox" /></td>
-					<td><img class="img-responsive product-img"
+					<td><img class="img-responsive product-img-small"
 						src="<s:property value="%{userProfileImageLink}"/>" /></td>
 					<td>Some product name</td>
 					<td class=""><span class="label label-success">Available</span></td>
@@ -154,7 +150,7 @@
 				</tr>
 				<tr>
 					<td><input name="select-product" type="checkbox" /></td>
-					<td><img class="img-responsive product-img"
+					<td><img class="img-responsive product-img-small"
 						src="<s:property value="%{userProfileImageLink}"/>" /></td>
 					<td>Some product name</td>
 					<td class=""><span class="label label-success">Available</span></td>
@@ -162,7 +158,7 @@
 				</tr>
 				<tr>
 					<td><input name="select-product" type="checkbox" /></td>
-					<td><img class="img-responsive product-img"
+					<td><img class="img-responsive product-img-small"
 						src="<s:property value="%{userProfileImageLink}"/>" /></td>
 					<td>Some product name</td>
 					<td class=""><span class="label label-success">Available</span></td>
@@ -170,7 +166,7 @@
 				</tr>
 				<tr>
 					<td><input name="select-product" type="checkbox" /></td>
-					<td><img class="img-responsive product-img"
+					<td><img class="img-responsive product-img-small"
 						src="<s:property value="%{userProfileImageLink}"/>" /></td>
 					<td>Some product name</td>
 					<td class=""><span class="label label-success">Available</span></td>
@@ -178,7 +174,7 @@
 				</tr>
 					<tr>
 					<td><input name="select-product" type="checkbox" /></td>
-					<td><img class="img-responsive product-img"
+					<td><img class="img-responsive product-img-small"
 						src="<s:property value="%{userProfileImageLink}"/>" /></td>
 					<td>Some product name</td>
 					<td class=""><span class="label label-success">Available</span></td>
@@ -186,7 +182,7 @@
 				</tr>
 					<tr>
 					<td><input name="select-product" type="checkbox" /></td>
-					<td><img class="img-responsive product-img"
+					<td><img class="img-responsive product-img-small"
 						src="<s:property value="%{userProfileImageLink}"/>" /></td>
 					<td>Some product name</td>
 					<td class=""><span class="label label-success">Available</span></td>
@@ -194,7 +190,7 @@
 				</tr>
 					<tr>
 					<td><input name="select-product" type="checkbox" /></td>
-					<td><img class="img-responsive product-img"
+					<td><img class="img-responsive product-img-small"
 						src="<s:property value="%{userProfileImageLink}"/>" /></td>
 					<td>Some product name</td>
 					<td class=""><span class="label label-success">Available</span></td>
@@ -202,7 +198,7 @@
 				</tr>
 					<tr>
 					<td><input name="select-product" type="checkbox" /></td>
-					<td><img class="img-responsive product-img"
+					<td><img class="img-responsive product-img-small"
 						src="<s:property value="%{userProfileImageLink}"/>" /></td>
 					<td>Some product name</td>
 					<td class=""><span class="label label-success">Available</span></td>
@@ -210,7 +206,7 @@
 				</tr>
 					<tr>
 					<td><input name="select-product" type="checkbox" /></td>
-					<td><img class="img-responsive product-img"
+					<td><img class="img-responsive product-img-small"
 						src="<s:property value="%{userProfileImageLink}"/>" /></td>
 					<td>Some product name</td>
 					<td class=""><span class="label label-success">Available</span></td>
@@ -218,7 +214,7 @@
 				</tr>
 					<tr>
 					<td><input name="select-product" type="checkbox" /></td>
-					<td><img class="img-responsive product-img"
+					<td><img class="img-responsive product-img-small"
 						src="<s:property value="%{userProfileImageLink}"/>" /></td>
 					<td>Some product name</td>
 					<td class=""><span class="label label-success">Available</span></td>
@@ -226,7 +222,7 @@
 				</tr>
 					<tr>
 					<td><input name="select-product" type="checkbox" /></td>
-					<td><img class="img-responsive product-img"
+					<td><img class="img-responsive product-img-small"
 						src="<s:property value="%{userProfileImageLink}"/>" /></td>
 					<td>Some product name</td>
 					<td class=""><span class="label label-success">Available</span></td>
@@ -234,7 +230,7 @@
 				</tr>
 					<tr>
 					<td><input name="select-product" type="checkbox" /></td>
-					<td><img class="img-responsive product-img"
+					<td><img class="img-responsive product-img-small"
 						src="<s:property value="%{userProfileImageLink}"/>" /></td>
 					<td>Some product name</td>
 					<td class=""><span class="label label-success">Available</span></td>
@@ -242,7 +238,7 @@
 				</tr>
 					<tr>
 					<td><input name="select-product" type="checkbox" /></td>
-					<td><img class="img-responsive product-img"
+					<td><img class="img-responsive product-img-small"
 						src="<s:property value="%{userProfileImageLink}"/>" /></td>
 					<td>Some product name</td>
 					<td class=""><span class="label label-success">Available</span></td>
@@ -250,7 +246,7 @@
 				</tr>
 					<tr>
 					<td><input name="select-product" type="checkbox" /></td>
-					<td><img class="img-responsive product-img"
+					<td><img class="img-responsive product-img-small"
 						src="<s:property value="%{userProfileImageLink}"/>" /></td>
 					<td>Some product name</td>
 					<td class=""><span class="label label-success">Available</span></td>
@@ -258,7 +254,7 @@
 				</tr>
 					<tr>
 					<td><input name="select-product" type="checkbox" /></td>
-					<td><img class="img-responsive product-img"
+					<td><img class="img-responsive product-img-small"
 						src="<s:property value="%{userProfileImageLink}"/>" /></td>
 					<td>Some product name</td>
 					<td class=""><span class="label label-success">Available</span></td>
@@ -266,7 +262,7 @@
 				</tr>
 					<tr>
 					<td><input name="select-product" type="checkbox" /></td>
-					<td><img class="img-responsive product-img"
+					<td><img class="img-responsive product-img-small"
 						src="<s:property value="%{userProfileImageLink}"/>" /></td>
 					<td>Some product name</td>
 					<td class=""><span class="label label-success">Available</span></td>
@@ -274,7 +270,7 @@
 				</tr>
 					<tr>
 					<td><input name="select-product" type="checkbox" /></td>
-					<td><img class="img-responsive product-img"
+					<td><img class="img-responsive product-img-small"
 						src="<s:property value="%{userProfileImageLink}"/>" /></td>
 					<td>Some product name</td>
 					<td class=""><span class="label label-success">Available</span></td>
@@ -282,14 +278,14 @@
 				</tr>
 					<tr>
 					<td><input name="select-product" type="checkbox" /></td>
-					<td><img class="img-responsive product-img"
+					<td><img class="img-responsive product-img-small"
 						src="<s:property value="%{userProfileImageLink}"/>" /></td>
 					<td>Some product name</td>
 					<td class=""><span class="label label-success">Available</span></td>
 					<td class="center">$2,890.00</td>
 				</tr>	<tr>
 					<td><input name="select-product" type="checkbox" /></td>
-					<td><img class="img-responsive product-img"
+					<td><img class="img-responsive product-img-small"
 						src="<s:property value="%{userProfileImageLink}"/>" /></td>
 					<td>Some product name</td>
 					<td class=""><span class="label label-success">Available</span></td>
@@ -297,7 +293,7 @@
 				</tr>
 					<tr>
 					<td><input name="select-product" type="checkbox" /></td>
-					<td><img class="img-responsive product-img"
+					<td><img class="img-responsive product-img-small"
 						src="<s:property value="%{userProfileImageLink}"/>" /></td>
 					<td>Some product name</td>
 					<td class=""><span class="label label-success">Available</span></td>
@@ -305,7 +301,7 @@
 				</tr>
 					<tr>
 					<td><input name="select-product" type="checkbox" /></td>
-					<td><img class="img-responsive product-img"
+					<td><img class="img-responsive product-img-small"
 						src="<s:property value="%{userProfileImageLink}"/>" /></td>
 					<td>Some product name</td>
 					<td class=""><span class="label label-success">Available</span></td>
@@ -313,7 +309,7 @@
 				</tr>
 					<tr>
 					<td><input name="select-product" type="checkbox" /></td>
-					<td><img class="img-responsive product-img"
+					<td><img class="img-responsive product-img-small"
 						src="<s:property value="%{userProfileImageLink}"/>" /></td>
 					<td>Some product name</td>
 					<td class=""><span class="label label-success">Available</span></td>
@@ -321,35 +317,35 @@
 				</tr>
 					<tr>
 					<td><input name="select-product" type="checkbox" /></td>
-					<td><img class="img-responsive product-img"
+					<td><img class="img-responsive product-img-small"
 						src="<s:property value="%{userProfileImageLink}"/>" /></td>
 					<td>Some product name</td>
 					<td class=""><span class="label label-success">Available</span></td>
 					<td class="center">$2,890.00</td>
 				</tr>	<tr>
 					<td><input name="select-product" type="checkbox" /></td>
-					<td><img class="img-responsive product-img"
+					<td><img class="img-responsive product-img-small"
 						src="<s:property value="%{userProfileImageLink}"/>" /></td>
 					<td>Some product name</td>
 					<td class=""><span class="label label-success">Available</span></td>
 					<td class="center">$2,890.00</td>
 				</tr>	<tr>
 					<td><input name="select-product" type="checkbox" /></td>
-					<td><img class="img-responsive product-img"
+					<td><img class="img-responsive product-img-small"
 						src="<s:property value="%{userProfileImageLink}"/>" /></td>
 					<td>Some product name</td>
 					<td class=""><span class="label label-success">Available</span></td>
 					<td class="center">$2,890.00</td>
 				</tr>	<tr>
 					<td><input name="select-product" type="checkbox" /></td>
-					<td><img class="img-responsive product-img"
+					<td><img class="img-responsive product-img-small"
 						src="<s:property value="%{userProfileImageLink}"/>" /></td>
 					<td>Some product name</td>
 					<td class=""><span class="label label-success">Available</span></td>
 					<td class="center">$2,890.00</td>
 				</tr>	<tr>
 					<td><input name="select-product" type="checkbox" /></td>
-					<td><img class="img-responsive product-img"
+					<td><img class="img-responsive product-img-small"
 						src="<s:property value="%{userProfileImageLink}"/>" /></td>
 					<td>Some product name</td>
 					<td class=""><span class="label label-success">Available</span></td>
@@ -357,7 +353,7 @@
 				</tr>
 				<tr>
 					<td><input name="select-product" type="checkbox" /></td>
-					<td><img class="img-responsive product-img"
+					<td><img class="img-responsive product-img-small"
 						src="<s:property value="%{userProfileImageLink}"/>" /></td>
 					<td>Some product name</td>
 					<td class=""><span class="label label-success">Available</span></td>
@@ -366,7 +362,7 @@
 
 				<tr>
 					<td><input name="select-product" type="checkbox" /></td>
-					<td><img class="img-responsive product-img"
+					<td><img class="img-responsive product-img-small"
 						src="<s:property value="%{userProfileImageLink}"/>" /></td>
 					<td>Some product name</td>
 					<td class=""><span class="label label-success">Available</span></td>
@@ -374,7 +370,7 @@
 				</tr>
 				<tr>
 					<td><input name="select-product" type="checkbox" /></td>
-					<td><img class="img-responsive product-img"
+					<td><img class="img-responsive product-img-small"
 						src="<s:property value="%{userProfileImageLink}"/>" /></td>
 					<td>Some product name</td>
 					<td class=""><span class="label label-success">Available</span></td>
@@ -383,72 +379,108 @@
 
 			</tbody>
 		</table>
-	</div>
 
 
-
-	<div class="skin-switcher hide">
-		<div class="toggler">
-			<span class="brankic-brush"></span>
-		</div>
-		<ul class="menu">
-			<li><a class="active" data-skin="sidebar-default" href="#">
-					<span class="color default"></span> Default <i class="fa fa-check"></i>
-			</a></li>
-			<li><a data-skin="sidebar-clear" href="#"> <span
-					class="color clear"></span> Clear <i class="fa fa-check"></i>
-			</a></li>
-			<li><a data-skin="sidebar-black" href="#"> <span
-					class="color black"></span> Black <i class="fa fa-check"></i>
-			</a></li>
-			<li><a data-skin="sidebar-dark" href="#"> <span
-					class="color dark"></span> Dark <i class="fa fa-check"></i>
-			</a></li>
-			<li><a data-skin="sidebar-flat" href="#"> <span
-					class="color flat"></span> Flat <i class="fa fa-check"></i>
-			</a></li>
-			<li><a data-skin="sidebar-flat-dark" href="#"> <span
-					class="color flat-dark"></span> Flat dark <i class="fa fa-check"></i>
-			</a></li>
-		</ul>
-	</div>
+	
 
 	<script type="text/javascript">
 		$(function() {
 
 			$('#datatable-products').dataTable({
-				"sPaginationType" : "full_numbers",
+				"oLanguage":{
+		            "sLengthMenu": "Show _MENU_ items",
+		            "sZeroRecords": "Nothing found - sorry",
+		            "sInfo": "Showing _START_ to _END_ of _TOTAL_ items",
+		            "sInfoEmpty": "Showing 0 to 0 of 0 records",
+		            "sInfoFiltered": "(filtered from _MAX_ total records)",
+		             "sSearch": "Filter: "
+		        },
 				"iDisplayLength" : 20,
-				"aLengthMenu" : [ [ 20, 50, 100, -1 ], [ 20, 50, 100, "All" ] ]
+				"bFilter": true,
+				"autoWidth": false,
+				"aLengthMenu" : [ [5, 10,20, 50, 100, -1 ], [5,10, 20, 50, 100, "All" ] ]
+			
 			});
-
+			$("#datatable-products_filter").addClass("pull-right");
 			// Bulk actions checkboxes
 
 			var $toggle_all = $("input:checkbox.toggle-all");
 			var $checkboxes = $("[name='select-product']");
-			var $bulk_actions_btn = $(".bulk-actions .dropdown-toggle");
+			
+			
+
+			
+			
 
 			$toggle_all.change(function() {
 				var checked = $toggle_all.is(":checked");
 				if (checked) {
 					$checkboxes.prop("checked", "checked");
-					toggleBulkActions(true);
+					checkboxActions(true,$checkboxes.length);
 				} else {
 					$checkboxes.prop("checked", "");
-					toggleBulkActions(false);
+					checkboxActions(false,0);
 				}
 			});
 
 			$checkboxes.change(function() {
 				var anyChecked = $("[name='select-product']:checked");
-				toggleBulkActions(anyChecked.length);
+				checkboxActions(anyChecked.length,anyChecked.length);
 			});
 
-			function toggleBulkActions(show) {
+			function checkboxActions(show,checkedCount) {
 				if (show) {
-					$bulk_actions_btn.removeClass("disabled");
+					
+					
+				
+					
+	
+					
+					
+					
+					 var new_row = '<th tabindex="0" rowspan="1" colspan="1" id="check_1">Total '+ checkedCount
+					  + ' products selected </th> '
+					  +'<th  tabindex="0" rowspan="1" colspan="4" id="check_2"><a  class="btn btn-sm btn-white" href="#"><i class="fa fa-trash-o"></i>Delete</a>'
+					  +'</th>'
+		
+					
+						
+						$("#check_1").remove();
+						$("#check_2").remove();
+						$("#check_3").remove();
+						$("#check_4").remove();
+					 
+					$("#uncheck_1").remove();
+					$("#uncheck_2").remove();
+					$("#uncheck_3").remove();
+					$("#uncheck_4").remove();
+					
+					$("#checkboxall").after(new_row);
+					
+				
 				} else {
-					$bulk_actions_btn.addClass("disabled");
+				
+					 var new_row = '<th tabindex="0" rowspan="1" colspan="1" id="uncheck_1">Name</th>'
+					+'<th tabindex="0" rowspan="1" colspan="1" id="uncheck_2">status</th>'
+					+'<th tabindex="0" rowspan="1" colspan="1" id="uncheck_3">Unit Price</th>'
+					+'<th tabindex="0" rowspan="1" colspan="1" id="uncheck_4"></th>'
+			
+					 
+					$("#uncheck_1").remove();
+					$("#uncheck_2").remove();
+					$("#uncheck_3").remove();
+					$("#uncheck_4").remove();
+					
+					$("#check_1").remove();
+					$("#check_2").remove();
+					$("#check_3").remove();
+					$("#check_4").remove();
+					$("#checkboxall").after(new_row);
+					
+					
+						 
+						   
+					
 				}
 			}
 		});
