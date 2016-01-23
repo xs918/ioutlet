@@ -10,7 +10,7 @@ import sg.com.ioutlet.ace.user.User;
 import sg.com.ioutlet.framework.authorization.model.AccessFunction;
 import sg.com.ioutlet.framework.authorization.model.AuthorizationInfo;
 import sg.com.ioutlet.framework.model.TransactionInfo;
-import sg.com.ioutlet.model.img.Imge;
+import sg.com.ioutlet.model.img.Image;
 import sg.com.ioutlet.vo.RoleVo;
 import sg.com.ioutlet.vo.UserVo;
 
@@ -34,7 +34,7 @@ public interface AceBridge
 	public List<User> getAllUsersByRoleId(String roleId);
 	
 /**********************setter***********************/
-	boolean registeUserProfile(User regUser, List<Imge> usrImgs,TransactionInfo ti);
+	boolean registeUserProfile(User regUser, List<Image> usrImages,TransactionInfo ti);
 
 	
 	Role addRole(RoleVo roleVo,TransactionInfo ti);

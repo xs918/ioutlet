@@ -13,7 +13,7 @@ import sg.com.ioutlet.ace.role.Role;
 import sg.com.ioutlet.bas.Gender;
 import sg.com.ioutlet.framework.web.common.OssUtils;
 import sg.com.ioutlet.framework.web.handler.CommonActionHandler;
-import sg.com.ioutlet.model.img.Imge;
+import sg.com.ioutlet.model.img.Image;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -65,17 +65,17 @@ public class IoutletActionHandler  extends CommonActionHandler  {
   		
   	}
 	
-  	public void uploadFile(File file,Imge imge) throws IOException
+  	public void uploadFile(File file,Image imge) throws IOException
   	{
-  		String destFileName = imge.getFullPath()+OssUtils.CLOUD_PATH_SEPARATOR+imge.getImgName();
+  		String destFileName = imge.getFullPath()+OssUtils.CLOUD_PATH_SEPARATOR+imge.getImageName();
   		OssUtils.singleUpload(BUCKET_NAME,destFileName,file);
 		String url =   OssUtils.getResourceUrl(BUCKET_NAME, destFileName);
-	 	imge.setImgUrl(url);
+	 	imge.setImageUrl(url);
 		
   		
   	}
 
-	public void uploadFiles(File[] file,List<Imge> imges) throws IOException
+	public void uploadFiles(File[] file,List<Image> imges) throws IOException
 	{
 		
 		if(imges!=null && file!=null && file.length == imges.size())
@@ -95,15 +95,15 @@ public class IoutletActionHandler  extends CommonActionHandler  {
 	
 	
 
-	public void deleteFile(List<Imge> imges)
+	public void deleteFile(List<Image> imges)
 	{
 		if(imges!=null)
 		{
 		
 			
-			for (Imge img:imges)
+			for (Image img:imges)
 			{
-				String destFileName = img.getFullPath()+OssUtils.CLOUD_PATH_SEPARATOR+img.getImgName();
+				String destFileName = img.getFullPath()+OssUtils.CLOUD_PATH_SEPARATOR+img.getImageName();
 			  	
 				OssUtils.delete(BUCKET_NAME, destFileName);
 				

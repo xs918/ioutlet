@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd">
 
 
-	<named-query name="Imge.getAll">
+	<named-query name="Image.getAll">
 		<query>
 			SELECT u
 			FROM User u
@@ -15,7 +15,7 @@
 
 
 
-	<entity class="sg.com.ioutlet.model.img.Imge" access="FIELD">
+	<entity class="sg.com.ioutlet.model.img.Image" access="FIELD">
 		<table name="IMGES" />
 
 
@@ -44,7 +44,7 @@
 
 		</attributes>
 	</entity>
-	<embeddable class="sg.com.ioutlet.model.img.ImgeKey"
+	<embeddable class="sg.com.ioutlet.model.img.ImageKey"
 		access="FIELD">
 		<attributes>
 			<basic name="uuid" optional="false">

@@ -8,7 +8,7 @@
 		<query>
 			SELECT u 
 			FROM User u
-			left join fetch u.userImg  i
+			left join fetch u.userImage  i
 			WHERE u.userId = :USER_ID
 			AND u.recordStatus='A'
 		</query>
@@ -111,7 +111,7 @@
 					insertable="true" updatable="true" />
 		</many-to-one>
 			
-		<one-to-many name="userImg" mapped-by="user">
+		<one-to-many name="userImage" mapped-by="user">
 				<cascade>
 					<cascade-merge />
 					<cascade-remove />

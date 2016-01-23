@@ -14,7 +14,7 @@
 	    <mapping-file>sg/com/ioutlet/ace/function/Function.xml</mapping-file>
 	    <mapping-file>sg/com/ioutlet/ace/functionaccess/FunctionAccess.xml</mapping-file>
 	
-		<mapping-file>sg/com/ioutlet/model/img/Imge.xml</mapping-file>
+		<mapping-file>sg/com/ioutlet/model/img/Image.xml</mapping-file>
 		<mapping-file>sg/com/ioutlet/model/bizinfo/BizInfo.xml</mapping-file>
 		<properties>
 			<!-- Properties for Hibernate -->

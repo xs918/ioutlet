@@ -92,9 +92,9 @@ public abstract  class IoutletDisplayAction extends CommonActionSupport  impleme
 	public String getUserProfileImageLink() {
 		
 		String userImageUrl="";
-		if(userProfile!=null && userProfile.getUserImg()!=null)
+		if(userProfile!=null && userProfile.getUserImage()!=null)
 		{
-			userImageUrl = userProfile.getUserImg().get(0).getImgUrl();
+			userImageUrl = userProfile.getUserImage().get(0).getImageUrl();
 		}
 		
 		

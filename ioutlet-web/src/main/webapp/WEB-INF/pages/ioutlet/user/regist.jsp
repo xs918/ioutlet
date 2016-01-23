@@ -219,7 +219,7 @@
 				             		
 					    
 
-                  				 <s:file name="userImgFiles"  label="%{getText('update.profile.picture')}" multiple="true"/>
+                  				 <s:file name="userImageFiles"  label="%{getText('update.profile.picture')}" multiple="true"/>
                     
   
 				                  <s:textarea

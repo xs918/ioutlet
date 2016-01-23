@@ -6,7 +6,7 @@ import java.util.UUID;
 
 import sg.com.ioutlet.bas.CommonPojoKey;
 
-public class ImgeKey  extends CommonPojoKey {
+public class ImageKey  extends CommonPojoKey {
 	/**
 	 */
 	private static final long serialVersionUID = 1L;
@@ -37,11 +37,11 @@ public class ImgeKey  extends CommonPojoKey {
 	
    private String uuid;
 	
-	public ImgeKey()
+	public ImageKey()
 	{
 		this.uuid = UUID.randomUUID().toString();
 	}
-	public ImgeKey(String uuid)
+	public ImageKey(String uuid)
 	{
 		this.uuid = uuid;
 	}

@@ -19,7 +19,7 @@ import sg.com.ioutlet.bas.Gender;
 import sg.com.ioutlet.framework.trxhelper.TransactionControl;
 import sg.com.ioutlet.framework.web.common.OssUtils;
 import sg.com.ioutlet.model.bizinfo.BizInfo;
-import sg.com.ioutlet.model.img.Imge;
+import sg.com.ioutlet.model.img.Image;
 import sg.com.ioutlet.web.app.user.form.UserRegistForm;
 import sg.com.ioutlet.web.common.handler.IoutletActionHandler;
 
@@ -103,35 +103,35 @@ public class UserActionActionHandler extends  IoutletActionHandler{
 	}
 	
 	
-	public void createUserImgObjs(UserRegistForm form)
+	public void createUserImageObjs(UserRegistForm form)
 	{
-		List<Imge> usrImgs = new ArrayList<Imge>();
+		List<Image> usrImages = new ArrayList<Image>();
 		
-		if(form.getUserImgFiles()!=null)
+		if(form.getUserImageFiles()!=null)
 		{
 			
-			for (int i = 0; i < form.getUserImgFiles().length; i++) {
-				File f = form.getUserImgFiles()[i];
+			for (int i = 0; i < form.getUserImageFiles().length; i++) {
+				File f = form.getUserImageFiles()[i];
 				
 			   File fcheck =  new File(f.getAbsolutePath());
 			   if(fcheck.exists()&&fcheck.isFile())
 			   {
 				
-				   String extName =FilenameUtils.getExtension(form.getUserImgFilesFileName()[i]);
+				   String extName =FilenameUtils.getExtension(form.getUserImageFilesFileName()[i]);
 				   String fullPath=form.getRegUser().entityName() + OssUtils.CLOUD_PATH_SEPARATOR + form.getUserId();
 				   String imgName=i+"."+extName;
 				  
 			
-					Imge usrImg = new Imge();
-					usrImg.setUser(form.getRegUser());
-					usrImg.setFullPath(fullPath);
-					usrImg.setImgName(imgName);
-					usrImgs.add(usrImg);
+					Image usrImage = new Image();
+					usrImage.setUser(form.getRegUser());
+					usrImage.setFullPath(fullPath);
+					usrImage.setImageName(imgName);
+					usrImages.add(usrImage);
 				}
 				
 			}
 			
-			form.setUsrImgs(usrImgs);
+			form.setUsrImages(usrImages);
 		}
 	
 	}
@@ -146,13 +146,13 @@ public class UserActionActionHandler extends  IoutletActionHandler{
 		}
 		
 		this.createUserObject(form);
-		this.createUserImgObjs(form);
+		this.createUserImageObjs(form);
 		
 		
 	  
 		try
 		{
-			  this.uploadFiles(form.getUserImgFiles(), form.getUsrImgs());
+			  this.uploadFiles(form.getUserImageFiles(), form.getUsrImages());
 			
 		} 
 		catch (IOException e) 
@@ -163,10 +163,10 @@ public class UserActionActionHandler extends  IoutletActionHandler{
 		}
 
 		
-		boolean isSuccess= aceBridge.registeUserProfile(form.getRegUser(),form.getUsrImgs(),TransactionControl.getTransactionInfo());
+		boolean isSuccess= aceBridge.registeUserProfile(form.getRegUser(),form.getUsrImages(),TransactionControl.getTransactionInfo());
 		if(!isSuccess) // remove file from list
 		{
-			this.deleteFile(form.getUsrImgs());
+			this.deleteFile(form.getUsrImages());
 		}
 		
 	   return isSuccess;

@@ -19,7 +19,7 @@ import sg.com.ioutlet.ace.role.RoleKey;
 import sg.com.ioutlet.ace.user.User;
 import sg.com.ioutlet.ace.user.UserKey;
 import sg.com.ioutlet.app.dao.BizInfoDao;
-import sg.com.ioutlet.app.dao.ImgeDao;
+import sg.com.ioutlet.app.dao.ImageDao;
 import sg.com.ioutlet.app.dao.PojoUtils;
 import sg.com.ioutlet.app.dao.RoleDao;
 import sg.com.ioutlet.app.dao.UserDao;
@@ -30,7 +30,7 @@ import sg.com.ioutlet.framework.authorization.model.AuthorizationInfo;
 import sg.com.ioutlet.framework.authorization.model.IoltFunction;
 import sg.com.ioutlet.framework.model.TransactionInfo;
 import sg.com.ioutlet.framework.trxhelper.TransactionControl;
-import sg.com.ioutlet.model.img.Imge;
+import sg.com.ioutlet.model.img.Image;
 import sg.com.ioutlet.vo.RoleVo;
 import sg.com.ioutlet.vo.UserVo;
 @Stateless
@@ -94,14 +94,14 @@ public class AceBean extends EjbEntityManager implements AceBridge  {
 	/**********************************setter*************************************/
 	
 	@Override
-	public boolean registeUserProfile(User regUser, List<Imge> usrImgs,TransactionInfo ti) {
+	public boolean registeUserProfile(User regUser, List<Image> usrImages,TransactionInfo ti) {
 		UserDao uDao =  new UserDao(this.getEntityManager());
 		this.setTrxInfo(ti);
 		uDao.create(regUser);
-		if(usrImgs!=null)
+		if(usrImages!=null)
 		{
-			ImgeDao iDao =  new ImgeDao(this.getEntityManager());
-			for(Imge i:usrImgs)
+			ImageDao iDao =  new ImageDao(this.getEntityManager());
+			for(Image i:usrImages)
 			{
 				i.setUser(regUser);
 				iDao.create(i);

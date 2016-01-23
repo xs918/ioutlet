@@ -5318,9 +5318,6 @@ table.shoping-cart-table tr td:last-child {
 .product-images {
   margin: 0 20px;
 }
-.product-img-small {
-      max-width: 100px; }
-      
 /* Social feed */
 .social-feed-separated .social-feed-box {
   margin-left: 62px;

@@ -16,7 +16,7 @@ import sg.com.ioutlet.ace.functionaccess.FunctionAccess;
 import sg.com.ioutlet.ace.role.Role;
 import sg.com.ioutlet.ace.user.User;
 import sg.com.ioutlet.bas.DateUtil;
-import sg.com.ioutlet.model.img.Imge;
+import sg.com.ioutlet.model.img.Image;
 import sg.com.ioutlet.web.common.form.IoutletForm;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -66,11 +66,11 @@ public class UserRegistForm extends IoutletForm {
     private  Map<Role,List<FunctionAccess>> allRoleFunctionAccessMap=new HashMap<Role,List<FunctionAccess>>();
 	
 	
-	private String[] userImgFilesFileName;
+	private String[] userImageFilesFileName;
 	
-	private String[] userImgFilesContentType;
+	private String[] userImageFilesContentType;
 	
-	private File[] userImgFiles;
+	private File[] userImageFiles;
 	
 	private List<String> selectedFunction;
 	
@@ -81,7 +81,7 @@ public class UserRegistForm extends IoutletForm {
 	
 	
 	
-	private List<Imge> usrImgs;
+	private List<Image> usrImages;
 	
 	private String saveDirectory ="/tmp/iolt/Test/Upload";
 
@@ -446,36 +446,36 @@ public class UserRegistForm extends IoutletForm {
 
 
 
-	public File[] getUserImgFiles() {
-		return userImgFiles;
+	public File[] getUserImageFiles() {
+		return userImageFiles;
 	}
 
-	public void setUserImgFiles(File[] userImgFiles) {
-		this.userImgFiles = userImgFiles;
+	public void setUserImageFiles(File[] userImageFiles) {
+		this.userImageFiles = userImageFiles;
 	}
 
-	public List<Imge> getUsrImgs() {
-		return usrImgs;
+	public List<Image> getUsrImages() {
+		return usrImages;
 	}
 
-	public void setUsrImgs(List<Imge> usrImgs) {
-		this.usrImgs = usrImgs;
+	public void setUsrImages(List<Image> usrImages) {
+		this.usrImages = usrImages;
 	}
 
-	public String[] getUserImgFilesFileName() {
-		return userImgFilesFileName;
+	public String[] getUserImageFilesFileName() {
+		return userImageFilesFileName;
 	}
 
-	public void setUserImgFilesFileName(String[] userImgFilesFileName) {
-		this.userImgFilesFileName = userImgFilesFileName;
+	public void setUserImageFilesFileName(String[] userImageFilesFileName) {
+		this.userImageFilesFileName = userImageFilesFileName;
 	}
 
-	public String[] getUserImgFilesContentType() {
-		return userImgFilesContentType;
+	public String[] getUserImageFilesContentType() {
+		return userImageFilesContentType;
 	}
 
-	public void setUserImgFilesContentType(String[] userImgFilesContentType) {
-		this.userImgFilesContentType = userImgFilesContentType;
+	public void setUserImageFilesContentType(String[] userImageFilesContentType) {
+		this.userImageFilesContentType = userImageFilesContentType;
 	}
 
 

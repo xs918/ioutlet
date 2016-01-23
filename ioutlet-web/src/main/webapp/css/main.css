@@ -1,0 +1,12 @@
+th.static-width,
+td.static-width
+{
+	width: 130px;
+    vertical-align: middle
+}
+td.product-media {
+    width: 80px;
+    height: 80px;
+}
+
+      

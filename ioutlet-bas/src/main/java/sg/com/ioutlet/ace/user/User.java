@@ -13,7 +13,7 @@ import sg.com.ioutlet.bas.CommonPojo;
 import sg.com.ioutlet.bas.CommonPojoKey;
 import sg.com.ioutlet.bas.Gender;
 import sg.com.ioutlet.model.bizinfo.BizInfo;
-import sg.com.ioutlet.model.img.Imge;
+import sg.com.ioutlet.model.img.Image;
 
 
 
@@ -42,7 +42,7 @@ public class User extends CommonPojo {
 	private Date lastLockedTime;
 	private Role role;
 	
-	private List<Imge> userImg;
+	private List<Image> userImage;
 	private BizInfo bizinfo;
 	
 
@@ -315,12 +315,12 @@ public class User extends CommonPojo {
 	}
 	
 
-	public List<Imge> getUserImg() {
-		return userImg;
+	public List<Image> getUserImage() {
+		return userImage;
 	}
 
-	public void setUserImg(List<Imge> userImg) {
-		this.userImg = userImg;
+	public void setUserImage(List<Image> userImage) {
+		this.userImage = userImage;
 	}
 
 

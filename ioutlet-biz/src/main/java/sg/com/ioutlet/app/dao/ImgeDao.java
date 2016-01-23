@@ -9,53 +9,53 @@ import javax.persistence.EntityManager;
 import org.apache.commons.lang.Validate;
 
 import sg.com.ioutlet.bas.CommonPojoKey;
-import sg.com.ioutlet.model.img.Imge;
-import sg.com.ioutlet.model.img.ImgeKey;
+import sg.com.ioutlet.model.img.Image;
+import sg.com.ioutlet.model.img.ImageKey;
 
 
-public class ImgeDao extends IoutletDao {
+public class ImageDao extends IoutletDao {
 
-	public ImgeDao(EntityManager entityManager) {
+	public ImageDao(EntityManager entityManager) {
 		super(entityManager);
 	}
 
 
-	public Imge get(ImgeKey key) {
+	public Image get(ImageKey key) {
 		return get((CommonPojoKey) key);
 	}
 
 	@Override
-	public Imge get(CommonPojoKey key) {
+	public Image get(CommonPojoKey key) {
 
 		logger.trace("get");
-		Validate.isTrue(key instanceof ImgeKey,
-				"'key' must be an instance of 'ImgeKey'.", key);
+		Validate.isTrue(key instanceof ImageKey,
+				"'key' must be an instance of 'ImageKey'.", key);
 
-		return get(Imge.class, key);
+		return get(Image.class, key);
 
 	}
 
 	@Override
-	public Imge getByKey(CommonPojoKey key) {
+	public Image getByKey(CommonPojoKey key) {
 
 		logger.trace("get");
-		Validate.isTrue(key instanceof ImgeKey,
-				"'key' must be an instance of 'ImgeKey'.", key);
+		Validate.isTrue(key instanceof ImageKey,
+				"'key' must be an instance of 'ImageKey'.", key);
 
-		return get(Imge.class, key);
+		return get(Image.class, key);
 
 	}
 
-	public Imge getByUuid(String uuid) {
+	public Image getByUuid(String uuid) {
 		logger.trace("getByUuid");
-		Validate.notNull(uuid, "'userImgeName' must not be null.");
-		ImgeKey key = new ImgeKey(uuid);
+		Validate.notNull(uuid, "'userImageName' must not be null.");
+		ImageKey key = new ImageKey(uuid);
 		return getByKey(key);
 
 		
 	}
 
-	public Imge getByRoleUuid(String roleUuid) {
+	public Image getByRoleUuid(String roleUuid) {
 		logger.trace("getByRoleUuid");
 
 		Validate.notNull(roleUuid);
@@ -63,12 +63,12 @@ public class ImgeDao extends IoutletDao {
 		Map<String, Object> m = new HashMap<String, Object>();
 		m.put("UUID", roleUuid);
 
-		String queryName = "Imge.getByRoleUuid.String";
-		return (Imge) getByQueryName(queryName, m);
+		String queryName = "Image.getByRoleUuid.String";
+		return (Image) getByQueryName(queryName, m);
 
 	}
 
-	public List<Imge> getAll() {
+	public List<Image> getAll() {
 		logger.trace("getAll");
 
 		return getAll(0, Integer.MAX_VALUE);
@@ -76,29 +76,29 @@ public class ImgeDao extends IoutletDao {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Imge> getAll(int startPosition, int maxResult) {
+	public List<Image> getAll(int startPosition, int maxResult) {
 		logger.trace("getAll");
 
-		String queryName = "Imge.getAll";
+		String queryName = "Image.getAll";
 		if (isMultiResultLists(startPosition, maxResult)) {
-			return (List<Imge>) getListByQueryName(queryName);
+			return (List<Image>) getListByQueryName(queryName);
 		} else {
-			return (List<Imge>) getListByQueryName(queryName, startPosition,
+			return (List<Image>) getListByQueryName(queryName, startPosition,
 					maxResult);
 		}
 	}
 
 
-	public List<Imge> getAllImgesByRoleId(String roleId) {
-		logger.trace("getAllImgesByRoleId");
+	public List<Image> getAllImagesByRoleId(String roleId) {
+		logger.trace("getAllImagesByRoleId");
 		Validate.notNull(roleId);
 
 		
-		return getAllImgesByRoleId(roleId, 0, Integer.MAX_VALUE);
+		return getAllImagesByRoleId(roleId, 0, Integer.MAX_VALUE);
 
 	}
 	@SuppressWarnings("unchecked")
-	public List<Imge> getAllImgesByRoleId(String roleId, int startPosition, int maxResult)
+	public List<Image> getAllImagesByRoleId(String roleId, int startPosition, int maxResult)
 	{
 		logger.trace("getAll");
 		Validate.notNull(roleId);
@@ -106,18 +106,18 @@ public class ImgeDao extends IoutletDao {
 		Map<String, Object> m = new HashMap<String, Object>();
 		m.put("ROLE_UUID", roleId);
 
-		String queryName = "Imge.getByRoleUuid.String";
+		String queryName = "Image.getByRoleUuid.String";
 		if (isMultiResultLists(startPosition, maxResult)) {
-			return (List<Imge>) getListByQueryName(queryName,m);
+			return (List<Image>) getListByQueryName(queryName,m);
 		} else {
-			return (List<Imge>) getListByQueryName(queryName,m, startPosition,
+			return (List<Image>) getListByQueryName(queryName,m, startPosition,
 					maxResult);
 		}
 		
 	}
 
 
-	public Imge getByUsrId(String userId) {
+	public Image getByUsrId(String userId) {
 		logger.trace("getByUsrId");
 		Validate.notNull(userId, "'userId' must not be null.");
 
@@ -125,8 +125,8 @@ public class ImgeDao extends IoutletDao {
 		m.put("USER_ID", userId);
 		
 		
-		String queryName = "Imge.getByUsrId.String";
-		return (Imge) getByQueryName(queryName, m);
+		String queryName = "Image.getByUsrId.String";
+		return (Image) getByQueryName(queryName, m);
 		}
 
 
