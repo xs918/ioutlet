@@ -21,7 +21,7 @@ public class Outlet extends CommonPojo {
 
 	public enum Field {
 		key, name(50), logo(100), telPhone(50), faxNo(50), email(100), addr1(
-				200), addr2(200), addr3(200), addr4(200), addr5(200), postCode(
+				150), addr2(150), addr3(150), addr4(150), addr5(150), postCode(
 				10), description(200);
 
 		public int length = 255;

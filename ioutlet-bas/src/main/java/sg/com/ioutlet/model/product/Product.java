@@ -9,7 +9,7 @@ import sg.com.ioutlet.bas.CommonPojoKey;
 import sg.com.ioutlet.model.Rating;
 import sg.com.ioutlet.model.category.Category;
 import sg.com.ioutlet.model.outlet.Outlet;
-import sg.com.ioutlet.model.product.value.ProductValue;
+import sg.com.ioutlet.model.product.option.ProductOption;
 
 
 
@@ -79,7 +79,7 @@ public class Product  extends CommonPojo  {
 
 	private int viewCounting=0;
 	
-	private  List<ProductValue> productValues;
+	private  List<ProductOption> productOptions;
 	
 
 	public Product() {
@@ -252,13 +252,16 @@ public class Product  extends CommonPojo  {
 	}
 
 
-	public List<ProductValue> getProductValues() {
-		return productValues;
+	public List<ProductOption> getProductOptions() {
+		return productOptions;
 	}
 
 
-	public void setProductValues(List<ProductValue> productValues) {
-		this.productValues = productValues;
+	public void setProductOptions(List<ProductOption> productOptions) {
+		this.productOptions = productOptions;
 	}
+
+
+
 
 }

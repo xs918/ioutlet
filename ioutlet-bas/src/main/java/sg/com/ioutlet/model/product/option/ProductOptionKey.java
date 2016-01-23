@@ -1,4 +1,4 @@
-package sg.com.ioutlet.model.product.value;
+package sg.com.ioutlet.model.product.option;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.UUID;
 
 import sg.com.ioutlet.bas.CommonPojoKey;
 
-public class ProductValueKey extends CommonPojoKey  {
+public class ProductOptionKey extends CommonPojoKey  {
 	/**
 	 * 
 	 */
@@ -40,11 +40,11 @@ public class ProductValueKey extends CommonPojoKey  {
 	
    private String uuid;
 	
-	public ProductValueKey()
+	public ProductOptionKey()
 	{
 		this.uuid = UUID.randomUUID().toString();
 	}
-	public ProductValueKey(String uuid)
+	public ProductOptionKey(String uuid)
 	{
 		this.uuid = uuid;
 	}

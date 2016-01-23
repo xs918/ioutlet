@@ -1,4 +1,4 @@
-package sg.com.ioutlet.model.product.value;
+package sg.com.ioutlet.model.product.option;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,13 +8,13 @@ import sg.com.ioutlet.bas.CommonPojoKey;
 import sg.com.ioutlet.model.category.attribute.CategoryAttribute;
 import sg.com.ioutlet.model.product.Product;
 
-public class ProductValue extends CommonPojo  {
+public class ProductOption extends CommonPojo  {
 	private static final long serialVersionUID = 1L;
 	
 	public static final String ENTITY_NAME = "ProductValue";
 	
 	
-	private ProductValueKey key;
+	private ProductOptionKey key;
 
 	private CategoryAttribute attribute;
 
@@ -56,13 +56,13 @@ public class ProductValue extends CommonPojo  {
 	
 	
 
-	public ProductValue() {
+	public ProductOption() {
 		
-		key = new ProductValueKey();
+		key = new ProductOptionKey();
 	}
 
 	
-	public ProductValue(ProductValueKey productValueKey) {
+	public ProductOption(ProductOptionKey productValueKey) {
 		this.key = productValueKey;
 	}
 
@@ -84,13 +84,13 @@ public class ProductValue extends CommonPojo  {
 	}
 
 	@Override
-	public ProductValueKey getKey() {
+	public ProductOptionKey getKey() {
 		return key;
 	}
 
 	@Override
 	public void setKey(CommonPojoKey key) {
-		setKey((ProductValueKey) key);
+		setKey((ProductOptionKey) key);
 		
 	}
 
@@ -140,7 +140,7 @@ public class ProductValue extends CommonPojo  {
 	}
 
 
-	public void setKey(ProductValueKey key) {
+	public void setKey(ProductOptionKey key) {
 		this.key = key;
 	}
 
