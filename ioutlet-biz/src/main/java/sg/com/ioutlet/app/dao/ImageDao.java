@@ -9,8 +9,8 @@ import javax.persistence.EntityManager;
 import org.apache.commons.lang.Validate;
 
 import sg.com.ioutlet.bas.CommonPojoKey;
-import sg.com.ioutlet.model.img.Image;
-import sg.com.ioutlet.model.img.ImageKey;
+import sg.com.ioutlet.model.image.Image;
+import sg.com.ioutlet.model.image.ImageKey;
 
 
 public class ImageDao extends IoutletDao {

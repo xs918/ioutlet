@@ -1,4 +1,4 @@
-package sg.com.ioutlet.model.img;
+package sg.com.ioutlet.model.image;
 
 import java.util.ArrayList;
 import java.util.List;

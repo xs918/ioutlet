@@ -15,18 +15,18 @@
 
 
 
-	<entity class="sg.com.ioutlet.model.img.Image" access="FIELD">
+	<entity class="sg.com.ioutlet.model.image.Image" access="FIELD">
 		<table name="IMGES" />
 
 
 
 		<attributes>
 			<embedded-id name="key" />
-		     <basic name="imgName" optional="false">
+		     <basic name="imageName" optional="false">
 				<column name="IMG_NAME" nullable="false" length="100" />
 			</basic>
 
-			<basic name="imgUrl" optional="false">
+			<basic name="imageUrl" optional="false">
 				<column name="IMG_URL" nullable="false" length="510" />
 			</basic>
 
@@ -44,7 +44,7 @@
 
 		</attributes>
 	</entity>
-	<embeddable class="sg.com.ioutlet.model.img.ImageKey"
+	<embeddable class="sg.com.ioutlet.model.image.ImageKey"
 		access="FIELD">
 		<attributes>
 			<basic name="uuid" optional="false">

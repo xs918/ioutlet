@@ -16,7 +16,7 @@ import sg.com.ioutlet.ace.functionaccess.FunctionAccess;
 import sg.com.ioutlet.ace.role.Role;
 import sg.com.ioutlet.ace.user.User;
 import sg.com.ioutlet.bas.DateUtil;
-import sg.com.ioutlet.model.img.Image;
+import sg.com.ioutlet.model.image.Image;
 import sg.com.ioutlet.web.common.form.IoutletForm;
 
 import com.opensymphony.xwork2.ActionSupport;

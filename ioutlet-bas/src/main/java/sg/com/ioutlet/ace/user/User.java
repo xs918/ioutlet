@@ -13,7 +13,7 @@ import sg.com.ioutlet.bas.CommonPojo;
 import sg.com.ioutlet.bas.CommonPojoKey;
 import sg.com.ioutlet.bas.Gender;
 import sg.com.ioutlet.model.bizinfo.BizInfo;
-import sg.com.ioutlet.model.img.Image;
+import sg.com.ioutlet.model.image.Image;
 
 
 

@@ -10,7 +10,7 @@ import sg.com.ioutlet.ace.user.User;
 import sg.com.ioutlet.framework.authorization.model.AccessFunction;
 import sg.com.ioutlet.framework.authorization.model.AuthorizationInfo;
 import sg.com.ioutlet.framework.model.TransactionInfo;
-import sg.com.ioutlet.model.img.Image;
+import sg.com.ioutlet.model.image.Image;
 import sg.com.ioutlet.vo.RoleVo;
 import sg.com.ioutlet.vo.UserVo;
 

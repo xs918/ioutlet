@@ -1,9 +1,7 @@
 package sg.com.ioutlet.web.app.user.handler;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -19,7 +17,7 @@ import sg.com.ioutlet.bas.Gender;
 import sg.com.ioutlet.framework.trxhelper.TransactionControl;
 import sg.com.ioutlet.framework.web.common.OssUtils;
 import sg.com.ioutlet.model.bizinfo.BizInfo;
-import sg.com.ioutlet.model.img.Image;
+import sg.com.ioutlet.model.image.Image;
 import sg.com.ioutlet.web.app.user.form.UserRegistForm;
 import sg.com.ioutlet.web.common.handler.IoutletActionHandler;
 
@@ -119,13 +117,13 @@ public class UserActionActionHandler extends  IoutletActionHandler{
 				
 				   String extName =FilenameUtils.getExtension(form.getUserImageFilesFileName()[i]);
 				   String fullPath=form.getRegUser().entityName() + OssUtils.CLOUD_PATH_SEPARATOR + form.getUserId();
-				   String imgName=i+"."+extName;
+				   String imageName=i+"."+extName;
 				  
 			
 					Image usrImage = new Image();
 					usrImage.setUser(form.getRegUser());
 					usrImage.setFullPath(fullPath);
-					usrImage.setImageName(imgName);
+					usrImage.setImageName(imageName);
 					usrImages.add(usrImage);
 				}
 				
