@@ -18,11 +18,21 @@
          <action name="index" class="sg.com.ioutlet.web.app.product.action.ProductIndexAction" method="input">
             <result name="input" type="tiles">SG.COM.IOUTLET.PRODUCT.INDEX</result>
         </action>
-        
-         <action name="index2" class="sg.com.ioutlet.web.app.product.action.ProductIndexAction" method="input">
+
+
+        <action name="jsonAct" class="sg.com.ioutlet.web.app.product.action.ProductIndexAction" method="json">
+               <result type="json">
+                	<param name="root"></param>
+               <param name="excludeProperties">*.*.*fields
+               </param>
+                </result>
+         </action>
+         
+           <action name="index2" class="sg.com.ioutlet.web.app.product.action.ProductIndexAction" method="input">
             <result name="input" type="tiles">SG.COM.IOUTLET.PRODUCT.INDEX2</result>
         </action>
-        
+
+
 
          <action name="edit" class="sg.com.ioutlet.web.app.product.action.ProductEditAction" method="input">
             <result name="input" type="tiles">SG.COM.IOUTLET.PRODUCT.EDIT</result>

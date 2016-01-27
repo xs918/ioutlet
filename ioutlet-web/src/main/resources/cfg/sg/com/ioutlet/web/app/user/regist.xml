@@ -27,6 +27,8 @@
          
             <action name="jsonAct" class="sg.com.ioutlet.web.app.user.action.UserRegistIndexAction" method="json">
                 <result type="json">
+                	<param name="root">model</param>
+                	 <param name="ignoreHierarchy">false</param>  
                 </result>
             </action>
         

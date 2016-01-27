@@ -1,22 +1,28 @@
 .product-media {
     width: 80px;
     height: 80px;
-    margin: 0px 20px 10px 0px;
-    vertical-align: middle;
+    margin: 0px 1px 1px 1px;
+    float:left;
+
 }
+
+td.static-width{
+     width: 100px;
+  
+}
+
+
 th.checkbox,
 td.checkbox
 {
-    vertical-align: middle;
+    width: 10px;
     display: inline-block;
-    font-size: 0;
-    margin: 0 20px 0 -5px;
+   
 }
 
 .actions{
     padding: 0px;
     margin: 0px;
-    vertical-align:middle;
     text-align:right;
     opacity:0.0;
 
@@ -26,8 +32,7 @@ td.checkbox
     color: #363636;
     margin-left: 5px;
     margin-right: 5px;
-    vertical-align: middle;
-
+ 
 }
       
       

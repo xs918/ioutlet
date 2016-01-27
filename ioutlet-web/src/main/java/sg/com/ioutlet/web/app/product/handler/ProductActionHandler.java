@@ -1,7 +1,10 @@
 package sg.com.ioutlet.web.app.product.handler;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.commons.lang3.RandomStringUtils;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -25,58 +28,20 @@ public class ProductActionHandler extends IoutletActionHandler {
 
 	public List<Product> simulateData() {
 		List<Product> firstProducts = new ArrayList<Product>();
+		for(int i =0;i<=50;i++)
+		{
+			Product p = new Product();
+		
+			p.setId(RandomStringUtils.randomAlphanumeric(20));
+			p.setName(RandomStringUtils.randomAlphabetic(20));
+			p.setBalance( 100+i *i);
+			p.setUnitPrice( new BigDecimal(2*i+1.2));
+			firstProducts.add(p);
+		}
 
-		Product p1 = new Product();
-		p1.setId("1");
-		p1.setDescription("1description");
-
-		Product p2 = new Product();
-		p2.setId("2");
-		p2.setDescription("2description");
-
-		Product p3 = new Product();
-		p3.setId("3");
-		p3.setDescription("3description");
-
-		Product p4 = new Product();
-		p4.setId("4");
-		p4.setDescription("4description");
-
-		firstProducts.add(p1);
-		firstProducts.add(p1);
-		firstProducts.add(p1);
-		firstProducts.add(p1);
-		firstProducts.add(p1);
-		firstProducts.add(p1);
-		firstProducts.add(p1);
-		firstProducts.add(p1);
-		firstProducts.add(p1);
-		firstProducts.add(p1);
-		firstProducts.add(p1);
-		firstProducts.add(p1);
-		firstProducts.add(p1);
-		firstProducts.add(p1);
-		firstProducts.add(p1);
-		firstProducts.add(p1);
-		firstProducts.add(p1);
-		firstProducts.add(p2);
-		firstProducts.add(p2);
-		firstProducts.add(p2);
-		firstProducts.add(p2);
-		firstProducts.add(p2);
-		firstProducts.add(p2);
-		firstProducts.add(p2);
-		firstProducts.add(p2);
-		firstProducts.add(p2);
-		firstProducts.add(p2);
-		firstProducts.add(p2);
-		firstProducts.add(p2);
-		firstProducts.add(p2);
-		firstProducts.add(p2);
-		firstProducts.add(p2);
-		firstProducts.add(p3);
-		firstProducts.add(p4);
-
+		
+		
+	
 		return firstProducts;
 
 	}

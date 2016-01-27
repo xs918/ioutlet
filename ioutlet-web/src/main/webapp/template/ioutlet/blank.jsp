@@ -12,24 +12,37 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Iolt | Starter</title>
    
-   
-     
-    <!-- Toastr style -->
+      <!-- Toastr style -->
     <link href="<%=request.getContextPath()%>/css/plugins/toastr/toastr.min.css" rel="stylesheet">
      
      <link rel="stylesheet" href="<%=request.getContextPath()%>/font-awesome/css/font-awesome.min.css">
     
+     
      <link rel="stylesheet" href="<%=request.getContextPath()%>/bootstrap/css/bootstrap.min.css" >
-  
   
       <!-- Gritter -->
     <link href="<%=request.getContextPath()%>/js/plugins/gritter/jquery.gritter.css" rel="stylesheet">
 
     <link href="<%=request.getContextPath()%>/css/animate.css" rel="stylesheet">
     <link href="<%=request.getContextPath()%>/css/style.css" rel="stylesheet">
+      <link href="<%=request.getContextPath()%>/css/main.css" rel="stylesheet">
     
     
-    <s:url includeParams="none" id="scripts.main" value="/js/main.js"/>
+
+	
+    <!-- Mainly scripts -->
+    <script src="<%=request.getContextPath()%>/js/jquery-2.1.1.js"></script>
+    <script src="<%=request.getContextPath()%>/bootstrap/js/bootstrap.min.js"></script>
+    <script src="<%=request.getContextPath()%>/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="<%=request.getContextPath()%>/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    
+    
+    <script>
+    var skinurl="<%=request.getContextPath()%>/skin-config.html";
+     </script>
+    
+    
+     <s:url includeParams="none" id="scripts.main" value="/js/main.js"/>
     <script type="text/javascript" src="<s:property value="%{scripts.main}"/>"></script>
     
      <s:url includeParams="none" id="scripts.moment" value="/js/moment.js"/>
@@ -39,19 +52,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
      <s:url includeParams="none" id="scripts.combodate" value="/js/combodate.js"/>
      <script type="text/javascript" src="<s:property value="%{scripts.combodate}"/>"></script>
      
-    <!-- Bootstrap 3.3.5 -->
-    <script src="<%=request.getContextPath()%>/js/bootstrap.min.js"></script>
-   
+
     
     <script type="text/javascript"  src="<%=request.getContextPath()%>/js/plugins/dataTables/datatables.min.js">
 	</script>
 	
-	
-    <!-- Mainly scripts -->
-    <script src="<%=request.getContextPath()%>/js/jquery-2.1.1.js"></script>
-    <script src="<%=request.getContextPath()%>/js/bootstrap.min.js"></script>
-    <script src="<%=request.getContextPath()%>/js/plugins/metisMenu/jquery.metisMenu.js"></script>
-    <script src="<%=request.getContextPath()%>/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
     <!-- Flot -->
     <script src="<%=request.getContextPath()%>/js/plugins/flot/jquery.flot.js"></script>
@@ -64,11 +69,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="<%=request.getContextPath()%>/js/plugins/peity/jquery.peity.min.js"></script>
     <script src="<%=request.getContextPath()%>/js/demo/peity-demo.js"></script>
 
-    <script>
-     skinurl="<%=request.getContextPath()%>/skin-config.html";
-    </script>
-    
-    
     <!-- Custom and plugin javascript -->
     <script src="<%=request.getContextPath()%>/js/inspinia.js"></script>
     <script src="<%=request.getContextPath()%>/js/plugins/pace/pace.min.js"></script>

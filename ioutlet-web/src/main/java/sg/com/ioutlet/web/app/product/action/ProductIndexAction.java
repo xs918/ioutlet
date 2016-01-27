@@ -1,7 +1,5 @@
 package sg.com.ioutlet.web.app.product.action;
 
-import java.util.List;
-
 import sg.com.ioutlet.framework.authorization.model.IoltFunction;
 import sg.com.ioutlet.framework.web.form.CommonForm;
 import sg.com.ioutlet.web.app.product.form.ProductForm;
@@ -46,13 +44,20 @@ public class ProductIndexAction extends IoutletAction{
 
 	@Override
 	protected String onLoad() {
+     ProductForm form = (ProductForm) getModel();
 		
-		ProductForm form = (ProductForm) getModel();
 		ProductActionHandler handler = new ProductActionHandler(this);
-		form.setPlist(handler.getAllProducts());
 		
+		form.setData(handler.getAllProducts());
+	
 		return INPUT;
 	}
+	
+	public String json() {
+		System.out.println("********************json***************************");
+			return SUCCESS;
+	}
+
 	
 	@Override
 	public String getPageContentHeader()
@@ -68,6 +73,11 @@ public class ProductIndexAction extends IoutletAction{
 	{
 		return getText("click on a product to edit its info, images and more");
 	}
+
+
+
+
+
 
 
 	

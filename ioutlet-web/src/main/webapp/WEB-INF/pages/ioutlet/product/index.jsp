@@ -1,122 +1,227 @@
 <!DOCTYPE html>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
 <html>
-
-
 <head>
-<title>Products</title>
-<meta charset="utf-8">
-<script type="text/javascript">
-	$(document).ready(function(){
-	
-		$('.edit').css("vertical-align","bottom");
-		$('.edit').css("text-align","right");
-		$('.edit').css('opacity',0.0);
-		$('table tr').hover(
-			function(){
-				$(this).find('.edit').stop().fadeTo('slow',1);
-		    },
-		    function(){
-		    	$(this).find('.edit').stop().fadeTo('slow',0.0);
-		    });
-	});
-</script>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>Product List</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <s:url id="jsonurl" namespace="/product" includeParams="none" action="jsonAct" />
+			   
 
 </head>
 <body>
-<div class="box box-primary">
-<s:form enctype="multipart/form-data" theme="bootstrap" action="form" method="post">
-<s:include value="/WEB-INF/pages/common/formparts/common.jsp" />        
-<div class="box-header with-border">
 
+
+	
+
+		
 		<div class="row">
-			<div class="col-md-2 input-lg">
-				<input type="checkbox" value=""> Check All
-			</div>
-			<div class="col-md-5">
-                  <div class="has-feedback">
-                      <input type="text" class="form-control input-lg" placeholder="Search product by name,sno">
-                      <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                  </div>
-			</div>
-			<div class="col-md-5">
-					   <s:submit cssClass="btn btn-lg btn-default btn-flat pull-right" onclick="isCustomSubmit('form','addButton')" />
-			</div>
+		<div class="col-xs-6 col-lg-6">
+		 <h1>Products</h1>
 		</div>
-
-</div>
-	<!-- /.box-header -->
-		<table class="table table-hover">
-			<tbody>
-			<s:iterator value="plist" id="pro">
+		<div class="col-xs-6 col-lg-6">
+		 <a  class="btn btn-primary pull-right" href="#"><i class="fa fa-plus"></i>Add a Product</a>
+		</div>
+		</div>
+	
+		
+			
+		
+		<table id="datatable-products"  class="table table-hover">
+			<thead>
 				<tr>
-				  <s:hidden id="%{#counter}" name="%{#counter}" value="%{#counter}"  />
-				                
-					<td><input type="checkbox" value=""></td>
-					<td>	
-						<a href="<s:property value="%{userProfileImageLink}"/>">
-	          				<img src="<s:property value="%{userProfileImageLink}"/>"  class="img-circle" alt="productimages" style="width:150px;height:150px">
-	        			</a>
+					<th tabindex="0" rowspan="1" colspan="1" id="checkboxall">
+					<input
+						class="toggle-all" type="checkbox" />
+				    </th>
+				    <th tabindex="0" rowspan="1" colspan="1" id="uncheck_1"></th>
+					<th tabindex="0" rowspan="1" colspan="1" id="uncheck_2">SKU</th>
+					<th tabindex="0" rowspan="1" colspan="1" id="uncheck_3">NAME</th>
+					<th tabindex="0" rowspan="1" colspan="1" id="uncheck_4">Quantity</th>
+					<th tabindex="0" rowspan="1" colspan="1" id="uncheck_5">Unit Price</th>
+					<th tabindex="0" rowspan="1" colspan="1" id="uncheck_6"></th>
+				</tr>	
+                    
+			</thead>
+			<tbody>
+			      <s:iterator value="%{data}" id="p">
+			     
+				<tr>
+					<td ><input name="select-product" type="checkbox" /></td>
+					<td  class="static-width">
+					 <img class="img-responsive product-media" src="<s:property value="%{userProfileImageLink}"/>" /></td>
+					 			<td><s:property value="%{#p.id}"/></td>
+			     	<td ><s:property value="%{#p.name}"/></td>
+					<td ><s:property value="%{#p.balance}"/></td>
+					<td><s:property value="%{#p.unitPrice}"/></td>
+					<td  >
+					<div class="actions">
+					
+					 <a  class="action-icon " data-toggle="tooltip"  title="copy" href="#">
+					 <i class="fa fa-files-o fa-3x fa-3x"></i></a>
+					 
+					  <a  class="action-icon " data-toggle="tooltip"  title="edit" href="#">
+					   <i class="fa fa-pencil-square-o fa-3x fa-3x"></i>
+					  </a>
+					 
+					  <a  class="action-icon " data-toggle="tooltip"  title="delete" href="#">
+					   <i class="fa fa-trash-o fa-3x fa-3x"></i>
+					  </a>
+						
+					</div>   
 					</td>
-					<td><s:property value="%{#pro.id}"/></td>
-					<td><s:property value="%{#pro.description}"/></td>
-					<td>in Stoken</td>
-					<td>visible</td>
-					<td class="edit">
-						<i class="fa fa-files-o fa-2x" onclick="popupEdit();return false;"></i>
-	    				<i class="fa fa-pencil-square-o fa-2x" onclick='isChoose(this)' ></i>
-					    <i class="fa fa-trash-o fa-2x"></i>
-					</td>
+					
 				</tr>
-			</s:iterator>
+				 </s:iterator>
+			
+				
 			</tbody>
 		</table>
-		<!-- /.table -->
+
+
+
+ 
+    
+	
+
+	<script type="text/javascript">
+		$(function() {
+			$('table tr').hover(
+				function(){
+					$(this).find('.actions').stop().fadeTo('slow',1);
+			    },
+			    function(){
+			    	$(this).find('.actions').stop().fadeTo('slow',0.0);
+			    });
+			
+			
+			
+			var sLengthMenuLabel='<s:property value="%{getText('data.table.menu.length.label')}"/>' ;
+			var sZeroRecordsLabel='<s:property value="%{getText('data.table.zero.record.label')}"/>' ;
+			var sInfoLabel='<s:property value="%{getText('data.table.info.label')}"/>' ;
+			var sInfoEmptyLabel='<s:property value="%{getText('data.table.info.empty.label')}"/>' ;
+			var sInfoFilteredLabel='<s:property value="%{getText('data.table.info.filtered.label')}"/>' ;
+			var sSearchLabel='<s:property value="%{getText('data.table.search.label')}"/>' ;
+			var sEmptyTable='<s:property value="%{getText('data.table.empty.table.label')}"/>' ;
+			var sAllLabel='<s:property value="%{getText('data.table.all.label')}"/>' ;
+			var sFirstLabel='<s:property value="%{getText('data.table.first.label')}"/>' ;
+			var sPreviousLabel='<s:property value="%{getText('data.table.previous.label')}"/>' ;
+			var sNextLabel='<s:property value="%{getText('data.table.next.label')}"/>' ;
+			var sLastLabel='<s:property value="%{getText('data.table.last.label')}"/>' ;
+			var sLoadingRecordsLabel='<s:property value="%{getText('data.table.loading.label')}"/>';
+			var sSortAscendingLabel='<s:property value="%{getText('data.table.sort.ascending.label')}"/>';
+			var sSortAscendingLabel='<s:property value="%{getText('data.table.sort.descending.label')}"/>';
 		
-		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="exampleModalLabel">New message</h4>
-      </div>
-      <div class="modal-body">
-      <!-- modal body below -->
-      <table style="width:100%">
-          <tr><td><label>Description</label></td></tr>
-	      <tr><td><s:textfield name="testing" value="1hao" /></td></tr>
-	      <tr><td><label>Stock</label></td></tr>
-		  <tr><td><s:textfield name="testing" value="1hao" /></td></tr>
-		  <tr><td><label>Visibility</label></td></tr>
-		  <tr><td><s:textfield name="testing" value="1hao" /></td></tr>
-	  </table>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Send message</button>
-      </div>
-    </div>
-  </div>
-</div>
-</s:form>
-</div>	<!-- /.box-body -->
+			$('#datatable-products').dataTable({
+				"oLanguage":{
+		            "sLengthMenu": sLengthMenuLabel,
+		            "sZeroRecords": sZeroRecordsLabel,
+		            "sInfo":sInfoLabel,
+		            "sInfoEmpty": sInfoEmptyLabel,
+		            "sInfoFiltered": sInfoFilteredLabel,
+		             "sSearch": sSearchLabel,
+		             "sEmptyTable":    sEmptyTable,
+					 "sLoadingRecords":sLoadingRecordsLabel,
+					  "sInfoThousands":  ",",
+					  "oPaginate": {
+							"sFirst":    sFirstLabel,
+							"sPrevious": sPreviousLabel,
+							"sNext":     sNextLabel,
+							"sLast":     sLastLabel
+						},
+						"oAria": {
+							"sSortAscending":  sSortAscendingLabel,
+							"sSortDescending": sSortAscendingLabel
+						}
+						
+		        },
+				"iDisplayLength" : 20,
+				"bFilter": true,
+				"autoWidth": false,
+				"aLengthMenu" : [ [5, 10,20, 50, 100, -1 ], [5,10, 20, 50, 100, sAllLabel ] ]
+				
+				
+			});
+			
+			$("#datatable-products_filter").addClass("pull-right");
+			// Bulk actions checkboxes
 
+			var $toggle_all = $("input:checkbox.toggle-all");
+			var $checkboxes = $("[name='select-product']");
+			
+			
 
+			
+			
 
+			$toggle_all.change(function() {
+				var checked = $toggle_all.is(":checked");
+				if (checked) {
+					$checkboxes.prop("checked", "checked");
+					checkboxActions(true,$checkboxes.length);
+				} else {
+					$checkboxes.prop("checked", "");
+					checkboxActions(false,0);
+				}
+			});
 
+			$checkboxes.change(function() {
+				var anyChecked = $("[name='select-product']:checked");
+				checkboxActions(anyChecked.length,anyChecked.length);
+			});
 
+			function checkboxActions(show,checkedCount) {
+				if (show) {
+					
+					
+				
+					
+	
+					
+					
+					
+					 var new_row = '<th tabindex="0" rowspan="1" colspan="7" id="check_1">Total '+ checkedCount
+					  + ' products selected <a  class="btn btn-sm btn-white" href="#"><i class="fa fa-trash-o"></i>Delete</a></th> '
+					  
+		
+					
+						
+					$("#check_1").remove();
+					$("#uncheck_1").remove();
+					$("#uncheck_2").remove();
+					$("#uncheck_3").remove();
+					$("#uncheck_4").remove();
+					$("#uncheck_5").remove();
+					$("#uncheck_6").remove();
+					$("#checkboxall").after(new_row);
+					
+				
+				} else {
+				
+					 var new_row =   '<th tabindex="0" rowspan="1" colspan="1" id="uncheck_1"></th>'
+									+'<th tabindex="0" rowspan="1" colspan="1" id="uncheck_2">SKU</th>'
+								    +'<th tabindex="0" rowspan="1" colspan="1" id="uncheck_3">Name</th>'
+									+'<th tabindex="0" rowspan="1" colspan="1" id="uncheck_4">Quantity</th>'
+									+'<th tabindex="0" rowspan="1" colspan="1" id="uncheck_5">Unit Price</th>'
+									+'<th tabindex="0" rowspan="1" colspan="1" id="uncheck_6"></th>'
+					
+					 
+					$("#uncheck_1").remove();
+					$("#uncheck_2").remove();
+					$("#uncheck_3").remove();
+					$("#uncheck_4").remove();
+					$("#uncheck_5").remove();
+					$("#uncheck_6").remove();
+					
+					$("#check_1").remove();
+					$("#checkboxall").after(new_row);
+					
+				}
+			}
+		});
+	</script>
 </body>
-<script type="text/javascript">
-	function isChoose(btnObj)
-	{
-		var rowValue=btnObj.value;
-		$("#exampleModal").modal();
-	}
-
-</script>
 </html>
