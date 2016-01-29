@@ -44,7 +44,7 @@ public class ProductIndexAction extends IoutletAction{
 
 	@Override
 	protected String onLoad() {
-     ProductForm form = (ProductForm) getModel();
+       ProductForm form = (ProductForm) getModel();
 		
 		ProductActionHandler handler = new ProductActionHandler(this);
 		

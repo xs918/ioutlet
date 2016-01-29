@@ -8,7 +8,9 @@ import org.apache.commons.lang3.RandomStringUtils;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+import sg.com.ioutlet.model.category.Category;
 import sg.com.ioutlet.model.product.Product;
+import sg.com.ioutlet.web.app.product.form.ProductForm;
 import sg.com.ioutlet.web.common.handler.IoutletActionHandler;
 
 public class ProductActionHandler extends IoutletActionHandler {
@@ -44,6 +46,19 @@ public class ProductActionHandler extends IoutletActionHandler {
 	
 		return firstProducts;
 
+	}
+
+	public List<Product> intialProductDetail(ProductForm form) {
+		Category c1 = new Category();
+		Category c2 = new Category();
+		c1.setName("fashion");
+		c2.setName("food");
+		List<Category> clist = new ArrayList<Category> ();
+		clist.add(c1);
+		clist.add(c2);
+		form.setCatlist(clist);
+		
+		return null;
 	}
 
 }

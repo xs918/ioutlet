@@ -92,9 +92,16 @@
     <script src="<%=request.getContextPath()%>/js/plugins/toastr/toastr.min.js"></script>
 	
 	
-    
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.0/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.0/js/bootstrap-toggle.min.js"></script>
 
-    </head>
+ <link href="<%=request.getContextPath()%>/css/plugins/dropzone/basic.css" rel="stylesheet">
+  <link href="<%=request.getContextPath()%>/css/plugins/dropzone/dropzone.css" rel="stylesheet">
+      <script src="<%=request.getContextPath()%>/js/plugins/pace/pace.min.js"></script>
+
+    <!-- DROPZONE -->
+    <script src="<%=request.getContextPath()%>/js/plugins/dropzone/dropzone.js"></script>
+     </head>
   
   
 <body>

@@ -34,9 +34,14 @@
 
 
 
-         <action name="edit" class="sg.com.ioutlet.web.app.product.action.ProductEditAction" method="input">
+         <action name="edit" class="sg.com.ioutlet.web.app.product.action.ProductDetailAction" method="input">
             <result name="input" type="tiles">SG.COM.IOUTLET.PRODUCT.EDIT</result>
         </action>
+        
+         <action name="detail" class="sg.com.ioutlet.web.app.product.action.ProductDetailAction" method="input">
+            <result name="input" type="tiles">SG.COM.IOUTLET.PRODUCT.DETAIL</result>
+        </action>
+        
 
      <action name="form!*" class="sg.com.ioutlet.web.app.product.action.ProductIndexAction" method="{*}">
             <result name="input" type="tiles">SG.COM.IOUTLET.PRODUCT.INDEX</result>

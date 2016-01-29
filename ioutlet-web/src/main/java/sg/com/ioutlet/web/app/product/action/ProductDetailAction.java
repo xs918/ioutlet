@@ -6,7 +6,7 @@ import sg.com.ioutlet.web.app.product.form.ProductForm;
 import sg.com.ioutlet.web.app.product.handler.ProductActionHandler;
 import sg.com.ioutlet.web.common.action.IoutletAction;
 
-public class ProductEditAction extends IoutletAction {
+public class ProductDetailAction extends IoutletAction {
 
 	/**
 	 * 
@@ -30,9 +30,14 @@ public class ProductEditAction extends IoutletAction {
 	
 	@Override
 	protected String onLoad() {
-		ProductForm form = (ProductForm) getModel();
-		ProductActionHandler handler = new ProductActionHandler(this);
-		return INPUT;
+		  ProductForm form = (ProductForm) getModel();
+			
+			ProductActionHandler handler = new ProductActionHandler(this);
+			
+			handler.intialProductDetail(form);
+		
+			return INPUT;
+		
 	}
 
 }
