@@ -12,6 +12,8 @@ import sg.com.ioutlet.model.outlet.Outlet;
 import sg.com.ioutlet.model.outlet.OutletKey;
 import sg.com.ioutlet.model.product.Product;
 import sg.com.ioutlet.model.product.ProductKey;
+import sg.com.ioutlet.model.product.Category;
+import sg.com.ioutlet.model.product.CategoryKey;
 
 @Stateless
 @Remote(GetterBridge.class)
@@ -62,5 +64,22 @@ public class IoutletGetter extends EjbEntityManager implements GetterBridge {
 	}
 	
 	/*------------Product end-------------*/
+	
+	/*----------Category Start------------*/
+	@Override
+	public List<Category> getAllCategories()
+	{
+		CategoryDao dao =new CategoryDao(em);
+		return dao.getAll();
+	}
+	
+	@Override
+	public Category getCategoryById(String CategoryId) {
+		
+		CategoryDao dao =new CategoryDao(em);
+		return dao.getByKey( new CategoryKey(CategoryId));	
+	}
+	
+	/*----------Category End------------*/
 	
 }
