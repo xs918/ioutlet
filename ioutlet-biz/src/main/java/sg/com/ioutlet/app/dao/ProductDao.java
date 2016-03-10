@@ -4,13 +4,19 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import org.apache.commons.lang.Validate;
+
+import sg.com.ioutlet.bas.CommonPojoKey;
+import sg.com.ioutlet.model.product.Product;
+import sg.com.ioutlet.model.product.ProductKey;
+
 public class ProductDao extends IoutletDao {
 	
 	public ProductDao(EntityManager entityManager) {
 		super(entityManager);
 	}
 	
-	public ProductDao get(ProductKey key) {
+	public Product get(ProductKey key) {
 		return get((CommonPojoKey) key);
 	}
 	
@@ -18,7 +24,7 @@ public class ProductDao extends IoutletDao {
 	public Product get(CommonPojoKey key) {
 
 		logger.trace("get");
-		Validate.isTrue(key instanceof ProductDao,
+		Validate.isTrue(key instanceof ProductKey,
 				"'key' must be an instance of 'ProductDao'.", key);
 
 		return get(Product.class, key);

@@ -4,6 +4,12 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import org.apache.commons.lang.Validate;
+
+import sg.com.ioutlet.bas.CommonPojoKey;
+import sg.com.ioutlet.model.category.Category;
+import sg.com.ioutlet.model.category.CategoryKey;
+
 public class CategoryDao extends IoutletDao {
 	
 	public CategoryDao(EntityManager entityManager) {
@@ -64,7 +70,7 @@ public class CategoryDao extends IoutletDao {
 					maxResult);
 		}
 	}
-	
+
 	
 	
 	
