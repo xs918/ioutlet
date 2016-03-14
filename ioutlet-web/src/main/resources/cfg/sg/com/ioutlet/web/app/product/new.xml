@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+<!-- 
+  - This file is included by the struts.xml file as an example
+  - of how to break up the configuration file into multiple files.
+-->
+<struts>
+
+
+
+    <package name="newproduct" namespace="/newproduct" extends="iolt-default">
+
+           
+         <action name="index" class="sg.com.ioutlet.web.app.product.action.ProductDetailAction" method="input">
+            <result name="input" type="tiles">SG.COM.IOUTLET.PRODUCT.DETAIL</result>
+        </action>
+        
+        <action name="form!*" class="sg.com.ioutlet.web.app.product.action.ProductDetailAction" method="{*}">
+            <result name="success" type="tiles">SG.COM.IOUTLET.PRODUCT.INDEX</result>
+        </action>
+        
+         <action name="imageupload" class="sg.com.ioutlet.web.app.product.action.ProductDetailAction" method="json">
+                <result name="success" type="tiles">SG.COM.IOUTLET.PRODUCT.INDEX</result>
+         </action>
+         
+        
+        
+
+     
+    </package>
+
+</struts>

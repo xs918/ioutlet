@@ -10,34 +10,34 @@
 
 <title>INSPINIA | E-commerce</title>
 
-
-
 </head>
 
 <body>
-
-	<div id="wrapper">
+<s:url id="imageupload" namespace="/product" includeParams="none" action="productimageupload" />
 		<s:form enctype="multipart/form-data" theme="bootstrap" action="form"
-			method="post" cssClass="form-Vertical">
-			<fieldset class="form-Vertical">
-				
-					<div class="col-sm-6">
+			method="post" calss="form-Vertical dropzone" id="myAwesomeDropzone">
+			
+			
+			
+			
+                 	<div class="col-sm-2">
+						<s:textfield label="%{getText('sku')}" name="	" maxLength="50"
+							requiredLabel="true"
+							placeholder="%{getText('pls key sku')}" />
+					</div>       
+                        
+					<div class="col-sm-4">
 						<s:textfield label="%{getText('Name')}" name="	" maxLength="50"
 							requiredLabel="true"
 							placeholder="%{getText('add.a.product.name')}" />
 					</div>
-
-
-					<div class="col-sm-2">
+        			<div class="col-sm-2">
 						<s:textfield label="%{getText('Price')}" name="	" maxLength="50"
 							requiredLabel="true" placeholder="%{getText('$')}" />
 
 
 					</div>
-
-
-
-					<div class="col-sm-4"></div>
+			       <div class="col-sm-4"></div>
 
 			
 				<div class="col-sm-12">
@@ -45,110 +45,80 @@
 							cols="50"
 							placeholder="%{getText('add short description of your product')}"
 							rows="4" />
-
-
+	
 				</div>
-				
-				
-				<div class="wrapper wrapper-content animated fadeIn">
-            <div class="row">
-                <div class="col-lg-12">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-title">
-                        <h5>Dropzone Area</h5>
-                        <div class="ibox-tools">
-                            <a class="collapse-link">
-                                <i class="fa fa-chevron-up"></i>
-                            </a>
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                <i class="fa fa-wrench"></i>
-                            </a>
-                            <ul class="dropdown-menu dropdown-user">
-                                <li><a href="#">Config option 1</a>
-                                </li>
-                                <li><a href="#">Config option 2</a>
-                                </li>
-                            </ul>
-                            <a class="close-link">
-                                <i class="fa fa-times"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="ibox-content">
-                        <form id="my-awesome-dropzone" class="dropzone" action="#">
-                            <div class="dropzone-previews"></div>
-                            <button type="submit" class="btn btn-primary pull-right">Submit this form!</button>
-                        </form>
-                        <div>
-                            <div class="m text-right"><small>DropzoneJS is an open source library that provides drag'n'drop file uploads with image previews: <a href="https://github.com/enyo/dropzone" target="_blank">https://github.com/enyo/dropzone</a></small> </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            </div>
+                      
 
-            </div>
-			
-	
-	
-			</fieldset>
+                 <div id="my-dropzone" class="dropzone col-sm-12" >
+                <button id="submit-all">Submit all files</button>
+                 </div>
+                  <div class="fallback">
+                 <input type="hidden" value="" id="file" name="file" multiple />
+                 </div>
+                        
+                 <s:submit cssClass="btn btn-primary btn-sm pull-right" onclick="isSubmit('regist')" />         
+                        
 		</s:form>
-	</div>
+
+                     
+
+    <script>
+        $(document).ready(function(){
 
 
+        	$("#my-dropzone").dropzone({
+        		 url:'<s:property value="%{imageupload}"/>',
+        	     maxFiles: 10,
+        	     maxFilesize: 15,
+        	     acceptedFiles: "image/*",
+        	     parallelUploads: 20,
+        	   init: function() {
+        	    	 var submitButton = document.querySelector("#submit-all")
+        	         myDropzone = this; // closure
+
+        	     submitButton.addEventListener("click", function() {
+        	       myDropzone.processQueue(); // Tell Dropzone to process all queued files.
+        	     });
+
+        	     
+        	        this.on("addedfile", function(file) {
+        	        	var removeButton = Dropzone.createElement("<button>delete</button>");
+        	        	  var _this = this;
+        	        	  removeButton.addEventListener("click", function(e) {
+        	                  // Make sure the button click doesn't submit the form:
+        	                  e.preventDefault();
+        	                  e.stopPropagation();
+        	                  alert("rremove");
+
+        	                  // Remove the file preview.
+        	                  _this.removeFile(file);
+        	        });
+        	        	  file.previewElement.appendChild(removeButton);
+
+        	        	  for (i = 0, len = this.files.length; i < len - 1; i++)
+        	        	    {
+        	        	         if (this.files[i].name == file.name && this.files[i].size == file.size && this.files[i].lastModifiedDate.toString() == file.lastModifiedDate.toString()) {
+
+        	        	             alert("The digital document: " + file.name + " already exists.")
+        	        	             return (pre = file.previewElement) != null ? pre.parentNode.removeChild(file.previewElement) : void 0;
+
+        	        	       }
+        	        	     }
+        	        });  
+        	        
+        	    }
+        	});
 
 
+        	this.on("removedfile", function(file) {  
+               alert("remove file:"+file.val());
+            });  
+            
+        });
 
 
-	<!-- Mainly scripts -->
-	<script src="js/jquery-2.1.1.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
-	<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-
-	<!-- Custom and plugin javascript -->
-	<script src="js/inspinia.js"></script>
-	<script src="js/plugins/pace/pace.min.js"></script>
-
-	<!-- SUMMERNOTE -->
-	<script src="js/plugins/summernote/summernote.min.js"></script>
-
-	<!-- Data picker -->
-	<script src="js/plugins/datapicker/bootstrap-datepicker.js"></script>
-
-	<script>
-
-    $(document).ready(function(){
-
-        Dropzone.options.myAwesomeDropzone = {
-
-            autoProcessQueue: false,
-            uploadMultiple: true,
-            parallelUploads: 100,
-            maxFiles: 100,
-
-            // Dropzone settings
-            init: function() {
-                var myDropzone = this;
-
-                this.element.querySelector("button[type=submit]").addEventListener("click", function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    myDropzone.processQueue();
-                });
-                this.on("sendingmultiple", function() {
-                });
-                this.on("successmultiple", function(files, response) {
-                });
-                this.on("errormultiple", function(files, response) {
-                });
-            }
-
-        }
-
-   });
-
-	</script>
+      
+    </script>
 
 </body>
 

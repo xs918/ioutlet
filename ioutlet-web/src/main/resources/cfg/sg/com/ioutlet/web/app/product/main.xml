@@ -5,4 +5,5 @@
  
 <struts>
  	<include file="cfg/sg/com/ioutlet/web/app/product/index.xml"/>
+ 	<include file="cfg/sg/com/ioutlet/web/app/product/new.xml"/>
 </struts>

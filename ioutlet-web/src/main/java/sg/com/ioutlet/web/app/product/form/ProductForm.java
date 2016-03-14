@@ -1,5 +1,6 @@
 package sg.com.ioutlet.web.app.product.form;
 
+import java.io.File;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
@@ -37,6 +38,9 @@ public class ProductForm extends IoutletForm{
     private List<Image> prodImage;
     
     private List<String> productOption;
+    
+     
+    private List<File> file;
 
 	
 	@Override
@@ -131,6 +135,16 @@ public class ProductForm extends IoutletForm{
 	public void setProductOption(List<String> productOption) {
 		this.productOption = productOption;
 	}
+
+	public List<File> getFile() {
+		return file;
+	}
+
+	public void setFile(List<File> file) {
+		this.file = file;
+	}
+
+
 
 	
 

@@ -1,86 +1,70 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
-<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
-<%@ taglib prefix="s" uri="/struts-tags"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
 <html>
-
-
 <head>
-<title>Products</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<link rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/plugins/datatables/dataTables.bootstrap.css">
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/ioutlet.css">
+<meta charset="utf-8" name="viewport"
+       content="width=device-width, initial-scale=1">
+<title>Spring MVC + Dropzone.js Example</title>
 
-<script type="text/javascript">
-</script>
+<link rel="stylesheet" type="text/css"
+       href='<c:url value="/web-resources/libs/bootstrap-3.1.1/css/bootstrap.min.css"/>'>
+<link rel="stylesheet" type="text/css"
+       href='<c:url value="/web-resources/libs/bootstrap-dialog/css/bootstrap-dialog.min.css"/>'>
+<link rel="stylesheet" type="text/css"
+       href='<c:url value="/web-resources/css/style.css"/>'>
 
 </head>
 <body>
-<div class="box box-primary">
-<s:form enctype="multipart/form-data" theme="bootstrap" action="form" method="post">        
-<div class="box-header with-border">
+       <div class="container">
+              <div class="panel panel-default">
+                     <div class="panel-heading text-center">
+                           <h3>Spring MVC + Dropzone.js Example</h3>
+                     </div>
+                     <div class="panel-body">
+                           <div>
+                                  <form id="dropzone-form" class="dropzone"
+                                         enctype="multipart/form-data">
 
-		<div class="row">
-			<div class="col-md-2 input-lg">
-				<input type="checkbox" value=""> Check All
-			</div>
-			<div class="col-md-5">
-                  <div class="has-feedback">
-                      <input type="text" class="form-control input-lg" placeholder="Search product by name,sno">
-                      <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                  </div>
-			</div>
-			<div class="col-md-5">
-					   <s:submit cssClass="btn btn-lg btn-default btn-flat pull-right" onclick="isCustomSubmit('form','addButton')" />
-			</div>
-		</div>
+                                         <div class="dz-default dz-message file-dropzone text-center well col-sm-12">
+                                                 <span class="glyphicon glyphicon-paperclip"></span> <span>
+                                                       To attach files, drag and drop here</span><br>
+                                                <span>OR</span><br>
+                                                <span>Just Click</span>
+                                         </div>
 
-</div>
-	<!-- /.box-header -->
-		<table class="table table-hover">
-			<tbody>
-			<s:iterator value="plist" id="pro">
-				<tr>
-				  <s:hidden id="%{#counter}" name="%{#counter}" value="%{#counter}"  />
-				                
-					<td><input type="checkbox" value=""></td>
-					<td>
-					
-		<a href="<s:property value="%{userProfileImageLink}"/>">
-          <img src="<s:property value="%{userProfileImageLink}"/>"  class="img-circle" alt="productimages" style="width:150px;height:150px">
-        </a>
-      
-     
-					</td>
-					<td><s:property value="%{#pro.id}"/></td>
-					<td><s:property value="%{#pro.description}"/></td>
-					<td>in Stoken</td>
-					<td>visible</td>
-					<td class="edit">
-						<i class="fa fa-files-o fa-2x"></i>
-	    				<i class="fa fa-pencil-square-o fa-2x" onclick="popupEdit();return false;"></i>
-					    <i class="fa fa-trash-o fa-2x"></i>
-					</td>
-				</tr>
-			</s:iterator>
-			</tbody>
-		</table>
-		<!-- /.table -->
+                                         <!-- this is were the previews should be shown. -->
+                                         <div class="dropzone-previews"></div>
+                                  </form>
+                                  <hr>
+                                  <button id="upload-button" class="btn btn-primary">
+                                         <span class="glyphicon glyphicon-upload"></span> Upload
+                                  </button>
+                                  <a class="btn btn-primary pull-right" href="list"> <span
+                                         class="glyphicon glyphicon-eye-open"></span> View All Uploads
+                                  </a>
+                           </div>
+                     </div>
+              </div>
+       </div>
 
-</s:form>
-</div>	<!-- /.box-body -->
+        <script>
+        $(document).ready(function(){
 
+        	Dropzone.options.dropzoneForm = {
 
+        		      url : "/form/action/url",
+        		      autoProcessQueue : false,
+        		      uploadMultiple : true,
+        		      maxFilesize : 256, // MB
+        		      previewsContainer : ".dropzone-previews",
+        		      
+        		      init : function() {
+        		           // handling events
+        		      }
+        		}
 
-
-
+       });
+    </script>
 </body>
 </html>

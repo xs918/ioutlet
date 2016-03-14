@@ -10,7 +10,7 @@
 
   <s:url id="jsonurl" namespace="/product" includeParams="none" action="jsonAct!json" />
   
-  <s:url id="dtlurl" namespace="/product" includeParams="none" action="detail" />
+  <s:url id="dtlurl" namespace="/product" includeParams="none" action="newproduct" />
     
 
 </head>
