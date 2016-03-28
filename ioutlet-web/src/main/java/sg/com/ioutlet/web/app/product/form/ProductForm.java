@@ -2,10 +2,13 @@ package sg.com.ioutlet.web.app.product.form;
 
 import java.io.File;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 import sg.com.ioutlet.model.category.Category;
+import sg.com.ioutlet.model.discount.Discount;
 import sg.com.ioutlet.model.image.Image;
 import sg.com.ioutlet.model.product.Product;
 import sg.com.ioutlet.web.common.form.IoutletForm;
@@ -38,6 +41,8 @@ public class ProductForm extends IoutletForm{
     private List<Image> prodImage;
     
     private List<String> productOption;
+    
+    private List<Discount> discounts;
     
      
     private List<File> file;
@@ -142,6 +147,15 @@ public class ProductForm extends IoutletForm{
 
 	public void setFile(List<File> file) {
 		this.file = file;
+	}
+
+	public List<Discount> getDiscounts() {
+
+		return discounts;
+	}
+
+	public void setDiscounts(List<Discount> discounts) {
+		this.discounts = discounts;
 	}
 
 

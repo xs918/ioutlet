@@ -82,7 +82,7 @@
 		<interceptor-stack name="ioutletdefaultStack">
 		   <interceptor-ref name="defaultStack" />
 		   <interceptor-ref name="form-required" />
-		 	<!-- <interceptor-ref name="loggedinuser" /> -->
+		<!--  	 <interceptor-ref name="loggedinuser" /> -->
 		    <interceptor-ref name="transaction-control" />
 	        <interceptor-ref name="uncatch-biz-exception" /> 
 	    

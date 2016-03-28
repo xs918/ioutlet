@@ -25,6 +25,14 @@
                 <result name="success" type="tiles">SG.COM.IOUTLET.PRODUCT.INDEX</result>
          </action>
          
+          <action name="discount" class="sg.com.ioutlet.web.app.product.action.ProductDetailAction" method="json">
+          	<param name="jsonOption">PRD_DISCOUNT</param>
+             <result type="json">
+                	<param name="root">model</param>
+                	 <param name="ignoreHierarchy">false</param>  
+              </result>
+         </action>
+         
         
         
 

@@ -1,14 +1,19 @@
 package sg.com.ioutlet.web.app.product.action;
 
 import java.io.File;
+import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.criteria.From;
 
+import org.apache.commons.lang3.StringUtils;
+
 import sg.com.ioutlet.ace.role.Role;
 import sg.com.ioutlet.framework.authorization.model.IoltFunction;
 import sg.com.ioutlet.framework.web.form.CommonForm;
+import sg.com.ioutlet.model.discount.Discount;
 import sg.com.ioutlet.web.app.product.form.ProductForm;
 import sg.com.ioutlet.web.app.product.handler.ProductActionHandler;
 import sg.com.ioutlet.web.app.user.form.UserRegistForm;
@@ -24,7 +29,7 @@ public class ProductDetailAction extends IoutletAction {
 	 private List<File> file;
      private List<String> fileContentType;
      private List<String> fileFileName;
-     
+     private String jsonOption;
      
 
 	@Override
@@ -56,20 +61,47 @@ public class ProductDetailAction extends IoutletAction {
 	}
 	
 	
+	public String doCustom()
+	{
+		ProductForm form = (ProductForm) getModel();
+		if(StringUtils.equals(jsonOption, "PRD_DISCOUNT")){
+			   System.out.println("doCustom");
+			   List<Discount> dis = form.getDiscounts()==null?new ArrayList<Discount>():form.getDiscounts();
+			   Discount d1 = new Discount();
+			   d1.setName("Group1");
+			   d1.setDiscountAmount(new BigDecimal(10.99));
+			   d1.setDiscountRate(20);
+			   d1.setQuantity(100);
+			   d1.setStartDate(new Date());
+			   d1.setEndDate(new Date());
+			   dis.add(d1);
+			   form.setDiscounts(dis);
+			   jsonOption="";
+			 
+			}
+		return SUCCESS;
+	}
+	
 	public String json() {
 		System.out.println("********************image uplaod***************************");
 		ProductForm form = (ProductForm) getModel();
-		
-		
-		
-		System.out.println("file form:"+form.getFile());
-		
-	
-		for(File f:form.getFile())
-		{
-			System.out.println("fileList:"+f.getName());
+		if(StringUtils.equals(jsonOption, "PRD_DISCOUNT")){
+		   System.out.println("PRD_DISCOUNT");
+		   List<Discount> dis = form.getDiscounts()==null?new ArrayList<Discount>():form.getDiscounts();
+		   Discount d1 = new Discount();
+		   d1.setName("Group1");
+		   d1.setDiscountAmount(new BigDecimal(10.99));
+		   d1.setDiscountRate(20);
+		   d1.setQuantity(100);
+		   d1.setStartDate(new Date());
+		   d1.setEndDate(new Date());
+		   dis.add(d1);
+		   form.setDiscounts(dis);
+		   jsonOption="";
+		   return SUCCESS;
 		}
 		
+	
 			return SUCCESS;
 	}
 	
@@ -116,6 +148,14 @@ public class ProductDetailAction extends IoutletAction {
 
 	public void setFileFileName(List<String> fileFileName) {
 		this.fileFileName = fileFileName;
+	}
+
+	public String getJsonOption() {
+		return jsonOption;
+	}
+
+	public void setJsonOption(String jsonOption) {
+		this.jsonOption = jsonOption;
 	}
 
 }
