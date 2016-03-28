@@ -23,7 +23,7 @@
 
  <script src="<%=request.getContextPath()%>/js/plugins/editTable/jquery.edittable.min.js"></script>
  <link href="<%=request.getContextPath()%>/css/plugins/editTable/jquery.edittable.min.css" rel="stylesheet">
-
+  
 </head>
 
 <body>
@@ -77,11 +77,16 @@
 					<div class="col-sm-4">
 						<s:textfield label="%{getText('name')}" name="	" maxLength="50"
 							requiredLabel="true"
-							placeholder="%{getText('add.a.product.name')}" />
+							placeholder="max 50 characters" 
+							title="%{getText('add.your.product.name')}"
+							/>
 					</div>
         			<div class="col-sm-2">
 						<s:textfield label="%{getText('price')}" name="	" maxLength="50"
-							requiredLabel="true" placeholder="%{getText('currency.symbol')}" />
+							requiredLabel="true" placeholder="%{getText('currency.symbol')}" 
+							
+						   title="%{getText('How much price you want to sell')}"
+							/>
 
 
 					</div>
@@ -95,6 +100,8 @@
 				                        label="%{getText('collections')}"
 				                        list="catlist"
 				                        name="category"
+				                        
+				                        title="%{getText('Choose the category your product belong to')}"
 				  />
 				                 
 			   </div>
@@ -158,13 +165,26 @@
 				  </div>
 				  
 				  
-				<div class="col-sm-12">
+			<div class="col-sm-12">
 			   <strong><s:property value="%{getText('Discount')}"/>
 		       </strong>
-				<small>Can this product have any discount?</small>
+		      	<p><small>Can this product have any discount?</small></p>
 				
-				<div id="edittable_discount"></div>
 			</div>
+			
+			 <div class="col-sm-12">
+				<button type="button" class="btn btn-default pull-left" id="add_discount"><i class="fa fa-plus"></i>Add Product Discount</button>
+		    	
+			</div>
+			 <div class="col-sm-12 table-responsive">
+			<table id="edittable_discount" class="table table-bordered">
+			</table>
+			<button type="button" class="btn btn-info pull-left btn-xs" id="add_more_discount"><i class="fa fa-plus"></i>more discount</button>
+			</div>
+			
+	
+			
+			
 			
 			 <div class="col-sm-12">
 			   <strong><s:property value="%{getText('Custom Text Field')}"/>
@@ -175,10 +195,26 @@
 		    <div class="col-sm-12">
 			   <button type="button" class="btn btn-default pull-left" id="add_option"><i class="fa fa-plus"></i>Add Product Option</button>
 			</div>
-	
-                                       
-                 <s:submit cssClass="btn btn-primary btn-sm pull-right" onclick="isSubmit('regist')" />         
+		   <div class="col-sm-12 table-responsive">
+			<table id="edittable_option" class="table table-bordered">
+		   </table>
+		   <button type="button" class="btn btn-info pull-left btn-xs" id="add_more_option"><i class="fa fa-plus"></i>more option</button>
+		  </div>
+			
+			  <div class="col-sm-10"> 
+			  </div>
+			
+			  <div class="col-sm-2"> 
+			     <div class="btn-group " role="group">
+                 <s:submit cssClass="btn btn-primary btn-sm" value="previous" onclick="isSubmit('regist')" />     
+                  </div>
+                  <div class="btn-group  ">
+                    <s:submit cssClass="btn btn-primary btn-sm " onclick="isSubmit('regist')" />   
+                 </div>       
+                </div>
                         
+	       
+                 
 		</s:form>
 
                      
@@ -186,32 +222,245 @@
     <script>
         $(document).ready(function(){
         	
+        	$("#add_more_discount").hide();
+        
         	
+        	$("#add_discount").click(function(){
+        		
+        		$("#add_more_discount").show();
+        		
+        		
+        	$("#add_discount").hide();
         	
-        	var eTable=$("#edittable_discount").editTable({
-        		headerCols: [
-        			'Name',
-        			'discountRate',
-        			'discountAmount',
-        			'quantity',
-        			'startDate',
-        			'endDate'
-        		],
-        		maxRows: 4
-        	});
-         	
-        	$.ajax({
-        		url: 	'<s:property value="%{discountadd}"/>',
-        		type: 	'POST',
-        		data: 	{
-        			ajax: true
-        		},
-        		complete: function (result) {
-        			eTable.loadJsonData(result.responseText);
-        		}
-        	});
-         	
+        
+        		
+        		var table = $('#edittable_discount');
+        		
+        		var thtd= $('<th>Discount name</th><th>Discount quantity</th><th>Discount percentage</th><th>Discount amount</th><th>Discount start time</th><th>Discount end time</th><th></th>');
+        	    var rowth=$('<tr></tr>')
+        	    rowth.append(thtd);
+        		table.append(rowth);
+        	
+        		discount_i=1;
+        		var row = $('<tr id=discount_row>'+discount_i+'</tr>');
+        		
+        	
 
+        	    var data ="<td><input type='text' id='discount_name"+discount_i+"' name='discountName[]'/></td>";
+        	    data +=" <td><input type='text' id='discount_quantity"+discount_i+"' name='discountQty[]'/></td>";
+        	    data +=" <td><input type='text' id='discount_per"+discount_i+"' name='discountPercentage[]'/></td>";
+        	    data +=" <td><input type='text' id='discount_amt"+discount_i+"' name='discount_amt[]'/></td>";
+        	    data += "<td><input type='text' id='discount_start_time"+discount_i+"' name='startTime[]'/></td>";
+        	    data+="<td><input type='text' id='discount_end_time"+discount_i+"' name='endTime[]'/></td>";
+        	    data+="<td>   <a href='javascript:void(0);'  class='btn btn-danger pull-left btn-xs remCF '><i class='fa fa-trash-o'></i></a>	</td>";
+        	          
+        	    
+        	  
+        	    
+        		table.append(row);
+        		row.append(data);
+        		
+        		
+        		
+        	
+        		
+        	
+        		 
+        		 
+        	
+        			
+        	
+        	}
+        	);
+        	
+        	
+        	$("#add_more_discount").click(function(){
+        		
+     
+        		discount_i=discount_i+1;
+        		var table = $('#edittable_discount');
+        	
+        		var row = $('<tr id=discount_row>'+discount_i+'</tr>');
+        		
+        	  
+
+        	    var data ="<td><input type='text' id='discount_name"+discount_i+"' name='discountName[]'/></td>";
+        	    data +=" <td><input type='text' id='discount_quantity"+discount_i+"' name='discountQty[]'/></td>";
+        	    data +=" <td><input type='text' id='discount_per"+discount_i+"' name='discountPercentage[]'/></td>";
+        	    data +=" <td><input type='text' id='discount_amt"+discount_i+"' name='discount_amt[]'/></td>";
+        	    data += "<td><input type='text' id='discount_start_time"+discount_i+"' name='startTime[]'/></td>";
+        	    data+="<td><input type='text' id='discount_end_time"+discount_i+"' name='endTime[]'/></td>";
+        	    data+="<td>   <a href='javascript:void(0);'  class='btn btn-danger pull-left btn-xs remCF '><i class='fa fa-trash-o'></i></a>	</td>";
+        	    
+        	  
+        	    
+        		table.append(row);
+        		row.append(data);
+        		if(discount_i>=4)
+        		{
+        		 	$("#add_more_discount").hide();	
+        		}
+        		
+           	  
+        	}
+        	);
+        	
+        	
+         	$("#edittable_discount").on('click', '.remCF', function(){
+         		  
+         		  
+        		  
+         		if(discount_i==1)
+      	        {
+      	        	$(this).parent().parent().parent().remove();
+      	        	
+      	        	$("#add_discount").show();
+      	        	$("#add_more_discount").hide();
+      	        	
+      	        }
+      	        else
+      	        {
+      	        	$("#add_more_discount").show();
+      	        	
+      	        }
+         		 discount_i=discount_i-1;
+         		  
+        	      $(this).parent().parent().remove();
+        	    
+        	     
+        	      
+        	        	
+        	        	
+        	    });
+        	  
+        	// product option start 
+        	
+        	
+             $("#add_more_option").hide();
+        
+        	
+        	$("#add_option").click(function(){
+        		
+        		$("#add_more_option").show();
+        		
+        		
+        	$("#add_option").hide();
+        	
+        
+        		
+        		var table = $('#edittable_option');
+        		
+        		var thtd= $('<th>Type</th><th>Title</th><th>Value</th><th></th>');
+        	    var rowth=$('<tr></tr>')
+        	    rowth.append(thtd);
+        		table.append(rowth);
+        	
+        		option_i=1;
+        		var row = $('<tr id=option>'+option_i+'</tr>');
+        		
+        	
+
+        		 var data ="<td><select name name='option[]'>"
+          	    	+"<option value='Number'>Number</option>"
+          	    	+"<option value='Color'>Color</option>"
+          	    	+"<option value='Image'>Image</option>"
+          	    	+"<option value='Text'>Text</option>"
+          	    +"</select> </td>";
+        	    
+        		
+        		
+        		
+        	    data +=" <td><input type='text' id='discount_quantity"+option_i+"' name='discountQty[]'/></td>";
+        	    data +=" <td><input type='text' id='discount_per"+option_i+"' name='discountPercentage[]'/></td>";
+        	    data+="<td>   <a href='javascript:void(0);'  class='btn btn-danger pull-left btn-xs remCF '><i class='fa fa-trash-o'></i></a>	</td>";
+        	          
+        	    
+        	  
+        	    
+        		table.append(row);
+        		row.append(data);
+        		
+        		
+        		
+        	
+        		
+        	
+        		 
+        		 
+        	
+        			
+        	
+        	}
+        	);
+        	
+        	
+        	$("#add_more_option").click(function(){
+        		
+     
+        		option_i=option_i+1;
+        		var table = $('#edittable_option');
+        	
+         		var row = $('<tr id=option>'+option_i+'</tr>');
+        		
+            	
+
+         		 var data ="<td><select name name='option[]'>"
+         	    	+"<option value='Number'>Number</option>"
+         	    	+"<option value='Color'>Color</option>"
+         	    	+"<option value='Image'>Image</option>"
+         	    	+"<option value='Text'>Text</option>"
+         	    +"</select> </td>";
+         	    
+        	    data +=" <td><input type='text' id='discount_quantity"+option_i+"' name='discountQty[]'/></td>";
+        	    data +=" <td><input type='text' id='discount_per"+option_i+"' name='discountPercentage[]'/></td>";
+        	    data+="<td>   <a href='javascript:void(0);'  class='btn btn-danger pull-left btn-xs remCF '><i class='fa fa-trash-o'></i></a>	</td>";
+        	          
+        	    
+        	  
+        	    
+        		table.append(row);
+        		row.append(data);
+        		if(option_i>=4)
+        		{
+        		 	$("#add_more_option").hide();	
+        		}
+        		
+           	  
+        	}
+        	);
+        	
+        	
+         	$("#edittable_option").on('click', '.remCF', function(){
+         		  
+         		  
+        		  
+         		if(option_i==1)
+      	        {
+      	        	$(this).parent().parent().parent().remove();
+      	        	
+      	        	$("#add_option").show();
+      	        	$("#add_more_option").hide();
+      	        	
+      	        }
+      	        else
+      	        {
+      	        	$("#add_more_option").show();
+      	        	
+      	        }
+         		 option_i=option_i-1;
+         		  
+        	      $(this).parent().parent().remove();
+        	    
+        	     
+        	      
+        	        	
+        	        	
+        	    });
+        	  
+        	
+         	
+         	//--- end 
+        
           	
           	
     
@@ -301,17 +550,19 @@
         	 });
         	this.on("maxfilesexceeded", function(file) { this.removeFile(file); });
         	
-        	
-        	
-            $("$product_discount").hide();
+  
               
         });
    
 
         
         
+     
         
+  
     </script>
+    
+    
 
 </body>
 

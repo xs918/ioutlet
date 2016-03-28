@@ -72,6 +72,9 @@
     <!-- Custom and plugin javascript -->
     <script src="<%=request.getContextPath()%>/js/inspinia.js"></script>
     <script src="<%=request.getContextPath()%>/js/plugins/pace/pace.min.js"></script>
+    
+    
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/js/plugins/jquery-ui/jquery-ui.min.css" >
 
     <!-- jQuery UI -->
     <script src="<%=request.getContextPath()%>/js/plugins/jquery-ui/jquery-ui.min.js"></script>
@@ -210,6 +213,8 @@
         }
 
          );
+        
+      $( document ).tooltip();
     </script>
    
   </body>

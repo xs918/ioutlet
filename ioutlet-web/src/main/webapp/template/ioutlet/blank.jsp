@@ -73,9 +73,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="<%=request.getContextPath()%>/js/inspinia.js"></script>
     <script src="<%=request.getContextPath()%>/js/plugins/pace/pace.min.js"></script>
 
-    <!-- jQuery UI -->
-    <script src="<%=request.getContextPath()%>/js/plugins/jquery-ui/jquery-ui.min.js"></script>
-
     <!-- GITTER -->
     <script src="<%=request.getContextPath()%>/js/plugins/gritter/jquery.gritter.min.js"></script>
 
@@ -90,7 +87,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- Toastr -->
     <script src="<%=request.getContextPath()%>/js/plugins/toastr/toastr.min.js"></script>
-	
 	
     
      

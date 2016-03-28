@@ -4,7 +4,6 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/bootstrap/css/bootstrap.min.css">
  <sx:head />
  <s:head />
 </head>
