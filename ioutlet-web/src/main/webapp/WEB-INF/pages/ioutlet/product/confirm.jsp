@@ -31,11 +31,10 @@
 <s:url id="discountadd" namespace="/newproduct" includeParams="none" action="discount" />
 
 
-		<s:form enctype="multipart/form-data" theme="bootstrap" action="form"
-			method="post" calss="form-Vertical dropzone" >
+		<s:form enctype="multipart/form-data" theme="bootstrap" action="confirm"
+			method="post" calss="form-inline" >
 			
-	   <s:include value="/WEB-INF/pages/common/formparts/common.jsp" />    
-	   		
+			   <s:include value="/WEB-INF/pages/common/formparts/common.jsp" />    
 			<div class="col-sm-12">
 			<h2>Basic Information</h2>
 			</div>
@@ -43,48 +42,50 @@
                
                         
 					<div class="col-sm-4">
-						<s:textfield label="%{getText('name')}" name="	" maxLength="50"
-							requiredLabel="true"
-							placeholder="max 50 characters" 
-							title="%{getText('add.your.product.name')}"
-							/>
+					
+					 <h4><s:property value="%{getText('name')}"/></h4>
+					 <div class="small text-muted">
+					  <s:property value="%{getText('G20010')}"/>
+					 </div>
+					<br/>
+				
 					</div>
         			<div class="col-sm-2">
-						<s:textfield label="%{getText('price')}" name="	" maxLength="50"
-							requiredLabel="true" placeholder="%{getText('currency.symbol')}" 
-							
-						   title="%{getText('How much price you want to sell')}"
-							/>
-
-
+						
+					 <h4><s:property value="%{getText('price')}"/></h4>
+					 <div class="small text-muted">
+					  <s:property value="%{getText('$29.00')}"/>
+					 </div>
+					 		<br/>
 					</div>
 			       <div class="col-sm-6"></div>
 			       
 			
 			     <div class="col-sm-12">
 			    
-			      <s:select
-				                        tooltip="%{getText('category of your product')}"
-				                        label="%{getText('collections')}"
-				                        list="catlist"
-				                        name="category"
-				                        
-				                        title="%{getText('Choose the category your product belong to')}"
-				  />
-				                 
+			    
+			     <h4><s:property value="%{getText('product tags')}"/></h4>
+					 <div class="small text-muted">
+					  <s:property value="%{getText('recommendation')}"/>
+			        </div>
+					 
+					 		<br/>    
 			   </div>
 			
 				<div class="col-sm-12">
-						<s:textarea label="%{getText('description')}" name="description"
-							cols="50"
-							placeholder="%{getText('add short description of your product')}"
-							rows="4" />
-	
+			
+	                <h4><s:property value="%{getText('description')}"/></h4>
+					 <div class="small text-muted">
+					  <s:property value="%{getText('2015 new comming t-shirt ,best sales in US')}"/>
+			        </div>
+			        		<br/>
+			        
 				</div>
                       
               	<div class="col-sm-12">
-                  <strong><s:property value="%{getText('product.image')}"/>
-		          </strong>
+              	
+              	   <h4><s:property value="%{getText('product.image')}"/></h4>
+              	
 		   	    </div>
                  <div class="col-sm-12">
                      <div id="my-dropzone" class="modal-body dropzone no-margin dz-clickable" >
@@ -164,10 +165,10 @@
 			
 			  <div class="col-sm-2"> 
 			     <div class="btn-group " role="group">
-                 <s:submit cssClass="btn btn-primary btn-sm" value="previous" onclick="isBack('form')" />     
+                 <s:submit cssClass="btn btn-primary btn-sm" value="previous" onclick="isBack('confirm')" />     
                   </div>
                   <div class="btn-group  ">
-                    <s:submit cssClass="btn btn-primary btn-sm " onclick="isSubmit('form')" />   
+                    <s:submit cssClass="btn btn-primary btn-sm " onclick="isSubmit('confirm')" />   
                  </div>       
                 </div>
                         

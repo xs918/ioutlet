@@ -13,25 +13,50 @@
     <package name="newproduct" namespace="/newproduct" extends="iolt-default">
 
            
-         <action name="index" class="sg.com.ioutlet.web.app.product.action.ProductDetailAction" method="input">
+         <action name="index" class="sg.com.ioutlet.web.app.product.action.formflow.ProductDetailAction" method="input">
             <result name="input" type="tiles">SG.COM.IOUTLET.PRODUCT.DETAIL</result>
         </action>
         
-        <action name="form!*" class="sg.com.ioutlet.web.app.product.action.ProductDetailAction" method="{*}">
-            <result name="success" type="tiles">SG.COM.IOUTLET.PRODUCT.INDEX</result>
+        <action name="form!*" class="sg.com.ioutlet.web.app.product.action.formflow.ProductDetailAction" method="{*}">
+            <result name="input" type="tiles">SG.COM.IOUTLET.PRODUCT.DETAIL</result>
+            
+             <result type="redirect-action">
+				<param name="actionName">confirm!input</param>
+			</result>
+			
+	     	<result name="back" type="redirect-action">
+				<param name="namespace">/product</param>
+				<param name="actionName">index!input</param>
+			</result>
+			
+			
         </action>
         
-         <action name="imageupload" class="sg.com.ioutlet.web.app.product.action.ProductDetailAction" method="json">
+         <action name="imageupload" class="sg.com.ioutlet.web.app.product.action.formflow.ProductDetailAction" method="json">
                 <result name="success" type="tiles">SG.COM.IOUTLET.PRODUCT.INDEX</result>
          </action>
          
-          <action name="discount" class="sg.com.ioutlet.web.app.product.action.ProductDetailAction" method="json">
+          <action name="discount" class="sg.com.ioutlet.web.app.product.action.formflow.ProductDetailAction" method="json">
           	<param name="jsonOption">PRD_DISCOUNT</param>
              <result type="json">
                 	<param name="root">model</param>
                 	 <param name="ignoreHierarchy">false</param>  
               </result>
          </action>
+         
+         
+                  
+        <action name="confirm!*" class="sg.com.ioutlet.web.app.product.action.formflow.ProductConfirmAction" method="{*}">
+             <result name="input" type="tiles">SG.COM.IOUTLET.PRODUCT.CONFIRM</result>
+             <result name="success" type="tiles">SG.COM.IOUTLET.PRODUCT.INDEX</result>
+             <result name="back" type="redirect-action">
+				<param name="actionName">form!input</param>
+			</result>
+             
+             
+        </action>
+        
+        
          
         
         

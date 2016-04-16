@@ -60,7 +60,7 @@ public class ProductForm extends IoutletForm{
 
 	@Override
 	public boolean validate(ActionSupport as) {
-		return false;
+		return true;
 	}
 
 	public String getProductName() {

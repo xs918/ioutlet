@@ -35,19 +35,19 @@
 
 
 
-         <action name="edit" class="sg.com.ioutlet.web.app.product.action.ProductDetailAction" method="input">
+         <action name="edit" class="sg.com.ioutlet.web.app.product.action.formflow.ProductDetailAction" method="input">
             <result name="input" type="tiles">SG.COM.IOUTLET.PRODUCT.EDIT</result>
         </action>
         
-         <action name="newproduct" class="sg.com.ioutlet.web.app.product.action.ProductDetailAction" method="input">
+         <action name="newproduct" class="sg.com.ioutlet.web.app.product.action.formflow.ProductDetailAction" method="input">
             <result name="input" type="tiles">SG.COM.IOUTLET.PRODUCT.DETAIL</result>
         </action>
         
-        <action name="newproduct!*" class="sg.com.ioutlet.web.app.product.action.ProductDetailAction" method="{*}">
+        <action name="newproduct!*" class="sg.com.ioutlet.web.app.product.action.formflow.ProductDetailAction" method="{*}">
             <result name="success" type="tiles">SG.COM.IOUTLET.PRODUCT.INDEX</result>
         </action>
         
-         <action name="productimageupload" class="sg.com.ioutlet.web.app.product.action.ProductDetailAction" method="json">
+         <action name="productimageupload" class="sg.com.ioutlet.web.app.product.action.formflow.ProductDetailAction" method="json">
                <result type="json">
                 	<param name="root"></param>
                <param name="excludeProperties">*.*.*fields
@@ -55,24 +55,11 @@
                 </result>
          </action>
          
+
         
         
 
-     <action name="form!*" class="sg.com.ioutlet.web.app.product.action.ProductIndexAction" method="{*}">
-            <result name="input" type="tiles">SG.COM.IOUTLET.PRODUCT.INDEX</result>
-            <result name="success" type="tiles">SG.COM.IOUTLET.USER.SUCCESS</result>
-    
-  <!--   		DISPLAY PAGE
-			<result name="back" type="redirect-action">
-				<param name="namespace">
-					/
-				</param>
-				<param name="actionName">register!input</param>				
-			</result>
-			 -->
-			
-        </action>
-        
+
         
         <!-- Add additional "example" package actions here. -->
 

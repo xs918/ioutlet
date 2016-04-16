@@ -1,4 +1,4 @@
-package sg.com.ioutlet.web.app.product.action;
+package sg.com.ioutlet.web.app.product.action.formflow;
 
 import java.io.File;
 import java.math.BigDecimal;
@@ -45,6 +45,7 @@ public class ProductDetailAction extends IoutletAction {
 		ProductForm form = (ProductForm) getModel();
 		
 		   int i = 0;
+		   if(form.getFile()!=null)
 	        for (File f : form.getFile()) {
 	            System.out.print("\nFile [" + i + "] ");
 	            System.out.print(" length: " + f.length());
