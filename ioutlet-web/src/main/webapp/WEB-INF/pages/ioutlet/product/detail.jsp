@@ -31,39 +31,6 @@
 <s:url id="discountadd" namespace="/newproduct" includeParams="none" action="discount" />
 
 
-	<!-- Start Post Attachments -->
-                  <div class="modal fade" id="uploader" tabindex="-1" role="dialog" aria-labelledby="updater" aria-hidden="true">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                           <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          <br>
-                          <i class="icon-credit-card"></i>
-                          <p class="no-margin">You can upload your product image max 10 files</p>
-                        </div>
-                   
-                          <div id="my-dropzone" class="uploadform modal-body dropzone no-margin dz-clickable" >
-                       		  <div class="dz-default dz-message">
-	                          <span>Drop your Cover Picture here</span>
-	                          </div>
-	                          <div class="fallback">
-				                 <input type="hidden" value="" id="file" name="file" multiple />
-				              </div>
-                         </div>
-                          <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                        
-                          
-                      </div>
-                      <!-- /.modal-content -->
-                    </div>
-                    <!-- /.modal-dialog -->
-                  </div>
-                  <!-- /.modal -->
-  <!-- End Post Attachments -->
-  
-  
 		<s:form enctype="multipart/form-data" theme="bootstrap" action="form"
 			method="post" calss="form-Vertical dropzone" >
 			
@@ -117,23 +84,13 @@
               	<div class="col-sm-12">
                   <strong><s:property value="%{getText('product.image')}"/>
 		          </strong>
-		          
-		          	<a data-toggle="modal" data-target="#uploader" >
-		          	 <span class="fa fa-plus"></span>
-		          	</a>
-		          	
-		          	
-       			 </div>
+		   	    </div>
                  <div class="col-sm-12">
-                       <img class="thumb" src="" style="width:180px">
-                   
                      <div id="my-dropzone" class="modal-body dropzone no-margin dz-clickable" >
                        		  <div class="fallback">
 				                 <input type="hidden" value="" id="file" name="file" multiple />
 				              </div>
-				              
-                       </div>
-                     
+                      </div>
                   </div>              
                   
                	<div class="col-sm-12">

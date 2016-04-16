@@ -5,7 +5,6 @@ import java.util.List;
 
 import sg.com.ioutlet.bas.CommonPojo;
 import sg.com.ioutlet.bas.CommonPojoKey;
-import sg.com.ioutlet.model.category.attribute.CategoryAttribute;
 import sg.com.ioutlet.model.product.Product;
 
 
@@ -66,8 +65,7 @@ public class Category  extends CommonPojo  {
     private String name;
 	
     
-    private List<CategoryAttribute > attributes;
-    
+   
     private List<Product> products;
 
 	public Category() {
@@ -150,14 +148,6 @@ public class Category  extends CommonPojo  {
 	}
 
 
-	public List<CategoryAttribute > getAttributes() {
-		return attributes;
-	}
-
-
-	public void setAttributes(List<CategoryAttribute > attributes) {
-		this.attributes = attributes;
-	}
 
 
 	public List<Product> getProducts() {

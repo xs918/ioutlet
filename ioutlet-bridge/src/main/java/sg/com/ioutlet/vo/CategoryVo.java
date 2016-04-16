@@ -3,7 +3,6 @@ package sg.com.ioutlet.vo;
 import java.util.List;
 
 import sg.com.ioutlet.model.category.Category;
-import sg.com.ioutlet.model.category.attribute.CategoryAttribute;
 import sg.com.ioutlet.model.product.Product;
 
 public class CategoryVo {
@@ -16,8 +15,7 @@ public class CategoryVo {
 
     private String name;
 	
-    private List<CategoryAttribute > attributes;
-    
+     
     private List<Product> products;
 
 	public String getId() {
@@ -52,13 +50,7 @@ public class CategoryVo {
 		this.name = name;
 	}
 
-	public List<CategoryAttribute > getAttributes() {
-		return attributes;
-	}
 
-	public void setAttributes(List<CategoryAttribute > attributes) {
-		this.attributes = attributes;
-	}
 
 	public List<Product> getProducts() {
 		return products;

@@ -5,7 +5,6 @@ import java.util.List;
 
 import sg.com.ioutlet.bas.CommonPojo;
 import sg.com.ioutlet.bas.CommonPojoKey;
-import sg.com.ioutlet.model.category.attribute.CategoryAttribute;
 import sg.com.ioutlet.model.product.Product;
 
 public class ProductOption extends CommonPojo  {
@@ -16,22 +15,26 @@ public class ProductOption extends CommonPojo  {
 	
 	private ProductOptionKey key;
 
-	private CategoryAttribute attribute;
 
-	private String attributeValue;
+	private String optionValue;
 
 	private Product product;
 	
-	private String attributeExtValue;
+	private String optionName;
+	private String dataType;
+	
+	private String optionExtValue;
 	
 	
 	public enum Field
 	{
 		 key,
-		 attributeName,
-		 attributeValue,
+		 optionName,
+		 dataType,
+		 optionValue,
 		 product,
-		 attributeExtValue;
+		 optionExtValue;
+		
         
 		 public int length = 255;
 		 public int precision;
@@ -67,12 +70,12 @@ public class ProductOption extends CommonPojo  {
 	}
 
 
-	public String getAttributeValue() {
-		return this.attributeValue;
+	public String getoptionValue() {
+		return this.optionValue;
 	}
 
-	public void setAttributeValue(String attributeValue) {
-		this.attributeValue = attributeValue;
+	public void setoptionValue(String optionValue) {
+		this.optionValue = optionValue;
 	}
 
 	
@@ -100,9 +103,9 @@ public class ProductOption extends CommonPojo  {
 		
 
 		List<Object[]> fields = new ArrayList<Object[]>();
-		fields.add(new Object[]{Field.attributeName.name(), attribute});
-		fields.add(new Object[]{Field.attributeValue.name(), attributeValue});
-		fields.add(new Object[]{Field.attributeExtValue.name(), attributeExtValue});
+		fields.add(new Object[]{Field.optionName.name(), optionName});
+		fields.add(new Object[]{Field.optionValue.name(), optionValue});
+		fields.add(new Object[]{Field.optionExtValue.name(), optionExtValue});
 		
 		fields.add(new Object[]{Field.product.name(), product});
 		
@@ -119,9 +122,9 @@ public class ProductOption extends CommonPojo  {
 		
 		   int i = 0;
 			
-	       this.attribute =  (CategoryAttribute) objects[i++];
-	       this.attributeValue = (String) objects[i++];
-	       this.attributeExtValue = (String) objects[i++];
+	       this.optionName =  (String) objects[i++];
+	       this.optionValue = (String) objects[i++];
+	       this.optionExtValue = (String) objects[i++];
 		   this.product = (Product) objects[i++];
 		   
 		
@@ -145,23 +148,25 @@ public class ProductOption extends CommonPojo  {
 	}
 
 
-	public CategoryAttribute getAttribute() {
-		return attribute;
+
+
+	public String getoptionExtValue() {
+		return optionExtValue;
 	}
 
 
-	public void setAttribute(CategoryAttribute attribute) {
-		this.attribute = attribute;
+	public void setoptionExtValue(String optionExtValue) {
+		this.optionExtValue = optionExtValue;
 	}
 
 
-	public String getAttributeExtValue() {
-		return attributeExtValue;
+	public String getDataType() {
+		return dataType;
 	}
 
 
-	public void setAttributeExtValue(String attributeExtValue) {
-		this.attributeExtValue = attributeExtValue;
+	public void setDataType(String dataType) {
+		this.dataType = dataType;
 	}
 
 

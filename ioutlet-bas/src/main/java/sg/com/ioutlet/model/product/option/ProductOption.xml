@@ -29,21 +29,21 @@
       <attributes>
        	<embedded-id name="key" />
 	 
-      	<basic name="attributeValue" optional="false">
-			<column name="ATTRIBUTE_VALUE" nullable="false" length="50"/>
+      	<basic name="optionValue" optional="false">
+			<column name="VALUE" nullable="false" length="50"/>
 	    </basic>
 	 
-	 	<basic name="attributeExtValue" optional="true">
-			<column name="ATTRIBUTE_EXT_VALUE" nullable="true" length="100"/>
+	 	<basic name="optionExtValue" optional="true">
+			<column name="EXT_VALUE" nullable="true" length="100"/>
 	    </basic>
 	 
 	
 	
-		<many-to-one name="attribute" optional="false">
-				<join-column name="ATTRIBUTE_NAME_UUID" referenced-column-name="UUID"
-					insertable="true" updatable="true" />
-		</many-to-one>
-		
+	 	<basic name="dataType" optional="true">
+			<column name="TYPE" nullable="true" length="20"/>
+	    </basic>
+	 
+	 
 		
 		<many-to-one name="product" optional="false">
 				<join-column name="PRODUCT_UUID" referenced-column-name="UUID"
