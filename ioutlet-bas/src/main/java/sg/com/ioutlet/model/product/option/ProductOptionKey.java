@@ -7,13 +7,8 @@ import java.util.UUID;
 import sg.com.ioutlet.bas.CommonPojoKey;
 
 public class ProductOptionKey extends CommonPojoKey  {
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
-	/**
-	 * 
-	 */
 	
 	public static final String ENTITY_NAME = "ProductValueKey";
 

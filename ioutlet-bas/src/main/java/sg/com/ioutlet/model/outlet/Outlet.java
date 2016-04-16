@@ -7,6 +7,7 @@ import org.apache.commons.lang.Validate;
 
 import sg.com.ioutlet.bas.CommonPojo;
 import sg.com.ioutlet.bas.CommonPojoKey;
+import sg.com.ioutlet.model.category.Category;
 
 public class Outlet extends CommonPojo {
 	/**
@@ -22,7 +23,7 @@ public class Outlet extends CommonPojo {
 	public enum Field {
 		key, name(50), logo(100), telPhone(50), faxNo(50), email(100), addr1(
 				150), addr2(150), addr3(150), addr4(150), addr5(150), postCode(
-				10), description(200);
+				10), description(200),category(20);
 
 		public int length = 255;
 		public int precision;
@@ -57,7 +58,7 @@ public class Outlet extends CommonPojo {
 		fields.add(new Object[] { Field.addr4.name(), addr4 });
 		fields.add(new Object[] { Field.addr5.name(), addr5 });
 		fields.add(new Object[] { Field.postCode.name(), postCode });
-	
+		fields.add(new Object[] {Field.category.name(),category});
 		return fields;
 	}
 
@@ -96,7 +97,8 @@ public class Outlet extends CommonPojo {
 	private String email;
 
 	private String postCode;
-
+	
+	private Category category;
 
 //	private List<Product> products;
 
@@ -232,6 +234,7 @@ public class Outlet extends CommonPojo {
 		this.addr4 = (String) objects[i++];
 		this.addr5 = (String) objects[i++];
 		this.postCode = (String) objects[i++];
+		this.category = (Category) objects[i++];
 		}
 
 
@@ -266,6 +269,14 @@ public class Outlet extends CommonPojo {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 
 }

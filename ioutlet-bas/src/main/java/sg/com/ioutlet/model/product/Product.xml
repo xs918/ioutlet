@@ -36,9 +36,6 @@
 			WHERE p.name = :PRODUCT_NAME
 		</query>
 	</named-query> 
-	
-	
-	
 
     <entity class="sg.com.ioutlet.model.product.Product"
           access="FIELD">

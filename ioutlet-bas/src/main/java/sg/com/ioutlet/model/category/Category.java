@@ -1,6 +1,7 @@
 package sg.com.ioutlet.model.category;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import sg.com.ioutlet.bas.CommonPojo;
@@ -28,10 +29,6 @@ public class Category  extends CommonPojo  {
 		 description(200);
 		 
 
-	
-
-
-
 		public int length = 255;
 		public int precision;
 		public int scale;
@@ -58,13 +55,9 @@ public class Category  extends CommonPojo  {
 	
 	
 	private CategoryKey key;
- 
 	private Category  parent;
 	private String description;
-
     private String name;
-	
-    
    
     private List<Product> products;
 
@@ -98,7 +91,6 @@ public class Category  extends CommonPojo  {
 	public void setKey(CategoryKey key) {
 		this.key = key;
 	}
-
 
 	@Override
 	public String entityName() {

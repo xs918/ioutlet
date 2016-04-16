@@ -5,10 +5,17 @@
   xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_1_0.xsd"
   version="1.0">
   
+    <named-query name="ProductOpion.getAll">
+    	<query>
+    		SELECT P 
+    		FROM ProductOption P
+    	</query>
+    </named-query>
+    
  	<named-query name="ProductOption.getByProductOptionUuid.String">
 		<query>
 			SELECT p
-			FROM Product_Options p
+			FROM ProductOption p
 			WHERE p.key.uuid = :UUID
 		</query>
 	</named-query> 
